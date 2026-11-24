@@ -1,0 +1,7 @@
+    PID    PPID     ELAPSED %CPU COMMAND
+    766     765       03:07 47.6 /usr/bin/python3 - /home/orangepi/FC01_OrangePi_20261117_stage3_fix1_arm64.tar.gz
+    PID    PPID     ELAPSED %CPU COMMAND
+   1032     766       00:58 74.6 /usr/bin/python3 /home/orangepi/FC01_versions/20261117_stage3_fix1/navigation_prebuilt_service.py check --config /home/orangepi/FC01_versions/20261117_stage3_fix1/deployment/runtime.yaml
+1032 /usr/bin/python3 /home/orangepi/FC01_versions/20261117_stage3_fix1/navigation_prebuilt_service.py check --config /home/orangepi/FC01_versions/20261117_stage3_fix1/deployment/runtime.yaml
+1182 bash -c ps -p 766 -o pid,ppid,etime,pcpu,args; ps --ppid 766 -o pid,ppid,etime,pcpu,args; pgrep -af "prebuilt_service|ldd|fc01_config_check" | head -8
+1201 ldd

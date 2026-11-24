@@ -1,0 +1,26 @@
+{
+  "VisionState": {
+    "normalized_same": true,
+    "field_diff_upstream_to_legacy": []
+  },
+  "VisionHealth": {
+    "normalized_same": true,
+    "field_diff_upstream_to_legacy": []
+  },
+  "NavigationCommand": {
+    "normalized_same": true,
+    "field_diff_upstream_to_legacy": []
+  },
+  "VelocityCommand": {
+    "normalized_same": false,
+    "field_diff_upstream_to_legacy": [
+      "--- upstream/VelocityCommand",
+      "+++ legacy/VelocityCommand",
+      "@@ -8,4 +8,3 @@",
+      " float64 vx",
+      " float64 vy",
+      " float64 vz",
+      "-float64 wz"
+    ]
+  }
+}

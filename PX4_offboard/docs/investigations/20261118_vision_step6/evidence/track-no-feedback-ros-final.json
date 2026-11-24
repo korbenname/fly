@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "counts": {
+    "setpoint": 0,
+    "command": 0,
+    "heartbeat": 0
+  },
+  "violations": [],
+  "records": [],
+  "input_samples": [
+    {
+      "receive_monotonic": 57310.326429696,
+      "input_publishers": {
+        "/fmu/out/vehicle_status_v1": 0,
+        "/fmu/out/vehicle_local_position": 0,
+        "/fmu/out/vehicle_attitude": 0,
+        "/fmu/out/manual_control_setpoint": 0,
+        "/fmu/out/manual_control_switches": 0,
+        "/fmu/out/vehicle_land_detected": 0,
+        "/fmu/out/battery_status": 0,
+        "/fmu/out/failsafe_flags": 0,
+        "/fmu/out/vehicle_command_ack": 0
+      }
+    },
+    {
+      "receive_monotonic": 57312.384659376,
+      "input_publishers": {
+        "/fmu/out/vehicle_status_v1": 0,
+        "/fmu/out/vehicle_local_position": 0,
+        "/fmu/out/vehicle_attitude": 0,
+        "/fmu/out/manual_control_setpoint": 0,
+        "/fmu/out/manual_control_switches": 0,
+        "/fmu/out/vehicle_land_detected": 0,
+        "/fmu/out/battery_status": 0,
+        "/fmu/out/failsafe_flags": 0,
+        "/fmu/out/vehicle_command_ack": 0
+      }
+    },
+    {
+      "receive_monotonic": 57314.437396736,
+      "input_publishers": {
+        "/fmu/out/vehicle_status_v1": 0,
+        "/fmu/out/vehicle_local_position": 0,
+        "/fmu/out/vehicle_attitude": 0,
+        "/fmu/out/manual_control_setpoint": 0,
+        "/fmu/out/manual_control_switches": 0,
+        "/fmu/out/vehicle_land_detected": 0,
+        "/fmu/out/battery_status": 0,
+        "/fmu/out/failsafe_flags": 0,
+        "/fmu/out/vehicle_command_ack": 0
+      }
+    },
+    {
+      "receive_monotonic": 57316.488829008,
+      "input_publishers": {
+        "/fmu/out/vehicle_status_v1": 0,
+        "/fmu/out/vehicle_local_position": 0,
+        "/fmu/out/vehicle_attitude": 0,
+        "/fmu/out/manual_control_setpoint": 0,
+        "/fmu/out/manual_control_switches": 0,
+        "/fmu/out/vehicle_land_detected": 0,
+        "/fmu/out/battery_status": 0,
+        "/fmu/out/failsafe_flags": 0,
+        "/fmu/out/vehicle_command_ack": 0
+      }
+    },
+    {
+      "receive_monotonic": 57318.542171488,
+      "input_publishers": {
+        "/fmu/out/vehicle_status_v1": 0,
+        "/fmu/out/vehicle_local_position": 0,
+        "/fmu/out/vehicle_attitude": 0,
+        "/fmu/out/manual_control_setpoint": 0,
+        "/fmu/out/manual_control_switches": 0,
+        "/fmu/out/vehicle_land_detected": 0,
+        "/fmu/out/battery_status": 0,
+        "/fmu/out/failsafe_flags": 0,
+        "/fmu/out/vehicle_command_ack": 0
+      }
+    },
+    {
+      "receive_monotonic": 57320.601411744,
+      "input_publishers": {
+        "/fmu/out/vehicle_status_v1": 0,
+        "/fmu/out/vehicle_local_position": 0,
+        "/fmu/out/vehicle_attitude": 0,
+        "/fmu/out/manual_control_setpoint": 0,
+        "/fmu/out/manual_control_switches": 0,
+        "/fmu/out/vehicle_land_detected": 0,
+        "/fmu/out/battery_status": 0,
+        "/fmu/out/failsafe_flags": 0,
+        "/fmu/out/vehicle_command_ack": 0
+      }
+    },
+    {
+      "receive_monotonic": 57322.64383104,
+      "input_publishers": {
+        "/fmu/out/vehicle_status_v1": 0,
+        "/fmu/out/vehicle_local_position": 0,
+        "/fmu/out/vehicle_attitude": 0,
+        "/fmu/out/manual_control_setpoint": 0,
+        "/fmu/out/manual_control_switches": 0,
+        "/fmu/out/vehicle_land_detected": 0,
+        "/fmu/out/battery_status": 0,
+        "/fmu/out/failsafe_flags": 0,
+        "/fmu/out/vehicle_command_ack": 0
+      }
+    },
+    {
+      "receive_monotonic": 57324.710590096,
+      "input_publishers": {
+        "/fmu/out/vehicle_status_v1": 0,
+        "/fmu/out/vehicle_local_position": 0,
+        "/fmu/out/vehicle_attitude": 0,
+        "/fmu/out/manual_control_setpoint": 0,
+        "/fmu/out/manual_control_switches": 0,
+        "/fmu/out/vehicle_land_detected": 0,
+        "/fmu/out/battery_status": 0,
+        "/fmu/out/failsafe_flags": 0,
+        "/fmu/out/vehicle_command_ack": 0
+      }
+    },
+    {
+      "receive_monotonic": 57326.753212592,
+      "input_publishers": {
+        "/fmu/out/vehicle_status_v1": 0,
+        "/fmu/out/vehicle_local_position": 0,
+        "/fmu/out/vehicle_attitude": 0,
+        "/fmu/out/manual_control_setpoint": 0,
+        "/fmu/out/manual_control_switches": 0,
+        "/fmu/out/vehicle_land_detected": 0,
+        "/fmu/out/battery_status": 0,
+        "/fmu/out/failsafe_flags": 0,
+        "/fmu/out/vehicle_command_ack": 0
+      }
+    },
+    {
+      "receive_monotonic": 57328.805634096,
+      "input_publishers": {
+        "/fmu/out/vehicle_status_v1": 0,
+        "/fmu/out/vehicle_local_position": 0,
+        "/fmu/out/vehicle_attitude": 0,
+        "/fmu/out/manual_control_setpoint": 0,
+        "/fmu/out/manual_control_switches": 0,
+        "/fmu/out/vehicle_land_detected": 0,
+        "/fmu/out/battery_status": 0,
+        "/fmu/out/failsafe_flags": 0,
+        "/fmu/out/vehicle_command_ack": 0
+      }
+    },
+    {
+      "receive_monotonic": 57330.850308448,
+      "input_publishers": {
+        "/fmu/out/vehicle_status_v1": 0,
+        "/fmu/out/vehicle_local_position": 0,
+        "/fmu/out/vehicle_attitude": 0,
+        "/fmu/out/manual_control_setpoint": 0,
+        "/fmu/out/manual_control_switches": 0,
+        "/fmu/out/vehicle_land_detected": 0,
+        "/fmu/out/battery_status": 0,
+        "/fmu/out/failsafe_flags": 0,
+        "/fmu/out/vehicle_command_ack": 0
+      }
+    },
+    {
+      "receive_monotonic": 57332.9005084,
+      "input_publishers": {
+        "/fmu/out/vehicle_status_v1": 0,
+        "/fmu/out/vehicle_local_position": 0,
+        "/fmu/out/vehicle_attitude": 0,
+        "/fmu/out/manual_control_setpoint": 0,
+        "/fmu/out/manual_control_switches": 0,
+        "/fmu/out/vehicle_land_detected": 0,
+        "/fmu/out/battery_status": 0,
+        "/fmu/out/failsafe_flags": 0,
+        "/fmu/out/vehicle_command_ack": 0
+      }
+    },
+    {
+      "receive_monotonic": 57334.949351088,
+      "input_publishers": {
+        "/fmu/out/vehicle_status_v1": 0,
+        "/fmu/out/vehicle_local_position": 0,
+        "/fmu/out/vehicle_attitude": 0,
+        "/fmu/out/manual_control_setpoint": 0,
+        "/fmu/out/manual_control_switches": 0,
+        "/fmu/out/vehicle_land_detected": 0,
+        "/fmu/out/battery_status": 0,
+        "/fmu/out/failsafe_flags": 0,
+        "/fmu/out/vehicle_command_ack": 0
+      }
+    },
+    {
+      "receive_monotonic": 57337.003296016,
+      "input_publishers": {
+        "/fmu/out/vehicle_status_v1": 0,
+        "/fmu/out/vehicle_local_position": 0,
+        "/fmu/out/vehicle_attitude": 0,
+        "/fmu/out/manual_control_setpoint": 0,
+        "/fmu/out/manual_control_switches": 0,
+        "/fmu/out/vehicle_land_detected": 0,
+        "/fmu/out/battery_status": 0,
+        "/fmu/out/failsafe_flags": 0,
+        "/fmu/out/vehicle_command_ack": 0
+      }
+    },
+    {
+      "receive_monotonic": 57339.048914064,
+      "input_publishers": {
+        "/fmu/out/vehicle_status_v1": 0,
+        "/fmu/out/vehicle_local_position": 0,
+        "/fmu/out/vehicle_attitude": 0,
+        "/fmu/out/manual_control_setpoint": 0,
+        "/fmu/out/manual_control_switches": 0,
+        "/fmu/out/vehicle_land_detected": 0,
+        "/fmu/out/battery_status": 0,
+        "/fmu/out/failsafe_flags": 0,
+        "/fmu/out/vehicle_command_ack": 0
+      }
+    }
+  ],
+  "elapsed_seconds": 28.827810800001316
+}

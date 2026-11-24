@@ -1,0 +1,5 @@
+MainPID=1755
+WorkingDirectory=/home/orangepi/FC01_versions/20261117_stage3_fix1
+ActiveState=active
+    588       1 /home/orangepi/fc01_agent_build_offline/MicroXRCEAgent serial -D /dev/ttyS2 -b 115200 -v 0
+   2370    1755 /home/orangepi/FC01_versions/20261117_stage3_fix1/install/lib/jikl_fc01_system/fc01_system_node --ros-args --disable-external-lib-logs --params-file /home/orangepi/FC01_navigation/runtime.yaml -p socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_mn66maa9/control.sock

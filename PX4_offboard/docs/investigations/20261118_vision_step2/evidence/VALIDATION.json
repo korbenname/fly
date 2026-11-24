@@ -1,0 +1,82 @@
+{
+  "source_commit": "f27c733b3682b14e373beeccfa858beafb5049fb",
+  "environment": "Ubuntu22.04.5 x86_64 ROS2 Humble Python3.10",
+  "checks": {
+    "unified_build": {
+      "packages": 4,
+      "pass": true,
+      "evidence": "build-final.log"
+    },
+    "unit_static": {
+      "tests": 41,
+      "pass": true,
+      "evidence": "unit-static-final.log"
+    },
+    "native_cpp": {
+      "executables": 85,
+      "pass": true,
+      "evidence": "native-cpp-final.log"
+    },
+    "vision_ctest": {
+      "tests": 2,
+      "pass": true,
+      "evidence": "vision-ctest-final.log"
+    },
+    "generated_msgs": {
+      "messages": 8,
+      "pass": true,
+      "evidence": "generated-interface.json"
+    },
+    "real_dds_bridge": {
+      "named_checks": 8,
+      "pass": true,
+      "evidence": "bridge-smoke.json"
+    },
+    "real_sensor_chain": {
+      "named_checks": 13,
+      "pass": true,
+      "evidence": "mission/RESULT.json"
+    },
+    "real_calibration": {
+      "named_checks": 8,
+      "pass": true,
+      "evidence": "calibration/RESULT.json"
+    },
+    "real_step1_interfaces": {
+      "pass": true,
+      "evidence": "interfaces/RESULT.json"
+    },
+    "legacy_v1": {
+      "pass": true,
+      "evidence": "legacy-v1.json"
+    },
+    "self_odometry": {
+      "pass": true,
+      "evidence": "self-odometry.json"
+    },
+    "missing_camera": {
+      "rounds": 3,
+      "pass": true,
+      "evidence": "camera-missing-final.log"
+    },
+    "independent_review": {
+      "tests_subset": 30,
+      "pass": true,
+      "evidence": "final-independent-review.md"
+    }
+  },
+  "arm64": false,
+  "physical_camera": false,
+  "physical_px4": false,
+  "flight_authority": false,
+  "not_run": [
+    "ARM64 execution",
+    "actual camera exposure and disconnect",
+    "hardware flight"
+  ],
+  "retained_user_untracked": [
+    "tests/test_micovio_clock_candidate.py",
+    "tests/test_micovio_uart0_reader.py",
+    "tools/"
+  ]
+}

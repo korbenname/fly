@@ -1,0 +1,6 @@
+{
+  "code_commit": "08ac6430a67fed85fba75dddb465d5598bb60462",
+  "source_hashes_match_committed_files": true,
+  "checked_files": 100,
+  "note": "Build produced before commit; exact source hashes match code commit. ROS result source_head records actual baseline at run time; not relabeled."
+}

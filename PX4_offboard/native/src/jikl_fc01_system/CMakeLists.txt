@@ -6,17 +6,24 @@ set(CMAKE_INSTALL_RPATH "$ORIGIN;$ORIGIN/..")
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(px4_msgs REQUIRED)
+find_package(std_msgs REQUIRED)
 # 自定义消息只引用标准时间类型；Python Odometry 订阅依赖在 package.xml 中声明。
 # nav_msgs 不参与本包 C++ 编译或消息字段生成，因此这里只查找 builtin_interfaces。
 find_package(builtin_interfaces REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 # 原生控制器的日志等后台线程需要系统线程库。
 find_package(Threads REQUIRED)
-# 五个消息保留原字段和类型身份；生成类型不代表给视觉通道授予控制权限。
+# 原五个消息保留字段和类型身份；V2速度和相对目标各用独立类型，避免旧DDS布局/语义冲突。
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/VisionState.msg"
   "msg/NavigationCommand.msg"
   "msg/VelocityCommand.msg"
+  "msg/VelocityCommandV2.msg"
+  "msg/HorizontalVelocityCommand.msg"
+  "msg/TargetObservation.msg"
+  "msg/PlatformState.msg"
+  "msg/NativeFlightState.msg"
+  "msg/NativeFlightSnapshot.msg"
   "msg/VisionHealth.msg"
   "msg/AttitudeThrustPreview.msg"
   DEPENDENCIES builtin_interfaces)
@@ -26,6 +33,13 @@ rosidl_get_typesupport_target(fc01_typesupport ${PROJECT_NAME} rosidl_typesuppor
 # 控制节点与参数检查器分别生成；检查配置不需要启动控制节点或连接飞控。
 add_executable(fc01_system_node src/fc01_system_node.cpp)
 add_executable(fc01_config_check src/fc01_config_check.cpp)
+# 独立只读接收器不链接Runtime、不创建PX4发布器；供视觉队列第1步核对真实消息值。
+add_executable(fc01_target_interface_node src/fc01_target_interface_node.cpp)
+target_compile_features(fc01_target_interface_node PUBLIC cxx_std_17)
+target_compile_options(fc01_target_interface_node PRIVATE -Wall -Wextra -Wpedantic)
+target_include_directories(fc01_target_interface_node PRIVATE include)
+ament_target_dependencies(fc01_target_interface_node rclcpp std_msgs)
+target_link_libraries(fc01_target_interface_node "${fc01_typesupport}")
 # 参数检查器使用与控制器相同的 C++17 合同和 ROS/PX4 类型依赖。
 target_compile_features(fc01_config_check PUBLIC cxx_std_17)
 target_compile_options(fc01_config_check PRIVATE -Wall -Wextra -Wpedantic)
@@ -40,6 +54,7 @@ target_link_libraries(fc01_system_node Threads::Threads "${fc01_typesupport}")
 # ROS 2 在 lib/<包名> 查找可执行入口；头文件单独安装供离线校验程序复用。
 install(TARGETS fc01_system_node DESTINATION lib/${PROJECT_NAME})
 install(TARGETS fc01_config_check DESTINATION lib/${PROJECT_NAME})
+install(TARGETS fc01_target_interface_node DESTINATION lib/${PROJECT_NAME})
 install(DIRECTORY include/ DESTINATION include)
 # 两个独立 Python 节点需要可执行权限；原始转换器与速度诊断均不自动启动。
 install(PROGRAMS "${CMAKE_CURRENT_SOURCE_DIR}/../../tools/vision_odometry_adapter.py"

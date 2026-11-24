@@ -1,0 +1,23 @@
+{
+  "tree": "/home/jikl62/FC01_DDS_V3_NATIVE_BUILD",
+  "git_commit": "07983bfb894b9372d7520d43ac10dc792d0b4b9f",
+  "observation_scope": "local source/build and generated DDS bridge; no active board subscriber observed",
+  "board": "damiao_dm-fc01_default",
+  "files": {
+    "boards/damiao/dm-fc01/default.px4board": "f5733a461a8aba1c2b6960bc8173c33c6440ea21590d4f201cf837564761e4fb",
+    "src/modules/commander/ModeUtil/control_mode.cpp": "f98cbe0f115575601a7e82b71f28a36db09a69fae561f816a70ed4feb1023de0",
+    "src/modules/commander/HealthAndArmingChecks/checks/offboardCheck.cpp": "36890c99b6fb9185fa153c6738112108d9bc8398ac6a9138de7e7ad78db53c7d",
+    "src/modules/mc_pos_control/MulticopterPositionControl.cpp": "307ba6adba91819f052806eac8497d65775b94d956901caafcc500f203ba18cb",
+    "src/modules/land_detector/MulticopterLandDetector.cpp": "7a74c7cba94cb9eb2bf9e8af7edb9d9385c8a00abed43377497efd8dc1a6c08b",
+    "src/modules/uxrce_dds_client/dds_topics.yaml": "db3a53c346fb7d5d358f76edf55bb7a4ccd1343b8e2302c210be2fa79e01aed6",
+    "build/damiao_dm-fc01_default/src/modules/uxrce_dds_client/dds_topics.h": "09d639f37112ef29bca5f210151096d98ecd74662cf29b7967e2873dcf497768",
+    "build/damiao_dm-fc01_default/damiao_dm-fc01_default.elf": "77ee1f8ab5b0878f35bea91fece72df53fda28645634a911056ca40453c5c980"
+  },
+  "subscribers": {
+    "/fmu/in/offboard_control_mode": "OffboardControlMode, reader 9",
+    "/fmu/in/trajectory_setpoint": "TrajectorySetpoint, reader 15"
+  },
+  "ulog": "log_82_UnknownDate.ulg",
+  "ulog_version_matches_commit": true,
+  "current_device_image_verified": false
+}

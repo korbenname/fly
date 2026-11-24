@@ -1,0 +1,32 @@
+{
+  "__init__.py": {
+    "source_sha256": "4ccba050cfd138121e793f608b0f21123b796192dcc2aa55d1927b837706d6d8",
+    "installed_sha256": "4ccba050cfd138121e793f608b0f21123b796192dcc2aa55d1927b837706d6d8",
+    "equal": true
+  },
+  "sensor_contract.py": {
+    "source_sha256": "6a08ad3c5b85c655adbc01bd8c83bc4e23fd53209dcf8cd7d6ae9fb15bb1a639",
+    "installed_sha256": "6a08ad3c5b85c655adbc01bd8c83bc4e23fd53209dcf8cd7d6ae9fb15bb1a639",
+    "equal": true
+  },
+  "px4_state_bridge.py": {
+    "source_sha256": "724f358efeec06ad13fc971b30a7b9dcc9fad23d382ca2b8507e40aa58e84713",
+    "installed_sha256": "724f358efeec06ad13fc971b30a7b9dcc9fad23d382ca2b8507e40aa58e84713",
+    "equal": true
+  },
+  "platform_feedback.py": {
+    "source_sha256": "1092206385c760186cef0e475f0bed74ad382ca714235d15f80077de2d92768d",
+    "installed_sha256": "1092206385c760186cef0e475f0bed74ad382ca714235d15f80077de2d92768d",
+    "equal": true
+  },
+  "mission_node.py": {
+    "source_sha256": "a996718c75e4686088a22c187f4add85eaa817a65028d67355f9e258fd0fbfaf",
+    "installed_sha256": "a996718c75e4686088a22c187f4add85eaa817a65028d67355f9e258fd0fbfaf",
+    "equal": true
+  },
+  "native_flight_gate.py": {
+    "source_sha256": "34fc7bef8affd3781e2142792409101aaa64be719ba8bf0fc3670771112d36d9",
+    "installed_sha256": "34fc7bef8affd3781e2142792409101aaa64be719ba8bf0fc3670771112d36d9",
+    "equal": true
+  }
+}

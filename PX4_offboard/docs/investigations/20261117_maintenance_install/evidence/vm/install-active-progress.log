@@ -1,0 +1,5 @@
+MainPID=407
+WorkingDirectory=/home/orangepi/fc01-old
+ActiveState=active
+{"elapsed_s": 798.733382912, "counts": {"setpoint": 0, "command": 0, "heartbeat": 0}, "input_publishers": {"/fmu/out/vehicle_status_v1": 0, "/fmu/out/vehicle_local_position": 0, "/fmu/out/manual_control_setpoint": 0, "/fmu/out/manual_control_switches": 0, "/fmu/out/vehicle_attitude": 0, "/fmu/out/vehicle_land_detected": 0}}766 /usr/bin/python3 - /home/orangepi/FC01_OrangePi_20261117_stage3_fix1_arm64.tar.gz
+786 bash -c systemctl show fc01-navigation.service -p MainPID -p ActiveState -p WorkingDirectory; cat /home/orangepi/maintenance-observer.json; pgrep -af "ldd|fc01_config_check|python3 -" | head -4

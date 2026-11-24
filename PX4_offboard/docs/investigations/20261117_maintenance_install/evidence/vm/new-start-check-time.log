@@ -1,0 +1,5 @@
+    ELAPSED %CPU   RSS COMMAND
+      02:14 66.7 62176 /usr/bin/python3 /home/orangepi/FC01_versions/20261117_stage3_fix1/navigation_prebuilt_service.py
+    PID     ELAPSED %CPU COMMAND
+   2157       00:07 24.4 /home/orangepi/FC01_versions/20261117_stage3_fix1/install/lib/jikl_fc01_system/fc01_system_node --ros-args --disable-external-lib-logs --params-file /home/orangepi/FC01_navigation/runtime.yaml -p socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_yx29sefm/control.sock
+2195 bash -c ps -p 1590 -o etime,pcpu,rss,args; ps --ppid 1590 -o pid,etime,pcpu,args; pgrep -af "ldd|fc01_config_check" | head -4

@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/root/step6-evidence/ros_generated_interface_check.py", line 384, in main
+    check_installation(prefix, report)
+  File "/root/step6-evidence/ros_generated_interface_check.py", line 255, in check_installation
+    from rosidl_runtime_py.utilities import get_message
+ModuleNotFoundError: No module named 'rosidl_runtime_py'
+{"passed": false, "messages": 0, "report": "/root/step6-evidence/fix1-unified-11-types.json"}

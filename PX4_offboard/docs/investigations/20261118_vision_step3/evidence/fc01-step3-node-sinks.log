@@ -1,0 +1,6 @@
+test_manual_rc_lifecycle_preserves_exact_control_sink_sequence (tests.test_vision_step3_node_sinks.VisionStep3NodeSinkTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 5.690s
+
+OK

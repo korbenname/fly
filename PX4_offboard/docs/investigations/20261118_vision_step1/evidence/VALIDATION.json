@@ -1,0 +1,36 @@
+{
+  "source_commit": "619736483a69df691eca49a5fbdb3135082fd8ed",
+  "generated_messages": 7,
+  "ros_interface_result": "PASS",
+  "production_launch_clean_shutdown": true,
+  "legacy_checks": [
+    "startup_overrides_and_read_only_runtime_parameters",
+    "best_effort_type_and_payload",
+    "unconfigured_policy_does_not_qualify_cache",
+    "duplicate_and_out_of_order",
+    "invalid_and_retained_anomaly",
+    "reset_and_source_changes",
+    "source_count_and_reliable_to_best_effort",
+    "explicit_test_timeout",
+    "diagnostic_has_no_fmu_publishers",
+    "reliable_to_reliable",
+    "sigint_final_snapshot_and_forced_anomaly_flush"
+  ],
+  "self_vision_checks": [
+    "read_only_startup_parameters",
+    "valid_conversion",
+    "raw_conflict_revoked",
+    "no_fmu_publishers",
+    "sigint_clean_exit",
+    "utf8_identity_budget_revoked",
+    "fresh_pair_after_resource_rejection"
+  ],
+  "python_unit_tests": 11,
+  "cpp_ctest_targets": 1,
+  "control_source_changed": false,
+  "visual_flight_enabled": false,
+  "arm64_tested_this_step": false,
+  "px4_live_graph_verified": false,
+  "hardware_tested_this_step": false,
+  "source_files_match_tested_manifest": true
+}

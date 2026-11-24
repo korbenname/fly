@@ -1,0 +1,10 @@
+offboard_loss IDLE IDLE_NO_AUTOMATIC_ARM h= 0.0
+offboard_loss RC_PRESTREAM RC_PRESTREAM_WAIT_NEW_GROUND_REFERENCE h= 0.0
+offboard_loss RC_READY_WAIT_ARM RC_READY_WAIT_CH5_MANUAL_ARM h= 0.0
+offboard_loss RC_ARMED_WAIT_NAVIGATION RC_WAIT_MATCHED_SWITCH_AND_NEW_ARMED_STATUS h= 0.0
+offboard_loss ARMED_GROUND RC_MANUAL_ARM_AND_NEW_OFFBOARD_CONFIRMED h= 0.0
+offboard_loss THRUST_RAMP THRUST_RAMP h= 0.0
+offboard_loss ASCEND ASCEND h= 0.22
+offboard_loss HEIGHT_HOLD HEIGHT_HOLD h= 1.6
+offboard_loss SAFETY OPERATOR_TAKEOVER_LATCHED h= 1.633
+{"result": "FAIL", "error": " metric/sequence gates={'ordered_phases': True, 'converged_2s': True, 'hold_error_within_config': True, 'heartbeat_below_stall_budget': True, 'target_and_heartbeat_window_covered': True, 'monotonic_wire': True, 'target_heartbeat_pairs': True, 'inputs_unchanged_during_run': False, 'horizontal_wire_checks': True}", "scenario": "offboard_loss", "motion": "plant", "metrics": {"target_m": 1.5, "overshoot_m": 0.13959272830015368, "settling_entry_from_ramp_s": 7.892710788997647, "height_hold_from_ramp_s": 10.125057225995988, "hold_observation_s": 3.307356035998964, "hold_max_abs_error_m": 0.13959272830015368, "hold_rms_error_m": 0.131188053507248, "horizontal_drift_m": 0.0, "horizontal_drift_interpretation": "fixed XY input, not measured capability", "max_heartbeat_receive_gap_s": 0.05421715500415303, "max_heartbeat_wire_gap_s": 0.05076, "max_heartbeat_gap_including_window_edges_s": 0.05421715500415303, "max_target_gap_including_window_edges_s": 0.05474118600250222, "heartbeat_window": "Offboard confirmed through Disarm command (includes descent), or fault injection; excludes deliberate stop/reprepare"}}

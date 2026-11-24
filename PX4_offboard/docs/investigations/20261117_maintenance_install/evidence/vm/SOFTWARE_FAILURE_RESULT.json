@@ -1,0 +1,23 @@
+{
+  "final_installer_sha256": "96d6b6f9b0005a859d856152631821cf0d4677bc1826fc2356a6318f45e75a5c",
+  "injected_fault": "systemd ExecStartPre exits 23 only in candidate cwd",
+  "install_exit": 1,
+  "original_state": "inactive",
+  "restored_main_pid": 0,
+  "restored_controller_count": 0,
+  "runtime_sha256_restored": true,
+  "runtime_sha256": "929eb1cb029d3a6af38197e0d8e396ca9145a0d5b83a8465dd049f715cefe13c",
+  "restored_entry": "/home/orangepi/fc01-old",
+  "observer_counts": {
+    "setpoint": 0,
+    "command": 0,
+    "heartbeat": 0
+  },
+  "result": "PASS expected install failure automatically restored original software configuration and inactive state",
+  "evidence": [
+    "release-final-start-failure-restore.log",
+    "release-final-failure-restored.json",
+    "release-final-failure-journal-backup.log"
+  ],
+  "collection_note": "First capture attempted a missing guest /tmp path and failed; same capture source was then piped over ssh successfully. Original failure log retained."
+}

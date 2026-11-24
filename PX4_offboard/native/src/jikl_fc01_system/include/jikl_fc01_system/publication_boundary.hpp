@@ -137,4 +137,186 @@ Decision publish_attitude_resampled(Context&& context, const Output& output, std
   // Complete只证明两个本地sink依次返回；最终动作/Runtime回记和后续PX4状态仍是其他层证据。
   return allow();
 }
+
+// 位置模式独占轨迹出口。地面准入只发 position 心跳，等 PX4 真正进入 Offboard 再送轨迹。
+enum class PositionDemand { HeartbeatOnly, GroundIdle, ClimbOrHold, Descend };
+
+inline PositionDemand position_demand(const BoundaryContext& c, const Output& output) {
+  if (rc_stage(c.phase) || !c.feedback.armed || !c.feedback.offboard)
+    return PositionDemand::HeartbeatOnly;
+  switch (c.phase) {
+  case Phase::ThrustRamp:
+    // ArmedGround 可在同一步进入 ThrustRamp，该步尚未推进高度轨迹。
+    // 继续地面抑制目标，避免有限的 z0 因估计噪声被解释为上升请求。
+    if (output.target_height == 0.)
+      return PositionDemand::GroundIdle;
+    [[fallthrough]];
+  case Phase::Ascend:
+  case Phase::HeightHold:
+    return PositionDemand::ClimbOrHold;
+  case Phase::Descent:
+  case Phase::RecoveryDescent:
+  case Phase::Px4LandPending:
+    return PositionDemand::Descend;
+  default:
+    return PositionDemand::GroundIdle;
+  }
+}
+
+inline Decision position_publication_policy(const BoundaryContext& c, const Output& output) {
+  if (!c.config.px4_takeoff_position_hold)
+    return deny(BoundaryReason::WrongProfile);
+  if (nonzero(output.thrust) || output.visual_motion || output.command == Command::Arm ||
+      output.command == Command::Offboard)
+    return deny(BoundaryReason::InvalidOutput);
+  if (!rc_stage(c.phase) && !c.feedback.offboard)
+    return deny(BoundaryReason::ArmedOffboard);
+  const auto demand = position_demand(c, output);
+  if (output.position_intent) {
+    const auto& intent = *output.position_intent;
+    if (!c.config.px4_position_mission_enabled || c.phase != Phase::HeightHold ||
+        !c.liftoff_confirmed || c.feedback.landed || !c.visual_motion_allowed ||
+        !c.position_intent || !(*c.position_intent == intent) ||
+        output.target_height != c.config.rc_target_height)
+      return deny(BoundaryReason::VisualInput);
+    if (!std::isfinite(intent.yaw) || !vision::detail::finite(intent.xy))
+      return deny(BoundaryReason::InvalidOutput);
+    const auto& anchor = c.takeoff_position_anchor;
+    switch (intent.kind) {
+    case horizontal::PositionIntentKind::Waypoint:
+      if (!c.config.px4_position_waypoint_enabled ||
+          c.config.px4_position_waypoint_origin_id != c.feedback.horizontal_input.actual.origin_id ||
+          std::hypot(intent.xy[0] - anchor.x, intent.xy[1] - anchor.y) > c.config.visual.max_radius)
+        return deny(BoundaryReason::VisualInput);
+      break;
+    case horizontal::PositionIntentKind::Velocity:
+    case horizontal::PositionIntentKind::Brake:
+      if (std::hypot(intent.xy[0], intent.xy[1]) > c.config.visual.max_speed + 1e-9)
+        return deny(BoundaryReason::VisualInput);
+      break;
+    default:
+      return deny(BoundaryReason::InvalidOutput);
+    }
+  }
+  const bool moving = demand == PositionDemand::ClimbOrHold || demand == PositionDemand::Descend;
+  // 下降线路发向下速度，起降同高轨迹字段此时不会进入报文。轻微超调后仍须能正常降落。
+  if (demand == PositionDemand::ClimbOrHold &&
+      (!std::isfinite(output.target_height) || output.target_height < 0 ||
+       output.target_height > c.config.rc_target_height))
+    return deny(BoundaryReason::FlightEnvelope);
+  return setpoint_publication_policy(c, output, moving);
+}
+
+template <class Target>
+Target position_target(const BoundaryContext& c, PositionDemand demand, const Output& output,
+                       std::uint64_t stamp) {
+  Target target{};
+  target.timestamp = stamp;
+  target.position.fill(NAN);
+  target.velocity.fill(NAN);
+  target.acceleration.fill(NAN);
+  target.jerk.fill(NAN);
+  target.yaw = float(c.yaw_reference);
+  target.yawspeed = NAN;
+  // 各轴至少有一类有限目标。离地证明之前，零水平加速度不请求 XY 位置或速度闭环。
+  const bool hold_xy = c.liftoff_confirmed && !c.feedback.landed &&
+                       (demand == PositionDemand::ClimbOrHold || demand == PositionDemand::Descend);
+  if (hold_xy) {
+    auto xy = std::array<double, 2>{c.takeoff_position_anchor.x, c.takeoff_position_anchor.y};
+    if (demand == PositionDemand::Descend && c.position_descent_hold)
+      xy = *c.position_descent_hold;
+    target.position[0] = float(xy[0]);
+    target.position[1] = float(xy[1]);
+  } else {
+    target.acceleration[0] = target.acceleration[1] = 0.f;
+  }
+  if (demand == PositionDemand::ClimbOrHold)
+    target.position[2] = float(c.reference_z - output.target_height);
+  else if (demand == PositionDemand::Descend)
+    // NED 向下为正。PX4 需要明确的下行速度目标，才能触发其地面接触检测。
+    target.velocity[2] = float(c.config.px4_takeoff_position_descent_speed);
+  else
+    target.acceleration[2] = 9.80665f;
+  if (output.position_intent) {
+    const auto& intent = *output.position_intent;
+    target.yaw = float(intent.yaw);
+    for (std::size_t axis = 0; axis < intent.xy.size(); ++axis) {
+      if (intent.kind == horizontal::PositionIntentKind::Waypoint)
+        target.position[axis] = float(intent.xy[axis]);
+      else {
+        target.position[axis] = NAN;
+        target.velocity[axis] = float(intent.xy[axis]);
+      }
+    }
+  }
+  return target;
+}
+
+template <class Mode, class Target, class Context, class TargetSink, class ModeSink>
+Decision publish_position_resampled(Context&& context, const Output& output, std::uint64_t stamp,
+                                   TargetSink&& target_sink, ModeSink&& mode_sink,
+                                   PublicationAttempt& attempt) {
+  attempt = {};
+  const auto check = [&](PublicationStage stage, const BoundaryContext& current) {
+    attempt.stage = stage;
+    attempt.decision = position_publication_policy(current, output);
+    return attempt.decision;
+  };
+  const auto initial = context();
+  auto decision = check(PublicationStage::InitialContext, initial);
+  if (!decision.allowed)
+    return decision;
+  const auto demand = position_demand(initial, output);
+  const auto target = position_target<Target>(initial, demand, output, stamp);
+  if (!stamp || !std::isfinite(target.yaw) ||
+      (demand == PositionDemand::ClimbOrHold && !std::isfinite(target.position[2])))
+    return attempt.decision = deny(BoundaryReason::InvalidOutput);
+  const auto verify = [&](PublicationStage stage) {
+    const auto current = context();
+    const auto result = check(stage, current);
+    if (!result.allowed)
+      return result;
+    // 重采样只能否决已编码的目标，禁止在心跳阶段把目标重新绑定到其他位置或阶段。
+    if (position_demand(current, output) != demand || current.phase != initial.phase ||
+        current.feedback.landed != initial.feedback.landed ||
+        current.liftoff_confirmed != initial.liftoff_confirmed ||
+        current.reference_z != initial.reference_z || current.yaw_reference != initial.yaw_reference ||
+        current.position_descent_hold != initial.position_descent_hold ||
+        !(current.takeoff_position_anchor.frame == initial.takeoff_position_anchor.frame) ||
+        current.takeoff_position_anchor.x != initial.takeoff_position_anchor.x ||
+        current.takeoff_position_anchor.y != initial.takeoff_position_anchor.y)
+      return attempt.decision = deny(BoundaryReason::EstimatorReset);
+    return result;
+  };
+  if (demand != PositionDemand::HeartbeatOnly) {
+    decision = verify(PublicationStage::BeforeTarget);
+    if (!decision.allowed)
+      return decision;
+    try {
+      target_sink(target);
+      attempt.target_committed = true;
+    } catch (...) {
+      attempt.sink_exception = true;
+      throw;
+    }
+  }
+  decision = verify(PublicationStage::BeforeHeartbeat);
+  if (!decision.allowed) {
+    if (attempt.target_committed)
+      throw std::runtime_error(std::string("HEARTBEAT_FINAL_CONTEXT_CHANGED_") + name(decision.reason));
+    return decision;
+  }
+  Mode mode{};
+  mode.timestamp = stamp;
+  mode.position = true;
+  try {
+    mode_sink(mode);
+    attempt.heartbeat_committed = true;
+  } catch (...) {
+    attempt.sink_exception = true;
+    throw;
+  }
+  attempt.stage = PublicationStage::Complete;
+  return allow();
+}
 } // namespace fc01::attitude

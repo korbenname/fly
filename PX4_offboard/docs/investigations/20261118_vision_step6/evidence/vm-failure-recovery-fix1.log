@@ -1,0 +1,138 @@
+FC01：维护切换适用于落地、拆桨、飞控断电；安装成功不等于飞行就绪。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（101.5秒）。
+FC01：检查统一消息、Python模块和全部ELF架构；完整动态依赖随后随配置统一核对。
+FC01_PREBUILT_RUNTIME_DEPENDENCIES_OK
+
+FC01：开始完整服务软件预检（文件/动态依赖/参数），旧服务此时保持原状态。
+FC01_SOFTWARE_CHECK_BEGIN 完整文件与本机运行条件
+FC01_SOFTWARE_CHECK_PROGRESS 文件清单通过 elapsed=49.3s
+FC01_SOFTWARE_CHECK_PROGRESS ELF架构通过 paths=565 elapsed=56.1s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=50 elapsed=69.3s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=100 elapsed=80.2s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=150 elapsed=90.7s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=200 elapsed=101.6s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=250 elapsed=111.9s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=300 elapsed=122.0s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖通过 unique=338 elapsed=131.0s
+FC01_SOFTWARE_CHECK_PROGRESS 统一消息与Python加载通过 elapsed=140.6s
+FC01_SOFTWARE_CHECK_DONE elapsed=141.8s
+FC01_PREBUILT_CHECK_OK version=20261118_vision_step6_fix1
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：等待旧任务退出，已用10秒；服务=deactivating，仍存活PID=[31530, 32066]。
+FC01：等待旧任务退出，已用20秒；服务=deactivating，仍存活PID=[31530, 32066]。
+FC01：等待旧任务退出，已用31秒；服务=deactivating，仍存活PID=[31530, 32066]。
+FC01：等待旧任务退出，已用41秒；服务=deactivating，仍存活PID=[31530, 32066]。
+FC01：等待旧任务退出，已用51秒；服务=deactivating，仍存活PID=[31530, 32066]。
+FC01：旧服务及所属FC01进程已退出（60.8秒）。
+FC01：等待新版软件初始化/IPC，已用10/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用20/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用30/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用41/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用51/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用61/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用71/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用81/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用91/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用101/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用112/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用122/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用132/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用142/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用152/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用162/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用173/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用183/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用193/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用203/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用213/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用223/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用233/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用243/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用254/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用264/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用274/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用284/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用294/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用304/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用314/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用325/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用335/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用345/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用355/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用365/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用375/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用385/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用395/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用406/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用416/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用426/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用436/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用446/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用456/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用467/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用477/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用487/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用497/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用507/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用517/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用527/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用538/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用548/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用558/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用568/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用578/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用588/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用598/600秒；等待新版服务和唯一控制器进程。
+FC01：旧服务及所属FC01进程已退出（0.3秒）。
+FC01：等待原版软件恢复，已用10/600秒；等待原版软件启动。
+FC01：等待原版软件恢复，已用20/600秒；等待原版软件启动。
+FC01：等待原版软件恢复，已用30/600秒；等待原版软件启动。
+FC01：等待原版软件恢复，已用40/600秒；等待原版软件启动。
+FC01：等待原版软件恢复，已用50/600秒；等待原版软件启动。
+FC01：等待原版软件恢复，已用60/600秒；等待原版软件启动。
+FC01：等待原版软件恢复，已用71/600秒；等待原版软件启动。
+FC01：等待原版软件恢复，已用81/600秒；等待原版软件启动。
+FC01_PREBUILT_INSTALL_FAILED: 安装失败，原版配置和运行状态已恢复。备份=/home/orangepi/FC01_navigation/prebuilt-backups/20261118T041835_827275Z-32201；新版启动验收失败：等待新版服务和唯一控制器进程
+INJECTED_INSTALL_EXIT=1
+FINAL_FIX1_START_FAILURE_AUTOMATIC_RECOVERY_PASS
+Nov 18 04:30:47 fc01-arm64-test-vm systemd[1]: Stopped FC01 manual RC navigation controller.
+Nov 18 04:30:48 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Found left-over process 426 (MicroXRCEAgent) in control group while starting unit. Ignoring.
+Nov 18 04:30:48 fc01-arm64-test-vm systemd[1]: This usually indicates unclean termination of a previous run, or service implementation deficiencies.
+Nov 18 04:30:48 fc01-arm64-test-vm systemd[1]: Starting FC01 manual RC navigation controller...
+Nov 18 04:30:48 fc01-arm64-test-vm fc01-navigation[37050]: VM_TEST_CANDIDATE_START_FAILURE
+Nov 18 04:30:48 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Control process exited, code=exited, status=23/n/a
+Nov 18 04:30:48 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Failed with result 'exit-code'.
+Nov 18 04:30:48 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Unit process 426 (MicroXRCEAgent) remains running after unit stopped.
+Nov 18 04:30:48 fc01-arm64-test-vm systemd[1]: Failed to start FC01 manual RC navigation controller.
+Nov 18 04:31:18 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Scheduled restart job, restart counter is at 18.
+Nov 18 04:31:18 fc01-arm64-test-vm systemd[1]: Stopped FC01 manual RC navigation controller.
+Nov 18 04:31:18 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Found left-over process 426 (MicroXRCEAgent) in control group while starting unit. Ignoring.
+Nov 18 04:31:18 fc01-arm64-test-vm systemd[1]: This usually indicates unclean termination of a previous run, or service implementation deficiencies.
+Nov 18 04:31:18 fc01-arm64-test-vm systemd[1]: Starting FC01 manual RC navigation controller...
+Nov 18 04:31:18 fc01-arm64-test-vm fc01-navigation[37162]: VM_TEST_CANDIDATE_START_FAILURE
+Nov 18 04:31:18 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Control process exited, code=exited, status=23/n/a
+Nov 18 04:31:18 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Failed with result 'exit-code'.
+Nov 18 04:31:18 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Unit process 426 (MicroXRCEAgent) remains running after unit stopped.
+Nov 18 04:31:18 fc01-arm64-test-vm systemd[1]: Failed to start FC01 manual RC navigation controller.
+Nov 18 04:31:48 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Scheduled restart job, restart counter is at 19.
+Nov 18 04:31:48 fc01-arm64-test-vm systemd[1]: Stopped FC01 manual RC navigation controller.
+Nov 18 04:31:48 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Found left-over process 426 (MicroXRCEAgent) in control group while starting unit. Ignoring.
+Nov 18 04:31:48 fc01-arm64-test-vm systemd[1]: This usually indicates unclean termination of a previous run, or service implementation deficiencies.
+Nov 18 04:31:48 fc01-arm64-test-vm systemd[1]: Starting FC01 manual RC navigation controller...
+Nov 18 04:31:48 fc01-arm64-test-vm fc01-navigation[37273]: VM_TEST_CANDIDATE_START_FAILURE
+Nov 18 04:31:48 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Control process exited, code=exited, status=23/n/a
+Nov 18 04:31:48 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Failed with result 'exit-code'.
+Nov 18 04:31:48 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Unit process 426 (MicroXRCEAgent) remains running after unit stopped.
+Nov 18 04:31:48 fc01-arm64-test-vm systemd[1]: Failed to start FC01 manual RC navigation controller.
+Nov 18 04:32:14 fc01-arm64-test-vm systemd[1]: Stopped FC01 manual RC navigation controller.
+Nov 18 04:32:19 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Found left-over process 426 (MicroXRCEAgent) in control group while starting unit. Ignoring.
+Nov 18 04:32:19 fc01-arm64-test-vm systemd[1]: This usually indicates unclean termination of a previous run, or service implementation deficiencies.
+Nov 18 04:32:19 fc01-arm64-test-vm systemd[1]: Starting FC01 manual RC navigation controller...
+Nov 18 04:32:19 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Found left-over process 426 (MicroXRCEAgent) in control group while starting unit. Ignoring.
+Nov 18 04:32:19 fc01-arm64-test-vm systemd[1]: This usually indicates unclean termination of a previous run, or service implementation deficiencies.
+Nov 18 04:32:19 fc01-arm64-test-vm systemd[1]: Started FC01 manual RC navigation controller.
+Nov 18 04:33:17 fc01-arm64-test-vm fc01-navigation[37419]: FC01_PREBUILT_SERVICE version=20261117_stage3_fix1 source_commit=4c85a9e7e0c66193104164f03f4bfe28de709b9d inherited_config=/home/orangepi/FC01_versions/20261117_stage3_fix1/deployment/runtime.yaml
+Nov 18 04:33:49 fc01-arm64-test-vm fc01-navigation[37419]: Agent transport CONNECTED: UART /dev/ttyS2 115200; PID=426
+Nov 18 04:33:49 fc01-arm64-test-vm fc01-navigation[37419]: WAITING: 控制器已启动，等待飞控反馈
+Nov 18 04:33:50 fc01-arm64-test-vm fc01-navigation[37419]: WAITING: 等待飞控新鲜状态和本地位置

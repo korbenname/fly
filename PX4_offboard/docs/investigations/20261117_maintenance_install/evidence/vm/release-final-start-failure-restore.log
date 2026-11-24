@@ -1,0 +1,10 @@
+FC01：维护切换适用于落地、拆桨、飞控断电；安装成功不等于飞行就绪。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01_PREBUILT_INSTALL_FAILED: 安装失败，原版配置和运行状态已恢复。备份=/home/orangepi/FC01_navigation/prebuilt-backups/20261117T141819_601094Z-7421；Command '['sudo', '-n', '/usr/bin/systemctl', 'start', 'fc01-navigation.service']' returned non-zero exit status 1.
+FAULT_TEST_INSTALL_EXIT=1
+MainPID=0
+WorkingDirectory=/home/orangepi/fc01-old
+ActiveState=inactive
+DropInPaths=/etc/systemd/system/fc01-navigation.service.d/10-vm-start-failure.conf
+python3: can't open file '/tmp/fc01-maintenance-capture.py': [Errno 2] No such file or directory

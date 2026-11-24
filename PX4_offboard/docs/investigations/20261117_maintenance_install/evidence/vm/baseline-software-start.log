@@ -1,0 +1,15 @@
+MainPID=407
+WorkingDirectory=/home/orangepi/fc01-old
+ActiveState=active
+426 /home/orangepi/fc01_agent_build_offline/MicroXRCEAgent serial -D /dev/ttyS2 -b 115200 -v 0
+428 /home/orangepi/fc01-old/install/lib/jikl_fc01_system/fc01_system_node --ros-args --disable-external-lib-logs --params-file /home/orangepi/FC01_navigation/runtime.yaml -p socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_pqwnz8x4/control.sock
+456 bash -c systemctl show fc01-navigation.service -p MainPID -p ActiveState -p WorkingDirectory; pgrep -af "fc01_system_node|MicroXRCEAgent|vm-ground.py"; journalctl -u fc01-navigation.service -n 8 --no-pager
+Nov 17 10:33:49 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Deactivated successfully.
+Nov 17 10:33:49 fc01-arm64-test-vm systemd[1]: Stopped FC01 manual RC navigation controller.
+Nov 17 10:33:49 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Consumed 3min 49.281s CPU time.
+-- Boot 6c94b06a16ad46098749fcfe6ff85974 --
+Nov 17 13:25:05 fc01-arm64-test-vm systemd[1]: Started FC01 manual RC navigation controller.
+Nov 17 13:25:16 fc01-arm64-test-vm fc01-navigation[407]: FC01 导航启动 version=20261112.1 mode=flight-test hover_thrust=0.500 reserve=0.040 target=1.230 permissions=flight_actions_enabled=True,arm_enabled=False,takeoff_enabled=True,rc_navigation_enabled=True visual=False config=/home/orangepi/FC01_navigation/runtime.yaml
+Nov 17 13:25:17 fc01-arm64-test-vm fc01-navigation[407]: Agent transport CONNECTED: UART /dev/ttyS2 115200; PID=426
+Nov 17 13:25:17 fc01-arm64-test-vm fc01-navigation[407]: WAITING: 控制器已启动，等待飞控反馈
+Nov 17 13:25:19 fc01-arm64-test-vm fc01-navigation[407]: WAITING: 等待飞控新鲜状态和本地位置

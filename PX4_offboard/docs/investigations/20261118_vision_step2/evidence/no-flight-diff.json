@@ -1,0 +1,35 @@
+{
+  "baseline": "9e9fb3ef4c4e71d8b1b646bfe0d125a0e71c59a8",
+  "native_control_runtime_config_changed": [],
+  "existing_messages": {
+    "VelocityCommandV2.msg": {
+      "unchanged": true,
+      "sha256": "6384ac3d64a97b4818a1b2140df705e192c3e727ad8ad8f7b312e876969bd22e"
+    },
+    "VisionState.msg": {
+      "unchanged": true,
+      "sha256": "6a2822685da2e51eef509f2a93c8025a3a02f40039ef4eea609f08520d55ac05"
+    },
+    "VelocityCommand.msg": {
+      "unchanged": true,
+      "sha256": "78259efb214aec78c93aec4a03c1ade1ac569fe0107aba5e5aacef760869eb46"
+    },
+    "VisionHealth.msg": {
+      "unchanged": true,
+      "sha256": "cd3b3b4dc996a60aa601e985703eb818d187bb843dc5c76beac572e25f539dbb"
+    },
+    "AttitudeThrustPreview.msg": {
+      "unchanged": true,
+      "sha256": "533a78baee2d9747c002cf9b6306fcd2a52fc7904d3be33ad1f18af0c5fcffbf"
+    },
+    "TargetObservation.msg": {
+      "unchanged": true,
+      "sha256": "8c16f4a4f0b2f6e8d6d9e338f05fc0bfb9b3f8da3890f4288c91660742921777"
+    },
+    "NavigationCommand.msg": {
+      "unchanged": true,
+      "sha256": "43473da90f15baaa85b1aaf2dd55998dfa54919d892f65b42276e81d20b3a117"
+    }
+  },
+  "origin_main_cached": "377a945d9cd1147baad8871cd5387b9e63cd774d"
+}

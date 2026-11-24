@@ -1,0 +1,11 @@
+track_source IDLE IDLE_NO_AUTOMATIC_ARM h= 0.0
+track_source RC_PRESTREAM RC_PRESTREAM_WAIT_NEW_GROUND_REFERENCE h= 0.0
+track_source RC_READY_WAIT_ARM RC_READY_WAIT_CH5_MANUAL_ARM h= 0.0
+track_source RC_ARMED_WAIT_NAVIGATION RC_WAIT_MATCHED_SWITCH_AND_NEW_ARMED_STATUS h= 0.0
+track_source ARMED_GROUND RC_MANUAL_ARM_AND_NEW_OFFBOARD_CONFIRMED h= 0.0
+track_source THRUST_RAMP THRUST_RAMP h= 0.0
+track_source ASCEND ASCEND h= 0.22
+track_source HEIGHT_HOLD HEIGHT_HOLD h= 1.598
+track_source DESCENT VISUAL_RECOVERY_HORIZONTAL_INPUT_REVOKED h= 1.632
+track_source SAFETY UNEXPLAINED_Z_VZ_ESTIMATOR_JUMP h= 0.0
+{"result": "PASS", "error": null, "scenario": "track_source", "motion": "plant", "metrics": {"target_m": 1.5, "overshoot_m": 0.1397872342780917, "settling_entry_from_ramp_s": 7.9194585400036885, "height_hold_from_ramp_s": 10.079396695997275, "hold_observation_s": 3.3079623869998613, "hold_max_abs_error_m": 0.1397872342780917, "hold_rms_error_m": 0.1312562599202785, "horizontal_drift_m": 0.0, "horizontal_drift_interpretation": "fixed XY input, not measured capability", "max_heartbeat_receive_gap_s": 0.054042217998357955, "max_heartbeat_wire_gap_s": 0.050855, "max_heartbeat_gap_including_window_edges_s": 0.054042217998357955, "max_target_gap_including_window_edges_s": 0.05428525100433035, "heartbeat_window": "Offboard confirmed through Disarm command (includes descent), or fault injection; excludes deliberate stop/reprepare"}}

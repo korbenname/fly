@@ -1,0 +1,3 @@
+[INFO] [1794936216.210843301] [fc01_vision_image]: image input /calibration/image, output state=/fc01/vision/target_observation relative=/fc01/vision/target_relative valid=/fc01/vision/target_valid; target shape=circle diameter=0.200 m; camera rotation configured
+[INFO] [1794936216.366866394] [fc01_vision_image]: CameraInfo matches configured rectified pinhole profile (160x120)
+[INFO] [1794936216.438686602] [rclcpp]: signal_handler(SIGINT/SIGTERM)

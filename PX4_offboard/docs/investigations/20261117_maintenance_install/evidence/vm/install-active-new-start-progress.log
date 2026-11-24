@@ -1,0 +1,5 @@
+{"elapsed_s": 1088.849151648, "counts": {"setpoint": 0, "command": 0, "heartbeat": 0}, "input_publishers": {"/fmu/out/vehicle_status_v1": 0, "/fmu/out/vehicle_local_position": 0, "/fmu/out/manual_control_setpoint": 0, "/fmu/out/manual_control_switches": 0, "/fmu/out/vehicle_attitude": 0, "/fmu/out/vehicle_land_detected": 0}}MainPID=1590
+WorkingDirectory=/home/orangepi/FC01_versions/20261117_stage3_fix1
+ActiveState=active
+1590 /usr/bin/python3 /home/orangepi/FC01_versions/20261117_stage3_fix1/navigation_prebuilt_service.py
+2043 bash -c cat /home/orangepi/maintenance-observer.json; systemctl show fc01-navigation.service -p MainPID -p WorkingDirectory -p ActiveState; pgrep -af "fc01_system_node|navigation_prebuilt_service" | head -4

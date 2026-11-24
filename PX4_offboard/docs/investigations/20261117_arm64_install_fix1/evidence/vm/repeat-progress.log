@@ -1,0 +1,8 @@
+5d0f2f150ca9ce70cb86138e512c0af2c768a3267a9ad48820bce60fdbfb1373  /home/orangepi/FC01_OrangePi_20261117_stage3_fix1_arm64.tar.gz
+c52f285e32241cf3a12a8daf67e60cc4ae8ff61a2afe91eb94648dd2626eecff  /home/orangepi/install_fc01.sh
+MainPID=1755
+WorkingDirectory=/home/orangepi/FC01_versions/20261117_stage3_fix1
+ActiveState=active
+    588       1 /home/orangepi/fc01_agent_build_offline/MicroXRCEAgent serial -D /dev/ttyS2 -b 115200 -v 0
+   2370    1755 /home/orangepi/FC01_versions/20261117_stage3_fix1/install/lib/jikl_fc01_system/fc01_system_node --ros-args --disable-external-lib-logs --params-file /home/orangepi/FC01_navigation/runtime.yaml -p socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_mn66maa9/control.sock
+00da579a6844553ecbdcf0bf5641c5b099a1a4150428a214b3eea9243f7fc3cb  /home/orangepi/FC01_versions/20261116_stage3/__pycache__/navigation_status.cpython-310.pyc

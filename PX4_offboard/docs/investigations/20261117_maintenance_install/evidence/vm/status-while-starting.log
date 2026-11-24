@@ -1,0 +1,31 @@
+{
+  "service": {
+    "MainPID": "3888",
+    "ExecStart": "{ path=/bin/bash ; argv[]=/bin/bash /home/orangepi/FC01_versions/20261117_stage3_fix1/prebuilt_boot.sh ; ignore_errors=no ; start_time=[Tue 2026-11-17 13:56:42 UTC] ; stop_time=[n/a] ; pid=3888 ; code=(null) ; status=0/0 }",
+    "Environment": "HOME=/home/orangepi FC01_PROJECT_ROOT=/home/orangepi/sdk ROS_DOMAIN_ID=0 ROS_LOCALHOST_ONLY=0 PYTHONUNBUFFERED=1",
+    "WorkingDirectory": "/home/orangepi/FC01_versions/20261117_stage3_fix1",
+    "User": "orangepi",
+    "LoadState": "loaded",
+    "ActiveState": "active",
+    "SubState": "running",
+    "FragmentPath": "/etc/systemd/system/fc01-navigation.service",
+    "DropInPaths": "/etc/systemd/system/fc01-navigation.service.d/zzzz-fc01-prebuilt.conf",
+    "UnitFileState": "enabled"
+  },
+  "controllers": [],
+  "flight_readiness": {
+    "ready_for_manual_rc": false,
+    "missing": [
+      "DDS",
+      "RC",
+      "姿态",
+      "位置",
+      "电池",
+      "PX4"
+    ],
+    "phase": "SAFETY",
+    "reason": "OPERATOR_TAKEOVER_LATCHED",
+    "status_current": false,
+    "note": "仅显示；人工RC准入/接管/Kill/失效保护由原生控制器判定"
+  }
+}

@@ -1,0 +1,38 @@
+Linux fc01-arm64-test-vm 5.15.0-203-generic #213-Ubuntu SMP Fri Oct 23 13:20:09 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux
+PRETTY_NAME="Ubuntu 22.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="22.04"
+VERSION="22.04.5 LTS (Jammy Jellyfish)"
+VERSION_CODENAME=jammy
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=jammy
+systemd 249 (249.11-0ubuntu3.23)
++PAM +AUDIT +SELINUX +APPARMOR +IMA +SMACK +SECCOMP +GCRYPT +GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +IPTC +KMOD +LIBCRYPTSETUP +LIBFDISK +PCRE2 -PWQUALITY -P11KIT -QRENCODE +BZIP2 +LZ4 +XZ +ZLIB +ZSTD -XKBCOMMON +UTMP +SYSVINIT default-hierarchy=unified
+de60a4df4818fbaf477db95f4aec2b30ce9af93e8e58503586a5fb0704eeb593  /home/orangepi/install_fc01_20261117_maintenance.sh
+5d0f2f150ca9ce70cb86138e512c0af2c768a3267a9ad48820bce60fdbfb1373  /home/orangepi/FC01_OrangePi_20261117_stage3_fix1_arm64.tar.gz
+/home/orangepi/FC01_versions/20261117_stage3_fix1/install/lib/jikl_fc01_system/fc01_system_node: ELF 64-bit LSB pie executable, ARM aarch64, version 1 (GNU/Linux), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, BuildID[sha1]=71cd9b225e810d9b34faba909951bec0e5056e72, for GNU/Linux 3.7.0, not stripped
+	linux-vdso.so.1 (0x0000ffffb8773000)
+	librclcpp.so => not found
+	libpx4_msgs__rosidl_typesupport_cpp.so => /home/orangepi/FC01_versions/20261117_stage3_fix1/install/lib/jikl_fc01_system/../libpx4_msgs__rosidl_typesupport_cpp.so (0x0000ffffb8500000)
+	libjikl_fc01_system__rosidl_typesupport_cpp.so => /home/orangepi/FC01_versions/20261117_stage3_fix1/install/lib/jikl_fc01_system/../libjikl_fc01_system__rosidl_typesupport_cpp.so (0x0000ffffb84e0000)
+	liblibstatistics_collector.so => not found
+	librcl.so => not found
+	libstatistics_msgs__rosidl_typesupport_cpp.so => not found
+	libtracetools.so => not found
+	librmw.so => not found
+	librcutils.so => not found
+	libstdc++.so.6 => /lib/aarch64-linux-gnu/libstdc++.so.6 (0x0000ffffb82b0000)
+	libm.so.6 => /lib/aarch64-linux-gnu/libm.so.6 (0x0000ffffb8210000)
+	libgcc_s.so.1 => /lib/aarch64-linux-gnu/libgcc_s.so.1 (0x0000ffffb81e0000)
+	libc.so.6 => /lib/aarch64-linux-gnu/libc.so.6 (0x0000ffffb8030000)
+	/lib/ld-linux-aarch64.so.1 (0x0000ffffb873a000)
+	librosidl_typesupport_cpp.so => not found
+	librosidl_typesupport_cpp.so => not found
+inactive
+inactive
+{"elapsed_s": 1678.521123824, "counts": {"setpoint": 0, "command": 0, "heartbeat": 0}, "input_publishers": {"/fmu/out/vehicle_status_v1": 0, "/fmu/out/vehicle_local_position": 0, "/fmu/out/manual_control_setpoint": 0, "/fmu/out/manual_control_switches": 0, "/fmu/out/vehicle_attitude": 0, "/fmu/out/vehicle_land_detected": 0}}

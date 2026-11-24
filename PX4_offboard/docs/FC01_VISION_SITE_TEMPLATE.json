@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "provenance": {
+    "camera_device": "待填写：现场设备/测量记录、日期与来源路径",
+    "intrinsics": "待填写：现场设备/测量记录、日期与来源路径",
+    "extrinsics": "待填写：现场设备/测量记录、日期与来源路径",
+    "target_model": "待填写：现场设备/测量记录、日期与来源路径",
+    "capture_latency": "待填写：现场设备/测量记录、日期与来源路径",
+    "standoff": "待填写：现场设备/测量记录、日期与来源路径"
+  },
+  "camera": {
+    "device_path": "/dev/v4l/by-id/待填写",
+    "calibration_confirmed": false,
+    "calibration_id": "",
+    "image_rectified_confirmed": false,
+    "extrinsics_confirmed": false,
+    "extrinsics_id": "",
+    "camera_to_body_wxyz": [
+      null,
+      null,
+      null,
+      null
+    ],
+    "target_model_confirmed": false,
+    "target_model_id": "",
+    "capture_latency_confirmed": false,
+    "capture_latency_bound_s": null,
+    "camera_fx": null,
+    "camera_fy": null,
+    "camera_cx": null,
+    "camera_cy": null,
+    "frame_width": null,
+    "frame_height": null,
+    "frame_fps": null,
+    "target_shape": "circle",
+    "target_diameter_m": null
+  },
+  "mission": {
+    "camera_extrinsics_confirmed": false,
+    "camera_extrinsics_id": "",
+    "camera_pos_x": null,
+    "camera_pos_y": null,
+    "camera_pos_z": null,
+    "standoff_calibration_confirmed": false,
+    "standoff_calibration_id": "",
+    "standoff_m": null,
+    "horizontal_navigation_mode": "hold",
+    "horizontal_max_radius_m": 2.0,
+    "horizontal_max_speed_mps": 0.5,
+    "horizontal_max_yaw_rate_rps": 0.35
+  }
+}

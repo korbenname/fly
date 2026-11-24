@@ -14,13 +14,22 @@ import pwd
 import subprocess
 import sys
 import time
+
+# 用户会直接用 python3 navigation.py status/monitor，绕过启动脚本里的环境设置。
+# 在导入项目模块前禁止写入字节码缓存，避免只读查询向不可变发行目录增加 .pyc，
+# 使后续安装/重装的精确文件清单校验失败；不改变状态判断或控制服务操作。
+sys.dont_write_bytecode = True
+
 from navigation_status import (
     aircraft_feedback_current,
     controller_state_current,
     manual_rc_guidance_allowed,
+    manual_rc_readiness_reason,
+    snapshot_provenance_current,
     preparation_diagnostic_reason,
     preparation_wait_details,
     recovery_wait_details,
+    vision_display_lines,
 )
 
 SERVICE = 'fc01-navigation.service'
@@ -50,9 +59,18 @@ def snapshot(home):
     # home是调用方已选定的用户目录；只返回JSON字典，不把列表/损坏文件补成有效状态。
     try:
         row = json.loads((home / 'FC01_navigation/status.json').read_text())
-        return row if isinstance(row, dict) else {}
+        row = row if isinstance(row, dict) else {}
     except (OSError, ValueError):
-        return {}
+        row = {}
+    # 本入口位于实际版本目录，读取同目录的只读视觉观察，不扫描或复用其它版本缓存。
+    # 显示时还会校验服务PID、boot和原始接收年龄；读取文件本身不刷新任何TTL。
+    try:
+        vision = json.loads((ENTRY / 'deployment/vision-runtime.json').read_text())
+        if isinstance(vision, dict):
+            row['_vision_runtime'] = vision
+    except (OSError, ValueError):
+        pass
+    return row
 
 
 def _snapshot_display_status(row, info, now):
@@ -64,8 +82,9 @@ def _snapshot_display_status(row, info, now):
     elif str(row.get('supervisor_pid')) != info.get('MainPID') or (
         row.get('boot_id') and info.get('boot_id') and row['boot_id'] != info['boot_id']
     ):
-        status = 'STARTING'
-        reason = '等待当前服务进程生成状态'
+        # 新服务尚无反馈可显示STARTING；已有旧原生状态必须明确标为历史，不能续用READY。
+        status = 'STALE' if row.get('state') else 'STARTING'
+        reason = '历史状态不属于当前服务或本次启动；等待新的原生状态'
     elif (
         type(row.get('updated_unix')) not in (float, int)
         or not math.isfinite(row['updated_unix'])
@@ -212,6 +231,11 @@ def _append_control_lines(lines, state, status, current, native_current, age):
             lines.append(f"阶段：{state['takeoff_stage']}；{liftoff}；{navigation}")
             if state.get('liftoff_confirmed') is not True:
                 lines.append('离地等待：' + str(state.get('liftoff_unconfirmed_reason', '未知')))
+        if state.get('px4_takeoff_position_hold') is True:
+            lines.append('控制模式：PX4 位置闭环')
+            if native_current:
+                lines.append(f"起飞点 NED：{state.get('takeoff_position_anchor_ned')} m"
+                             f"  本轮轨迹位置目标：{state.get('trajectory_target_ned')} m")
         thrust = state.get('last_target_local_thrust_z')
         if type(thrust) in (int, float) and math.isfinite(thrust):
             lines.append(f'本地推力 FRD z：{thrust:.3f}；PX4 采用尚未取证（需对应飞控记录）')
@@ -231,7 +255,7 @@ def render_status(row, info, now=None):
         'STALE',
         'STOPPED',
         'STOPPING',
-    ) and controller_state_current(row, age=age)
+    ) and snapshot_provenance_current(row, info) and controller_state_current(row, age=age)
     locked_fault = native_current and state.get('phase') == 'SAFETY'
     current = (
         native_current
@@ -249,15 +273,33 @@ def render_status(row, info, now=None):
     elif not current and status not in ('STARTING', 'STALE', 'STOPPED', 'STOPPING', 'WAITING'):
         reason = f'飞机反馈已过期或无效；最近状态 {status}；{reason}'
         status = 'STALE'
+    # 当前消息也可能带有监督器稍早保存的准备标签。必须用同份原生状态核对
+    # 阶段、地面零点和实际零推力提交；显示层既不重建8s窗口，也不授予控制权。
+    diagnostic = preparation_diagnostic_reason(state)
+    # 明确关闭动作门是当前诊断模式，应解释该模式；不能把它误报成消息过期。
+    readiness_reason = manual_rc_readiness_reason(state, status) if current and not diagnostic else ''
+    if readiness_reason:
+        status = 'STALE'
+        reason = readiness_reason
+        current = False
     if current and status == 'HEIGHT_HOLD' and state.get('liftoff_confirmed') is False:
         status = 'LIFTOFF_UNCONFIRMED'
         reason = '离地未确认：' + str(state.get('liftoff_unconfirmed_reason', '反馈证据未满足'))
-    diagnostic = preparation_diagnostic_reason(state)
     if current and diagnostic and status not in ('FAULT', 'STOPPING'):
         status = 'DIAGNOSTIC'
         reason = diagnostic
     lines = _feedback_display_lines(state, status, reason, locked_fault, current, age)
     _append_control_lines(lines, state, status, current, native_current, age)
+    # 原生真实到高授权与任务锁定独立显示。历史快照不能继续显示当前导航许可。
+    grant = (str(state['navigation_allowed']).lower()
+             if current and type(state.get('navigation_allowed')) is bool else '未知（历史或缺反馈）')
+    if state.get('px4_takeoff_position_hold') is True:
+        source = (state.get('visual_reason') or 'PX4 水平任务'
+                  if state.get('position_mission_motion') is True else 'PX4 定点')
+    else:
+        source = state.get('visual_reason') or '原生定高/暂无水平指令'
+    lines.append(f'原生到高授权：{grant}；水平指令源：{source if current else "未知（历史）"}')
+    lines.extend(vision_display_lines(row.get('_vision_runtime'), info, now=now, monotonic=time.monotonic()))
     if row.get('retry_in_seconds') is not None:
         lines.append(f"重试：{row['retry_in_seconds']} 秒后")
     error = row.get('ipc_error')

@@ -1,0 +1,8 @@
+Internal ctest changing into directory: /home/jikl62/.cache/fc01-vision-step1-20261117/build/fc01_vision
+Test project /home/jikl62/.cache/fc01-vision-step1-20261117/build/fc01_vision
+    Start 1: vision_core_selftest
+1/1 Test #1: vision_core_selftest .............   Passed    0.02 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.02 sec

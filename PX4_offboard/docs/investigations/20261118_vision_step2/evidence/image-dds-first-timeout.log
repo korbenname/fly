@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/tmp/fc01-step2-camera-ros.py", line 32, in <module>
+    s=send();wait(lambda:out and out[-1].tracking);a=out[-1];assert a.calibration_valid and a.valid_fields&a.POSITION and not a.valid_fields&a.VELOCITY
+  File "/tmp/fc01-step2-camera-ros.py", line 22, in wait
+    raise AssertionError('timeout')
+AssertionError: timeout

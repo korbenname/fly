@@ -1,0 +1,121 @@
+{
+  "source_path": "/home/jikl62/fc01_px4_dds_build/PX4-DM-FC01-v1.16",
+  "commit": "07983bfb894b9372d7520d43ac10dc792d0b4b9f",
+  "dirty": [
+    " M src/modules/uxrce_dds_client/dds_topics.yaml",
+    " M src/modules/uxrce_dds_client/uxrce_dds_client.cpp"
+  ],
+  "files": {
+    "src/modules/uxrce_dds_client/dds_topics.yaml": "db3a53c346fb7d5d358f76edf55bb7a4ccd1343b8e2302c210be2fa79e01aed6",
+    "src/modules/uxrce_dds_client/utilities.hpp": "1dd318dfa41e0868d4aaf2b0b25a1da4514d572951b2fa59f4cf3914655568ac",
+    "src/modules/uxrce_dds_client/dds_topics.h.em": "f8b38272adca5dc526d928be158a342f4fb3a990872484f7e5042aa0dc68e329"
+  },
+  "messages": [
+    {
+      "message": "VehicleStatus",
+      "firmware_source": "msg/versioned/VehicleStatus.msg",
+      "source_sha256": "9e69a38a8a592d8fed78d09fe429acf2cbddd1b7eb710dc55eebbb64d4624b52",
+      "sdk_sha256": "9e69a38a8a592d8fed78d09fe429acf2cbddd1b7eb710dc55eebbb64d4624b52",
+      "normalized_fields_match": true,
+      "message_version": 1
+    },
+    {
+      "message": "VehicleLocalPosition",
+      "firmware_source": "msg/versioned/VehicleLocalPosition.msg",
+      "source_sha256": "5bf55da4743f1d9c6d69a56473ee6a813d573890c051d6ab442dc01f18433fdd",
+      "sdk_sha256": "5bf55da4743f1d9c6d69a56473ee6a813d573890c051d6ab442dc01f18433fdd",
+      "normalized_fields_match": true,
+      "message_version": 0
+    },
+    {
+      "message": "VehicleAttitude",
+      "firmware_source": "msg/versioned/VehicleAttitude.msg",
+      "source_sha256": "d23f153b574daad31f21f767bc6e2781bcd486bb9e56c605b8b6fd10814b1c74",
+      "sdk_sha256": "d23f153b574daad31f21f767bc6e2781bcd486bb9e56c605b8b6fd10814b1c74",
+      "normalized_fields_match": true,
+      "message_version": 0
+    },
+    {
+      "message": "VehicleAttitudeSetpoint",
+      "firmware_source": "msg/versioned/VehicleAttitudeSetpoint.msg",
+      "source_sha256": "372c9fbc9f30077e690648800aa374406f74b9481274fc6f9fbf94b12b686831",
+      "sdk_sha256": "372c9fbc9f30077e690648800aa374406f74b9481274fc6f9fbf94b12b686831",
+      "normalized_fields_match": true,
+      "message_version": 0
+    },
+    {
+      "message": "ManualControlSetpoint",
+      "firmware_source": "msg/versioned/ManualControlSetpoint.msg",
+      "source_sha256": "73a320c1957efeba07914dc54695e1f20d874b577e7eed430d7d2ff04ae1e950",
+      "sdk_sha256": "73a320c1957efeba07914dc54695e1f20d874b577e7eed430d7d2ff04ae1e950",
+      "normalized_fields_match": true,
+      "message_version": 0
+    },
+    {
+      "message": "ManualControlSwitches",
+      "firmware_source": "msg/ManualControlSwitches.msg",
+      "source_sha256": "5c342069ef8eb2ad3685019ffff9855a6c7cd4e81991d096504d938c17fa0b3d",
+      "sdk_sha256": "5c342069ef8eb2ad3685019ffff9855a6c7cd4e81991d096504d938c17fa0b3d",
+      "normalized_fields_match": true,
+      "message_version": null
+    },
+    {
+      "message": "VehicleCommand",
+      "firmware_source": "msg/versioned/VehicleCommand.msg",
+      "source_sha256": "4afad5d4cfc7cf4d8f8ffb14ef786175be1ece179b334be4a9b8939f0a2b1bbf",
+      "sdk_sha256": "4afad5d4cfc7cf4d8f8ffb14ef786175be1ece179b334be4a9b8939f0a2b1bbf",
+      "normalized_fields_match": true,
+      "message_version": 0
+    },
+    {
+      "message": "VehicleCommandAck",
+      "firmware_source": "msg/versioned/VehicleCommandAck.msg",
+      "source_sha256": "c3b3f42ef255678d0b112435183ba546ba772abd74e498448f8294c520ed3b8c",
+      "sdk_sha256": "c3b3f42ef255678d0b112435183ba546ba772abd74e498448f8294c520ed3b8c",
+      "normalized_fields_match": true,
+      "message_version": 0
+    },
+    {
+      "message": "VehicleLandDetected",
+      "firmware_source": "msg/versioned/VehicleLandDetected.msg",
+      "source_sha256": "479ef4ed2bdf80acd4fe1d5cca988ee3dfe49e703494339eb7b62a01f00632f8",
+      "sdk_sha256": "479ef4ed2bdf80acd4fe1d5cca988ee3dfe49e703494339eb7b62a01f00632f8",
+      "normalized_fields_match": true,
+      "message_version": 0
+    },
+    {
+      "message": "BatteryStatus",
+      "firmware_source": "msg/versioned/BatteryStatus.msg",
+      "source_sha256": "588ef80970f86ea0e019b97546deeeb8b7f8b986517eab5f5ef2fc0d733f26b5",
+      "sdk_sha256": "588ef80970f86ea0e019b97546deeeb8b7f8b986517eab5f5ef2fc0d733f26b5",
+      "normalized_fields_match": true,
+      "message_version": 0
+    },
+    {
+      "message": "FailsafeFlags",
+      "firmware_source": "msg/FailsafeFlags.msg",
+      "source_sha256": "7b0a72c87663addc76581c2482db33fe92422becd7b65273eb43edb6d7bf4375",
+      "sdk_sha256": "7b0a72c87663addc76581c2482db33fe92422becd7b65273eb43edb6d7bf4375",
+      "normalized_fields_match": true,
+      "message_version": null
+    },
+    {
+      "message": "OffboardControlMode",
+      "firmware_source": "msg/OffboardControlMode.msg",
+      "source_sha256": "8bd6fa373300e5bd35ade9d34ba0e1f470b880bf5d5b2f5c9316957bbe2a40e7",
+      "sdk_sha256": "8bd6fa373300e5bd35ade9d34ba0e1f470b880bf5d5b2f5c9316957bbe2a40e7",
+      "normalized_fields_match": true,
+      "message_version": null
+    },
+    {
+      "message": "TrajectorySetpoint",
+      "firmware_source": "msg/versioned/TrajectorySetpoint.msg",
+      "source_sha256": "d5671f1a094a9183e2337171ab738ae3395442e024b58aaacbf51c2b0188d5e2",
+      "sdk_sha256": "d5671f1a094a9183e2337171ab738ae3395442e024b58aaacbf51c2b0188d5e2",
+      "normalized_fields_match": true,
+      "message_version": 0
+    }
+  ],
+  "board_firmware_or_graph_verified": false,
+  "note": "Existing local firmware source and SDK only; dirty DDS changes are not proven flashed."
+}

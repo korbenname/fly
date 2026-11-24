@@ -1,0 +1,23 @@
+{
+  "architecture": "x86_64",
+  "system": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "os_release": "PRETTY_NAME=\"Ubuntu 22.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"22.04\"\nVERSION=\"22.04.5 LTS (Jammy Jellyfish)\"\nVERSION_CODENAME=jammy\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=jammy\n",
+  "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "ros": "Humble",
+  "px4_msgs_underlay": "/home/jikl62/FC01_R632_P0_ATTITUDE_AUDIT_CANDIDATE/install_r632/px4_msgs",
+  "install_prefix": "/home/jikl62/.cache/fc01-vision-step4-20261118/install",
+  "domain_ids": {
+    "full_chain": 181,
+    "horizontal_matrix": 182,
+    "native_safety": 185,
+    "ros_adapter": 190,
+    "smokes": [
+      185,
+      186,
+      187
+    ]
+  },
+  "no_physical_devices": true,
+  "systemd_not_exercised": true,
+  "px4_firmware_not_exercised": true
+}

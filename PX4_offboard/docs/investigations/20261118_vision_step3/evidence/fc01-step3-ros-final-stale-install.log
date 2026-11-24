@@ -1,0 +1,8 @@
+[INFO] [1794938594.515980811] [fc01_mission]: consuming /fc01/vision/target_observation (takes precedence over /fc01/vision/target_relative)
+[INFO] [1794938594.517490904] [fc01_mission]: mission: mode=push, vision=/fc01/vision/target_observation, plant pose=/fc01/platform/state, out=/step3/velocity at 50 Hz
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/ros_native_mission_smoke.py", line 172, in <module>
+    if __name__=='__main__':main()
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/ros_native_mission_smoke.py", line 133, in main
+    assert mission.native_gate.reason=='NATIVE_DUPLICATE_INCONSISTENT'
+AssertionError

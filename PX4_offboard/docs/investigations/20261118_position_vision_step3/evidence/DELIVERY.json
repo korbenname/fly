@@ -1,0 +1,10 @@
+{
+  "archive": "/home/jikl62/FC01_OrangePi_Navigation_20261028/dist/arm64/20261118_position_vision_step3/FC01_OrangePi_20261118_position_vision_step3_arm64.tar.gz",
+  "bytes": 196421358,
+  "sha256": "fdc2d179cfdd4dabdbd73b8d6a5ff89da3855938f1717c7726e0b41f82823e8c",
+  "installer": "/home/jikl62/FC01_OrangePi_Navigation_20261028/dist/arm64/20261118_position_vision_step3/install_fc01.sh",
+  "installer_sha256": "7f5a3ebc8f7455b6adabee65d614fba4f9aa3b4aece87ef5e25db0025f2950d9",
+  "source_commit": "c7de1387c635cf1733e1d1e1a20a8c24d7ad7752",
+  "control_candidate_commit": "b2ee5215e03a7c375714efb5f562f788473369a9",
+  "files": 7751
+}

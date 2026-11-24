@@ -1,0 +1,6 @@
+FC01_OrangePi_20261118_vision_step6_arm64.tar.gz: OK
+install_fc01.sh: OK
+FC01：维护切换适用于落地、拆桨、飞控断电；安装成功不等于飞行就绪。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01_PREBUILT_INSTALL_FAILED: 安装失败，原版配置和运行状态已恢复。备份=/home/orangepi/FC01_navigation/prebuilt-backups/20261118T032502_349530Z-9694；新版启动验收失败：等待新版服务和唯一控制器进程

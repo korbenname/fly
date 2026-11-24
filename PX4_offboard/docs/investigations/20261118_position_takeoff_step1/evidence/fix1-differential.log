@@ -1,0 +1,15 @@
+test_actual_node_tick_and_status_bytes (test_stage2_core_equivalence.CoreBehaviorEquivalenceTests)
+运行真实SystemNode.tick/snapshot/state配假ROS；只读IPC和有序sink记录严格相同。 ... ok
+test_control_trace (test_stage2_core_equivalence.CoreBehaviorEquivalenceTests)
+高度/姿态/RC/视觉与多轮恢复使用真实Core，double输出不设容差。 ... ok
+test_publication_policy_and_sink_order (test_stage2_core_equivalence.CoreBehaviorEquivalenceTests)
+逐阶段坏证据与微小非零推力，及三次上下文/双sink部分提交严格对照。 ... ok
+test_runtime_ack_and_ipc_trace (test_stage2_core_equivalence.CoreBehaviorEquivalenceTests)
+请求优先级、ACK归属/水位/终态和真实临时Unix会话均逐字节对照。 ... ok
+test_powered_rc_lifecycle_and_all_sink_fields_match_baseline (test_stage2_powered_node_equivalence.PoweredNodeEquivalenceTests)
+只比较临时 fake-ROS 可执行程序；完整状态字节与每个 sink 字段均严格相同。 ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 26.739s
+
+OK

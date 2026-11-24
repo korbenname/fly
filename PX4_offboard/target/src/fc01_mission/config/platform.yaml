@@ -1,0 +1,19 @@
+fc01_px4_state_bridge:
+  ros__parameters:
+    # 实际PX4 DDS，MTF-02P仍直连PX4并由EKF融合，不从相机目标伪造自机状态。
+    local_topic: /fmu/out/vehicle_local_position
+    attitude_topic: /fmu/out/vehicle_attitude
+    angular_velocity_topic: /fmu/out/vehicle_angular_velocity
+    output_topic: /fc01/platform/state
+    status_topic: /fc01/platform/status
+    pose_topic: /fc01/platform/pose
+    velocity_topic: /fc01/platform/velocity
+    omega_topic: /fc01/platform/angular_velocity
+    # 兼容Stamped仅观察，生产mission使用能明确撤销的原子PlatformState。
+    publish_compatibility_topics: true
+    require_angular_velocity: true
+    feedback_timeout_s: 0.25
+    feedback_alignment_s: 0.08
+    future_tolerance_s: 0.02
+    publish_hz: 50.0
+    source_id: px4_dds

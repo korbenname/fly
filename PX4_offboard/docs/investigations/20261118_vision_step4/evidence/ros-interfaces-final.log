@@ -1,0 +1,7 @@
+{"passed": true, "messages": 10, "report": "/tmp/fc01-step4-generated.json"}
+[INFO] [1794943928.870142313] [fc01_mission]: consuming /fc01/vision/target_observation (takes precedence over /fc01/vision/target_relative)
+[INFO] [1794943928.872679485] [fc01_mission]: mission: mode=track, vision=/fc01/vision/target_observation, plant pose=/fc01/platform/state, out=/step3/velocity at 50 Hz
+FC01_NATIVE_MISSION_GATE_PASS 12 named checks
+[INFO] [1794943932.744171121] [fc01_mission]: consuming /fc01/vision/target_observation (takes precedence over /fc01/vision/target_relative)
+[INFO] [1794943932.746653237] [fc01_mission]: mission: mode=track, vision=/fc01/vision/target_observation, plant pose=/fc01/platform/state, out=/step4/mission/v2 at 50 Hz
+FC01_MISSION_HORIZONTAL_ROS_PASS 8 named checks

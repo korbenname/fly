@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "requested_prefix": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install",
+  "script_sha256": "18e6ff6e6429f1bae4a0fce1bc686a4ef9d216e4aa9527183bb2b42af6dfd774",
+  "ros_init_called": false,
+  "nodes_or_publishers_created": false,
+  "scope": "Generated identity and local CDR only; not a ROS graph, protocol design or flight test.",
+  "messages": [],
+  "error": {
+    "type": "ModuleNotFoundError",
+    "message": "No module named 'rosidl_runtime_py'",
+    "traceback": "Traceback (most recent call last):\n  File \"/root/step6-evidence/ros_generated_interface_check.py\", line 384, in main\n    check_installation(prefix, report)\n  File \"/root/step6-evidence/ros_generated_interface_check.py\", line 255, in check_installation\n    from rosidl_runtime_py.utilities import get_message\nModuleNotFoundError: No module named 'rosidl_runtime_py'\n"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "ros_domain": "177",
+  "localhost_only": true,
+  "checks": [
+    "missing_input_explicit",
+    "ned_enu_frd_flu_quaternion_fields",
+    "omega_alone_stales_without_zero",
+    "velocity_invalid_independent",
+    "coordinate_reset_invalid_then_new_epoch",
+    "all_inputs_stop_revoke",
+    "no_fmu_in_publishers",
+    "sigint_clean_exit"
+  ],
+  "initial": {
+    "position": [
+      2.0,
+      1.0,
+      1.5
+    ],
+    "velocity": [
+      0.30000001192092896,
+      0.20000000298023224,
+      0.10000000149011612
+    ],
+    "attitude_xyzw": [
+      0.0,
+      0.0,
+      -0.7071067811865476,
+      -0.7071067811865476
+    ],
+    "angular_velocity": [
+      0.10000000149011612,
+      -0.20000000298023224,
+      -0.30000001192092896
+    ],
+    "source_id": "px4_dds:59040ac0e73e4400976878e9589644a6",
+    "origin_id": "px4_local:123:0:0:0:0:0"
+  }
+}

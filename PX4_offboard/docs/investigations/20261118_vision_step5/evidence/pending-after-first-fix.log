@@ -1,0 +1,7 @@
+test_camera_120hz_cannot_starve_platform_50hz_bracketing (tests.test_mission_pending_alignment.PendingAlignmentTests) ... ok
+test_new_invalid_frame_clears_pending_before_future_platform_can_revive (tests.test_mission_pending_alignment.PendingAlignmentTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.042s
+
+OK

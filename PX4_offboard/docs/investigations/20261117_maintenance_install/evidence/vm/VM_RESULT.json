@@ -1,0 +1,16 @@
+{
+  "environment": "QEMU full Ubuntu22.04 ARM64 systemd249 ROS2Humble",
+  "actual_orangepi_tested": false,
+  "final_installer_sha256": "96d6b6f9b0005a859d856152631821cf0d4677bc1826fc2356a6318f45e75a5c",
+  "no_aircraft_input_install": "PASS",
+  "exit_old_before_start_new": "PASS",
+  "repeat_no_restart": "PASS",
+  "rollback_inactive": "PASS",
+  "rollback_active": "PASS earlier worktree same lifecycle",
+  "startup_failure_auto_restore": "PASS final SHA exact runtime restored",
+  "no_feedback_flight_block": "PASS six source callbacks0 and setpoint/command/heartbeat counts0",
+  "service_pid": 8467,
+  "controller_pid": 9016,
+  "source_commit": "41e1532e73d36005a80cd134807a70b0c0263675",
+  "archive_sha256": "5d0f2f150ca9ce70cb86138e512c0af2c768a3267a9ad48820bce60fdbfb1373"
+}

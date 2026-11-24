@@ -1,0 +1,20 @@
+Starting >>> jikl_fc01_system
+--- stderr: jikl_fc01_system
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/src/fc01_system_node.cpp: In constructor ‘SystemNode::SystemNode()’:
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/src/fc01_system_node.cpp:205:31: error: ‘resolve_topic_name’ was not declared in this scope
+  205 |         const auto resolved = resolve_topic_name(topic);
+      |                               ^~~~~~~~~~~~~~~~~~
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/src/fc01_system_node.cpp:209:11: error: ‘resolve_topic_name’ was not declared in this scope
+  209 |       if (resolve_topic_name(visual_command_topic_) == resolve_topic_name(horizontal_command_topic_))
+      |           ^~~~~~~~~~~~~~~~~~
+gmake[2]: *** [CMakeFiles/fc01_system_node.dir/build.make:76：CMakeFiles/fc01_system_node.dir/src/fc01_system_node.cpp.o] 错误 1
+gmake[1]: *** [CMakeFiles/Makefile2:616：CMakeFiles/fc01_system_node.dir/all] 错误 2
+gmake[1]: *** 正在等待未完成的任务....
+gmake: *** [Makefile:146：all] 错误 2
+---
+Failed   <<< jikl_fc01_system [18.9s, exited with code 2]
+
+Summary: 0 packages finished [19.0s]
+  1 package failed: jikl_fc01_system
+  1 package had stderr output: jikl_fc01_system
+  3 packages not processed

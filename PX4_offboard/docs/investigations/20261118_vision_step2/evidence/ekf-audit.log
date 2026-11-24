@@ -1,0 +1,26 @@
+1 log_0_2026-10-20-10-02-06.ulg DAMIAO_DM_FC01 [1, 14] Position intervals 0
+2 log_0_2026-10-18-21-02-18_1.ulg DAMIAO_DM_FC01 [1, 14, 15] Position intervals 0
+3 log_5_2026-10-16-12-00-18_1.ulg DAMIAO_DM_FC01 [1, 15] Position intervals 0
+8 log_2_2026-10-18-15-40-56.ulg DAMIAO_DM_FC01 [1, 14, 15] Position intervals 0
+9 log_1_2026-10-18-15-40-08.ulg DAMIAO_DM_FC01 [1, 14, 15] Position intervals 0
+10 log_3_2026-10-18-15-43-28.ulg DAMIAO_DM_FC01 [1, 14, 15] Position intervals 0
+11 log_4_2026-10-18-15-44-46.ulg DAMIAO_DM_FC01 [1, 14, 15] Position intervals 0
+12 log_0_2026-10-18-15-38-22.ulg DAMIAO_DM_FC01 [1, 14, 15] Position intervals 0
+15 log_1_2026-10-18-21-00-40.ulg DAMIAO_DM_FC01 [1, 14, 15] Position intervals 0
+16 log_0_2026-10-20-11-12-26_1.ulg DAMIAO_DM_FC01 [1, 15] Position intervals 0
+17 log_2_2026-10-16-11-57-46_1.ulg DAMIAO_DM_FC01 [1, 15] Position intervals 0
+18 log_6_UnknownDate.ulg DAMIAO_DM_FC01 [1] Position intervals 0
+19 log_1_UnknownDate.ulg DAMIAO_DM_FC01 [15] Position intervals 0
+20 log_2_UnknownDate.ulg DAMIAO_DM_FC01 [15] Position intervals 0
+21 log_3_UnknownDate.ulg DAMIAO_DM_FC01 [15] Position intervals 0
+22 log_7_UnknownDate.ulg DAMIAO_DM_FC01 [1] Position intervals 0
+23 log_5_UnknownDate.ulg DAMIAO_DM_FC01 [15] Position intervals 0
+24 log_0_UnknownDate.ulg DAMIAO_DM_FC01 [15] Position intervals 0
+25 log_4_UnknownDate.ulg DAMIAO_DM_FC01 [15] Position intervals 0
+26 log_8_UnknownDate.ulg DAMIAO_DM_FC01 [1] Position intervals 0
+27 FC01_SITL_OFFBOARD_LOSS.ulg PX4_SITL [4, 14, 18] Position intervals 0
+28 log_6_UnknownDate(2).ulg DAMIAO_DM_FC01 [1, 15] Position intervals 0
+29 FC01_M1_S10_failure.ulg PX4_SITL [2, 4, 14] Position intervals 1
+30 log_4_2026-10-16-11-58-42_1.ulg DAMIAO_DM_FC01 [15] Position intervals 0
+31 log_82_UnknownDate.ulg DAMIAO_DM_FC01 [2, 15] Position intervals 1
+counts {'retained_records': 31, 'physical_fc01': 23, 'records_with_position': 2, 'physical_fc01_with_position': 1, 'errors': 6}

@@ -29,7 +29,10 @@
 #include "jikl_fc01_system/receive_events.hpp"
 #include "jikl_fc01_system/parent_lifetime.hpp"
 #include <jikl_fc01_system/msg/vision_state.hpp>
+#include <jikl_fc01_system/msg/native_flight_state.hpp>
+#include <jikl_fc01_system/msg/native_flight_snapshot.hpp>
 #include <jikl_fc01_system/msg/navigation_command.hpp>
+#include <jikl_fc01_system/msg/horizontal_velocity_command.hpp>
 #include <px4_msgs/msg/manual_control_setpoint.hpp>
 #include <px4_msgs/msg/manual_control_switches.hpp>
 #include <px4_msgs/msg/vehicle_attitude.hpp>
@@ -73,6 +76,7 @@ using Manual = px4_msgs::msg::ManualControlSetpoint;
 using Switches = px4_msgs::msg::ManualControlSwitches;
 using VisualState = jikl_fc01_system::msg::VisionState;
 using VisualCommand = jikl_fc01_system::msg::NavigationCommand;
+using HorizontalCommand = jikl_fc01_system::msg::HorizontalVelocityCommand;
 static_assert(Status::MESSAGE_VERSION == 1 && Local::MESSAGE_VERSION == 0 &&
                   Land::MESSAGE_VERSION == 0 && Ack::MESSAGE_VERSION == 0 &&
                   Command::MESSAGE_VERSION == 0 && Target::MESSAGE_VERSION == 0,
@@ -129,6 +133,14 @@ public:
     // 开启真实 sink 提交回填：Core 提出请求后，不能直接把请求当作已经发出的事实。
     runtime_->require_attitude_sink_commit();
     config_ = config;
+    if (config.attitude.px4_takeoff_position_hold) {
+      // 独占检查使用固定的 DDS 名称。禁止把本机写者 remap 走再借用另一写者的图计数。
+      for (const char* topic : {"/fmu/in/offboard_control_mode", "/fmu/in/trajectory_setpoint",
+                                "/fmu/in/vehicle_command"}) {
+        if (get_node_topics_interface()->resolve_topic_name(topic) != topic)
+          throw std::invalid_argument("PX4_TAKEOFF_POSITION_OUTPUT_REMAP_FORBIDDEN");
+      }
+    }
     const std::string socket = declare_parameter<std::string>("socket_path", default_socket());
     // socket 父目录必须属于当前用户且不可被其他用户写入；避免外部替换控制入口。
     const auto parent = std::filesystem::path(socket).parent_path();
@@ -146,7 +158,7 @@ public:
     // 回调把必要事实复制进缓存/有界事件队列；不把 m 的裸指针留到下一控制周期。
     // 只有显式启用既有视觉导航时才订阅 VisionState/NavigationCommand。
     // 新 VelocityCommand 由独立诊断工具只读订阅，此处不授予它飞行权限。
-    if (config.attitude.visual.enabled) {
+    if (config.attitude.visual.enabled && !config.attitude.px4_horizontal_enabled) {
       visual_state_topic_ =
           declare_parameter<std::string>("visual_state_topic", "/fc01/vision/state");
       visual_command_topic_ =
@@ -191,6 +203,52 @@ public:
                 << ",\"command_reliable\":" << boolean(command_reliable)
                 << ",\"qos_depth\":" << depth << "}" << std::endl;
     }
+    if (config.attitude.visual.enabled && config.attitude.px4_horizontal_enabled) {
+      // 水平执行与旧视觉自机里程计分开；旧V1/V2速度话题仍只作诊断。
+      // keep-last 1/volatile限制积压；每条消息仍检查原始源戳，不能靠队列策略代替时效。
+      visual_command_topic_ = declare_parameter<std::string>(
+          "visual_command_topic", "/fc01/navigation/command");
+      horizontal_command_topic_ = declare_parameter<std::string>(
+          "horizontal_command_topic", "/fc01/vision/horizontal_command");
+      for (const auto& topic : {visual_command_topic_, horizontal_command_topic_}) {
+        const auto resolved = get_node_topics_interface()->resolve_topic_name(topic);
+        if (resolved.empty() || resolved[0] != '/' || resolved.rfind("/fmu/", 0) == 0)
+          throw std::invalid_argument("INVALID_HORIZONTAL_INPUT_TOPIC");
+      }
+      if (get_node_topics_interface()->resolve_topic_name(visual_command_topic_) == get_node_topics_interface()->resolve_topic_name(horizontal_command_topic_))
+        throw std::invalid_argument("HORIZONTAL_INPUT_TOPICS_COLLIDE");
+      auto command_qos = rclcpp::QoS(rclcpp::KeepLast(1)).reliable().durability_volatile();
+      visual_command_sub_ = create_subscription<VisualCommand>(
+          visual_command_topic_, command_qos, [this](VisualCommand::ConstSharedPtr message,
+                                                       const rclcpp::MessageInfo& info) {
+            ++received_callbacks_;
+            const auto generation = horizontal_revocation_;
+            const bool withdrawn = horizontal_navigation_.valid && !message->valid;
+            if (horizontal_navigation_initialized_)
+              observe_horizontal_publisher(horizontal_navigation_gid_, info);
+            else
+              horizontal_navigation_gid_ = horizontal_gid(info);
+            receive_horizontal_navigation(*message);
+            // 正常连续指令不是安全事件；否则每条50Hz目标都会截断补读，使另一队列积压。
+            // 撤销边沿与任意不连续仍立即促成控制步，异常不能被后到好帧遮蔽。
+            if (withdrawn || generation != horizontal_revocation_)
+              ++receive_events_;
+          });
+      horizontal_command_sub_ = create_subscription<HorizontalCommand>(
+          horizontal_command_topic_, command_qos, [this](HorizontalCommand::ConstSharedPtr message,
+                                                           const rclcpp::MessageInfo& info) {
+            ++received_callbacks_;
+            const auto generation = horizontal_revocation_;
+            const bool withdrawn = horizontal_velocity_.valid && !message->command.valid;
+            if (horizontal_velocity_initialized_)
+              observe_horizontal_publisher(horizontal_command_gid_, info);
+            else
+              horizontal_command_gid_ = horizontal_gid(info);
+            receive_horizontal_velocity(*message);
+            if (withdrawn || generation != horizontal_revocation_)
+              ++receive_events_;
+          });
+    }
     if (config.profile == "attitude_altitude") {
       // 姿态信封与原始sample分别跟踪；重复sample不续鲜。无效四元数或reset变化另存事件，普通有效姿态走连续缓存。
       attitude_sub_ = create_subscription<Attitude>(
@@ -225,10 +283,15 @@ public:
           // const auto& 只读借用核心，避免复制状态机；该引用不离开本次同步回调。
           const bool vertical_only = config_.profile == "attitude_altitude" &&
                                      !config_.attitude.visual.enabled &&
+                                     !config_.attitude.px4_takeoff_position_hold &&
                                      !config_.attitude.px4_land_fallback_confirmed;
           // 纯垂向路线不消费明确标无效的水平估计，避免这些未用字段反复打断接收补读。
           // 有效性/参考重置边沿及垂向诊断关键样本仍要保留，不能只留下最后一个正常 z/vz。
+          const bool ground_motion_edge = config_.attitude.px4_takeoff_position_hold &&
+              (std::hypot(previous.vx, previous.vy) <= config_.attitude.ground_vz_tolerance) !=
+              (std::hypot(m->vx, m->vy) <= config_.attitude.ground_vz_tolerance);
           if (f::local_receive_event(previous, *m, config_.attitude, vertical_only) ||
+              ground_motion_edge ||
               core.local_requires_control_step(m->timestamp_sample, m->z, m->vz, m->z_deriv)) {
             latch_event(local_events_, *m);
             ++receive_events_;
@@ -263,7 +326,12 @@ public:
         "/fmu/out/failsafe_flags", qos,
         [this](Flags::ConstSharedPtr m, const rclcpp::MessageInfo& info) {
           receive_event(*m, flags_, flags_stamp_, f::SourceSlot::Flags, info,
-                        f::flags_receive_event<Flags>);
+                        [this](const Flags& before, const Flags& after) {
+            return f::flags_receive_event(before, after) ||
+                   (config_.attitude.px4_takeoff_position_hold &&
+                    (before.local_position_invalid != after.local_position_invalid ||
+                     before.local_velocity_invalid != after.local_velocity_invalid));
+          });
         });
     // ACK 交给 Runtime 的真实提交/时间/编号归属校验；收到 ACK 本身并不证明动作已物理完成。
     ack_sub_ = create_subscription<Ack>(
@@ -294,9 +362,24 @@ public:
           }
           std::cout << '}' << std::endl;
         });
+    // 运行期状态独立于视觉开关；只读任务观察，不增加第二个控制节点或任何解锁入口。
+    std::ifstream boot_file("/proc/sys/kernel/random/boot_id");
+    std::getline(boot_file, native_boot_id_);
+    if (native_boot_id_.empty())
+      throw std::runtime_error("cannot identify native process boot session");
+    native_source_id_ = native_boot_id_ + ":" + std::to_string(getpid()) + ":" +
+                        std::to_string(std::chrono::steady_clock::now().time_since_epoch().count());
+    rclcpp::QoS native_state_qos(rclcpp::KeepLast(1));
+    native_state_qos.best_effort().durability_volatile();
+    native_state_pub_ = create_publisher<jikl_fc01_system::msg::NativeFlightState>(
+        "/fc01/native/flight_state", native_state_qos);
+    // 新观察端使用同一报文内的状态和精确原始姿态；旧话题继续保持原类型与字段兼容。
+    native_snapshot_pub_ = create_publisher<jikl_fc01_system::msg::NativeFlightSnapshot>(
+        "/fc01/native/flight_snapshot", native_state_qos);
     command_pub_ = create_publisher<Command>("/fmu/in/vehicle_command", 10);
     // 按 profile 只创建允许的控制目标发布器；姿态高度路线不同时拥有 trajectory 输出。
-    const auto publishers = f::attitude::publisher_plan(config.profile);
+    const auto publishers = f::attitude::publisher_plan(config.profile,
+                                                       config.attitude.px4_takeoff_position_hold);
     if (publishers.mode)
       mode_pub_ = create_publisher<Mode>("/fmu/in/offboard_control_mode", 10);
     if (publishers.trajectory)
@@ -453,7 +536,7 @@ public:
     work_.runtime = steady() - runtime_started;
     // 视觉输入的 TTL（有效寿命）可能在计算期间耗尽，不能凭计算开始时有效就继续发运动目标。
     // 首个实际发布前重新观察；过期时请求原下降流程，再用该流程重新计算计划。
-    if (output.attitude.visual_motion) {
+    if (output.attitude.visual_motion || output.attitude.position_intent) {
       const auto actual_time = steady();
       const auto actual = snapshot(actual_time);
       if (!runtime_->visual_output_current(actual, actual_time)) {
@@ -474,6 +557,7 @@ public:
     const bool previous_heartbeat_committed = previous_attitude_output.publish;
     const double previous_heartbeat_stamp = publication_audit_.mode_last;
     last_attitude_output_ = {};
+    last_position_target_.reset();
     // {} 把本轮“已提交输出”证据置为默认空；它不撤销此前已经发出的 ROS 消息。
     if (boundary_fault_latched_)
       output = {};
@@ -511,21 +595,26 @@ public:
         // 正常路径取三次上下文：初查、目标前、心跳前；检查时重新计算年龄与控制周期寿命。
         // 目标先发、心跳后发，二者不是原子事务；目标已发而心跳被拒时必须按部分提交处理。
         // 每个 sink 前重建上下文，目标与心跳各自计真实提交；第二个 sink 失败属于部分提交完整性故障。
-        const auto decision = f::attitude::publish_attitude_resampled<Mode, AttitudeTarget>(
-            [this] {
-              return boundary_context();
-            },
-            output.attitude, timestamp(),
-            [this](const AttitudeTarget& target) {
-              attitude_pub_->publish(target);
-              // 只有本地 publish 返回后才记提交；这不提供 PX4 收到/执行该目标的证据。
-              publication_audit_.target_committed(steady(), target.thrust_body[2]);
-            },
-            [this](const Mode& mode) {
-              mode_pub_->publish(mode);
-              publication_audit_.mode_committed(steady());
-            },
-            &pair_attempt_);
+        const auto context = [this] { return boundary_context(); };
+        const auto publish_mode = [this](const Mode& mode) {
+          mode_pub_->publish(mode);
+          publication_audit_.mode_committed(steady());
+        };
+        const auto stamp = timestamp();
+        const auto decision = config_.attitude.px4_takeoff_position_hold
+            ? f::attitude::publish_position_resampled<Mode, Target>(
+                  context, output.attitude, stamp,
+                  [this](const Target& target) {
+                    target_pub_->publish(target);
+                    publication_audit_.target_committed(steady());
+                    last_position_target_ = target;
+                  }, publish_mode, pair_attempt_)
+            : f::attitude::publish_attitude_resampled<Mode, AttitudeTarget>(
+                  context, output.attitude, stamp,
+                  [this](const AttitudeTarget& target) {
+                    attitude_pub_->publish(target);
+                    publication_audit_.target_committed(steady(), target.thrust_body[2]);
+                  }, publish_mode, &pair_attempt_);
         sampling_pair_ = false;
         // 只有配对成功才更新 last_attitude_output 与 RC 零流提交次数；本地成功仍不等于飞控采用。
         if (decision.allowed) {
@@ -703,6 +792,8 @@ public:
     // 阶段变化立即留事件；普通状态沿用约 2 Hz 节流，不在每个控制周期重复大记录与完整图查询。
     // 报告本身也消耗整轮预算，不能把诊断耗时排除在控制超时之外。
     const double reporting_started = steady();
+    // 最终sink结束后才向mission发布本轮状态；不从缓存JSON/监督器历史READY续期。
+    publish_native_flight_state();
     // 【6. 记录事实】phase_event 保留阶段变化，state 是显示/IPC 输出；二者不授予控制权。
     if (config_.profile == "attitude_altitude" &&
         (phase_before != runtime_->phase_name() || now - printed_ >= .5))
@@ -777,7 +868,7 @@ private:
     jikl_fc01_ground_link::Traffic traffic;
     f::attitude::OwnershipCounts ownership;
     std::size_t local{}, attitude{}, manual{}, switches{}, battery{}, flags{}, visual_state{},
-        visual_command{};
+        visual_command{}, horizontal_command{};
   };
   // 记录目标、心跳及最终复核使用的证据；只供审计，不会在下轮作为新的飞控测量。
   struct BoundarySample {
@@ -834,6 +925,9 @@ private:
     for (const char* topic : {"/fmu/in/vehicle_rates_setpoint", "/fmu/in/vehicle_thrust_setpoint",
                               "/fmu/in/vehicle_torque_setpoint", "/fmu/in/actuator_motors"})
       ownership.other_publishers += publishers(topic);
+    if (config_.attitude.px4_takeoff_position_hold)
+      ownership.other_publishers += publishers("/fmu/in/goto_setpoint") +
+                                    publishers("/fmu/in/actuator_servos");
     if (config_.profile == "attitude_altitude") {
       graph.manual = publishers("/fmu/out/manual_control_setpoint");
       graph.switches = publishers("/fmu/out/manual_control_switches");
@@ -844,8 +938,11 @@ private:
       graph.flags = publishers("/fmu/out/failsafe_flags");
     }
     if (config_.attitude.visual.enabled) {
-      graph.visual_state = publishers(visual_state_topic_);
+      if (!config_.attitude.px4_horizontal_enabled)
+        graph.visual_state = publishers(visual_state_topic_);
       graph.visual_command = publishers(visual_command_topic_);
+      if (config_.attitude.px4_horizontal_enabled)
+        graph.horizontal_command = publishers(horizontal_command_topic_);
     }
     work_.graph += steady() - begin;
     return graph;
@@ -900,6 +997,22 @@ private:
         f::observe_source_receipt(envelope, sample, sampled, timestamp(), received,
                                   info.get_rmw_message_info().received_timestamp);
     const auto host = receipt_timing_[std::size_t(slot)].host_stamp;
+    if (config_.attitude.px4_takeoff_position_hold && slot == f::SourceSlot::Local) {
+      const auto writer = horizontal_gid(info);
+      if (writer != takeoff_local_writer_) {
+        ++takeoff_local_generation_;
+        takeoff_local_writer_ = writer;
+      }
+    }
+    if (config_.attitude.visual.enabled && config_.attitude.px4_horizontal_enabled &&
+        (slot == f::SourceSlot::Local || slot == f::SourceSlot::Attitude)) {
+      // GID标识真实DDS发布者；数量不变的A→B→A切换也累加撤销代数。
+      const auto identity = horizontal_gid(info);
+      auto& previous = slot == f::SourceSlot::Local ? horizontal_local_gid_ : horizontal_attitude_gid_;
+      if (!previous.empty() && previous != identity)
+        ++horizontal_revocation_;
+      previous = identity;
+    }
     // 本轮首个坏时序保留到发布边界结束后，与离散事件一起收尾。
     // 即使 Safety 补读过程中后到健康帧，也不能抹掉已观察的过期或未同步证据。
     if (receive_timing_block_source_ == f::SourceSlot::Count) {
@@ -940,10 +1053,51 @@ private:
                        const rclcpp::MessageInfo& info) {
     const double received = steady();
     record_receipt(slot, msg.timestamp, msg.timestamp_sample, true, received, info);
+    if ((config_.attitude.visual.enabled && config_.attitude.px4_horizontal_enabled) ||
+        config_.attitude.px4_takeoff_position_hold) {
+      // 连续缓存末尾好帧不能遮住中间的水平失效/原点重置。撤销代数不靠后到包清除。
+      if constexpr (std::is_same_v<T, Local>) {
+        const bool reference_changed = destination.timestamp_sample &&
+            (msg.xy_reset_counter != destination.xy_reset_counter ||
+             msg.vxy_reset_counter != destination.vxy_reset_counter ||
+             msg.z_reset_counter != destination.z_reset_counter ||
+             msg.vz_reset_counter != destination.vz_reset_counter ||
+             msg.heading_reset_counter != destination.heading_reset_counter ||
+             msg.ref_timestamp != destination.ref_timestamp);
+        const bool sample_changed = destination.timestamp_sample &&
+            msg.timestamp_sample == destination.timestamp_sample &&
+            (!f::vision::detail::same(double(msg.x), double(destination.x)) ||
+             !f::vision::detail::same(double(msg.y), double(destination.y)) ||
+             !f::vision::detail::same(double(msg.z), double(destination.z)) ||
+             !f::vision::detail::same(double(msg.vx), double(destination.vx)) ||
+             !f::vision::detail::same(double(msg.vy), double(destination.vy)) ||
+             !f::vision::detail::same(double(msg.vz), double(destination.vz)) ||
+             msg.xy_valid != destination.xy_valid || msg.v_xy_valid != destination.v_xy_valid ||
+             msg.z_valid != destination.z_valid || msg.v_z_valid != destination.v_z_valid);
+        if (reference_changed || sample_changed || !msg.xy_valid || !msg.v_xy_valid ||
+            !msg.heading_good_for_control || msg.dead_reckoning) {
+          if (config_.attitude.px4_takeoff_position_hold) {
+            // 任意已观察的重置和同戳改数都使旧锚点失效，随后正常帧不会复原世代。
+            if (reference_changed || sample_changed)
+              ++takeoff_local_generation_;
+          } else
+            ++horizontal_revocation_;
+        }
+      } else if constexpr (std::is_same_v<T, Attitude>) {
+        if (destination.timestamp_sample && msg.quat_reset_counter != destination.quat_reset_counter)
+          ++horizontal_revocation_;
+      }
+    }
     const bool accepted = f::receive_sampled_source(msg, destination, stamp, sample, received);
     receipt_accepted_[std::size_t(slot)] = accepted;
+    if (!accepted && config_.attitude.visual.enabled && config_.attitude.px4_horizontal_enabled)
+      ++horizontal_revocation_;
     if (accepted) {
       ++source_accepted_[std::size_t(slot)];
+      if constexpr (std::is_same_v<T, Attitude>) {
+        if (config_.attitude.visual.enabled && config_.attitude.px4_horizontal_enabled)
+          remember_horizontal_attitude(msg);
+      }
       if constexpr (std::is_same_v<T, Local>) {
         // 只旁观同一local流；缺测距不创建新依赖，不向Core传控制授权。
         range_trend_.observe(msg.timestamp_sample,
@@ -992,6 +1146,9 @@ private:
       sample.vz_reset = value.vz_reset_counter;
       sample.local_stamp = value.timestamp;
       sample.vertical_sample_stamp = value.timestamp_sample;
+      if (config_.attitude.px4_takeoff_position_hold) {
+        sample.takeoff_position = takeoff_position(value, sample.takeoff_position.valid);
+      }
       observe(sample, Event::Vertical);
     });
     status_events_.for_each([&](const auto& value) {
@@ -1034,6 +1191,9 @@ private:
       auto sample = base;
       sample.kill = base.kill || value.fd_critical_failure;
       sample.offboard_signal_lost = value.offboard_control_signal_lost;
+      if (config_.attitude.px4_takeoff_position_hold &&
+          (value.local_position_invalid || value.local_velocity_invalid))
+        sample.takeoff_position.valid = false;
       if (value.manual_control_signal_lost)
         sample.rc_link_ready = false;
       observe(sample, Event::Failsafe);
@@ -1447,6 +1607,14 @@ private:
     s.time_regressed = s.time_regressed || heading_changed_;
   }
   // 映射姿态/垂向/RC反馈；graph 是本轮图计数，now 为 steady 秒，host_stamp 为同步域 µs。
+  f::attitude::TakeoffPositionSample takeoff_position(const Local& msg, bool current) const {
+    return {msg.x, msg.y, msg.vx, msg.vy,
+            {msg.ref_timestamp, takeoff_local_generation_, msg.xy_reset_counter,
+             msg.vxy_reset_counter, msg.heading_reset_counter},
+            current && !takeoff_local_writer_.empty() && msg.xy_valid && msg.v_xy_valid &&
+                msg.heading_good_for_control && std::isfinite(msg.heading) && !msg.dead_reckoning};
+  }
+
   // 无返回值，只更新 s 的健康/权限事实；四元数 wxyz、NED z/vz 保持原单位和符号。
   // 仅在姿态 profile、通用映射与来源独占初查后调用；先消耗 raw 样本寿命再逐源验时，不能把 validated 当 valid。
   void populate_attitude_feedback(f::Snapshot& s, const GraphCounts& graph, double now,
@@ -1493,6 +1661,10 @@ private:
     a.xy_valid = local_.xy_valid && !local_.dead_reckoning && std::isfinite(local_.x) &&
                  std::isfinite(local_.y);
     a.vxy_valid = local_.v_xy_valid && std::isfinite(local_.vx) && std::isfinite(local_.vy);
+    if (config_.attitude.px4_takeoff_position_hold)
+      a.takeoff_position = takeoff_position(local_, a.local_sample_fresh && s.local_fresh &&
+          a.source_clock_valid && a.failsafe_fresh && !flags_.local_position_invalid &&
+          !flags_.local_velocity_invalid && graph.local == 1);
     a.land_selectable =
         (status_.can_set_nav_states_mask & (1U << Status::NAVIGATION_STATE_AUTO_LAND)) != 0;
     // 把手动源与开关来源/时钟/新鲜度一起仲裁；RC可用不等于当前取得自动控制权限。
@@ -1528,6 +1700,176 @@ private:
   }
   // 只整理“当前可用证据”，不执行 Core::step、不改变飞行阶段，也不发布；内部会更新诊断/时钟观察。
   // 三条时间链分别检查：本机接收年龄、源发布年龄、原始测量推进；任一新鲜不替代其余证据。
+  // 与只读PX4状态桥使用同一个原点身份格式；只换坐标轴，不另造局部零点。
+  std::string horizontal_origin() const {
+    return "px4_local:" + std::to_string(local_.ref_timestamp) + ":" +
+        std::to_string(local_.xy_reset_counter) + ":" + std::to_string(local_.z_reset_counter) + ":" +
+        std::to_string(local_.vxy_reset_counter) + ":" + std::to_string(local_.vz_reset_counter) + ":" +
+        std::to_string(local_.heading_reset_counter);
+  }
+  static std::string horizontal_gid(const rclcpp::MessageInfo& info) {
+    std::ostringstream out;
+    bool nonzero = false;
+    for (auto byte : info.get_rmw_message_info().publisher_gid.data) {
+      nonzero = nonzero || byte != 0;
+      out << std::hex << std::setw(2) << std::setfill('0') << unsigned(byte);
+    }
+    return nonzero ? out.str() : std::string{};
+  }
+  void observe_horizontal_publisher(std::string& previous, const rclcpp::MessageInfo& info) {
+    const auto identity = horizontal_gid(info);
+    if (identity.empty() || (!previous.empty() && previous != identity))
+      ++horizontal_revocation_;
+    previous = identity;
+  }
+  void remember_horizontal_attitude(const Attitude& message) {
+    if (!message.timestamp_sample || !local_.timestamp_sample)
+      return;
+    const f::attitude::Quaternion q{message.q[0], message.q[1], message.q[2], message.q[3]};
+    if (!f::attitude::normalized(q)) {
+      ++horizontal_revocation_;
+      return;
+    }
+    const auto origin = horizontal_origin();
+    for (const auto& old : horizontal_attitudes_) {
+      if (old.stamp == message.timestamp_sample * 1000) {
+        if (old.source != horizontal_attitude_gid_ || old.origin != origin ||
+            old.reset != message.quat_reset_counter || !f::vision::detail::same(old.q, q))
+          ++horizontal_revocation_;
+        return; // 相同raw样本既不能替换内容，也不能因新外壳延长历史寿命。
+      }
+    }
+    auto& entry = horizontal_attitudes_[horizontal_attitude_index_++ % horizontal_attitudes_.size()];
+    entry = {message.timestamp_sample * 1000, q, horizontal_attitude_gid_,
+             horizontal_origin(), message.quat_reset_counter, attitude_sample_.received};
+  }
+  void receive_horizontal_navigation(const VisualCommand& message) {
+    auto candidate = f::vision::command_from_message(message);
+    candidate.received_at = steady();
+    // 首个有效意图前，mission可先发未取得平台原点的撤销。它不建立控制会话身份，
+    // 也不把空原点→真实原点的正常初始化锁成永久故障；首次valid后所有撤销仍严格连续。
+    if (!horizontal_navigation_initialized_) {
+      horizontal_navigation_initialized_ = candidate.valid;
+      horizontal_navigation_ = std::move(candidate);
+      return;
+    }
+    if (horizontal_navigation_.sequence && candidate.sequence == horizontal_navigation_.sequence) {
+      candidate.received_at = horizontal_navigation_.received_at;
+      if (!f::vision::detail::same(candidate, horizontal_navigation_))
+        ++horizontal_revocation_;
+      return; // 完整重复也不续鲜；篡改重复保留撤销代数。
+    }
+    if (horizontal_navigation_.sequence &&
+        (candidate.sequence < horizontal_navigation_.sequence ||
+         candidate.stamp_ns < horizontal_navigation_.stamp_ns ||
+         candidate.source_id != horizontal_navigation_.source_id ||
+         candidate.reset_counter != horizontal_navigation_.reset_counter ||
+         candidate.frame_id != horizontal_navigation_.frame_id))
+      ++horizontal_revocation_;
+    if (!candidate.sequence || !candidate.stamp_ns || !f::vision::identities_within_budget(candidate) ||
+        (candidate.valid && ((candidate.position_valid &&
+          (!std::isfinite(candidate.position[0]) || !std::isfinite(candidate.position[1]))) ||
+          (candidate.yaw_valid && !std::isfinite(candidate.yaw)))))
+      ++horizontal_revocation_;
+    // 合法valid=false仅撤销航点；不把航点→跟踪的正常切换标作系统故障。
+    horizontal_navigation_ = std::move(candidate);
+  }
+  void receive_horizontal_velocity(const HorizontalCommand& message) {
+    const auto& command = message.command;
+    f::horizontal::Velocity candidate;
+    candidate.sequence = command.sequence;
+    candidate.stamp_ns = f::vision::message_stamp_ns(command.stamp);
+    candidate.received_at = steady();
+    candidate.reset_counter = command.reset_counter;
+    const bool bounded = f::vision::identity_within_budget(command.source_id) &&
+        f::vision::identity_within_budget(command.frame_id) && f::vision::identity_within_budget(message.origin_id);
+    if (bounded) {
+      candidate.source_id = command.source_id;
+      candidate.frame_id = command.frame_id;
+      candidate.origin_id = message.origin_id;
+    }
+    candidate.attitude_sample_stamp_ns = message.attitude_sample_stamp_ns;
+    candidate.valid = bounded && message.schema_version == 1 && command.schema_version == 2 && command.valid;
+    candidate.body_velocity = {command.vx, command.vy, command.vz};
+    candidate.yaw_rate = command.wz;
+    if (!horizontal_velocity_initialized_) {
+      horizontal_velocity_initialized_ = candidate.valid;
+      horizontal_velocity_ = std::move(candidate);
+      horizontal_velocity_attitude_stamp_ = message.attitude_sample_stamp_ns;
+      horizontal_velocity_origin_ = bounded ? message.origin_id : std::string{};
+      return;
+    }
+    // 比较编码姿态戳和原点；相同sequence不能改姿态封套后伪装成相同速度。
+    if (horizontal_velocity_.sequence && candidate.sequence == horizontal_velocity_.sequence) {
+      candidate.received_at = horizontal_velocity_.received_at;
+      if (!f::horizontal::same(candidate, horizontal_velocity_) ||
+          message.attitude_sample_stamp_ns != horizontal_velocity_attitude_stamp_ ||
+          message.origin_id != horizontal_velocity_origin_)
+        ++horizontal_revocation_;
+      return;
+    }
+    if (horizontal_velocity_.sequence &&
+        (candidate.sequence < horizontal_velocity_.sequence || candidate.stamp_ns < horizontal_velocity_.stamp_ns ||
+         candidate.source_id != horizontal_velocity_.source_id || candidate.reset_counter != horizontal_velocity_.reset_counter ||
+         candidate.frame_id != horizontal_velocity_.frame_id || candidate.origin_id != horizontal_velocity_.origin_id))
+      ++horizontal_revocation_;
+    if (!bounded || !candidate.sequence || !candidate.stamp_ns ||
+        (horizontal_velocity_.valid && !candidate.valid) ||
+        (candidate.valid && (!f::vision::detail::finite(candidate.body_velocity) ||
+                             !std::isfinite(candidate.yaw_rate))))
+      ++horizontal_revocation_;
+    horizontal_velocity_ = std::move(candidate);
+    horizontal_velocity_attitude_stamp_ = message.attitude_sample_stamp_ns;
+    horizontal_velocity_origin_ = bounded ? message.origin_id : std::string{};
+  }
+  f::horizontal::Input horizontal_snapshot(const f::Snapshot& snapshot, const GraphCounts& graph,
+      std::uint64_t ros_ns, double now, std::uint64_t host) const {
+    f::horizontal::Input in;
+    in.ros_now_ns = ros_ns;
+    in.navigation = horizontal_navigation_;
+    in.velocity = horizontal_velocity_;
+    in.revocation_generation = horizontal_revocation_;
+    in.navigation_publishers = graph.visual_command;
+    in.velocity_publishers = graph.horizontal_command;
+    auto& actual = in.actual;
+    actual.source_id = horizontal_local_gid_ + ":" + horizontal_attitude_gid_;
+    actual.origin_id = horizontal_origin();
+    actual.position = {local_.x, local_.y, local_.z};
+    actual.velocity = {local_.vx, local_.vy, local_.vz};
+    actual.q = {attitude_.q[0], attitude_.q[1], attitude_.q[2], attitude_.q[3]};
+    actual.local_stamp_ns = local_.timestamp_sample * 1000;
+    actual.attitude_stamp_ns = attitude_.timestamp_sample * 1000;
+    actual.local_received_at = local_sample_.received;
+    actual.attitude_received_at = attitude_sample_.received;
+    actual.xy_reset = local_.xy_reset_counter;
+    actual.vxy_reset = local_.vxy_reset_counter;
+    actual.z_reset = local_.z_reset_counter;
+    actual.vz_reset = local_.vz_reset_counter;
+    actual.quat_reset = attitude_.quat_reset_counter;
+    const auto delta = actual.local_stamp_ns > actual.attitude_stamp_ns
+        ? actual.local_stamp_ns - actual.attitude_stamp_ns : actual.attitude_stamp_ns - actual.local_stamp_ns;
+    actual.valid = snapshot.local_fresh && graph.local == 1 && graph.attitude == 1 &&
+        !horizontal_local_gid_.empty() && !horizontal_attitude_gid_.empty() &&
+        local_.xy_valid && local_.v_xy_valid && local_.z_valid && local_.v_z_valid &&
+        local_.heading_good_for_control && !local_.dead_reckoning && delta <= 80000000 &&
+        snapshot.attitude.source_clock_valid && local_sample_.fresh(host, now, config_.attitude.local_timeout) &&
+        attitude_sample_.fresh(host, now, config_.attitude.attitude_timeout);
+    // 完整FRD→NED须使用任务编码时同一采样姿态；找不到就显式无效，绝不猜最新姿态。
+    if (horizontal_velocity_origin_ == actual.origin_id) {
+      for (const auto& entry : horizontal_attitudes_) {
+        if (entry.stamp && entry.stamp == horizontal_velocity_attitude_stamp_ &&
+            entry.origin == actual.origin_id && entry.source == horizontal_attitude_gid_ &&
+            entry.reset == actual.quat_reset) {
+          in.velocity.matched_attitude = entry.q;
+          in.velocity.matched_attitude_stamp_ns = entry.stamp;
+          in.velocity.matched_attitude_valid = true;
+          in.velocity.matched_attitude_received_at = entry.received_at;
+          break;
+        }
+      }
+    }
+    return in;
+  }
   f::Snapshot snapshot(double now) {
     const double begin = steady();
     // tick 内没有本执行器的回调插入；图未变化时，仅复用本周期的图计数。
@@ -1582,7 +1924,8 @@ private:
                    s.traffic.land_publishers == 1 && s.traffic.ack_publishers == 1 &&
                    s.traffic.command_subscribers == 1 && s.traffic.command_publishers == 1 &&
                    graph.local == 1;
-    fb.exclusive = fb.exclusive && f::attitude::owns_setpoints(config_.profile, graph.ownership);
+    fb.exclusive = fb.exclusive && f::attitude::owns_setpoints(
+        config_.profile, graph.ownership, config_.attitude.px4_takeoff_position_hold);
     // 先形成通用状态事实，再补该 profile 的姿态/RC/源时钟条件；不能省掉前面的唯一来源检查。
     if (config_.profile == "attitude_altitude")
       populate_attitude_feedback(s, graph, now, host_stamp);
@@ -1591,8 +1934,11 @@ private:
     // 视觉开关false时不取Inbox、不构成新准入条件；保留原无视觉1.5m路线。
     if (config_.attitude.visual.enabled) {
       const auto clock_ns = get_clock()->now().nanoseconds();
-      s.attitude.visual_input = visual_inbox_.snapshot(clock_ns > 0 ? std::uint64_t(clock_ns) : 0,
-                                                       graph.visual_state, graph.visual_command);
+      const auto ros_ns = clock_ns > 0 ? std::uint64_t(clock_ns) : 0;
+      if (config_.attitude.px4_horizontal_enabled)
+        s.attitude.horizontal_input = horizontal_snapshot(s, graph, ros_ns, now, host_stamp);
+      else
+        s.attitude.visual_input = visual_inbox_.snapshot(ros_ns, graph.visual_state, graph.visual_command);
     }
     ++work_.snapshots;
     work_.snapshot += steady() - begin;
@@ -1660,7 +2006,7 @@ private:
     std::cout << "{\"kind\":\"phase_event\",\"monotonic_s\":" << number(now)
               << ",\"phase_before\":" << f::quote(before)
               << ",\"phase_after\":" << f::quote(runtime_->phase_name())
-              << ",\"reason\":" << f::quote(core.reason()) << progress_fields()
+              << ",\"reason\":" << f::quote(core.reason()) << progress_fields(s, now)
               << rc_recovery_fields(s, now) << reference_fields(s) << vertical_feedback_fields(s, now)
               << vertical_control_fields(planned, true)
               << ",\"ownership\":" << f::quote(core.recovery_responsibility(fb))
@@ -1770,9 +2116,20 @@ private:
     return out.str();
   }
   // 任务开始、独立确认离地、稳定到高、导航获准分别记录；实际离地仍要外部日志/现场证据核对。
-  std::string progress_fields() const {
+  std::string progress_fields(const f::Snapshot& s, double now) const {
     const auto& core = runtime_->attitude_core();
     const auto& e = core.liftoff_evidence();
+    const auto context = runtime_->publication_context(
+        s, now, server_->connected(), s.control_cycle_fresh,
+        stop_requested || stopping_ || boundary_fault_latched_);
+    const bool settled = core.navigation_current(context.feedback, now);
+    // JSON也重核当前测量与本轮真实提交，历史HEIGHT_HOLD不等于当前水平导航许可。
+    const bool navigation = (!config_.attitude.px4_takeoff_position_hold ||
+                             config_.attitude.px4_position_mission_enabled) && settled &&
+        f::attitude::boundary_health(context).allowed &&
+        !context.shutdown && !cycle_graph_invalidated_ && publication_audit_.target_this_tick &&
+        publication_audit_.mode_this_tick && !publication_audit_.exception_this_tick;
+    const auto& height_evidence = core.target_height_evidence();
     const char* pending = e.detector_samples < 2 ? "WAIT_NEW_AIRBORNE_DETECTOR_SAMPLES"
                           : e.local_samples < 2  ? "WAIT_NEW_LOCAL_MOTION_SAMPLES"
                           : !e.rise_confirmed    ? "WAIT_SUSTAINED_HEIGHT_AND_VELOCITY_AGREEMENT"
@@ -1783,8 +2140,11 @@ private:
         << ",\"takeoff_request_accepted\":"
         << boolean(!core.bench_arm_only_active() && (core.flight_started() || core.arm_confirmed()))
         << ",\"liftoff_confirmed\":" << boolean(core.liftoff_confirmed())
-        << ",\"target_height_settled\":" << boolean(core.target_height_settled())
-        << ",\"navigation_allowed\":" << boolean(core.navigation_allowed())
+        << ",\"target_height_settled\":" << boolean(settled)
+        << ",\"navigation_allowed\":" << boolean(navigation)
+        << ",\"target_height_stable_samples\":" << height_evidence.samples
+        << ",\"target_height_first_sample_stamp\":" << height_evidence.first_sample_stamp
+        << ",\"target_height_last_sample_stamp\":" << height_evidence.last_sample_stamp
         << ",\"liftoff_unconfirmed_reason\":" << f::quote(core.liftoff_confirmed() ? "" : pending)
         << ",\"liftoff_detector_samples\":" << e.detector_samples
         << ",\"liftoff_local_samples\":" << e.local_samples
@@ -1812,6 +2172,22 @@ private:
         << ",\"rc_ground_reference_qualified\":" << boolean(core.rc_ground_reference_qualified())
         << ",\"rc_ground_reference_samples\":" << core.rc_ground_reference_samples()
         << ",\"rc_ground_reference_seconds\":" << number(core.rc_ground_reference_seconds());
+    if (config_.attitude.px4_takeoff_position_hold) {
+      const auto& anchor = core.takeoff_position_anchor();
+      out << ",\"px4_takeoff_position_hold\":true,\"takeoff_position_anchor_ned\":["
+          << number(anchor.x, anchor.captured && core.reference_ready()) << ','
+          << number(anchor.y, anchor.captured && core.reference_ready()) << ','
+          << number(core.reference_z(), core.reference_ready()) << ']';
+      if (last_position_target_)
+        out << ",\"trajectory_target_ned\":[" << number(last_position_target_->position[0])
+            << ',' << number(last_position_target_->position[1]) << ','
+            << number(last_position_target_->position[2]) << ']';
+      else
+        out << ",\"trajectory_target_ned\":null";
+      if (config_.attitude.px4_position_mission_enabled)
+        out << ",\"px4_position_mission_enabled\":true,\"position_mission_motion\":"
+            << boolean(last_attitude_output_.position_intent.has_value());
+    }
     return out.str();
   }
   // 输出本轮/上轮耗时统计，时间单位秒；计数只解释调度负载，不代表PX4端处理时间。
@@ -1987,6 +2363,115 @@ private:
         << work_fields(completed_work_, "last_completed_cycle_work");
     return out.str();
   }
+  // 10Hz有界观察快照；导航布尔在当前反馈和实际配对提交上重核，而非复用阶段名。
+  void publish_native_flight_state() {
+    const double observed = steady();
+    if (observed - native_state_last_ < .1)
+      return;
+    native_state_last_ = observed;
+    auto snapshot_now = snapshot(observed);
+    const double now = steady();
+    auto context = runtime_->publication_context(
+        snapshot_now, now, server_->connected(),
+        cycle_.current(now, config_.attitude.stall_seconds),
+        stop_requested || stopping_ || boundary_fault_latched_);
+    if (cycle_graph_invalidated_)
+      context.feedback.exclusive = false;
+    const auto& fb = context.feedback;
+    const auto& core = runtime_->attitude_core();
+    jikl_fc01_system::msg::NativeFlightState message;
+    message.sequence = ++native_state_sequence_;
+    message.stamp = get_clock()->now();
+    message.native_monotonic_ns = std::uint64_t(now * 1e9);
+    message.source_id = native_source_id_;
+    message.boot_id = native_boot_id_;
+    message.controller_pid = getpid();
+    message.task_epoch = runtime_->rc_attempts_completed();
+    message.profile = config_.profile;
+    message.phase = runtime_->phase_name();
+    message.reason = core.reason();
+    const auto health = f::attitude::boundary_health(context);
+    message.feedback_current = health.allowed && fb.source_clock_validated &&
+        fb.local_sample_fresh && fb.attitude_sample_fresh && fb.battery_ready &&
+        fb.preflight && f::attitude::RcNavigationStart::rc_live(fb) &&
+        fb.rc_axes_safe && fb.rc_aux_switches_safe && !fb.rc_sticks_moving;
+    const bool position_prestream = config_.attitude.px4_takeoff_position_hold &&
+        f::attitude::rc_stage(context.phase);
+    message.publication_current = message.feedback_current && !boundary_fault_latched_ &&
+        !context.shutdown && (publication_audit_.target_this_tick || position_prestream) &&
+        publication_audit_.mode_this_tick && !publication_audit_.exception_this_tick &&
+        last_attitude_output_.publish && context.control_fresh;
+    message.armed = fb.armed;
+    message.offboard = fb.offboard;
+    message.landed = fb.landed;
+    message.at_rest = fb.at_rest;
+    message.kill = fb.kill;
+    message.operator_takeover = fb.operator_takeover || context.authority.takeover_latched;
+    message.failsafe = fb.failsafe;
+    message.rc_navigation_enabled = config_.attitude.rc_navigation_enabled;
+    message.rc_manual_arm_proven = core.rc_manual_arm_proven();
+    message.ground_reference_valid = core.reference_ready();
+    message.ground_reference_qualified = core.rc_ground_reference_qualified();
+    message.liftoff_confirmed = core.liftoff_confirmed();
+    message.target_height_settled = core.navigation_current(fb, now);
+    message.navigation_allowed = (!config_.attitude.px4_takeoff_position_hold ||
+        config_.attitude.px4_position_mission_enabled) &&
+        message.feedback_current && message.publication_current &&
+        message.target_height_settled && !message.operator_takeover;
+    message.ready_wait_arm = message.feedback_current && message.publication_current &&
+        core.phase() == f::attitude::Phase::RcWaitArm && !fb.armed && fb.landed && fb.at_rest &&
+        fb.stabilized_selected && !fb.offboard && fb.rc_arm_switch == 3 &&
+        fb.rc_mode_slot > 0 && fb.rc_mode_slot != config_.attitude.rc_navigation_mode_slot &&
+        core.reference_ready() && core.rc_ground_reference_qualified() &&
+        !f::attitude::nonzero(last_attitude_output_.thrust);
+    message.rc_mode_slot = fb.rc_mode_slot;
+    message.rc_navigation_mode_slot = config_.attitude.rc_navigation_mode_slot;
+    message.z_reset_counter = fb.z_reset;
+    message.vz_reset_counter = fb.vz_reset;
+    message.quat_reset_counter = fb.quat_reset;
+    message.prestream_commits = core.rc_prestream_commits();
+    message.status_stamp_us = snapshot_now.status_stamp;
+    message.land_stamp_us = snapshot_now.land_stamp;
+    message.local_stamp_us = fb.local_stamp;
+    message.local_sample_stamp_us = fb.vertical_sample_stamp;
+    message.attitude_stamp_us = attitude_stamp_.value;
+    message.attitude_sample_stamp_us = attitude_.timestamp_sample;
+    message.local_receive_monotonic_ns = local_sample_.received >= 0
+        ? std::uint64_t(local_sample_.received * 1e9) : 0;
+    const bool vertical_current = message.feedback_current && fb.z_valid && fb.vz_valid;
+    message.reference_z_ned = core.reference_ready() ? core.reference_z() : NAN;
+    message.z_ned = vertical_current ? fb.z : NAN;
+    message.vz_ned = vertical_current ? fb.vz : NAN;
+    message.relative_height_m = vertical_current && core.reference_ready()
+        ? core.reference_z() - fb.z : NAN;
+    message.target_height_m = core.flight_started()
+        ? core.target_height() : config_.attitude.rc_target_height;
+    message.height_tolerance_m = config_.attitude.height_tolerance;
+    message.speed_tolerance_mps = config_.attitude.speed_tolerance;
+    message.settle_seconds = config_.attitude.settle_seconds;
+    // snapshot() 与下列复制之间不执行回调；q、样本戳、reset和原点属于同一个接收上下文。
+    // 原生与平台桥各自接收BEST_EFFORT姿态，桥的50Hz快照可能跳过原生确认的200Hz原始样本。
+    // 将精确q与状态一起送给任务，避免把找不到共同样本误判为视觉失效；最终匹配和TTL不放宽。
+    jikl_fc01_system::msg::NativeFlightSnapshot atomic_snapshot;
+    atomic_snapshot.state = message;
+    atomic_snapshot.attitude_wxyz = fb.q;
+    atomic_snapshot.origin_id = horizontal_origin();
+    atomic_snapshot.attitude_receive_monotonic_ns = attitude_sample_.received >= 0
+        ? std::uint64_t(attitude_sample_.received * 1e9) : 0;
+    // 状态发布失败仅使观察端按TTL撤销，不能为了诊断中断正在运行的原生控制流。
+    try {
+      native_state_pub_->publish(message);
+    } catch (const rclcpp::exceptions::RCLError& error) {
+      RCLCPP_ERROR_THROTTLE(get_logger(), *get_clock(), 1000,
+                           "NATIVE_FLIGHT_STATE_PUBLICATION_FAILED: %s", error.what());
+    }
+    try {
+      native_snapshot_pub_->publish(atomic_snapshot);
+    } catch (const rclcpp::exceptions::RCLError& error) {
+      RCLCPP_ERROR_THROTTLE(get_logger(), *get_clock(), 1000,
+                           "NATIVE_FLIGHT_SNAPSHOT_PUBLICATION_FAILED: %s", error.what());
+    }
+  }
   // 状态JSON是观察接口；保留原字段名、消息与null约定，任何客户端展示都不参与控制权授予。
   std::string state(const f::Snapshot& s, double now, const char* kind = "state",
                     std::uint64_t seq = 0, bool accepted = true,
@@ -2006,6 +2491,12 @@ private:
         << ",\"visual_motion\":" << boolean(last_attitude_output_.visual_motion)
         << ",\"visual_reason\":" << f::quote(runtime_->attitude_core().visual_result().reason)
         << ",\"visual_mode\":" << int(runtime_->attitude_core().visual_result().mode)
+        << ",\"px4_horizontal_enabled\":" << boolean(config_.attitude.px4_horizontal_enabled)
+        << ",\"horizontal_navigation_sequence\":" << s.attitude.horizontal_input.navigation.sequence
+        << ",\"horizontal_velocity_sequence\":" << s.attitude.horizontal_input.velocity.sequence
+        << ",\"horizontal_actual_valid\":" << boolean(s.attitude.horizontal_input.actual.valid)
+        << ",\"horizontal_matched_attitude_valid\":" << boolean(s.attitude.horizontal_input.velocity.matched_attitude_valid)
+        << ",\"horizontal_revocation_generation\":" << s.attitude.horizontal_input.revocation_generation
         << ",\"visual_state_sequence\":" << s.attitude.visual_input.state.sequence
         << ",\"visual_command_sequence\":" << s.attitude.visual_input.command.sequence
         << ",\"visual_state_valid_fields\":" << s.attitude.visual_input.state.valid_fields
@@ -2019,7 +2510,7 @@ private:
         << ",\"rc_target_height\":"
         << number(config_.attitude.rc_target_height)
         // 以下四组分别说明飞行进度、恢复资格、地面参考及时间证据，不能用一个 phase 代替全部事实。
-        << progress_fields() << rc_recovery_fields(s, now) << reference_fields(s)
+        << progress_fields(s, now) << rc_recovery_fields(s, now) << reference_fields(s)
         << feedback_timing_fields(s, now)
         << ",\"rc_navigation_mode_slot\":" << config_.attitude.rc_navigation_mode_slot
         << ",\"rc_prestream_commits\":" << runtime_->attitude_core().rc_prestream_commits()
@@ -2038,11 +2529,13 @@ private:
         << number(publication_audit_.mode_last, publication_audit_.mode_last >= 0)
         << ",\"px4_thrust_adoption\":\"UNOBSERVED\",\"physical_liftoff\":\"EXTERNAL_OBSERVATION_REQUIRED\""
         << ",\"heartbeat_enabled\":" << boolean(last_attitude_output_.publish)
-        << ",\"attitude_output_enabled\":" << boolean(last_attitude_output_.publish)
+        << ",\"attitude_output_enabled\":"
+        << boolean(last_attitude_output_.publish && !config_.attitude.px4_takeoff_position_hold)
         << ",\"publication_block_reason\":" << f::quote(publication_block_reason_)
         << ",\"publication_fault_latched\":" << boolean(boundary_fault_latched_)
         << ",\"attitude_fresh\":" << boolean(s.attitude.attitude_fresh)
-        << ",\"attitude_healthy_output\":" << boolean(last_attitude_output_.publish)
+        << ",\"attitude_healthy_output\":"
+        << boolean(last_attitude_output_.publish && !config_.attitude.px4_takeoff_position_hold)
         << ",\"yaw_reference_rad\":"
         << number(runtime_->attitude_core().yaw_reference(),
                   runtime_->attitude_core().reference_ready())
@@ -2187,6 +2680,11 @@ private:
     csv_.flush();
   }
   // 以下成员由单一控制线程持有：配置、控制核心与IPC资源同节点生命周期释放。
+  rclcpp::Publisher<jikl_fc01_system::msg::NativeFlightState>::SharedPtr native_state_pub_;
+  rclcpp::Publisher<jikl_fc01_system::msg::NativeFlightSnapshot>::SharedPtr native_snapshot_pub_;
+  std::string native_boot_id_, native_source_id_;
+  std::uint64_t native_state_sequence_{};
+  double native_state_last_{-1};
   f::Config config_;
   std::unique_ptr<f::Runtime> runtime_;
   std::unique_ptr<f::UnixServer> server_;
@@ -2199,10 +2697,30 @@ private:
   // 消息成员的 {} 是 C++ 默认初始化，不是“已收到且有效”；对应时间水位与有效位决定能否使用。
   Attitude attitude_{};
   f::attitude::Output last_attitude_output_;
+  std::optional<Target> last_position_target_;
+  std::string takeoff_local_writer_;
+  std::uint64_t takeoff_local_generation_{};
   f::AuthorityTelemetry authority_telemetry_;
   // 视觉Inbox保留估计状态和目标命令两条证据；订阅SharedPtr随节点销毁，不创建额外控制线程。
   f::vision::Inbox visual_inbox_;
-  std::string visual_state_topic_, visual_command_topic_;
+  std::string visual_state_topic_, visual_command_topic_, horizontal_command_topic_;
+  rclcpp::Subscription<HorizontalCommand>::SharedPtr horizontal_command_sub_;
+  f::vision::Command horizontal_navigation_;
+  f::horizontal::Velocity horizontal_velocity_;
+  std::string horizontal_velocity_origin_, horizontal_local_gid_, horizontal_attitude_gid_;
+  std::string horizontal_navigation_gid_, horizontal_command_gid_;
+  bool horizontal_navigation_initialized_{}, horizontal_velocity_initialized_{};
+  std::uint64_t horizontal_velocity_attitude_stamp_{}, horizontal_revocation_{};
+  // 固定容量姿态历史只由本控制线程拥有；不保留ROS消息指针或无限增长队列。
+  struct HorizontalAttitude {
+    std::uint64_t stamp{};
+    f::attitude::Quaternion q{};
+    std::string source, origin;
+    std::uint8_t reset{};
+    double received_at{-1};
+  };
+  std::array<HorizontalAttitude, 64> horizontal_attitudes_{};
+  std::size_t horizontal_attitude_index_{};
   rclcpp::Subscription<VisualState>::SharedPtr visual_state_sub_;
   rclcpp::Subscription<VisualCommand>::SharedPtr visual_command_sub_;
   Local local_{};

@@ -240,3 +240,169 @@ def manual_rc_guidance_allowed(state):
         state.get(name) is True
         for name in ('flight_actions_enabled', 'takeoff_enabled', 'rc_navigation_enabled')
     )
+
+
+def snapshot_provenance_current(row, info):
+    """严格核对状态文件属于当前boot/监督器/控制器；不读取硬件、不授予动作。
+
+    service_info由外层只读systemd取得。缺少任何身份都只能算未知，不能用同PID
+    字样、mtime或历史READY补齐。IPC和状态年龄仍由controller_state_current独立检查。
+    """
+    state = row.get('state')
+    if not isinstance(state, dict) or not state:
+        return False
+    if info.get('ActiveState') not in ('active', 'activating', 'deactivating'):
+        return False
+    supervisor = row.get('supervisor_pid')
+    controller = row.get('controller_pid')
+    state_controller = row.get('state_controller_pid')
+    native_controller = state.get('controller_pid')
+    if not all(type(pid) is int and pid > 0 for pid in
+               (supervisor, controller, state_controller, native_controller)):
+        return False
+    if str(supervisor) != info.get('MainPID') or not controller == state_controller == native_controller:
+        return False
+    boot = row.get('boot_id')
+    return (isinstance(boot, str) and bool(boot) and
+            isinstance(info.get('boot_id'), str) and boot == info['boot_id'])
+
+
+def manual_rc_readiness_reason(state, displayed_status):
+    """返回当前人工RC准备提示的拒绝原因；空串也仅表示文案证据一致。
+
+    这是显示交叉核对，不重算或放宽原生准入。READY必须绑定当前原生阶段，
+    原生零点/连续地面证据及最终零推力预发送；目标检测与任务计时不参与准备。
+    显示层不能由缺字段推断“默认安全”。
+    """
+    if displayed_status not in ('READY_WAIT_ARM', 'WAIT_NAVIGATION'):
+        return ''
+    expected_phase = ('RC_READY_WAIT_ARM' if displayed_status == 'READY_WAIT_ARM'
+                      else 'RC_ARMED_WAIT_NAVIGATION')
+    if state.get('phase') != expected_phase:
+        return '准备标签与当前原生阶段不一致'
+    if not manual_rc_guidance_allowed(state):
+        return '原生飞行动作门未确认'
+    for name in ('rc_link_ready', 'rc_switches_ready', 'rc_source_selected',
+                 'rc_source_clock_valid', 'rc_switch_clock_valid', 'rc_axes_safe',
+                 'source_clock_validated', 'source_clock_valid'):
+        if state.get(name) is not True:
+            return '人工RC准备证据缺失或无效：' + name
+    if state.get('rc_sticks_moving') is not False or state.get('rc_kill_switch') != 3:
+        return '摇杆未静止或Kill未明确复位'
+    if state.get('rc_kill_latched') is not False or state.get('operator_takeover_latched') is not False:
+        return '急停或人工接管状态未明确解除'
+    if state.get('height_reference_ready') is not True or state.get('rc_ground_reference_qualified') is not True:
+        return '本轮地面零点或连续地面证据尚未确认'
+    commits = state.get('rc_prestream_commits')
+    if state.get('px4_takeoff_position_hold') is True:
+        anchor = state.get('takeoff_position_anchor_ned')
+        if (type(commits) is not int or commits <= 0 or state.get('heartbeat_enabled') is not True
+                or state.get('attitude_output_enabled') is not False
+                or not isinstance(anchor, list) or len(anchor) != 3
+                or any(type(v) not in (int, float) or not math.isfinite(v) for v in anchor)):
+            return '尚无本轮位置模式心跳或有效起飞点证据'
+    else:
+        thrust = state.get('last_target_local_thrust_z')
+        if (type(commits) is not int or commits <= 0 or type(thrust) not in (int, float)
+                or not math.isfinite(thrust) or thrust != 0.0):
+            return '尚无本轮零推力预发送提交证据'
+    slot = state.get('rc_mode_slot')
+    navigation_slot = state.get('rc_navigation_mode_slot')
+    if type(navigation_slot) is not int or navigation_slot != 1:
+        return '当前人工RC导航槽位未确认为1'
+    if type(slot) is not int or not 1 <= slot <= 6:
+        return '当前RC档位无效'
+    if displayed_status == 'READY_WAIT_ARM':
+        if (state.get('reason') != 'RC_READY_WAIT_CH5_MANUAL_ARM' or
+                state.get('armed') is not False or state.get('nav_state') != 15 or
+                state.get('landed') is not True or state.get('at_rest') is not True or
+                state.get('rc_arm_switch') != 3 or slot == navigation_slot):
+            return '当前尚未满足未解锁Stabilized非导航档和接地静止条件'
+        if 'ready_wait_arm' in state and state.get('ready_wait_arm') is not True:
+            return '原生当前READY证据未成立'
+    else:
+        # 原生负责8s固定窗口以及异步解锁/Offboard配对；显示不凭墙钟重建窗口。
+        # 新版明确给出剩余窗口时才解释其数值，未知不补成8s。
+        if (state.get('armed') is not True or state.get('rc_arm_switch') != 1 or
+                state.get('rc_manual_arm_proven') is not True or
+                state.get('landed') is not True or state.get('nav_state') not in (14, 15)):
+            return '人工解锁或本轮地面导航等待证据尚未确认'
+        remaining = state.get('rc_arm_to_navigation_remaining_s')
+        if remaining is not None and (type(remaining) not in (int, float) or
+                                      not math.isfinite(remaining) or not 0 <= remaining <= 8):
+            return '原生解锁到导航窗口已过期或无效'
+        if state.get('reason') in ('RC_NAVIGATION_SELECTION_TIMEOUT', 'RC_MANUAL_ARM_EVIDENCE_TIMEOUT'):
+            return '原生解锁到导航窗口已过期或无效'
+    return ''
+
+
+def vision_runtime_current(value, info, *, now, monotonic):
+    """观察必须属于当前服务和本次开机，单调时钟年龄不超过3秒。
+
+    同一boot的单调时钟不受NTP或系统时间调整影响。相机/任务的原接收时刻独立保留，
+    外壳重写不能续鲜子项。这个文件只用于显示，不能授予飞行动作。
+    """
+    if (not isinstance(value, dict) or type(value.get('schema_version')) is not int
+            or value['schema_version'] != 1):
+        return False
+    if (info.get('ActiveState') != 'active' or
+            str(value.get('supervisor_pid')) != str(info.get('MainPID')) or
+            not value.get('boot_id') or value.get('boot_id') != info.get('boot_id')):
+        return False
+    stamp = value.get('receive_monotonic_ns')
+    return (type(stamp) is int and type(monotonic) in (int, float)
+            and math.isfinite(monotonic) and 0 < stamp <= monotonic * 1e9
+            and monotonic * 1e9 - stamp <= 3e9)
+
+
+def vision_observation(value, name, *, monotonic, timeout=1.0):
+    """原接收TTL内且只有一个发布者的诊断才显示；缺失/多源/过期保持未知。"""
+    observations = value.get('observations') if isinstance(value, dict) else None
+    item = observations.get(name) if isinstance(observations, dict) else None
+    if (not isinstance(item, dict) or not isinstance(item.get('value'), dict)
+            or type(item.get('publisher_count')) is not int or item['publisher_count'] != 1):
+        return None
+    stamp = item.get('receive_monotonic_ns')
+    if (type(stamp) is not int or type(monotonic) not in (int, float)
+            or not math.isfinite(monotonic) or not 0 < stamp <= monotonic * 1e9
+            or monotonic * 1e9 - stamp > timeout * 1e9):
+        return None
+    return item['value']
+
+
+def vision_display_lines(value, info, *, now, monotonic):
+    """只读视觉显示；相机ready、连续目标锁定和原生到高权限分别表达。"""
+    if not isinstance(value, dict) or not value:
+        return ['视觉观察：尚无当前服务状态；相机/目标锁定未知']
+    current = vision_runtime_current(value, info, now=now, monotonic=monotonic)
+    mode = value.get('mode', '未知')
+    if not current:
+        return [f'视觉观察（历史/STALE）：模式 {mode}；相机和目标锁定当前未知']
+    if mode == 'altitude':
+        return ['视觉模式：altitude（原生1.5m定高；相机/任务未启用）']
+    lines = [f'视觉模式：{mode}；观察文件当前，不能代替原生控制授权',
+             '视觉标定：'+str(value.get('calibration_state','未知'))+
+             '；mission control_enabled='+str(value.get('mission_control_enabled','未知'))]
+    camera = vision_observation(value, 'camera', monotonic=monotonic)
+    mission = vision_observation(value, 'mission', monotonic=monotonic)
+    if camera is None:
+        lines.append('相机：无新鲜诊断（未连接/尚未接收）；标定与图像有效性未知')
+    else:
+        ready = str(camera['ready']).lower() if type(camera.get('ready')) is bool else '未知'
+        lines.append('相机：ready=' + ready + '；原因=' + str(camera.get('reason', '未知'))
+                     + '；配置=' + str(camera.get('configuration', '未知')))
+        missing = camera.get('missing')
+        if isinstance(missing, list) and missing:
+            lines.append('相机缺项：' + '；'.join(str(x) for x in missing))
+    if mission is None:
+        lines.append('目标锁定：未知（任务诊断过期或未接收）')
+    else:
+        locked = str(mission['target_locked']).lower() if type(mission.get('target_locked')) is bool else '未知'
+        lines.append('目标锁定：' + locked + '；连续新帧=' + str(mission.get('continuous_new_frames', '未知'))
+                     + '；原因=' + str(mission.get('target_reason', '未知')))
+        missing = mission.get('missing')
+        if isinstance(missing, list) and missing:
+            lines.append('视觉等待：' + '；'.join(str(x) for x in missing))
+    if value.get('error'):
+        lines.append('视觉软件：' + str(value['error']))
+    return lines

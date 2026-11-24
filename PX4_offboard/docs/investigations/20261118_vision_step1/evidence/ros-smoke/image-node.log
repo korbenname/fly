@@ -1,0 +1,2 @@
+[INFO] [1794933194.235092740] [fc01_vision_image]: image input /step1/image, output state=/fc01/vision/target_observation relative=/fc01/vision/target_relative valid=/fc01/vision/target_valid; target shape=circle diameter=0.200 m; camera pitch=0.0 deg
+[INFO] [1794933198.902592433] [rclcpp]: signal_handler(SIGINT/SIGTERM)

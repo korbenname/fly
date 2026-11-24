@@ -1,0 +1,5 @@
+{
+  "note": "Explicit VM-only software test fixture; not field configuration or calibration",
+  "target_height_m": 1.5,
+  "prior_height_m": 1.23
+}

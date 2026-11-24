@@ -1,0 +1,8 @@
+{
+  "marker": "FC01_FINAL_PACKAGE_INDEPENDENT_EXTRACT_OK",
+  "entry": "/tmp/fc01-position-step3-readback-5vc1zsbw/FC01_OrangePi_20261118_position_vision_step3_arm64",
+  "files": 7751,
+  "sha256": "fdc2d179cfdd4dabdbd73b8d6a5ff89da3855938f1717c7726e0b41f82823e8c",
+  "source_commit": "c7de1387c635cf1733e1d1e1a20a8c24d7ad7752",
+  "controller_sha256": "2664fd6af966c16e1f5e351d4d6b8374be1bb0ad07be61f3157dc2a4c870ce8a"
+}

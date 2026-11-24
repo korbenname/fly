@@ -1,0 +1,48 @@
+{
+  "service": {
+    "MainPID": "3888",
+    "ExecStart": "{ path=/bin/bash ; argv[]=/bin/bash /home/orangepi/FC01_versions/20261117_stage3_fix1/prebuilt_boot.sh ; ignore_errors=no ; start_time=[Tue 2026-11-17 13:56:42 UTC] ; stop_time=[n/a] ; pid=3888 ; code=(null) ; status=0/0 }",
+    "Environment": "HOME=/home/orangepi FC01_PROJECT_ROOT=/home/orangepi/sdk ROS_DOMAIN_ID=0 ROS_LOCALHOST_ONLY=0 PYTHONUNBUFFERED=1",
+    "WorkingDirectory": "/home/orangepi/FC01_versions/20261117_stage3_fix1",
+    "User": "orangepi",
+    "LoadState": "loaded",
+    "ActiveState": "deactivating",
+    "SubState": "stop-sigterm",
+    "FragmentPath": "/etc/systemd/system/fc01-navigation.service",
+    "DropInPaths": "/etc/systemd/system/fc01-navigation.service.d/zzzz-fc01-prebuilt.conf",
+    "UnitFileState": "enabled"
+  },
+  "controllers": [
+    {
+      "pid": 4535,
+      "uid": 1000,
+      "argv": [
+        "/home/orangepi/FC01_versions/20261117_stage3_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+        "--ros-args",
+        "--disable-external-lib-logs",
+        "--params-file",
+        "/home/orangepi/FC01_navigation/runtime.yaml",
+        "-p",
+        "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_fcm2zcaq/control.sock"
+      ],
+      "exe": "/home/orangepi/FC01_versions/20261117_stage3_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+      "cwd": "/home/orangepi/FC01_versions/20261117_stage3_fix1",
+      "sha256": "c446afae3d2a262bff132232cac77a40d2c9499ce8ea6a765d6d52c97f02cdc7"
+    }
+  ],
+  "flight_readiness": {
+    "ready_for_manual_rc": false,
+    "missing": [
+      "DDS",
+      "RC",
+      "姿态",
+      "位置",
+      "电池",
+      "PX4"
+    ],
+    "phase": "SAFETY",
+    "reason": "OPERATOR_TAKEOVER_LATCHED",
+    "status_current": true,
+    "note": "仅显示；人工RC准入/接管/Kill/失效保护由原生控制器判定"
+  }
+}

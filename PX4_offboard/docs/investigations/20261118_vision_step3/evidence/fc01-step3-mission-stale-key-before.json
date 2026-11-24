@@ -1,0 +1,17 @@
+{
+  "fresh_initial": true,
+  "stale_changed_session": false,
+  "fresh_original_recovers": false,
+  "reason": "NATIVE_RETIRED_SESSION",
+  "retired": [
+    [
+      "boot-pid-start",
+      "boot",
+      17,
+      0,
+      0,
+      0,
+      0
+    ]
+  ]
+}

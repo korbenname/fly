@@ -1,0 +1,17 @@
+{
+  "offboard": {
+    "url": "https://docs.px4.io/v1.16/en/flight_modes/offboard",
+    "bytes": 925778,
+    "sha256": "8e1cc3516f80d2f0da7d5166797a4b2f136c65015bdc7304ce44c6d0c5ed9682"
+  },
+  "dds": {
+    "url": "https://docs.px4.io/v1.16/en/middleware/uxrce_dds",
+    "bytes": 969410,
+    "sha256": "7467e13ac246e5e6a2596d9f0434449a8f261825c1e67743daf2d61969ba8afe"
+  },
+  "mtf02p": {
+    "url": "https://micoair.com/optical_range_sensor_mtf-02p/",
+    "bytes": 199291,
+    "sha256": "4877dc6af44fec3bce36684dbf522b573bf05125645cb09ca51c3fd9013e2f2b"
+  }
+}

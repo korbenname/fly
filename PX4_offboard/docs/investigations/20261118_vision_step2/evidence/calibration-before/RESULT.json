@@ -1,0 +1,7 @@
+{
+  "reproduced": true,
+  "defect": "nonzero CameraInfo D ignored while calibration_valid remains true",
+  "tracking": true,
+  "calibration_valid": true,
+  "hardware": false
+}

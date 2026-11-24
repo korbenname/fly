@@ -1,0 +1,12 @@
+{
+  "node": {
+    "all_control_sink_lines_exact": true,
+    "sink_lines": 558,
+    "sha256": "2c033fd6add00342dbd51f5d0be6d73f20067a580c163d2833d453c83bced842"
+  },
+  "powered-node": {
+    "all_control_sink_lines_exact": true,
+    "sink_lines": 1178,
+    "sha256": "fcabfe83829068353f5eb6c6e4fec08ef5ad503d1cb3af2dd88704e93bf52c5b"
+  }
+}

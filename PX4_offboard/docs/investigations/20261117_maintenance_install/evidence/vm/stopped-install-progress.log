@@ -1,0 +1,5 @@
+MainPID=0
+ActiveState=inactive
+SubState=dead
+   3555       00:00 bash            bash -c systemctl show fc01-navigation.service -p ActiveState -p SubState -p MainPID; ps -eo pid,etime,comm,args | grep -E "(navigation_prebuilt|prebuilt_boot|fc01_config_check|fc01_system_node)" | head -12
+   3559       00:00 grep            grep -E (navigation_prebuilt|prebuilt_boot|fc01_config_check|fc01_system_node)

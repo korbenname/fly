@@ -1,0 +1,14 @@
+{
+  "baseline": {
+    "source": "827f1f4535bc55b1bfa3fc2e97439367af226831",
+    "build_exit": 0,
+    "run_exit": 1,
+    "output": "REPRODUCED: one unchanged PX4 local sample manufactured target settling\n"
+  },
+  "candidate": {
+    "source": "working-tree",
+    "build_exit": 0,
+    "run_exit": 0,
+    "output": "PASS: duplicate local sample did not complete target settling\n"
+  }
+}

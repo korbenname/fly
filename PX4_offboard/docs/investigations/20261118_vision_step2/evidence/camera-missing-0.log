@@ -1,0 +1,10 @@
+[WARN] [1794936309.424824345] [fc01_vision]: camera_fx not set; using 554.26 from camera_hfov_deg=60.0. Run a proper camera calibration before flight.
+[INFO] [1794936309.426084726] [fc01_vision]: publishing TargetObservation on /fc01/vision/target_observation at 30.0 Hz (BEST_EFFORT, VOLATILE, depth 1)
+[INFO] [1794936309.426102689] [fc01_vision]: target: shape=auto rect=0.000x0.000 m circle_d=0.000 m; intrinsics fx=554.26 fy=554.26 cx=320.00 cy=240.00
+[ WARN:0] global ./modules/videoio/src/cap_v4l.cpp (890) open VIDEOIO(V4L2:/dev/video99999): can't open camera by index
+[INFO] [1794936309.426199053] [fc01_vision]: cannot open /dev/video99999
+[ WARN:0] global ./modules/videoio/src/cap_v4l.cpp (890) open VIDEOIO(V4L2:/dev/video99999): can't open camera by index
+[INFO] [1794936309.926618140] [fc01_vision]: cannot open /dev/video99999
+[ WARN:0] global ./modules/videoio/src/cap_v4l.cpp (890) open VIDEOIO(V4L2:/dev/video99999): can't open camera by index
+[INFO] [1794936310.426913317] [fc01_vision]: cannot open /dev/video99999
+[INFO] [1794936310.890602896] [rclcpp]: signal_handler(SIGINT/SIGTERM)

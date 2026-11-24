@@ -11,6 +11,17 @@ inline attitude::Config attitude_parameters(rclcpp::Node& node) {
   attitude::Config c;
   // 视觉、RC 起飞和动作门分开声明：打开视觉开关不能代替解锁/起飞/人工确认合同。
   c.visual.enabled = node.declare_parameter<bool>("visual_navigation_enabled", false);
+  // 新水平路径显式选择PX4实际反馈；缺省仍关闭，不改变旧视觉接口的默认运行方式。
+  c.px4_horizontal_enabled = node.declare_parameter<bool>("px4_horizontal_enabled", false);
+  c.px4_takeoff_position_hold = node.declare_parameter<bool>("px4_takeoff_position_hold", false);
+  c.px4_position_mission_enabled = node.declare_parameter<bool>("px4_position_mission_enabled", false);
+  c.px4_position_waypoint_enabled = node.declare_parameter<bool>("px4_position_waypoint_enabled", false);
+  c.px4_position_waypoint_origin_id = node.declare_parameter<std::string>(
+      "px4_position_waypoint_origin_id", "");
+  c.px4_position_waypoint_north_m = node.declare_parameter<double>("px4_position_waypoint_north_m", 0.);
+  c.px4_position_waypoint_east_m = node.declare_parameter<double>("px4_position_waypoint_east_m", 0.);
+  c.px4_takeoff_position_descent_speed = node.declare_parameter<double>(
+      "px4_takeoff_position_descent_speed", c.px4_takeoff_position_descent_speed);
   c.rc_navigation_enabled = node.declare_parameter<bool>("rc_navigation_enabled", false);
   c.rc_target_height = node.declare_parameter<double>("rc_target_height", c.rc_target_height);
   c.rc_navigation_mode_slot = node.declare_parameter<std::int64_t>("rc_navigation_mode_slot", 6);

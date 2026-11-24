@@ -1,0 +1,72 @@
+{
+  "dds_loss": {
+    "result": "PASS",
+    "scenario": "dds_loss",
+    "error": null,
+    "node_sha256": "351e73d47a0c35ed9c5e57771d55b37f02e795b106fbcb858308510c9834a24e",
+    "reason": "DDS_SOURCE_CLOCK_UNSYNCHRONIZED_OR_STALE"
+  },
+  "disturbance": {
+    "result": "PASS",
+    "scenario": "disturbance",
+    "error": null,
+    "node_sha256": "351e73d47a0c35ed9c5e57771d55b37f02e795b106fbcb858308510c9834a24e",
+    "reason": null
+  },
+  "kill": {
+    "result": "PASS",
+    "scenario": "kill",
+    "error": null,
+    "node_sha256": "351e73d47a0c35ed9c5e57771d55b37f02e795b106fbcb858308510c9834a24e",
+    "reason": "OPERATOR_TAKEOVER_LATCHED"
+  },
+  "late_slot": {
+    "result": "PASS",
+    "scenario": "late_slot",
+    "error": null,
+    "node_sha256": "351e73d47a0c35ed9c5e57771d55b37f02e795b106fbcb858308510c9834a24e",
+    "reason": "RC_NAVIGATION_SELECTION_TIMEOUT"
+  },
+  "legacy": {
+    "result": "PASS",
+    "scenario": "normal",
+    "error": null,
+    "node_sha256": "351e73d47a0c35ed9c5e57771d55b37f02e795b106fbcb858308510c9834a24e",
+    "reason": null
+  },
+  "no_confirm": {
+    "result": "PASS",
+    "scenario": "no_confirm",
+    "error": null,
+    "node_sha256": "351e73d47a0c35ed9c5e57771d55b37f02e795b106fbcb858308510c9834a24e",
+    "reason": "RC_NAVIGATION_CONFIRMATION_TIMEOUT"
+  },
+  "offboard_loss": {
+    "result": "PASS",
+    "scenario": "offboard_loss",
+    "error": null,
+    "node_sha256": "351e73d47a0c35ed9c5e57771d55b37f02e795b106fbcb858308510c9834a24e",
+    "reason": "OPERATOR_TAKEOVER_LATCHED"
+  },
+  "rc_takeover": {
+    "result": "PASS",
+    "scenario": "rc_takeover",
+    "error": null,
+    "node_sha256": "351e73d47a0c35ed9c5e57771d55b37f02e795b106fbcb858308510c9834a24e",
+    "reason": "OPERATOR_TAKEOVER_LATCHED"
+  },
+  "xy_invalid": {
+    "result": "PASS",
+    "scenario": "xy_invalid",
+    "error": null,
+    "node_sha256": "351e73d47a0c35ed9c5e57771d55b37f02e795b106fbcb858308510c9834a24e",
+    "reason": "PX4_TAKEOFF_POSITION_FEEDBACK_OR_FRAME_INVALID"
+  },
+  "xy_reset": {
+    "result": "PASS",
+    "scenario": "xy_reset",
+    "error": null,
+    "node_sha256": "351e73d47a0c35ed9c5e57771d55b37f02e795b106fbcb858308510c9834a24e",
+    "reason": "PX4_TAKEOFF_POSITION_FEEDBACK_OR_FRAME_INVALID"
+  }
+}

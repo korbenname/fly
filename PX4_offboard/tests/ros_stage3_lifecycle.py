@@ -17,23 +17,35 @@ import tempfile
 import time
 
 SCENARIOS = ('normal', 'range_unavailable', 'feedback_stale', 'quat_reset', 'vertical_reset',
-             'offboard_loss', 'offboard_flag', 'rc_takeover', 'kill', 'velocity_warning')
+             'offboard_loss', 'offboard_flag', 'rc_takeover', 'kill', 'velocity_warning',
+             'track_lost', 'track_timeout', 'track_source', 'track_reset', 'track_origin',
+             'horizontal_feedback_invalid', 'horizontal_reset', 'track_reordered',
+             'track_duplicate', 'track_multisource', 'preheight_flood')
 
 
-def main():
+def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--node', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--scenario', choices=SCENARIOS, default='normal')
+    parser.add_argument('--build-evidence', type=Path, help='current build provenance; default retains historical check')
+    parser.add_argument('--domain', type=int, default=191, help='isolated localhost ROS domain')
+    parser.add_argument('--horizontal', action='store_true', help='opt-in PX4 actual-feedback horizontal candidate')
     parser.add_argument('--motion', choices=('plant', 'replay'), default='plant')
-    args = parser.parse_args()
+    parser.add_argument('--complete-fault-descent', action='store_true',
+                        help='continue horizontal faults through real model descent, disarm and reprepare')
+    args = parser.parse_args(argv)
+    if args.scenario in ('track_reordered','track_duplicate','track_multisource','preheight_flood') and not args.horizontal:
+        parser.error('new horizontal scenarios require --horizontal')
+    if args.complete_fault_descent and not args.horizontal:
+        parser.error('--complete-fault-descent requires --horizontal')
     root = Path(__file__).resolve().parents[1]
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=False)
     if not args.node.is_file():
         parser.error('build the actual ROS 2 node first')
     # 不能仅把当前HEAD贴到一个历史ELF上：同时核对已有构建证据中的ELF和全部生产输入。
-    build_evidence = root / 'docs/investigations/20261116_stage2/evidence/ROS_BUILD.json'
+    build_evidence = (args.build_evidence or root / 'docs/investigations/20261116_stage2/evidence/ROS_BUILD.json').resolve()
     build = json.loads(build_evidence.read_text())
     binary_sha = hashlib.sha256(args.node.read_bytes()).hexdigest()
     mismatches = [name for name, digest in build['production_sha256'].items()
@@ -43,7 +55,9 @@ def main():
     input_paths = [Path(__file__), root/'tests/fixtures/stage3_runtime_20261114.yaml',
                    build_evidence, args.node, *(root/name for name in build['production_sha256'])]
     input_hashes = {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in input_paths}
-    os.environ.update(ROS_DOMAIN_ID='191', ROS_LOCALHOST_ONLY='1', RMW_IMPLEMENTATION='rmw_fastrtps_cpp')
+    if not 1 <= args.domain <= 232:
+        parser.error('domain must be isolated nonzero domain1..232')
+    os.environ.update(ROS_DOMAIN_ID=str(args.domain), ROS_LOCALHOST_ONLY='1', RMW_IMPLEMENTATION='rmw_fastrtps_cpp')
     for key in ('ROS_DISCOVERY_SERVER', 'CYCLONEDDS_URI', 'FASTRTPS_DEFAULT_PROFILES_FILE',
                 'FASTDDS_DEFAULT_PROFILES_FILE', 'RMW_FASTRTPS_USE_QOS_FROM_XML', 'ROS_STATIC_PEERS'):
         os.environ.pop(key, None)
@@ -54,6 +68,7 @@ def main():
         ManualControlSwitches, OffboardControlMode, VehicleAttitude, VehicleAttitudeSetpoint,
         VehicleCommand, VehicleCommandAck, VehicleLandDetected, VehicleLocalPosition, VehicleStatus)
     import yaml
+    from jikl_fc01_system.msg import NativeFlightState, NavigationCommand, HorizontalVelocityCommand
     rclpy.init(args=[])
     source = Node('fc01_stage3_synthetic_px4')
     # 保留生产话题名：当前所有权图查询使用这些名字；remap会被图检查正确拒绝。
@@ -67,6 +82,19 @@ def main():
         'vehicle_command_ack': VehicleCommandAck}
     publishers = {name: source.create_publisher(cls, '/fmu/out/' + name, sensor)
                   for name, cls in classes.items()}
+    nav_pub = source.create_publisher(NavigationCommand, '/fc01/navigation/command', QoSProfile(depth=1)) if args.horizontal else None
+    velocity_pub = source.create_publisher(HorizontalVelocityCommand, '/fc01/vision/horizontal_command', QoSProfile(depth=1)) if args.horizontal else None
+    horizontal = dict(mode='wait', nav_valid=False, velocity_valid=False, velocity=[0.,0.,0.],
+        wz=0., sequence=0, source='synthetic-mission', reset=0, origin_bad=False, actual_invalid=False,
+        xy_reset=0, silence=False, actual_q=[1.,0.,0.,0.], duplicate=False, reorder=False)
+    last_envelope = None
+    second_velocity_pub = None
+    flood_published = 0
+    flood_nonzero_wire = False
+    horizontal_checks = []
+    last_attitude_sample = 0
+    native_states = []
+    source.create_subscription(NativeFlightState, '/fc01/native/flight_state', native_states.append, sensor)
     process = ipc = None
     state = {}
     records, targets, modes, commands, samples, events = [], [], [], [], [], []
@@ -100,16 +128,22 @@ def main():
         return item
 
     def receive_target(msg):
-        nonlocal thrust
+        nonlocal thrust, flood_nonzero_wire
         vals = list(msg.q_d) + list(msg.thrust_body)
         if not all(math.isfinite(v) for v in vals) or not (-.800001 <= msg.thrust_body[2] <= 0):
             raise RuntimeError('invalid/excessive thrust wire')
         if msg.thrust_body[0] or msg.thrust_body[1]:
             raise RuntimeError('unexpected horizontal thrust')
-        if any(abs(float(a)-b) > 1.e-6 for a,b in zip(msg.q_d, [1.,0.,0.,0.])):
+        if not args.horizontal and any(abs(float(a)-b) > 1.e-6 for a,b in zip(msg.q_d, [1.,0.,0.,0.])):
             raise RuntimeError('unexpected tilt/yaw in no-vision fixture')
         if not cleaning and not simulated['armed'] and any(abs(float(v)) > 1.e-6 for v in msg.thrust_body):
             raise RuntimeError('nonzero target while synthetic PX4 disarmed')
+        if args.scenario == 'preheight_flood' and state.get('phase') in (
+                'RC_PRESTREAM','RC_READY_WAIT_ARM','RC_ARMED_WAIT_NAVIGATION',
+                'ARMED_GROUND','THRUST_RAMP','ASCEND'):
+            # 在原生未授权的任一准备/爬升阶段，真实DDS姿态输出不可带水平或偏航。
+            if any(abs(float(v)) > 1.e-6 for v in msg.q_d[1:]):
+                flood_nonzero_wire = True
         thrust = -float(msg.thrust_body[2])
         item = dict(kind='target', received=time.monotonic(), timestamp=msg.timestamp,
                     q=[float(v) for v in msg.q_d], thrust=[float(v) for v in msg.thrust_body])
@@ -153,6 +187,7 @@ def main():
                                    receive_command, reliable)]
 
     def publish():
+        nonlocal last_attitude_sample, last_envelope, flood_published
         stamp = source.get_clock().now().nanoseconds // 1000
         ground = h <= .015 and abs(speed) <= .08
         range_ok = not (args.scenario == 'range_unavailable' and h < .3)
@@ -167,12 +202,14 @@ def main():
                                   ground_contact=ground, maybe_landed=ground)
         local = VehicleLocalPosition(timestamp=stamp, timestamp_sample=stamp-2000,
             x=float(x), y=float(y), z=float(2.-h), vx=0., vy=0., vz=float(vz), z_deriv=float(-speed),
-            xy_valid=True, v_xy_valid=True, z_valid=True, v_z_valid=True,
+            xy_valid=not horizontal['actual_invalid'], v_xy_valid=True, z_valid=True, v_z_valid=True,
+            xy_reset_counter=horizontal['xy_reset'],
             heading_good_for_control=True, z_reset_counter=simulated['z_reset'],
             dist_bottom_valid=range_ok, dist_bottom=float(.10+h), dist_bottom_var=.0025,
             dist_bottom_sensor_bitfield=VehicleLocalPosition.DIST_BOTTOM_SENSOR_RANGE)
         attitude = VehicleAttitude(timestamp=stamp, timestamp_sample=stamp-2000,
-                                  q=[1.,0.,0.,0.], quat_reset_counter=simulated['quat_reset'])
+                                  q=horizontal['actual_q'], quat_reset_counter=simulated['quat_reset'])
+        last_attitude_sample = (stamp-2000)*1000
         manual = ManualControlSetpoint(timestamp=stamp, timestamp_sample=stamp-2000,
             valid=True, data_source=ManualControlSetpoint.SOURCE_RC, throttle=-1.,
             sticks_moving=simulated['sticks'], roll=.2 if simulated['sticks'] else 0.)
@@ -188,6 +225,66 @@ def main():
             if simulated['stale'] and topic == 'vehicle_local_position':
                 continue
             publishers[topic].publish(message)
+        if args.horizontal:
+            # 两路真实DDS收包。先发撤销航点，后发速度封套，跨周期情况由主流程另控。
+            horizontal['sequence'] += 1
+            seq = horizontal['sequence']
+            origin = 'px4_local:0:' + str(horizontal['xy_reset']) + ':0:0:0:0'
+            nav = NavigationCommand()
+            nav.sequence = seq
+            nav.stamp = source.get_clock().now().to_msg()
+            nav.source_id = 'synthetic-mission'
+            nav.frame_id = 'px4_local_ned:' + origin
+            nav.valid = horizontal['nav_valid']
+            nav.mode = 2
+            nav.position_valid = True
+            nav.position = [.5,0.,-9999.]
+            nav_pub.publish(nav)
+            if not horizontal['silence']:
+                envelope = HorizontalVelocityCommand()
+                envelope.origin_id = 'wrong-origin' if horizontal['origin_bad'] else origin
+                envelope.attitude_sample_stamp_ns = last_attitude_sample
+                command = envelope.command
+                command.sequence = seq
+                command.stamp = source.get_clock().now().to_msg()
+                command.source_id = horizontal['source']
+                command.reset_counter = horizontal['reset']
+                command.frame_id = 'body_frd'
+                command.valid = horizontal['velocity_valid']
+                command.vx,command.vy,command.vz = horizontal['velocity']
+                command.wz = horizontal['wz']
+                if args.scenario == 'preheight_flood':
+                    command.source_id = 'synthetic-flood'
+                    command.sequence = seq * 1000
+                    command.valid = h < .6
+                    command.vx = .5
+                    command.vy = -.5
+                    command.wz = .35
+                if horizontal['duplicate'] and last_envelope is not None:
+                    # 重发同一封套的源戳/序号/姿态关联，不能借新PX4反馈给旧命令续鲜。
+                    envelope = last_envelope
+                elif horizontal['reorder']:
+                    command.sequence = max(1, command.sequence - 20)
+                    horizontal['reorder'] = False
+                else:
+                    last_envelope = envelope
+                velocity_pub.publish(envelope)
+                if args.scenario == 'preheight_flood' and h < .6:
+                    # 瞬时突发约3000条/秒；keep-last1仍不得绕过地面/离地/到高授权。
+                    for extra in range(150):
+                        burst = HorizontalVelocityCommand()
+                        burst.origin_id = origin
+                        burst.attitude_sample_stamp_ns = last_attitude_sample
+                        burst.command.sequence = seq * 1000 + extra + 1
+                        burst.command.stamp = source.get_clock().now().to_msg()
+                        burst.command.source_id = 'synthetic-flood'
+                        burst.command.frame_id = 'body_frd'
+                        burst.command.valid = True
+                        burst.command.vx = .5
+                        burst.command.vy = -.5
+                        burst.command.wz = .35
+                        velocity_pub.publish(burst)
+                        flood_published += 1
         item = dict(received=time.monotonic(), timestamp=stamp, height=h, up_speed=speed,
                     x=x, y=y, vz=vz, z_deriv=-speed, range_valid=range_ok,
                     armed=simulated['armed'], offboard=simulated['offboard'])
@@ -299,7 +396,9 @@ def main():
         params=yaml.safe_load((root/'tests/fixtures/stage3_runtime_20261114.yaml').read_text())
         p=params['fc01_system']['ros__parameters']
         p.update(socket_path=str(socket_path),fc01_config_path='stage3-synthetic-runtime',
-                 fc01_config_source_path='stage3-synthetic-runtime',fc01_entry_version='stage2-candidate-8767608')
+                 fc01_config_source_path='stage3-synthetic-runtime',fc01_entry_version='vision-step4-candidate' if args.horizontal else 'vision-step3-candidate')
+        if args.horizontal:
+            p.update(visual_navigation_enabled=True,px4_horizontal_enabled=True)
         config=output/'runtime.yaml';config.write_text(yaml.safe_dump(params,sort_keys=False))
         logs=(output/'controller.log').open('w')
         try:
@@ -312,6 +411,13 @@ def main():
             (output/'command.json').write_text(json.dumps(argv,indent=2)+'\n')
             process=subprocess.Popen(argv,stdin=subprocess.DEVNULL,stdout=logs,stderr=subprocess.STDOUT,env=os.environ.copy())
             until(lambda:state.get('phase')=='RC_READY_WAIT_ARM',12.,'ground proof/READY')
+            until(lambda:native_states and native_states[-1].ready_wait_arm,2.,'current native READY observation')
+            ready=native_states[-1]
+            if not (ready.feedback_current and ready.publication_current and not ready.armed and
+                    ready.ground_reference_valid and ready.ground_reference_qualified and
+                    not ready.navigation_allowed and ready.target_height_m==1.5):
+                raise RuntimeError('native READY missing independent current proofs')
+            event('native_ready_confirmed',source_id=ready.source_id,controller_pid=ready.controller_pid)
             seq=send('TAKEOFF 1.5')
             until(lambda:any(r.get('seq')==seq for r in records),2.,'console TAKEOFF refusal')
             reply=next(r for r in records if r.get('seq')==seq)
@@ -329,24 +435,130 @@ def main():
             until(lambda:state.get('phase')=='THRUST_RAMP',3.,'armed dwell/Ramp')
             ramp_at=time.monotonic();event('ramp')
             until(lambda:state.get('phase')=='HEIGHT_HOLD',15.,'liftoff/Ascend/HeightHold')
+            until(lambda:native_states and native_states[-1].navigation_allowed,3.,'native real measured navigation authorization')
+            qualified=native_states[-1]
+            if not (qualified.armed and qualified.offboard and not qualified.landed and
+                    qualified.liftoff_confirmed and qualified.target_height_settled and
+                    qualified.publication_current and abs(qualified.relative_height_m-1.5)<=qualified.height_tolerance_m and
+                    abs(qualified.vz_ned)<=qualified.speed_tolerance_mps):
+                raise RuntimeError('native authorization contradicts real feedback')
+            event('native_navigation_authorized',height=qualified.relative_height_m,vz=qualified.vz_ned)
             hold_at=time.monotonic();event('height_hold')
             hold_end=time.monotonic()+2.
             until(lambda:time.monotonic()>=hold_end,3.,'stable hold observation')
             if not (state.get('liftoff_confirmed') and state.get('target_height_settled')
                     and state.get('height_reference_z0') == 2):
                 raise RuntimeError('missing liftoff/settling/original z0 proof')
+            if args.horizontal and args.scenario != 'preheight_flood':
+                if not any(t['q'] == [1.,0.,0.,0.] for t in targets):
+                    raise RuntimeError('no ground level prestream')
+                if any(r.get('visual_motion') for r in records if r.get('phase') in ('THRUST_RAMP','ASCEND')):
+                    raise RuntimeError('horizontal motion during takeoff')
+                until(lambda:state.get('visual_reason')=='HORIZONTAL_WAIT_INPUT_POINT_HOLD',2.,'point hold before inputs')
+                horizontal_checks.append('wait_no_camera_native_height_hold')
+                horizontal['nav_valid']=True
+                until(lambda:state.get('visual_reason')=='HORIZONTAL_WAYPOINT',2.,'actual DDS waypoint')
+                until(lambda:targets and targets[-1]['q'][2]<-.001,2.,'north waypoint pitches forward')
+                if abs(state.get('target_height',1.5)-1.5)>1e-6:
+                    raise RuntimeError('waypoint z changed native target')
+                horizontal_checks.append('waypoint_xy_only_tilt')
+                horizontal['nav_valid']=False
+                until(lambda:state.get('visual_reason')=='HORIZONTAL_NORMAL_SWITCH_BRAKE',.9,'normal withdrawal bounded brake')
+                if state.get('phase')!='HEIGHT_HOLD':
+                    raise RuntimeError('normal withdrawal was treated as fault')
+                horizontal_checks.append('cross_cycle_normal_withdrawal_brake')
+                horizontal.update(velocity_valid=True,velocity=[0.,.2,0.])
+                until(lambda:state.get('visual_reason')=='HORIZONTAL_TRACK_PX4_VELOCITY_CLOSED_LOOP',1.,'current velocity takeover')
+                until(lambda:targets[-1]['q'][1]>.001,1.,'right velocity rolls right')
+                horizontal_checks.append('track_right_real_wire')
+                horizontal.update(velocity=[0.,-.2,0.])
+                until(lambda:targets[-1]['q'][1]<-.001,1.,'left velocity rolls left')
+                horizontal_checks.append('track_left_real_wire')
+                # 不改PX4姿态reset，注入4度实测俯仰；任务用同一raw姿态编码水平向量。
+                # 完整FRD向量含bodyZ，原生取完整旋转后的XY；理论北向加速度=.2*1.2。
+                angle=math.radians(4.)
+                horizontal.update(actual_q=[math.cos(angle/2),0.,math.sin(angle/2),0.],
+                                  velocity=[.2*math.cos(angle),0.,.2*math.sin(angle)])
+                expected_pitch=math.atan2(-.24,9.80665)
+                until(lambda:abs(targets[-1]['q'][2]-math.sin(expected_pitch/2))<1e-6,1.,'exact full3D tilted projection')
+                horizontal_checks.append('tilted_full3D_matching_raw_attitude_exact_wire')
+                horizontal.update(velocity=[0.,0.,.5])
+                until(lambda:abs(targets[-1]['q'][1])+abs(targets[-1]['q'][2])<1e-7,1.,'vertical request has zero XY')
+                horizontal_checks.append('vertical_intent_no_horizontal_no_height_permission')
+                horizontal.update(actual_q=[1.,0.,0.,0.])
+                horizontal.update(wz=.2)
+                until(lambda:targets[-1]['q'][3]>.015,1.,'positive NEDyaw')
+                horizontal.update(wz=0.)
+                settle=time.monotonic()+.2
+                until(lambda:time.monotonic()>=settle,.5,'drain yaw previous samples')
+                yaw_before=targets[-1]['q'][3]
+                settle=time.monotonic()+.25
+                until(lambda:time.monotonic()>=settle,.5,'hold zero rate heading')
+                if abs(targets[-1]['q'][3]-yaw_before)>1e-6:
+                    raise RuntimeError('wz0 did not hold heading')
+                horizontal.update(wz=-.2)
+                until(lambda:targets[-1]['q'][3]<yaw_before-.01,1.,'negative NEDyaw')
+                horizontal.update(wz=0.)
+                horizontal_checks.append('yaw_positive_zero_hold_negative')
+                if args.scenario.startswith('track_') or args.scenario in ('horizontal_feedback_invalid','horizontal_reset'):
+                    injected_at=time.monotonic()
+                    if args.scenario=='track_lost':horizontal['velocity_valid']=False
+                    if args.scenario=='track_timeout':horizontal['silence']=True
+                    if args.scenario=='track_source':horizontal['source']='other-mission'
+                    if args.scenario=='track_reset':horizontal['reset']=1
+                    if args.scenario=='track_origin':horizontal['origin_bad']=True
+                    if args.scenario=='track_reordered':horizontal['reorder']=True
+                    if args.scenario=='track_duplicate':horizontal['duplicate']=True
+                    if args.scenario=='track_multisource':
+                        second_velocity_pub = source.create_publisher(HorizontalVelocityCommand,
+                            '/fc01/vision/horizontal_command', QoSProfile(depth=1))
+                    if args.scenario=='horizontal_feedback_invalid':horizontal['actual_invalid']=True
+                    if args.scenario=='horizontal_reset':horizontal['xy_reset']=1
+                    until(lambda:state.get('phase') in ('DESCENT','SAFETY'),2.,'horizontal fault revoke')
+                    if state.get('phase')=='DESCENT':
+                        if state.get('visual_motion'):
+                            raise RuntimeError('descent retained horizontal motion')
+                        if abs(targets[-1]['q'][1])+abs(targets[-1]['q'][2])>1e-6:
+                            raise RuntimeError('descent retained old tilt')
+                    horizontal_checks.append('fault_revokes_xy_yaw_original_native_protection')
+                    event('horizontal_fault_observed',scenario=args.scenario,reason=state.get('reason'),phase=state.get('phase'))
+                    args.scenario_done_horizontal=True
             if args.scenario == 'range_unavailable':
                 if not any(r.get('range_available') is False and r.get('phase')=='THRUST_RAMP' for r in records):
                     raise RuntimeError('ground range outage not observed by actual node')
                 if not any(r.get('range_compared') for r in records):
                     raise RuntimeError('range trend never restored above ground')
                 event('ground_range_unavailable_without_blocking_takeoff')
-            if args.scenario in ('normal','range_unavailable'):
-                seq=send('LAND');land_at=time.monotonic();event('land_request')
-                until(lambda:any(r.get('seq')==seq for r in records),2.,'LAND reply')
-                if not next(r for r in records if r.get('seq')==seq).get('accepted'):
-                    raise RuntimeError('LAND refused')
-                until(lambda:bool(commands),26.,'normal descent/touchdown/Disarm request')
+            horizontal_fault = getattr(args,'scenario_done_horizontal',False)
+            full_fault_descent = horizontal_fault and args.complete_fault_descent
+            if args.scenario == 'preheight_flood':
+                if flood_published < 1000 or flood_nonzero_wire:
+                    raise RuntimeError('preheight flood bypassed authority or injection insufficient')
+                if any(r.get('visual_motion') for r in records if r.get('phase') in ('THRUST_RAMP','ASCEND')):
+                    raise RuntimeError('flood motion during native climb')
+                horizontal_checks.extend(['preheight_flood_real_dds', 'preheight_no_tilt_or_yaw_wire'])
+                horizontal['silence'] = True
+            if full_fault_descent or args.scenario == 'preheight_flood':
+                # 故障已真实锁存。恢复健康反馈只供下降，不重建任务通道、不跳回地面。
+                horizontal.update(velocity_valid=False,nav_valid=False,actual_invalid=False,duplicate=False)
+                if second_velocity_pub is not None:
+                    source.destroy_publisher(second_velocity_pub)
+                    second_velocity_pub = None
+            if full_fault_descent or args.scenario in ('normal','range_unavailable','preheight_flood'):
+                if not full_fault_descent:
+                    seq=send('LAND');land_at=time.monotonic();event('land_request')
+                    until(lambda:any(r.get('seq')==seq for r in records),2.,'LAND reply')
+                    if not next(r for r in records if r.get('seq')==seq).get('accepted'):
+                        raise RuntimeError('LAND refused')
+                else:
+                    land_at=injected_at
+                    event('continuous_fault_descent_model_started',height=h)
+                until(lambda:bool(commands),26.,'continuous descent/touchdown/Disarm request')
+                if full_fault_descent:
+                    if any(r.get('visual_motion') for r in records if r.get('phase') in ('DESCENT','RECOVERY_DESCENT','LANDED','REQUEST_DISARM')):
+                        raise RuntimeError('horizontal visual motion returned during fault descent')
+                    event('fault_descent_reached_disarm_without_cleanup_jump',height=h)
+                    horizontal_checks.append('continuous_fault_descent_ground_disarm')
                 until(lambda:ack_sent and state.get('m1_400_ack_accepted'),2.,'attributable Disarm ACK')
                 ack_only_start=time.monotonic()
                 until(lambda:time.monotonic()>=ack_only_start+.5,1.,'ACK cannot replace new Disarmed status')
@@ -355,7 +567,26 @@ def main():
                     raise RuntimeError('ACK alone ended armed task')
                 event('ack_did_not_replace_disarmed_status')
                 simulated['armed']=False;event('independent_new_disarmed_status')
-                until(lambda:any(r.get('phase')=='SAFE_DISARMED' and r.get('m1_400_state_verified') for r in records),2.,'native safe Disarm terminal')
+                # SAFE_DISARMED可能仅停留一个控制周期，20Hz STATUS轮询不能保证正好采到。
+                # 同时要求可靠阶段事件明确记录终态、当前IPC确认ACK+新PX4上锁状态；
+                # 不以超时、ACK单独成功或较后的RELEASE阶段名代替真实上锁证据。
+                def disarm_terminal_observed():
+                    current_proof = any(r.get('m1_400_state_verified') and
+                                        r.get('armed') is False and r.get('landed') is True
+                                        for r in records)
+                    if not current_proof:
+                        return False
+                    for line in (output/'controller.log').read_text().splitlines():
+                        try:
+                            item=json.loads(line)
+                        except ValueError:
+                            continue
+                        if (item.get('kind')=='phase_event' and item.get('phase_after')=='SAFE_DISARMED' and
+                                item.get('armed') is False and item.get('landed') is True and
+                                item.get('command400_stage')=='ACK_AND_PX4_STATE_VERIFIED'):
+                            return True
+                    return False
+                until(disarm_terminal_observed,2.,'native safe Disarm terminal and current PX4 state proof')
                 event('native_safe_disarmed_confirmed',reason=state.get('reason'))
                 until(lambda:release_ack_sent,2.,'existing post-disarm mode release')
                 # 真实新状态确认完成后才模拟操作者释放导航模式；不提前绕过RequestDisarm终态。
@@ -369,6 +600,8 @@ def main():
                 until(lambda:time.monotonic()>=second_ready+.8,1.5,'second task awaits human arm')
                 if state.get('phase')!='RC_READY_WAIT_ARM' or simulated['armed']:
                     raise RuntimeError('new task bypassed fresh manual arm')
+            elif horizontal_fault:
+                pass
             else:
                 injected_at=time.monotonic()
                 event('inject_'+args.scenario)
@@ -436,6 +669,13 @@ def main():
                     if any(m['timestamp']>safety_stamp for m in targets[tail_target:]+modes[tail_mode:]):
                         raise RuntimeError('new wire generated during safety drain/healthy tail')
                     event('latch_preserved_no_more_wire')
+            if args.scenario not in ('normal','range_unavailable','velocity_warning'):
+                until(lambda:native_states and not native_states[-1].navigation_allowed,1.,'native revoke on fault')
+            (output/'native-states.json').write_text(json.dumps([
+                dict(sequence=m.sequence,source_id=m.source_id,task_epoch=m.task_epoch,
+                     phase=m.phase,reason=m.reason,ready=m.ready_wait_arm,feedback=m.feedback_current,
+                     publication=m.publication_current,nav=m.navigation_allowed,height=(m.relative_height_m if math.isfinite(m.relative_height_m) else None),
+                     vz=(m.vz_ned if math.isfinite(m.vz_ned) else None)) for m in native_states],indent=2)+'\n')
             stop_at=time.monotonic()
             result='PASS'
         except Exception as exc:
@@ -517,15 +757,23 @@ def main():
                  target_heartbeat_pairs=bool(inner_targets) and bool(inner_modes) and set(inner_targets)<=all_mode_stamps and set(inner_modes)<=all_target_stamps)
     inputs_unchanged=all(hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest for name,digest in input_hashes.items())
     gates['inputs_unchanged_during_run']=inputs_unchanged
+    if args.horizontal:
+        if args.scenario == 'preheight_flood':
+            gates['horizontal_wire_checks'] = len(horizontal_checks) >= 2
+        elif args.complete_fault_descent and getattr(args,'scenario_done_horizontal',False):
+            gates['horizontal_wire_checks'] = len(horizontal_checks) >= 10
+        else:
+            gates['horizontal_wire_checks'] = len(horizontal_checks) >= 7
     phases=[r['phase'] for r in phase_trace]
     gates['ordered_phases']=gates['ordered_phases'] and [phases.index(n) for n in
         ('RC_READY_WAIT_ARM','RC_ARMED_WAIT_NAVIGATION','ARMED_GROUND','THRUST_RAMP','ASCEND','HEIGHT_HOLD')]==sorted(
         phases.index(n) for n in ('RC_READY_WAIT_ARM','RC_ARMED_WAIT_NAVIGATION','ARMED_GROUND','THRUST_RAMP','ASCEND','HEIGHT_HOLD'))
     if not all(gates.values()):result='FAIL';error=(error or '')+' metric/sequence gates='+repr(gates)
     report=dict(result=result,error=error,scenario=args.scenario,motion=args.motion,
+        complete_fault_descent=args.complete_fault_descent,
         environment='x86_64 ROS 2 Humble real DDS localhost; synthetic PX4 peer; no firmware/Agent/UART/hardware',
-        domain=191,visual_navigation_enabled=False,node=str(args.node.resolve()),
-        node_sha256=binary_sha,build_provenance=dict(evidence=str(build_evidence.relative_to(root)),
+        domain=args.domain,visual_navigation_enabled=args.horizontal,horizontal_checks=horizontal_checks,node=str(args.node.resolve()),
+        node_sha256=binary_sha,build_provenance=dict(evidence=str(build_evidence),
             evidence_sha256=hashlib.sha256(build_evidence.read_bytes()).hexdigest(),
             matched_production_inputs=len(build['production_sha256']),binary_matches=True),
         harness_sha256=input_hashes[str(Path(__file__))],

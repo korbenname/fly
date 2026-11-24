@@ -1,0 +1,19 @@
+[INFO] [1794938698.648568676] [fc01_mission]: consuming /fc01/vision/target_observation (takes precedence over /fc01/vision/target_relative)
+[INFO] [1794938698.650038220] [fc01_mission]: mission: mode=push, vision=/fc01/vision/target_observation, plant pose=/fc01/platform/state, out=/step3/velocity at 50 Hz
+FC01_NATIVE_MISSION_GATE_PASS 12 named checks
+[INFO] [1794938705.537670558] [fc01_mission]: consuming /fc01/vision/target_observation (takes precedence over /fc01/vision/target_relative)
+[INFO] [1794938705.538852314] [fc01_mission]: mission: mode=push, vision=/fc01/vision/target_observation, plant pose=/fc01/platform/state, out=/visioncontrol at 50 Hz
+FC01_STEP1_ROS_INTERFACE_PASS
+[INFO] [1794938710.109920956] [fc01_mission]: consuming /fc01/vision/target_observation (takes precedence over /fc01/vision/target_relative)
+[INFO] [1794938710.111934525] [fc01_mission]: mission: mode=push, vision=/fc01/vision/target_observation, plant pose=/fc01/platform/state, out=/fc01/vision/velocity_command_v2 at 50 Hz
+FC01_STEP2_MISSION_SENSOR_PASS 13 named checks
+Internal ctest changing into directory: /home/jikl62/.cache/fc01-vision-step3-20261118/build/fc01_vision
+Test project /home/jikl62/.cache/fc01-vision-step3-20261118/build/fc01_vision
+    Start 1: vision_core_selftest
+1/2 Test #1: vision_core_selftest .............   Passed    0.02 sec
+    Start 2: vision_contract_selftest
+2/2 Test #2: vision_contract_selftest .........   Passed    0.01 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.03 sec

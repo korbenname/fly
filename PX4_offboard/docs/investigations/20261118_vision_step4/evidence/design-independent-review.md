@@ -1,0 +1,45 @@
+# Step 4 initial independent design review (read-only)
+Baseline 2948bfe4e6a26b5ee58bf02e4e9988e484fad81e. No production files edited.
+
+## Confirmed existing blockers
+
+1. `vision_navigation.hpp:350-381` deliberately gives legacy FOLLOW sticks[3] and CRUISE/HOLD z vertical authority (`follow_height_`, `px4_height+state.z-target.z`); `attitude_altitude_core.hpp:1730` assigns it into native `target_`. Production step4 horizontal path must bypass these expressions entirely and return unchanged original native rc_target_height. Do not call legacy Controller by synthesizing VisionState from PX4 unless verticalauthority is explicitly absent.
+2. `vision_navigation.hpp::Inbox::command` and `Controller::validate_command/reject` treat valid=false or Disabled as revocation generation / rejected input. Once accepted, that is a latched LAND. Therefore ordinary waypoint valid=false before/current V2 arrives cannot share this legacy Inbox revocation semantics. Separate NAV-channel withdrawal from V2-channel fault, and retain generation for actual loss/reset/source anomalies.
+3. Current node only subscribes VisionState + NavigationCommand when visual.enabled. Actual PX4 x/y/vx/vy are already available via Feedback (node populate_attitude_feedback ~1510), but old VisionState must not remain horizontal source. Do not subscribe diagnostic V1 as motion.
+4. `VelocityCommandV2.stamp` is documented generated time, while mission `_publish_command` rotates using `platform_rot` from an older accepted PlatformState. There is no attitude-sample timestamp/provenance in V2. Nearest attitude to V2 generation time is NOT proof of matching the actual rotation used to encode vector. For rigorous full projection need production envelope/versioned message containing original attitude timestamp + PX4 reset/origin identity, or mission must provide a clearly documented generation snapshot contract and native validate an explicit bounded pair (not claim exact matched time). Preserve existing V2 layout for legacydiagnostic callers.
+5. Math tension in user requirement must be explicit: under tilted R, R*[0,0,vz] has nonzero XY. To simultaneously full3D-project legitimate body representations of worldhorizontal requests and guarantee a purely bodyvertical request has zerohorizontal, define horizontal-intent policy: vx==vy==0 (epsilon tightlyspecified) => zero horizontal; otherwise full R*[vx,vy,vz] then discard NED z. Never simply zero body vz before rotating, because that corrupts correct worldhorizontal demands when tilted. A new production message can instead state worldhorizontal intent and preserve legacyV2 diagnostic semantics.
+6. Step3 mission forces bodyvz=0 after ENU-horizontal→FRD. This loses the component required to reconstruct worldhorizontal under pitch/roll. Root/mission must change together with native fullR conversion (not before).
+7. Graph unique counts do not prove packet provenance; keep source/session/reset continuity and watermark generation. A→B→A within same callback pass must remain revoked. Reset fields include XY, VXY, heading/ref_timestamp beyond z/vz/quaternion.
+
+## Suggested integration contract
+
+- Separate horizontal Input in native Core, Config disabled default; actual PX4 position/velocity/q and sample stamps plus reset identity, canonical NED waypoint and FRD velocity/wz channel snapshots, each own source-generated stamp/receivedmono/sequence/sourceid/withdrawal validity. Bounded history maps explicit attitude_sample_stamp to q for FRD projection; nearest tolerance + strict source/reset/TTL checks if interpolation used.
+- Arbiter modes Waiting (never yet accepted), Hold/Waypoint, Tracking, TransitionBrake, FaultLand. Authoritative motorplan can remain original attitude_altitude profile; Output.visual_motion can cover ALL horizontal yaw/tilt plans so existing strict finalq equality and max_tilt guard apply.
+- Need no motion authority before Core.navigation_current. Under steadyflight altitude instability revoke horizontal and yaw immediately, hold level/lastcommittedyaw while nativevertical recovers. Actual PX4 XY invalid after horizontalactive needs existingcontrolleddescent, nozeroedfakefeedback.
+- NAV valid=false is normal source-current withdrawal only. If V2 currentvalid available =>Tracking; if not then boundedbrake / capturedhold for a short configured finite transition; timeoutaftertracking invalidV2 =>controlleddescent. NAV Land explicit needs ownvalidation. Sourcechanged/reset/timebackward/nonfinite =>fault generation notnormalwithdrawal. Bothvalid prioritymustdeterministic (Trackingonlywithactualtargetlock orexplicitselector; choose oneandtest).
+- yaw wz: positive FRD down=positiveNED yaw, integrate boundedrate into target heading; zero freezes committed heading (do not overwrite with currentactualyaw). Only absolutewaypointyaw uses shortest wrapped error and maxrate. Changing command mode should preserve committedyaw continuity.
+- horizontalvelocity vector maxnorm, accelerationtarget vector maxnorm, acceleration slew (ifexisting limit means amplitude vsrate clarify), max tilt min(native,visual), yawrate max, taskoriginmaxradius. Waypoint bounds anchor oncepernativetask, never reacquire aftersource/reset inair. NaN guard beforeclamps/hypot.
+- finalboundary must revalidate exact selectedchannel + revocation_generation + attitude pairing + raw PX4 validity/TTL + original target1.5, notjust lastactive orphase. current() mustre-age originalsource stamps not merelyreceivaltime (step3lesson).
+- Trackfirsttest config must override BOTH robot.launch andmission.launch push defaults; standoffcalibrationID/confirmedflag absent =>specificnotready, don'tinventphysicalsafevalue.
+
+This is initial code-level review; not a conclusion that final step4 implementation is safe. Root/native/mission agents implementing concurrently. I remain available for read-only final review.
+
+## Root contract follow-up
+
+Read `/tmp/fc01-step4-root-contract.md`: agreed exact attitude_sample timestamp for newselector V2 avoids arbitrary latest. MUST update message comments/runtime input policy explicitly: legacy V2 stamp is currently documented generationtime; only this selector uses sampletimestamp, with ownsequenceadvance watermarks. Do not globally weaken legacy clock progress checks.
+
+Math evidence saved `/tmp/fc01-step4-design-math.json`: pitch30deg worldNED[1,0,0] encodes bodyFRD[.866,0,.5]. Fullrotation returns[1,0,0]; zeroingbodyvz returns[.75,0,-.433]. PurebodyZ fullyrotated has X=.5, so verticalonlysuppression is an explicit policy exception, not a rotation identity.
+
+Potential integration trap: `Core::navigation_current()` requires current height/vz within settling tolerance, and existing `SystemNode` visual_output_current false always requests visual_land. New controller needs distinguish ordinary height-resettling suspension from active stream faults if choosing boundedholdrecovery; otherwise it may correctly choose controlleddescent but report that choice clearly. Don't let a previous horizontal plan survive when navigation_current false. Likewise level target must keep lastcommittedyaw so wz0 freezesyaw rather than snapping to startupyaw.
+
+Mission V2 currentrawwz = -ENU yaw_rate_cmd is a desired NED heading-rate (clockwise), despite old comment claiming bodyz angularrate. Under tilt bodyZ rate and Euler yawdot differ. State chosen execution meaning explicitly for newselector; do not feed measured angularvelocity into command or use wz=0 to reset heading. A bound +/-max_yaw_rate remains needed after any conversion.
+
+## Callback/historical pairing caveats
+
+Read `/tmp/fc01-step4-wire-final.md`: independent HorizontalVelocityCommand envelope resolves legacy V2 timestamp/semantics conflict correctly. New message comments currently accurately state headingrate and body-Z exception.
+
+Two concrete adapter risks to test:
+- `receive_sampled_source()` accepts a NEW envelope even if raw timestamp_sample is unchanged; it replaces payload and SourceSampleProgress only preserves old receivedtime. Therefore do not append/replace attitude history on envelope acceptance alone. Exact raw attitude sample duplicated with changed q or quat_reset must be inconsistency/revocation, not a way to replace the matching orientation. History key should include rawsample and continuity identity; preserve originalrawreceiveTTL.
+- `local_receive_event()` currently includes all five resets but excludes `ref_timestamp`, while new horizontal origin_id explicitly includes ref_timestamp. An intermediate ref_timestamp A→B→A could be overwritten before snapshot unless root adds origin reference transition to localevent key or horizontalrevocation generation in callback. Current newselector Inbox should observe origin changes even if final origin returns old. No need broaden unrelated original noVisual route.
+
+Configuration/runtime graph changes must use the configured envelope Topic and preserve source GID handoff. Old V2 remains diagnostic, so actual presence of diagnostic V2 must not count as valid productionintent.

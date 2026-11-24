@@ -27,11 +27,17 @@ def cmake_commands():
 
 class RosEngineeringContractTests(unittest.TestCase):
     def test_message_generation_links_the_current_package_typesupport(self):
-        # 五份公开消息必须来自同一个包；生成字段引用的时间类型也必须声明依赖。
+        # 公开消息必须来自同一个包；生成字段引用的时间类型也必须声明依赖。
         expected = {
             'VisionState',
             'NavigationCommand',
             'VelocityCommand',
+            'VelocityCommandV2',
+            'HorizontalVelocityCommand',
+            'TargetObservation',
+            'PlatformState',
+            'NativeFlightState',
+            'NativeFlightSnapshot',
             'VisionHealth',
             'AttitudeThrustPreview',
         }
@@ -59,6 +65,16 @@ class RosEngineeringContractTests(unittest.TestCase):
             commands,
         )
         self.assertIn(('ament_export_dependencies', ['rosidl_default_runtime']), commands)
+
+    def test_target_interface_receiver_is_built_linked_and_installed_independently(self):
+        commands = cmake_commands()
+        name = 'fc01_target_interface_node'
+        self.assertIn(('add_executable', [name, 'src/' + name + '.cpp']), commands)
+        self.assertIn(('ament_target_dependencies', [name, 'rclcpp', 'std_msgs']), commands)
+        self.assertIn(('target_link_libraries', [name, '${fc01_typesupport}']), commands)
+        self.assertIn(('install', ['TARGETS', name, 'DESTINATION', 'lib/${PROJECT_NAME}']), commands)
+        metadata = ET.parse(PACKAGE / 'package.xml').getroot()
+        self.assertIn('std_msgs', {item.text for item in metadata.findall('depend')})
 
     def test_installed_tools_keep_sibling_modules_and_runtime_dependencies(self):
         # 两个可执行入口与两个被导入模块必须安装到同一包目录；相对路径按源码包位置计算。

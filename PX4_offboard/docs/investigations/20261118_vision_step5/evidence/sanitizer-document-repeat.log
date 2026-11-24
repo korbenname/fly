@@ -1,0 +1,15 @@
+In file included from /home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/include/jikl_fc01_system/runtime.hpp:17,
+                 from /tmp/fc01-step5-san-doc.thhAXI/atomic-native-regression/sanitizers/actual-node-and-snapshot/adapter_under_test.cpp:12,
+                 from /tmp/fc01-step5-san-doc.thhAXI/atomic-native-regression/sanitizers/actual-node-and-snapshot/driver.cpp:5:
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/include/jikl_fc01_system/attitude_altitude_core.hpp: In member function ‘fc01::attitude::Core& fc01::attitude::Core::operator=(fc01::attitude::Core&&)’:
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/include/jikl_fc01_system/attitude_altitude_core.hpp:31:7: note: variable tracking size limit exceeded with ‘-fvar-tracking-assignments’, retrying without
+   31 | class Core {
+      |       ^~~~
+In file included from /tmp/fc01-step5-san-doc.thhAXI/atomic-native-regression/sanitizers/actual-node-and-snapshot/driver.cpp:5:
+/tmp/fc01-step5-san-doc.thhAXI/atomic-native-regression/sanitizers/actual-node-and-snapshot/adapter_under_test.cpp: In constructor ‘SystemNode::SystemNode()’:
+/tmp/fc01-step5-san-doc.thhAXI/atomic-native-regression/sanitizers/actual-node-and-snapshot/adapter_under_test.cpp:123:3: note: variable tracking size limit exceeded with ‘-fvar-tracking-assignments’, retrying without
+  123 |   SystemNode() : Node("fc01_system") {
+      |   ^~~~~~~~~~
+actual-node-and-snapshot PASS
+final-boundary-negative PASS
+repeat evidence=/tmp/fc01-step5-san-doc.thhAXI

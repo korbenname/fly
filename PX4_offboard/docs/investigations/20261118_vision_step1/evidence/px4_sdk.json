@@ -1,0 +1,53 @@
+{
+  "sdk": "/home/jikl62/FC01_R632_P0_ATTITUDE_AUDIT_CANDIDATE/workspace/src/px4_msgs",
+  "version": "2.0.1",
+  "git_identity": "No .git in this SDK source directory; do not invent commit",
+  "messages": [
+    {
+      "message": "VehicleStatus",
+      "message_version": 1,
+      "sha256": "9e69a38a8a592d8fed78d09fe429acf2cbddd1b7eb710dc55eebbb64d4624b52"
+    },
+    {
+      "message": "VehicleLocalPosition",
+      "message_version": 0,
+      "sha256": "5bf55da4743f1d9c6d69a56473ee6a813d573890c051d6ab442dc01f18433fdd"
+    },
+    {
+      "message": "VehicleAttitude",
+      "message_version": 0,
+      "sha256": "d23f153b574daad31f21f767bc6e2781bcd486bb9e56c605b8b6fd10814b1c74"
+    },
+    {
+      "message": "VehicleAttitudeSetpoint",
+      "message_version": 0,
+      "sha256": "372c9fbc9f30077e690648800aa374406f74b9481274fc6f9fbf94b12b686831"
+    },
+    {
+      "message": "ManualControlSetpoint",
+      "message_version": 0,
+      "sha256": "73a320c1957efeba07914dc54695e1f20d874b577e7eed430d7d2ff04ae1e950"
+    },
+    {
+      "message": "VehicleCommand",
+      "message_version": 0,
+      "sha256": "4afad5d4cfc7cf4d8f8ffb14ef786175be1ece179b334be4a9b8939f0a2b1bbf"
+    },
+    {
+      "message": "OffboardControlMode",
+      "message_version": null,
+      "sha256": "8bd6fa373300e5bd35ade9d34ba0e1f470b880bf5d5b2f5c9316957bbe2a40e7"
+    },
+    {
+      "message": "VehicleLandDetected",
+      "message_version": 0,
+      "sha256": "479ef4ed2bdf80acd4fe1d5cca988ee3dfe49e703494339eb7b62a01f00632f8"
+    },
+    {
+      "message": "VehicleCommandAck",
+      "message_version": 0,
+      "sha256": "c3b3f42ef255678d0b112435183ba546ba772abd74e498448f8294c520ed3b8c"
+    }
+  ],
+  "note": "Current board firmware DDS graph not connected; this checks selected host SDK only."
+}

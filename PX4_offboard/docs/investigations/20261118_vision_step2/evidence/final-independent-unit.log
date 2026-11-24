@@ -1,0 +1,35 @@
+test_initial_missing_data_does_not_latch_unused_mission (tests.test_mission_cached_demand.CachedDemandTests) ... ok
+test_invalid_target_clears_terminal_and_frozen_phase_demands (tests.test_mission_cached_demand.CachedDemandTests) ... ok
+test_duplicate_snapshot_cannot_refresh_same_measurement (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_identity_duplicate_never_renews_and_regression_needs_epoch (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_identity_restart_quarantines_retired_source (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_independent_receive_and_source_deadlines (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_interpolation_at_measurement_time_no_first_sample_zeroing (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_invalid_replay_cannot_revalidate_same_raw_sample (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_local_reset_discards_old_image_history (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_malformed_ready_snapshot_consumes_all_samples_before_rejection (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_multiple_publishers_and_clock_regression_fail (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_nan_frame_nonunit_attitude_and_alignment_reject (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_optional_omega_is_none_not_fake_zero (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_quaternion_sign_equivalence_and_pitch_right_vector (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_attitude_reset_and_writer_restart_change_epoch (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_coordinates_and_absolute_local_origin (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_dead_reckoning_and_invalid_last_payload_revoke (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_duplicate_raw_sample_does_not_extend_receive_ttl (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_invalid_new_sample_cannot_be_repaired_with_same_stamp (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_local_reset_explicit_invalid_then_new_epoch (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_multiple_publishers_and_host_clock_regression_revoke (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_nan_and_invalid_quaternion_revoke (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_old_future_zero_and_sample_after_envelope_rejected (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_omega_independently_stales_without_zero_fallback (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_omega_optional_policy_explicit (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_position_and_velocity_valid_are_independent (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_regressed_sample_latches_until_new_writer_epoch (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_source_age_and_monotonic_age_both_required (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_time_alignment_not_just_independent_freshness (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_yaw_90_degree_and_tilt (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 0.089s
+
+OK

@@ -1,0 +1,6 @@
+    611     590 27.2 Ssl        03:12 /home/orangepi/fc01-old/install/lib/jikl_fc01_system/fc01_system_node --ros-args --disable-external-lib-logs --params-file /home/orangepi/FC01_navigation/runtime.yaml -p socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_ahjo1a_9/control.sock
+   1098    1083  0.0 Ss         00:00 bash -c ps -eo pid,ppid,pcpu,stat,etime,args | grep -E "(781|839|prebuilt|ldd|fc01_system)"; systemctl show fc01-navigation.service -p MainPID -p ActiveState -p WorkingDirectory
+   1101    1098  0.0 S          00:00 grep -E (781|839|prebuilt|ldd|fc01_system)
+MainPID=590
+WorkingDirectory=/home/orangepi/fc01-old
+ActiveState=active

@@ -1,0 +1,114 @@
+Agent transport CONNECTED: UART /dev/ttyS2 115200; PID=70573
+WAITING: 控制器已启动，等待飞控反馈
+HEIGHT_HOLD: native recovery
+STOPPING: 等待原生退出
+STOPPING: 原生控制器退出，code=0
+STOPPED: 后台待命已停止
+��
+WAITING: clean_eof: 控制台连接已关闭；没有残缺消息；原生控制器退出，code=7
+WAITING: UART disappeared during reconnect；原生控制器退出，code=7
+STOPPED: 后台待命已停止
+flags_and_transport_history_cannot_be_revived_by_valid_timing (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_native_valid_future_source_timestamp_does_not_extend_display_lifetime (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_sample_expiry_preserves_current_fault_and_recovery_diagnostics (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_supervisor_state_age_and_saved_snapshot_elapsed_both_consume_ttl (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_normal_paused_silent_stale_and_disconnected_real_ipc_controls (tests.test_navigation_feedback_freshness.LiveMonitorFreshnessTests) ... ok
+test_clean_eof_is_recorded_separately_from_normal_native_exit (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_closed_native_action_gate_labels_preparation_as_diagnostic (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... test_complete_feedback_and_ipc_failure_survive_nonzero_native_exit (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_current_safety_remains_fault_when_aircraft_feedback_is_stale (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_diagnostic_gates_do_not_hide_fault_or_revive_historical_feedback (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_expired_ready_feedback_never_prompts_manual_arming (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_explicit_unconfirmed_liftoff_never_displays_height_hold_as_ready (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_invalid_tail_stops_live_peer_without_waiting_for_another_read_event (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_native_signal_exit_keeps_signal_identity (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_old_safety_is_history_after_disconnect_snapshot_expiry_or_process_change (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_preparation_diagnostics_explain_stale_sources_and_preflight_without_admission (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_preparation_wait_names_ground_blocker_with_healthy_rc_and_data (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_program_arm_disabled_does_not_disable_valid_manual_rc_guidance (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_recovery_details_tolerate_missing_and_nonfinite_timing (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_recovery_explains_expired_sample_and_independent_fresh_rest_blocker (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_recovery_never_revives_historical_detector_or_takeover_observations (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_recovery_observations_explicitly_retain_their_snapshot_age (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_recovery_reports_actual_takeover_with_fresh_status (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_recovery_view_preserves_first_fault_and_prioritizes_actual_runtime_block (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_recovery_view_shows_specific_core_wait_and_omits_normal_ready_without_fault (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_recovery_view_uses_core_block_when_runtime_has_none_and_labels_stale_history (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_retry_retains_history_age_ipc_error_and_native_exit (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_silent_live_controller_cannot_refresh_aircraft_feedback (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_unknown_native_gates_cannot_prompt_manual_arming (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_view_adds_snapshot_elapsed_time_to_feedback_age (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_view_distinguishes_local_thrust_commit_from_px4_adoption (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_view_labels_history_even_when_supervisor_snapshot_is_fresh (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_view_requires_native_fresh_flags_and_explains_missing_height (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_view_shows_current_feedback_only_with_valid_age_and_native_flags (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_view_shows_native_height_reason_and_expected_observed_slots (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_actual_generated_rc_configuration_is_valid (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_actual_native_rejects_automatic_arm_in_manual_route (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_all_valid_mode_slots_are_accepted_by_actual_native_config (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_check_session_is_accepted_by_actual_native_config (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_flight_session_is_accepted_by_actual_native_config (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_native_validator_rejects_legacy_flight_flag_in_attitude_mode (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_closed_read_only_view_does_not_stop_or_manage_service (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_current_native_fault_survives_expired_aircraft_feedback (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_current_service_instance_controls_snapshot_validity (tests.test_navigation_service.NavigationServiceTests) ... FAIL
+test_diagnostic_mode_closes_every_action_authority_and_visual_gate (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_flight_test_requires_explicit_confirmation (tests.test_navigation_service.NavigationServiceTests) ... usage: python3 -m unittest [-h] [--mode {diagnostic,flight-test}]
+                           [--flight-test] [--confirm-flight-test]
+                           [--file FILE] [--prefix PREFIX]
+                           [--build-dir BUILD_DIR] [--require-existing-agent]
+                           [--require-rc-safe]
+                           [{run,prepare-config,validate-env,check-config,probe,build}]
+python3 -m unittest: error: Flight Test 必须同时提供 --confirm-flight-test；不会隐式开启动作门
+ok
+test_historical_phase_cannot_override_retry_or_channel_failure (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_load_profile_uses_bundle_candidate_and_writes_mode_metadata (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_load_profile_uses_settings_slot_and_preserves_base_when_omitted (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_mode_slot_is_configurable_and_rejects_invalid_values (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_native_fault_overrides_connected_and_ready_is_distinct (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_navigation_profile_keeps_program_arm_disabled_and_numeric_limits (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_old_binary_without_lifecycle_marker_is_not_accepted (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_old_or_disconnected_safety_cannot_override_transport_status (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_private_controller_does_not_require_the_sdk_controller_binary (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_release_entry_and_native_controller_share_the_current_identity (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_role_metadata_does_not_override_actual_native_gate_values (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_service_runs_private_native_with_status_only_and_graceful_recovery (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_shipped_mode_candidates_start_with_closed_gates (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_unknown_aircraft_feedback_cannot_become_ready (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_view_rejects_previous_boot_and_malformed_time (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_current_supervisor_boot_controller_and_ipc_state_identity_required (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_feedback_cutoff_remains_separate_from_current_process_and_readiness_facts (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_navigation_window_display_does_not_recreate_arm_deadline (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_ready_requires_current_native_phase_and_ground_zero_committed_zero_stream (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_dds_loss_and_expired_raw_samples_revoke_ready_display (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_historical_ready_is_stale_after_process_boot_or_identity_change (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_native_arm_window_and_wrong_slot_evidence_are_not_invented (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_ready_label_cannot_outlive_native_phase_or_ground_zero_stream (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+
+======================================================================
+FAIL: test_closed_native_action_gate_labels_preparation_as_diagnostic (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) (closed='flight_actions_enabled')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_diagnostics.py", line 528, in test_closed_native_action_gate_labels_preparation_as_diagnostic
+    self.assertIn('[DIAGNOSTIC]', view)
+AssertionError: '[DIAGNOSTIC]' not found in 'FC01 导航控制  [STALE]\n原因：原生飞行动作门未确认\n最近反馈（历史，0.1 秒前；当前飞机状态未知）：模式 Offboard  armed=False  相对高度：0.42 m\n最近动作门（历史）：flight_actions_enabled=false  takeoff_enabled=true  arm_enabled=false（程序解锁）  flight_enabled=false（通用控制入口）\n起飞平台：未知 m  心跳预发送提交：0  日志丢弃：0\n导航档位：期望 未知 / 观测 未知\n请以飞控和遥控器的实际反馈确认飞机状态。\n窗口只显示状态。关闭窗口/Ctrl+C 不会停止控制服务。'
+
+======================================================================
+FAIL: test_closed_native_action_gate_labels_preparation_as_diagnostic (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) (closed='takeoff_enabled')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_diagnostics.py", line 528, in test_closed_native_action_gate_labels_preparation_as_diagnostic
+    self.assertIn('[DIAGNOSTIC]', view)
+AssertionError: '[DIAGNOSTIC]' not found in 'FC01 导航控制  [STALE]\n原因：原生飞行动作门未确认\n最近反馈（历史，0.1 秒前；当前飞机状态未知）：模式 Offboard  armed=False  相对高度：0.42 m\n最近动作门（历史）：flight_actions_enabled=true  takeoff_enabled=false  arm_enabled=false（程序解锁）  flight_enabled=false（通用控制入口）\n起飞平台：未知 m  心跳预发送提交：0  日志丢弃：0\n导航档位：期望 未知 / 观测 未知\n请以飞控和遥控器的实际反馈确认飞机状态。\n窗口只显示状态。关闭窗口/Ctrl+C 不会停止控制服务。'
+
+======================================================================
+FAIL: test_current_service_instance_controls_snapshot_validity (tests.test_navigation_service.NavigationServiceTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_service.py", line 491, in test_current_service_instance_controls_snapshot_validity
+    self.assertIn(
+AssertionError: 'STARTING' not found in 'FC01 导航控制  [STALE]\n原因：历史状态不属于当前服务或本次启动；等待新的原生状态\n最近反馈（历史，1.1 秒前；当前飞机状态未知）：模式 Stabilized  armed=False  相对高度：0.01 m\n最近动作门（历史）：flight_actions_enabled=未知  takeoff_enabled=未知  arm_enabled=未知（程序解锁）  flight_enabled=未知（通用控制入口）\n起飞平台：未知 m  心跳预发送提交：0  日志丢弃：0\n导航档位：期望 未知 / 观测 未知\n请以飞控和遥控器的实际反馈确认飞机状态。\n窗口只显示状态。关闭窗口/Ctrl+C 不会停止控制服务。'
+
+----------------------------------------------------------------------
+Ran 72 tests in 15.616s
+
+FAILED (failures=3)

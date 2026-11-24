@@ -1,0 +1,233 @@
+{
+  "repository": "https://github.com/korbenname/fly",
+  "commit": "c4b32b92455a9c25fb1bce1262e8426f249f8521",
+  "imported_packages": [
+    "fc01_vision",
+    "fc01_mission",
+    "fc01_bringup"
+  ],
+  "excluded_duplicate_package": "target/src/jikl_fc01_system",
+  "license_note": "No upstream LICENSE file in pinned tree; imported source attribution retained. No license grant invented.",
+  "original_files": [
+    {
+      "path": "src/fc01_vision/CMakeLists.txt",
+      "git_blob_sha1": "628953ebfce6a650faaf2baaff7cc50053771812",
+      "sha256": "8614660bf73b6bdf8a516da6a7be38c94acea91c996609073c490d3360c957b4"
+    },
+    {
+      "path": "src/fc01_vision/README.md",
+      "git_blob_sha1": "6343241ca5350f6c0725d1a8beecb691cf452624",
+      "sha256": "0d12fc870bead83d055b5c9fa907167d2275d5dd73e0161d0cdd657fcb762d9e"
+    },
+    {
+      "path": "src/fc01_vision/config/vision.yaml",
+      "git_blob_sha1": "80267bd446b9482a9a723bccf8ccf6bf3618e5da",
+      "sha256": "ecb7df71d47fdf575af357be23eb563df22194a101474fbc3d8343547c8f3971"
+    },
+    {
+      "path": "src/fc01_vision/include/fc01_vision/camera_source.hpp",
+      "git_blob_sha1": "fe1b714d384836bc4fa25216bdc31d9154ba1dd1",
+      "sha256": "4a0e08f110d784ec31facb55fc88257ce0b5247dfdd44ce932d4b76e1e3384b7"
+    },
+    {
+      "path": "src/fc01_vision/include/fc01_vision/color_detector.hpp",
+      "git_blob_sha1": "9992a70d09677efbea6dae10d8874adc309d15f9",
+      "sha256": "b78f6ada5d7dbfc66efe962744bc814164ce595c7b76961e34921f5c73e63429"
+    },
+    {
+      "path": "src/fc01_vision/include/fc01_vision/debug_draw.hpp",
+      "git_blob_sha1": "455ce4c693f58b7d7c42a8f269c7bead78d11de8",
+      "sha256": "8129a4aa49427cce3c42fc9901da8f44131bf27c174604595b0268bf055f20e5"
+    },
+    {
+      "path": "src/fc01_vision/include/fc01_vision/param_utils.hpp",
+      "git_blob_sha1": "f55b3b8e71ff8228767a92b61dcc092747ac5f53",
+      "sha256": "7c4f070686266ea1215837e847f88f44dfdd59f675a984715b49a68826ffa23a"
+    },
+    {
+      "path": "src/fc01_vision/include/fc01_vision/target_estimator.hpp",
+      "git_blob_sha1": "87913f8deacd147806a18591e2334990a86dab1f",
+      "sha256": "85a7a845bbd1f25700c22a8036b42e7c0eff2d60d0b2bf18c26bdf97b8efb81d"
+    },
+    {
+      "path": "src/fc01_vision/include/fc01_vision/tuning_window.hpp",
+      "git_blob_sha1": "30eb6353be1ecb9a0a84d587da3f6d4f9ad7053a",
+      "sha256": "23006f2c00fe5c809d4a8219590e1e93ccd945cff182f5b56a62175f79c8ecda"
+    },
+    {
+      "path": "src/fc01_vision/include/fc01_vision/types.hpp",
+      "git_blob_sha1": "2d8fc5be9e24c3992e9c7eacf10df62d70954f42",
+      "sha256": "0917d79d3ec28985ffcbf69b2fed8eaee1c584001e6be3525e33c47bba38c006"
+    },
+    {
+      "path": "src/fc01_vision/include/fc01_vision/vision_node.hpp",
+      "git_blob_sha1": "b4a336737948a1bf07e02ea64af0be8d1fcccc1e",
+      "sha256": "9495e72510a67ce0b9ab6e1e86018294d1b383ea249d0ca941eaefc10ab50b24"
+    },
+    {
+      "path": "src/fc01_vision/include/fc01_vision/vision_pipeline.hpp",
+      "git_blob_sha1": "34b3b1c12767330b031e65c7ddee2bcc6b6e88e9",
+      "sha256": "44746ad300296be132d4d0fa7ca0a5e18b7253d35c7ac2fbefea206d67dc331e"
+    },
+    {
+      "path": "src/fc01_vision/include/fc01_vision/vision_state_adapter.hpp",
+      "git_blob_sha1": "4d5536ca673e45c7a33e312ec616dc39dc619825",
+      "sha256": "1586f940965ca466d95684b081f758cbf9ce649dcd27ad1224172cb1e6aa4afe"
+    },
+    {
+      "path": "src/fc01_vision/launch/vision.launch.py",
+      "git_blob_sha1": "e3631c9983ff282b49a3a8129fae284a227fae2f",
+      "sha256": "2870e2d8f520f2aad694552afba14d12d93f91a09a2b57c65e29bb98c721125e"
+    },
+    {
+      "path": "src/fc01_vision/package.xml",
+      "git_blob_sha1": "f458c0cf2b13e3ca3c4186ee5fd1b288a6096c9d",
+      "sha256": "13cd970797d22b2f53a926b01f5cba3ea904a42cb66f751a8a56d9f502ca60a6"
+    },
+    {
+      "path": "src/fc01_vision/src/camera_source.cpp",
+      "git_blob_sha1": "896f6c6ca57d65cb39afc7fe33a7ed86379a1463",
+      "sha256": "ceb62374e77dec5270027595fa63fe2f20b5f5bf139d4c056970fb45f57f15ed"
+    },
+    {
+      "path": "src/fc01_vision/src/color_detector.cpp",
+      "git_blob_sha1": "50595e452fa1f795efe1bb7dc219d591763a359f",
+      "sha256": "96911f6e44d439d872275e54e447589ac5ae7a9f868082c5d506efe1b909cffc"
+    },
+    {
+      "path": "src/fc01_vision/src/debug_draw.cpp",
+      "git_blob_sha1": "5c4c3476a224a21a71d5663cbe899ae6d8b9e514",
+      "sha256": "67ed5f1ce22b9068c5215e3f6e61a64f1bb37d8a2766556008e204aadd36b807"
+    },
+    {
+      "path": "src/fc01_vision/src/main.cpp",
+      "git_blob_sha1": "fc6737f68363d694a1700ab3f5f2efe240d6769b",
+      "sha256": "52c953c0b076a69168529cd3f1fa18accdb1733b8aa2ec803c74f886d601e2e5"
+    },
+    {
+      "path": "src/fc01_vision/src/param_utils.cpp",
+      "git_blob_sha1": "94c5c720fda5278bdaa1f97d7fa8f980018eba0b",
+      "sha256": "38c9200a295de13280ef26506a106fe840fbc896355569ea7e616950aa9beb19"
+    },
+    {
+      "path": "src/fc01_vision/src/target_estimator.cpp",
+      "git_blob_sha1": "d85bbe170d5a96df741b3825c16d2aa0c7b754e1",
+      "sha256": "87da31c9a69b4689441d98be5ff285df7399e61aa82846bc65729ba5d64e4584"
+    },
+    {
+      "path": "src/fc01_vision/src/tuning_window.cpp",
+      "git_blob_sha1": "1b0e72745f137dc87e1390bdf6a25773c612e019",
+      "sha256": "80408c666b9a4740f6f95275c14748658d5b3165025f8dfa441271470940b3b0"
+    },
+    {
+      "path": "src/fc01_vision/src/vision_image_node.cpp",
+      "git_blob_sha1": "44c0b84b11db33f4e6f4304d9eb14761ec8385a4",
+      "sha256": "ec96c5b893679fd817af0c9f169fd0d5145f8655b8ac2c01ad2ddad5986eeebd"
+    },
+    {
+      "path": "src/fc01_vision/src/vision_node.cpp",
+      "git_blob_sha1": "a78c035e35fd483db17cf5add4e4a7e7e0a41672",
+      "sha256": "0cefa3561318748bad2c31025ef12536c7a1bd85a994626a88868bb1acd3a8a0"
+    },
+    {
+      "path": "src/fc01_vision/src/vision_pipeline.cpp",
+      "git_blob_sha1": "b92982c5c46dd24d4b4e4b1cac0723961c0d8726",
+      "sha256": "7cb0e176d72e0e3875b290645c892222b159618898135797ba341c86cfdfa43b"
+    },
+    {
+      "path": "src/fc01_vision/src/vision_state_adapter.cpp",
+      "git_blob_sha1": "ebc8c30a0699ba957f75beb3fecc312f273caba6",
+      "sha256": "6eb7531603c3fb6a0da038d3969d03980173381e0ea95128930d9e160beed0af"
+    },
+    {
+      "path": "src/fc01_vision/tools/vision_demo.cpp",
+      "git_blob_sha1": "61993de7ebb06280234391883b51aa4105f86a97",
+      "sha256": "fdad9481dfc273b8cb08e740624addbbcd247d5257641a979b66a9c2b7ead934"
+    },
+    {
+      "path": "src/fc01_vision/tools/vision_selftest.cpp",
+      "git_blob_sha1": "3b1034a5f7616e1d46c634020d8b8efc68e937e6",
+      "sha256": "aa33aec39b7d7191db06014662b44f5cd93e8dfbc28d5143dc898516c2aa3561"
+    },
+    {
+      "path": "src/fc01_mission/README.md",
+      "git_blob_sha1": "81fb6a83e8c7a0644bb28d6c6500081ecadbae04",
+      "sha256": "5a6c7c778cbfc2adb11948457f9d6ca585fde17b93b2bf39d8d0060213c603f1"
+    },
+    {
+      "path": "src/fc01_mission/config/mission.yaml",
+      "git_blob_sha1": "bfb4696c30a210881f97e4b89dd1f8b47d7d0c26",
+      "sha256": "367b3f9f574a64d60b5f4c80fa6d180ddfff250f64f13b1bbdd78bff4f1a4fd2"
+    },
+    {
+      "path": "src/fc01_mission/fc01_mission/__init__.py",
+      "git_blob_sha1": "cf6efeda9ae030411f3964a6348c14066e373331",
+      "sha256": "4ccba050cfd138121e793f608b0f21123b796192dcc2aa55d1927b837706d6d8"
+    },
+    {
+      "path": "src/fc01_mission/fc01_mission/mission_node.py",
+      "git_blob_sha1": "6b7962920ea177c8fe964079532463de712c9d7a",
+      "sha256": "10397063e6a97be05b1dda1b9e8505952657031df262402ffc6037eb97b46db2"
+    },
+    {
+      "path": "src/fc01_mission/launch/mission.launch.py",
+      "git_blob_sha1": "37eb35e60dece4a176ae125dbf6d1288038d21b8",
+      "sha256": "b692c7628501ecf6cb68caff8f16498323ec1d27c806f05529bc7c6190ddfacd"
+    },
+    {
+      "path": "src/fc01_mission/package.xml",
+      "git_blob_sha1": "8e750ce49ba0e284e6340cec1cfb7eecaf3456e4",
+      "sha256": "3bf369baa55654cb88d3b465980231ca5d65a156ad6842d5455095f8fa3f9c41"
+    },
+    {
+      "path": "src/fc01_mission/resource/fc01_mission",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/fc01_mission/setup.cfg",
+      "git_blob_sha1": "bebb0ae126deb98e03423fd65520235b19e1409d",
+      "sha256": "ace8d9d85b113c71bbc8ecd428b10c65b698d975a6e4fdc8cea44957c56293c8"
+    },
+    {
+      "path": "src/fc01_mission/setup.py",
+      "git_blob_sha1": "b47ca4dcb937a6b32365d8b743ccfc7441a32006",
+      "sha256": "ddb88f58fbca1e6cc76269a5aa1c8ee18236e638189bcafe24d6472e50eac0fe"
+    },
+    {
+      "path": "src/fc01_bringup/README.md",
+      "git_blob_sha1": "8bb88d78be9ad5c87b49d800758c96e1ce567457",
+      "sha256": "cc71ab0ab224d1fb1414004341381835cd45708308d22f274bc09a5d1b530a67"
+    },
+    {
+      "path": "src/fc01_bringup/fc01_bringup/__init__.py",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/fc01_bringup/launch/robot.launch.py",
+      "git_blob_sha1": "b0ae1073a9a2760e6f4ba9ed66cfacd144a56607",
+      "sha256": "de6dd4258b393ade240fe6ad94b9bedcd3cc08731d8617583e9f66a4c29e78f5"
+    },
+    {
+      "path": "src/fc01_bringup/package.xml",
+      "git_blob_sha1": "e49113f25a2610db94b75d3c53d497340b387315",
+      "sha256": "bd3503b390ed2204d9a856c126c5aba3962d431e70baef242e038df33f11525a"
+    },
+    {
+      "path": "src/fc01_bringup/resource/fc01_bringup",
+      "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "src/fc01_bringup/setup.cfg",
+      "git_blob_sha1": "1dd9228a0ffc95106f917801e035fb041601f2ff",
+      "sha256": "28d6ad41bba3ae2aeae9cf7606e20ac71a6c9aaf73a2a964f19e19a9e1d95547"
+    },
+    {
+      "path": "src/fc01_bringup/setup.py",
+      "git_blob_sha1": "c7c81471a5141448cd4bf4582dd28bc9f1b887f5",
+      "sha256": "e0d04c16ff0d6369681c7a089e9b424ffa1879a5de696da770cf97b0801b5c04"
+    }
+  ]
+}

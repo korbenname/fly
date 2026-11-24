@@ -1,0 +1,3 @@
+[INFO] [1794939578.667024560] [fc01_mission]: consuming /fc01/vision/target_observation (takes precedence over /fc01/vision/target_relative)
+[INFO] [1794939578.668599717] [fc01_mission]: mission: mode=push, vision=/fc01/vision/target_observation, plant pose=/fc01/platform/state, out=/step3/velocity at 50 Hz
+FC01_NATIVE_MISSION_GATE_PASS 12 named checks

@@ -1,0 +1,41 @@
+{
+  "result": "PASS",
+  "checks": [
+    "real_dds_bridge_absolute_origin_and_independent_fields",
+    "real_cpp_image_to_actual_mission_three_new_frames_lock",
+    "repeated_raw_image_revokes_not_renews",
+    "old_and_empty_images_explicit_invalid",
+    "yaw90_left_right_lever_arm_once_and_absolute_waypoint_origin",
+    "tilted_quaternion_wxyz_to_xyzw_geometry",
+    "duplicate_observation_and_disconnect_do_not_renew",
+    "tracking_nan_and_calibration_invalid_revoke",
+    "omega_velocity_and_local_alone_invalid_revoke_target",
+    "local_and_attitude_coordinate_resets_clear_lock",
+    "camera_session_restart_requires_new_lock",
+    "cached_terminal_demand_latched_off_after_invalid_target_and_recovery",
+    "default_disabled_zero_invalid_commands_and_unconfirmed_origin_status"
+  ],
+  "environment": "Ubuntu22.04 x86_64 Humble synthetic DDS and images",
+  "hardware_flight_test": false,
+  "source_stamp_preserved": true,
+  "final_sensor_status": {
+    "kind": "mission_sensors",
+    "control_authority": false,
+    "platform_input_mode": "px4",
+    "missing": [
+      "WAYPOINT_ORIGIN_UNCONFIRMED"
+    ],
+    "target_locked": true,
+    "continuous_new_frames": 3,
+    "target_reason": "TARGET_LOCKED",
+    "platform_reason": "OK",
+    "guidance_invalidated": true,
+    "origin_id": "px4_local:123:0:1:0:0:0",
+    "last_target_stamp_ns": 1794936210878315422,
+    "target_source": [
+      "restarted-camera",
+      0
+    ],
+    "note": "传感器状态；原生到高、RC和飞行准入尚未接入本任务"
+  }
+}

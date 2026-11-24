@@ -27,6 +27,8 @@ struct BoundaryContext {
   // PX4 NED z 地面零点，单位 m，向下为正；飞行高度由 reference_z-feedback.z 得到，向上为正。
   double reference_z{};
   std::uint8_t reference_z_reset{}, reference_vz_reset{}, reference_quat_reset{};
+  TakeoffPositionAnchor takeoff_position_anchor;
+  bool liftoff_confirmed{};
   authority::State authority;
   bool offboard_observed{};
   // confirmed表示Core已经观察的证明，pending表示未结束的意图，committed表示本地实际出口提交。
@@ -45,6 +47,8 @@ struct BoundaryContext {
   // 仅已有 HeightHold 视觉计划及同一当前输入可置真；绝非新 VelocityCommand 诊断入口的权限。
   bool visual_motion_allowed{};
   Quaternion visual_target_q{1, 0, 0, 0};
+  std::optional<horizontal::PositionIntent> position_intent;
+  std::optional<std::array<double, 2>> position_descent_hold;
   bool rc_manual_arm_proven{}, rc_arm_evidence_pending{}, rc_navigation_zero_allowed{};
   std::uint64_t rc_manual_armed_time{};
 };
@@ -94,6 +98,7 @@ enum class BoundaryReason {
   AutonomousUnconfirmed,
   InvalidAuthority,
   CommandedAttitude,
+  PositionFeedback,
   DisarmPhase,
   DisarmGround,
   ReleasePhase,
@@ -196,6 +201,8 @@ inline const char* name(BoundaryReason reason) {
     return "INVALID_AUTHORITY_MODE";
   case BoundaryReason::CommandedAttitude:
     return "COMMAND_TARGET_NOT_LEVEL_LOCKED_YAW";
+  case BoundaryReason::PositionFeedback:
+    return "PX4_TAKEOFF_POSITION_FEEDBACK_OR_FRAME_INVALID";
   case BoundaryReason::DisarmPhase:
     return "DISARM_WRONG_PHASE";
   case BoundaryReason::DisarmGround:
@@ -330,6 +337,17 @@ inline Decision boundary_health(const BoundaryContext& c) {
     return deny(BoundaryReason::VerticalInvalid);
   if (!std::isfinite(s.z) || !std::isfinite(s.vz) || !std::isfinite(s.stationary_seconds))
     return deny(BoundaryReason::NonfiniteTelemetry);
+  if (c.config.px4_takeoff_position_hold) {
+    if (!c.takeoff_position_anchor.matches(s.takeoff_position))
+      return deny(BoundaryReason::PositionFeedback);
+    if ((rc_stage(c.phase) || c.phase == Phase::ArmedGround) &&
+        (c.takeoff_position_anchor.error(s.takeoff_position) > c.config.height_tolerance ||
+         std::hypot(s.takeoff_position.vx, s.takeoff_position.vy) > c.config.ground_vz_tolerance))
+      return deny(BoundaryReason::FlightEnvelope);
+    if (c.flight_started && c.takeoff_position_anchor.error(s.takeoff_position) >
+                                c.config.takeoff_position_safety_radius())
+      return deny(BoundaryReason::FlightEnvelope);
+  }
   // 最终出口可能看到不同于Core计算时的新上下文；bench即使已清flight_started，仍保留相邻控制观察跳变门。
   // 此门检查相对最近实际观察的z/vz不连续，不把旧armed地面z0的累计漂移误当成跳变。
   if (bench_release && (!c.bench_sample_guard_ready || !std::isfinite(c.bench_sample_z) ||
@@ -561,7 +579,8 @@ inline Decision rc_preparation_output_policy(const BoundaryContext& c, bool thru
   return boundary_authority(c);
 }
 // 姿态目标必须先通过原始 double 推力检查，避免转 float 下溢把微小非零错误伪装成零推力。
-inline Decision attitude_publication_policy(const BoundaryContext& c, const Output& output) {
+inline Decision setpoint_publication_policy(const BoundaryContext& c, const Output& output,
+                                            bool position_motion) {
   if (!output.publish)
     return deny(BoundaryReason::OutputDisabled);
   for (double x : output.thrust)
@@ -569,7 +588,7 @@ inline Decision attitude_publication_policy(const BoundaryContext& c, const Outp
       return deny(BoundaryReason::InvalidOutput);
   // 例如微小double非零在转float时可能变0；必须在转换之前拒绝准备阶段非零。
   // 这里拒绝错误计划，不夹紧、不替它补成零，也不修改Core的原输出。
-  const bool thrust_nonzero = nonzero(output.thrust);
+  const bool thrust_nonzero = nonzero(output.thrust) || position_motion;
   if ((stage_one(c.phase) || c.config.bench_arm_only_enabled) && thrust_nonzero)
     return deny(BoundaryReason::StageOneNonzero);
   if (!normalized(output.q))
@@ -700,5 +719,11 @@ inline std::string flight_gates_json(const Config& c) {
          ",\"takeoff_enabled\":" + boolean(c.takeoff_enabled) +
          ",\"flight_parameters_confirmed\":" + boolean(c.parameters_confirmed) +
          ",\"bench_arm_only_enabled\":" + boolean(c.bench_arm_only_enabled);
+}
+
+inline Decision attitude_publication_policy(const BoundaryContext& c, const Output& output) {
+  if (c.config.px4_takeoff_position_hold || output.position_intent)
+    return deny(BoundaryReason::WrongProfile);
+  return setpoint_publication_policy(c, output, false);
 }
 } // namespace fc01::attitude

@@ -1,0 +1,35 @@
+{
+  "archive_sha256": "5d0f2f150ca9ce70cb86138e512c0af2c768a3267a9ad48820bce60fdbfb1373",
+  "source_commit": "4c85a9e7e0c66193104164f03f4bfe28de709b9d",
+  "environment": "Full QEMU-system-aarch64 6.2 Cortex-A72 2core/2GiB; Ubuntu22.04 ARM64; generic5.15; real systemd249 PID1; ROS2Humble; synthetic grounded disarmed PX4 DDS; no-XRCE PTY dummyAgent",
+  "install_pass": true,
+  "initial_preflight_freshness_refusal": true,
+  "direct_status_exit": 0,
+  "direct_status_display": "STALE: retained snapshot age1.2s; no current-aircraft validity claimed",
+  "direct_status_created_cache": false,
+  "strict_verifier_after_status_pass": true,
+  "repeat_pass": true,
+  "repeat_same_pid": 2370,
+  "shared_agent_pid": 588,
+  "old_cached_failed_release_preserved": true,
+  "old_cache_sha256": "00da579a6844553ecbdcf0bf5641c5b099a1a4150428a214b3eea9243f7fc3cb",
+  "new_rollback_pass": false,
+  "new_rollback_attempts": 3,
+  "new_rollback_result": "all refused strict snapshot freshness before stopping candidate; no runtime/config/service changes",
+  "runtime_changes": {
+    "fc01_entry_version": {
+      "before": "20261112.1",
+      "after": "20261117_stage3_fix1"
+    },
+    "fc01_config_source_path": {
+      "before": "/home/orangepi/fc01-old/native/config/flight_test.yaml",
+      "after": "/home/orangepi/FC01_versions/20261117_stage3_fix1/deployment/runtime.yaml"
+    }
+  },
+  "target_height_m": 1.23,
+  "rc_navigation_slot": 1,
+  "automatic_arm": false,
+  "visual_navigation": false,
+  "hardware_verified": false,
+  "shutdown": "candidate stopped normally in disarmed ground fixture, then VM poweroff; not a rollback success"
+}

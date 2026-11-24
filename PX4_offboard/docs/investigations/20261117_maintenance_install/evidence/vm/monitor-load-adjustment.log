@@ -1,0 +1,9 @@
+● fc01-maintenance-proc-monitor.service - /usr/bin/python3 /root/fc01-maintenance-process-monitor.py
+     Loaded: loaded (/run/systemd/transient/fc01-maintenance-proc-monitor.service; transient)
+  Transient: yes
+     Active: active (running) since Tue 2026-11-17 13:42:46 UTC; 416ms ago
+   Main PID: 1501 (python3)
+      Tasks: 1 (limit: 2290)
+     Memory: 1.3M
+        CPU: 192ms
+{"elapsed_s": 984.6014897919999, "counts": {"setpoint": 0, "command": 0, "heartbeat": 0}, "input_publishers": {"/fmu/out/vehicle_status_v1": 0, "/fmu/out/vehicle_local_position": 0, "/fmu/out/manual_control_setpoint": 0, "/fmu/out/manual_control_switches": 0, "/fmu/out/vehicle_attitude": 0, "/fmu/out/vehicle_land_detected": 0}}

@@ -1,0 +1,19 @@
+Starting >>> jikl_fc01_system
+Finished <<< jikl_fc01_system [37.6s]
+Starting >>> fc01_mission
+Finished <<< fc01_mission [0.55s]
+Starting >>> fc01_vision
+--- stderr: fc01_vision
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    PYTHON_EXECUTABLE
+
+
+---
+Finished <<< fc01_vision [15.2s]
+Starting >>> fc01_bringup
+Finished <<< fc01_bringup [0.54s]
+
+Summary: 4 packages finished [54.1s]
+  1 package had stderr output: fc01_vision

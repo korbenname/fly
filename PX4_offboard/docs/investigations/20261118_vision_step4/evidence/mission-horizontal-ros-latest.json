@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checks": [
+    "before_native_height_no_intent",
+    "aligned_bounded_waypoint_only_after_native_height",
+    "continuous_target_lock_switches_nav_withdraw_to_real_envelope",
+    "full_tilt_projection_preserves_world_xy_without_vertical_authority",
+    "active_target_loss_clears_xy_yaw_and_latches_no_waypoint_fallback",
+    "target_restart_cannot_clear_active_fault",
+    "native_authority_revocation_remains_stronger_than_mission",
+    "no_controller_or_px4_command_publishers_started"
+  ],
+  "environment": "Ubuntu22.04 x86_64 ROS2 Humble, synthetic Platform/NativeFlight/TargetObservation",
+  "hardware": false,
+  "flight_controller_started": false,
+  "envelopes_received": 57
+}

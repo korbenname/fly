@@ -18,9 +18,11 @@ import launcher
 import navigation
 import navigation_service
 import standby
+from tests.test_navigation_feedback_freshness import ready_state
 
 
 STATE = dict(
+    controller_pid=2057,
     kind='state',
     phase='HEIGHT_HOLD',
     reason='last native feedback',
@@ -79,12 +81,15 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='FAULT',
             reason=state['reason'],
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=state,
             state_age_seconds=0.1,
             feedback_current=False,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1000)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000)
         self.assertIn('位置/垂直速度消息过期（消息年龄 0.537 秒，阈值 0.500 秒）', view)
         self.assertIn('位置/垂直速度中间件接收至回调间隔 0.497 秒', view)
         self.assertIn('飞控尚未确认静止（at_rest=false）', view)
@@ -106,16 +111,19 @@ class NavigationDiagnosticsTests(unittest.TestCase):
         row = dict(
             status='FAULT',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=state,
             state_age_seconds=0.1,
             feedback_current=False,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1000)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000)
         self.assertNotIn('恢复条件快照', view)
         state.update(land_fresh=True, status_fresh=True)
         row['ipc_error'] = dict(kind='clean_eof')
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1000)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000)
         self.assertNotIn('恢复条件快照', view)
 
     # 新鲜 status 明确报告人工接管时应显示真实阻塞，不能错误归因于消息过期。
@@ -129,12 +137,15 @@ class NavigationDiagnosticsTests(unittest.TestCase):
         row = dict(
             status='FAULT',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=state,
             state_age_seconds=0.1,
             feedback_current=True,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1000)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000)
         self.assertIn('飞控仍报告人工接管有效', view)
         self.assertNotIn('消息过期', view)
 
@@ -156,12 +167,15 @@ class NavigationDiagnosticsTests(unittest.TestCase):
         row = dict(
             status='FAULT',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=state,
             state_age_seconds=0.1,
             feedback_current=True,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1000)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000)
         self.assertIn('恢复条件快照（0.1 秒前）：位置/垂直速度消息过期', view)
         self.assertNotIn('nan', view)
         self.assertNotIn('inf', view)
@@ -182,12 +196,15 @@ class NavigationDiagnosticsTests(unittest.TestCase):
         row = dict(
             status='FAULT',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=state,
             state_age_seconds=0.1,
             feedback_current=True,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1001)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1001)
         self.assertIn('恢复条件快照（1.1 秒前）', view)
         self.assertNotIn('恢复条件观测', view)
         self.assertNotIn('已准备：CH5 手动解锁', view)
@@ -208,6 +225,9 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='WAITING',
             reason='等待飞控新鲜状态和本地位置',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=state,
             state_age_seconds=0.05,
@@ -216,7 +236,7 @@ class NavigationDiagnosticsTests(unittest.TestCase):
         for displayed in (row, navigation_service.describe_row(row)):
             with self.subTest(described=displayed is not row):
                 view = navigation.render_status(
-                    displayed, dict(ActiveState='active', MainPID='10'), now=1000
+                    displayed, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000
                 )
                 self.assertIn('[FAULT]', view)
                 self.assertIn('故障锁存（当前控制器）：HEIGHT_OR_SPEED_ENVELOPE_EXCEEDED', view)
@@ -231,13 +251,13 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='FAULT',
             reason='previous fault',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=dict(STATE, phase='SAFETY', reason='previous fault'),
             state_age_seconds=0.1,
             feedback_current=True,
-            controller_pid=2057,
-            state_controller_pid=2057,
-            boot_id='current',
         )
         info = dict(ActiveState='active', MainPID='10', boot_id='current')
         cases = [
@@ -275,12 +295,15 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='READY_WAIT_ARM',
             reason='previous ready',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=state,
             state_age_seconds=0.1,
             feedback_current=False,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1000)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000)
         self.assertIn('[STALE]', view)
         self.assertNotIn('已准备：CH5 手动解锁', view)
         self.assertNotIn('实际模式：', view)
@@ -313,12 +336,15 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='WAITING',
             reason=state['reason'],
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=state,
             state_age_seconds=0.1,
             feedback_current=True,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1000)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000)
         self.assertIn('准备等待：未确认静止；持续静止不足（0.00/2.00 秒）', view)
         self.assertNotIn('遥控源/链路未就绪', view)
         self.assertNotIn('飞控预检未通过', view)
@@ -339,12 +365,15 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='WAITING',
             reason=state['reason'],
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=state,
             state_age_seconds=0.1,
             feedback_current=False,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1000)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000)
         self.assertIn('位置/垂直速度反馈过期', view)
         self.assertIn('源消息时间戳过期或无效', view)
         self.assertIn('飞控预检未通过', view)
@@ -374,12 +403,15 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='FAULT',
             reason='first fault',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=state,
             state_age_seconds=0.1,
             feedback_current=True,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1000)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000)
         self.assertIn('[FAULT]', view)
         self.assertIn('首次故障 OPERATOR_TAKEOVER_LATCHED', view)
         self.assertIn('最新故障 DDS_STATUS_LAND_OR_FAILSAFE_STALE', view)
@@ -402,12 +434,15 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='FAULT',
             reason='old fault',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=state,
             state_age_seconds=20,
             feedback_current=False,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1000)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000)
         self.assertIn('最近恢复观察（历史）', view)
         self.assertIn('恢复等待原因：WAIT_NEW_LAND_SAMPLE', view)
         self.assertIn('恢复地面窗口：未知', view)
@@ -426,12 +461,15 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='FAULT',
             reason='fault',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=state,
             state_age_seconds=0.1,
             feedback_current=True,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1000)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000)
         self.assertIn('恢复等待原因：WAIT_GROUND_DWELL', view)
         self.assertNotIn('RC_CORE_RESTART_CONDITIONS_NOT_MET', view)
         state.update(
@@ -441,7 +479,7 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             rc_recovery_window_active=False,
         )
         view = navigation.render_status(
-            dict(row, status='READY_WAIT_ARM'), dict(ActiveState='active', MainPID='10'), now=1000
+            dict(row, status='READY_WAIT_ARM'), dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000
         )
         self.assertNotIn('恢复观察', view)
         self.assertNotIn('恢复等待原因', view)
@@ -466,6 +504,9 @@ class NavigationDiagnosticsTests(unittest.TestCase):
                     status='CONNECTED',
                     reason='transport okay',
                     supervisor_pid=10,
+                    controller_pid=2057,
+                    state_controller_pid=2057,
+                    boot_id='current',
                     updated_unix=1000,
                     state=state,
                     state_age_seconds=0.1,
@@ -482,7 +523,7 @@ class NavigationDiagnosticsTests(unittest.TestCase):
                 # label and optimistic supervisor role metadata.
                 for displayed in (described, dict(row, status='READY_WAIT_ARM')):
                     view = navigation.render_status(
-                        displayed, dict(ActiveState='active', MainPID='10'), now=1000
+                        displayed, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000
                     )
                     self.assertIn('[DIAGNOSTIC]', view)
                     self.assertIn(closed + '=false', view)
@@ -493,7 +534,8 @@ class NavigationDiagnosticsTests(unittest.TestCase):
     # arm_enabled=false 只禁止程序解锁，不能误禁已经具备其他合同的人工 RC 解锁路线。
     def test_program_arm_disabled_does_not_disable_valid_manual_rc_guidance(self):
         state = dict(
-            STATE,
+            ready_state(),
+            controller_pid=2057,
             phase='RC_READY_WAIT_ARM',
             armed=False,
             reason='RC_READY_WAIT_CH5_MANUAL_ARM',
@@ -507,6 +549,9 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='CONNECTED',
             reason='transport okay',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=state,
             state_age_seconds=0.1,
@@ -515,7 +560,7 @@ class NavigationDiagnosticsTests(unittest.TestCase):
         described = navigation_service.describe_row(row)
         self.assertEqual(described['status'], 'READY_WAIT_ARM')
         view = navigation.render_status(
-            described, dict(ActiveState='active', MainPID='10'), now=1000
+            described, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000
         )
         self.assertIn('已准备：CH5 手动解锁', view)
         self.assertIn('arm_enabled=false（程序解锁）', view)
@@ -528,6 +573,9 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='READY_WAIT_ARM',
             reason='ready',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=state,
             state_age_seconds=0.1,
@@ -535,9 +583,10 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             flight_actions_enabled=True,
             rc_navigation_enabled=True,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1000)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000)
         self.assertIn('flight_actions_enabled=未知', view)
-        self.assertIn('尚未确认飞行动作许可', view)
+        self.assertIn('[STALE]', view)
+        self.assertIn('原生飞行动作门未确认', view)
         self.assertNotIn('已准备：CH5 手动解锁', view)
 
     # 诊断模式不能遮盖当前控制器 FAULT，也不能把历史门状态提升为当前诊断 READY。
@@ -553,6 +602,9 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='CONNECTED',
             reason='transport okay',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=state,
             state_age_seconds=0.1,
@@ -562,7 +614,7 @@ class NavigationDiagnosticsTests(unittest.TestCase):
         self.assertEqual(fault['status'], 'FAULT')
         self.assertIn(
             '[FAULT]',
-            navigation.render_status(fault, dict(ActiveState='active', MainPID='10'), now=1000),
+            navigation.render_status(fault, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000),
         )
         state['phase'] = 'RC_READY_WAIT_ARM'
         historical = dict(
@@ -570,7 +622,7 @@ class NavigationDiagnosticsTests(unittest.TestCase):
         )
         self.assertEqual(navigation_service.describe_row(historical)['status'], 'WAITING')
         view = navigation.render_status(
-            historical, dict(ActiveState='active', MainPID='10'), now=1000
+            historical, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000
         )
         self.assertIn('[WAITING]', view)
         self.assertIn('最近动作门（历史）', view)
@@ -591,12 +643,15 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='HEIGHT_HOLD',
             reason='previous phase',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=state,
             state_age_seconds=0.1,
             feedback_current=True,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1000)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000)
         self.assertIn('离地未确认', view)
         self.assertIn('WAIT_NEW_LOCAL_MOTION_SAMPLES', view)
         self.assertIn('导航未允许', view)
@@ -618,12 +673,15 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='HEIGHT_HOLD',
             reason='hold',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=state,
             state_age_seconds=0.1,
             feedback_current=True,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1000)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000)
         self.assertIn('本地推力', view)
         self.assertIn('-0.5', view)
         self.assertIn('PX4 采用尚未取证', view)
@@ -833,12 +891,15 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='WAITING',
             reason='retry after disconnect',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=STATE,
             state_age_seconds=20,
             feedback_current=False,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1001)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1001)
         self.assertIn('历史', view)
         self.assertIn('Offboard', view)
         self.assertIn('0.42 m', view)
@@ -852,12 +913,15 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='HEIGHT_HOLD',
             reason='hold',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=STATE,
             state_age_seconds=2.5,
             feedback_current=True,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1001)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1001)
         self.assertIn('历史', view)
         self.assertNotIn('实际模式：', view)
         self.assertNotIn('正在定高', view)
@@ -869,12 +933,15 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='WAITING',
             reason='feedback not ready',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=dict(STATE, local_fresh=False, relative_height_m=None),
             state_age_seconds=0.1,
             feedback_current=True,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1001)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1001)
         self.assertNotIn('实际模式：', view)
         self.assertIn('relative_height_m', view)
 
@@ -884,6 +951,9 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='WAITING',
             reason='ground reference pending',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=dict(
                 STATE,
@@ -895,7 +965,7 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             state_age_seconds=0.1,
             feedback_current=True,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1001)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1001)
         self.assertIn('REFERENCE_NOT_READY', view)
         self.assertIn('期望 1 / 观测 2', view)
 
@@ -905,12 +975,15 @@ class NavigationDiagnosticsTests(unittest.TestCase):
             status='HEIGHT_HOLD',
             reason='hold',
             supervisor_pid=10,
+            controller_pid=2057,
+            state_controller_pid=2057,
+            boot_id='current',
             updated_unix=1000,
             state=STATE,
             state_age_seconds=0.1,
             feedback_current=True,
         )
-        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10'), now=1000.1)
+        view = navigation.render_status(row, dict(ActiveState='active', MainPID='10', boot_id='current'), now=1000.1)
         self.assertIn('实际模式：Offboard', view)
         self.assertIn('反馈年龄：0.2 秒', view)
         self.assertIn('正在定高', view)

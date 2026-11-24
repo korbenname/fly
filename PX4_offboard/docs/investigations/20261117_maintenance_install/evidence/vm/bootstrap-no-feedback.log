@@ -1,0 +1,8 @@
+MainPID=0
+WorkingDirectory=/home/orangepi/FC01_versions/20261117_stage3_fix1
+ActiveState=inactive
+DropInPaths=/etc/systemd/system/fc01-navigation.service.d/zzzz-fc01-prebuilt.conf
+337 bash -c systemctl stop fc01-navigation.service fc01-vm-ground.service fc01-vm-agent.service; systemctl disable fc01-vm-ground.service fc01-vm-agent.service; systemctl show fc01-navigation.service -p MainPID -p ActiveState -p WorkingDirectory -p DropInPaths; pgrep -af "vm-ground|MicroXRCEAgent|fc01_system_node" || true; ls -l /dev/ttyS2; uname -m; systemctl is-system-running
+crw-rw---- 1 root dialout 4, 66 Oct 12 07:45 /dev/ttyS2
+aarch64
+running

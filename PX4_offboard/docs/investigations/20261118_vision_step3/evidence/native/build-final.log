@@ -1,0 +1,310 @@
+Consolidate compiler generated dependencies of target test_20261116_diagnostics
+Consolidate compiler generated dependencies of target test_20261116_height_contract
+[  0%] Building CXX object CMakeFiles/test_20261116_diagnostics.dir/test_20261116_diagnostics.cpp.o
+[  0%] Building CXX object CMakeFiles/test_20261116_height_contract.dir/test_20261116_height_contract.cpp.o
+[  1%] Linking CXX executable test_20261116_height_contract
+[  2%] Linking CXX executable test_20261116_diagnostics
+[  2%] Built target test_20261116_height_contract
+Consolidate compiler generated dependencies of target test_20261116_takeoff_expiry
+[  2%] Building CXX object CMakeFiles/test_20261116_takeoff_expiry.dir/test_20261116_takeoff_expiry.cpp.o
+[  2%] Built target test_20261116_diagnostics
+Consolidate compiler generated dependencies of target test_ack_lifecycle
+[  3%] Building CXX object CMakeFiles/test_ack_lifecycle.dir/test_ack_lifecycle.cpp.o
+[  3%] Linking CXX executable test_ack_lifecycle
+[  4%] Linking CXX executable test_20261116_takeoff_expiry
+[  4%] Built target test_ack_lifecycle
+Consolidate compiler generated dependencies of target test_async_log
+[  5%] Built target test_async_log
+Consolidate compiler generated dependencies of target test_attitude_runtime
+[  6%] Building CXX object CMakeFiles/test_attitude_runtime.dir/test_attitude_runtime.cpp.o
+[  6%] Built target test_20261116_takeoff_expiry
+Consolidate compiler generated dependencies of target test_attitude_vertical
+[  8%] Built target test_attitude_vertical
+Consolidate compiler generated dependencies of target test_attitude_wire
+[  8%] Building CXX object CMakeFiles/test_attitude_wire.dir/test_attitude_wire.cpp.o
+[  9%] Linking CXX executable test_attitude_wire
+[  9%] Built target test_attitude_wire
+Consolidate compiler generated dependencies of target test_authority_boundary
+[  9%] Building CXX object CMakeFiles/test_authority_boundary.dir/test_authority_boundary.cpp.o
+[ 10%] Linking CXX executable test_authority_boundary
+[ 10%] Linking CXX executable test_attitude_runtime
+[ 10%] Built target test_authority_boundary
+Consolidate compiler generated dependencies of target test_authority_review
+[ 11%] Building CXX object CMakeFiles/test_authority_review.dir/test_authority_review.cpp.o
+[ 11%] Built target test_attitude_runtime
+Consolidate compiler generated dependencies of target test_authority_runtime
+[ 12%] Building CXX object CMakeFiles/test_authority_runtime.dir/test_authority_runtime.cpp.o
+[ 12%] Linking CXX executable test_authority_review
+[ 12%] Linking CXX executable test_authority_runtime
+[ 12%] Built target test_authority_review
+Consolidate compiler generated dependencies of target test_authority_telemetry
+[ 12%] Built target test_authority_runtime
+[ 13%] Building CXX object CMakeFiles/test_authority_telemetry.dir/test_authority_telemetry.cpp.o
+Consolidate compiler generated dependencies of target test_c_m1_r2_regressions
+[ 14%] Building CXX object CMakeFiles/test_c_m1_r2_regressions.dir/test_c_m1_r2_regressions.cpp.o
+[ 14%] Linking CXX executable test_authority_telemetry
+[ 14%] Built target test_authority_telemetry
+Consolidate compiler generated dependencies of target test_control_diagnostics
+[ 14%] Building CXX object CMakeFiles/test_control_diagnostics.dir/test_control_diagnostics.cpp.o
+[ 15%] Linking CXX executable test_control_diagnostics
+[ 15%] Built target test_control_diagnostics
+Consolidate compiler generated dependencies of target test_m1_r3_interleavings
+[ 16%] Linking CXX executable test_c_m1_r2_regressions
+[ 16%] Building CXX object CMakeFiles/test_m1_r3_interleavings.dir/test_m1_r3_interleavings.cpp.o
+[ 16%] Built target test_c_m1_r2_regressions
+Consolidate compiler generated dependencies of target test_m1_r4_ack_isolation
+[ 17%] Building CXX object CMakeFiles/test_m1_r4_ack_isolation.dir/test_m1_r4_ack_isolation.cpp.o
+[ 18%] Linking CXX executable test_m1_r3_interleavings
+[ 18%] Built target test_m1_r3_interleavings
+Consolidate compiler generated dependencies of target test_m1_r6_recovery
+[ 19%] Building CXX object CMakeFiles/test_m1_r6_recovery.dir/test_m1_r6_recovery.cpp.o
+[ 19%] Linking CXX executable test_m1_r4_ack_isolation
+[ 19%] Built target test_m1_r4_ack_isolation
+Consolidate compiler generated dependencies of target test_m1_s10_1hz_recovery
+[ 20%] Building CXX object CMakeFiles/test_m1_s10_1hz_recovery.dir/test_m1_s10_1hz_recovery.cpp.o
+[ 20%] Linking CXX executable test_m1_r6_recovery
+[ 20%] Linking CXX executable test_m1_s10_1hz_recovery
+[ 20%] Built target test_m1_r6_recovery
+Consolidate compiler generated dependencies of target test_m1_safety
+[ 21%] Building CXX object CMakeFiles/test_m1_safety.dir/test_m1_safety.cpp.o
+[ 21%] Built target test_m1_s10_1hz_recovery
+Consolidate compiler generated dependencies of target test_offline_timing
+[ 21%] Building CXX object CMakeFiles/test_offline_timing.dir/test_offline_timing.cpp.o
+[ 22%] Linking CXX executable test_offline_timing
+[ 22%] Built target test_offline_timing
+Consolidate compiler generated dependencies of target test_overnight_stage5_vision_contract
+[ 23%] Built target test_overnight_stage5_vision_contract
+Consolidate compiler generated dependencies of target test_overnight_stage6_ipc
+[ 24%] Built target test_overnight_stage6_ipc
+Consolidate compiler generated dependencies of target test_p0_attitude_audit
+[ 25%] Built target test_p0_attitude_audit
+Consolidate compiler generated dependencies of target test_p0_tilt_trigger_evidence
+[ 26%] Building CXX object CMakeFiles/test_p0_tilt_trigger_evidence.dir/test_p0_tilt_trigger_evidence.cpp.o
+[ 27%] Linking CXX executable test_m1_safety
+[ 27%] Built target test_m1_safety
+Consolidate compiler generated dependencies of target test_parent_lifetime
+[ 29%] Built target test_parent_lifetime
+Consolidate compiler generated dependencies of target test_publication_boundary
+[ 29%] Building CXX object CMakeFiles/test_publication_boundary.dir/test_publication_boundary.cpp.o
+[ 30%] Linking CXX executable test_publication_boundary
+[ 30%] Built target test_publication_boundary
+Consolidate compiler generated dependencies of target test_publication_runtime
+[ 30%] Building CXX object CMakeFiles/test_publication_runtime.dir/test_publication_runtime.cpp.o
+[ 30%] Linking CXX executable test_p0_tilt_trigger_evidence
+[ 30%] Built target test_p0_tilt_trigger_evidence
+Consolidate compiler generated dependencies of target test_r62_armed_ground
+[ 30%] Building CXX object CMakeFiles/test_r62_armed_ground.dir/test_r62_armed_ground.cpp.o
+[ 31%] Linking CXX executable test_publication_runtime
+[ 31%] Built target test_publication_runtime
+Consolidate compiler generated dependencies of target test_r62_disarmed_prep_progress
+[ 32%] Building CXX object CMakeFiles/test_r62_disarmed_prep_progress.dir/test_r62_disarmed_prep_progress.cpp.o
+[ 33%] Linking CXX executable test_r62_armed_ground
+[ 33%] Built target test_r62_armed_ground
+Consolidate compiler generated dependencies of target test_r62b_ground_release
+[ 34%] Building CXX object CMakeFiles/test_r62b_ground_release.dir/test_r62b_ground_release.cpp.o
+[ 34%] Linking CXX executable test_r62_disarmed_prep_progress
+[ 34%] Built target test_r62_disarmed_prep_progress
+Consolidate compiler generated dependencies of target test_r62c_arm_only
+[ 35%] Building CXX object CMakeFiles/test_r62c_arm_only.dir/test_r62c_arm_only.cpp.o
+[ 35%] Linking CXX executable test_r62b_ground_release
+[ 35%] Built target test_r62b_ground_release
+Consolidate compiler generated dependencies of target test_r62c_review2_disarm
+[ 35%] Building CXX object CMakeFiles/test_r62c_review2_disarm.dir/test_r62c_review2_disarm.cpp.o
+[ 36%] Linking CXX executable test_r62c_arm_only
+[ 36%] Built target test_r62c_arm_only
+Consolidate compiler generated dependencies of target test_r62c_review2_recorded_trace
+[ 36%] Building CXX object CMakeFiles/test_r62c_review2_recorded_trace.dir/test_r62c_review2_recorded_trace.cpp.o
+[ 37%] Linking CXX executable test_r62c_review2_disarm
+[ 37%] Built target test_r62c_review2_disarm
+Consolidate compiler generated dependencies of target test_r62c_review3_bench_grace
+[ 37%] Building CXX object CMakeFiles/test_r62c_review3_bench_grace.dir/test_r62c_review3_bench_grace.cpp.o
+[ 38%] Linking CXX executable test_r62c_review2_recorded_trace
+[ 38%] Built target test_r62c_review2_recorded_trace
+Consolidate compiler generated dependencies of target test_r62c_review4_post_disarm
+[ 39%] Building CXX object CMakeFiles/test_r62c_review4_post_disarm.dir/test_r62c_review4_post_disarm.cpp.o
+[ 40%] Linking CXX executable test_r62c_review3_bench_grace
+[ 40%] Built target test_r62c_review3_bench_grace
+Consolidate compiler generated dependencies of target test_r62c_review_admission
+[ 41%] Building CXX object CMakeFiles/test_r62c_review_admission.dir/test_r62c_review_admission.cpp.o
+[ 41%] Linking CXX executable test_r62c_review_admission
+[ 41%] Built target test_r62c_review_admission
+Consolidate compiler generated dependencies of target test_r62c_review_clock
+[ 42%] Building CXX object CMakeFiles/test_r62c_review_clock.dir/test_r62c_review_clock.cpp.o
+[ 42%] Linking CXX executable test_r62c_review4_post_disarm
+[ 42%] Built target test_r62c_review4_post_disarm
+Consolidate compiler generated dependencies of target test_r62c_review_diagnostics
+[ 42%] Building CXX object CMakeFiles/test_r62c_review_diagnostics.dir/test_r62c_review_diagnostics.cpp.o
+[ 43%] Linking CXX executable test_r62c_review_clock
+[ 44%] Linking CXX executable test_r62c_review_diagnostics
+[ 44%] Built target test_r62c_review_clock
+[ 44%] Built target test_r62c_review_diagnostics
+Consolidate compiler generated dependencies of target test_r62c_review_exit
+Consolidate compiler generated dependencies of target test_r62c_review_sample
+[ 44%] Building CXX object CMakeFiles/test_r62c_review_exit.dir/test_r62c_review_exit.cpp.o
+[ 44%] Building CXX object CMakeFiles/test_r62c_review_sample.dir/test_r62c_review_sample.cpp.o
+[ 45%] Linking CXX executable test_r62c_review_sample
+[ 45%] Built target test_r62c_review_sample
+Consolidate compiler generated dependencies of target test_r632_bounded_liftoff_reserve
+[ 46%] Building CXX object CMakeFiles/test_r632_bounded_liftoff_reserve.dir/test_r632_bounded_liftoff_reserve.cpp.o
+[ 47%] Linking CXX executable test_r62c_review_exit
+[ 47%] Built target test_r62c_review_exit
+Consolidate compiler generated dependencies of target test_r632_height_tracking
+[ 48%] Building CXX object CMakeFiles/test_r632_height_tracking.dir/test_r632_height_tracking.cpp.o
+[ 48%] Linking CXX executable test_r632_bounded_liftoff_reserve
+[ 48%] Built target test_r632_bounded_liftoff_reserve
+Consolidate compiler generated dependencies of target test_r632_prompt_176_ack
+[ 49%] Building CXX object CMakeFiles/test_r632_prompt_176_ack.dir/test_r632_prompt_176_ack.cpp.o
+[ 49%] Linking CXX executable test_r632_height_tracking
+[ 49%] Built target test_r632_height_tracking
+Consolidate compiler generated dependencies of target test_r632_ramp_height_guard
+[ 49%] Building CXX object CMakeFiles/test_r632_ramp_height_guard.dir/test_r632_ramp_height_guard.cpp.o
+[ 50%] Linking CXX executable test_r632_prompt_176_ack
+[ 50%] Built target test_r632_prompt_176_ack
+Consolidate compiler generated dependencies of target test_r632_ramp_schedule
+[ 50%] Building CXX object CMakeFiles/test_r632_ramp_schedule.dir/test_r632_ramp_schedule.cpp.o
+[ 51%] Linking CXX executable test_r632_ramp_height_guard
+[ 51%] Built target test_r632_ramp_height_guard
+Consolidate compiler generated dependencies of target test_r632_skewed_176_ack
+[ 51%] Building CXX object CMakeFiles/test_r632_skewed_176_ack.dir/test_r632_skewed_176_ack.cpp.o
+[ 52%] Linking CXX executable test_r632_ramp_schedule
+[ 52%] Built target test_r632_ramp_schedule
+Consolidate compiler generated dependencies of target test_r632_takeoff_plant
+[ 53%] Building CXX object CMakeFiles/test_r632_takeoff_plant.dir/test_r632_takeoff_plant.cpp.o
+[ 54%] Linking CXX executable test_r632_skewed_176_ack
+[ 54%] Built target test_r632_skewed_176_ack
+Consolidate compiler generated dependencies of target test_r63_normal_arm_evidence
+[ 55%] Building CXX object CMakeFiles/test_r63_normal_arm_evidence.dir/test_r63_normal_arm_evidence.cpp.o
+[ 55%] Linking CXX executable test_r632_takeoff_plant
+[ 55%] Built target test_r632_takeoff_plant
+Consolidate compiler generated dependencies of target test_r63_takeoff_candidate
+[ 56%] Building CXX object CMakeFiles/test_r63_takeoff_candidate.dir/test_r63_takeoff_candidate.cpp.o
+[ 56%] Linking CXX executable test_r63_normal_arm_evidence
+[ 56%] Built target test_r63_normal_arm_evidence
+Consolidate compiler generated dependencies of target test_r6_1_recovery_custody
+[ 57%] Building CXX object CMakeFiles/test_r6_1_recovery_custody.dir/test_r6_1_recovery_custody.cpp.o
+[ 57%] Linking CXX executable test_r63_takeoff_candidate
+[ 57%] Built target test_r63_takeoff_candidate
+Consolidate compiler generated dependencies of target test_r6_partial_sinks
+[ 57%] Building CXX object CMakeFiles/test_r6_partial_sinks.dir/test_r6_partial_sinks.cpp.o
+[ 58%] Linking CXX executable test_r6_1_recovery_custody
+[ 58%] Built target test_r6_1_recovery_custody
+Consolidate compiler generated dependencies of target test_r6_publication_audit
+[ 59%] Built target test_r6_publication_audit
+Consolidate compiler generated dependencies of target test_rc_before_ready_recovery
+[ 60%] Building CXX object CMakeFiles/test_rc_before_ready_recovery.dir/test_rc_before_ready_recovery.cpp.o
+[ 61%] Linking CXX executable test_r6_partial_sinks
+[ 61%] Built target test_r6_partial_sinks
+Consolidate compiler generated dependencies of target test_rc_interface
+[ 62%] Building CXX object CMakeFiles/test_rc_interface.dir/test_rc_interface.cpp.o
+[ 62%] Linking CXX executable test_rc_before_ready_recovery
+[ 62%] Built target test_rc_before_ready_recovery
+Consolidate compiler generated dependencies of target test_rc_navigation
+[ 63%] Building CXX object CMakeFiles/test_rc_navigation.dir/test_rc_navigation.cpp.o
+[ 63%] Linking CXX executable test_rc_interface
+[ 63%] Built target test_rc_interface
+Consolidate compiler generated dependencies of target test_rc_navigation_telemetry
+[ 64%] Building CXX object CMakeFiles/test_rc_navigation_telemetry.dir/test_rc_navigation_telemetry.cpp.o
+[ 65%] Linking CXX executable test_rc_navigation_telemetry
+[ 65%] Built target test_rc_navigation_telemetry
+Consolidate compiler generated dependencies of target test_rc_preparation_defer
+[ 65%] Building CXX object CMakeFiles/test_rc_preparation_defer.dir/test_rc_preparation_defer.cpp.o
+[ 65%] Linking CXX executable test_rc_navigation
+[ 65%] Built target test_rc_navigation
+Consolidate compiler generated dependencies of target test_rc_recovery_boundaries
+[ 65%] Building CXX object CMakeFiles/test_rc_recovery_boundaries.dir/test_rc_recovery_boundaries.cpp.o
+[ 66%] Linking CXX executable test_rc_preparation_defer
+[ 66%] Built target test_rc_preparation_defer
+Consolidate compiler generated dependencies of target test_rc_recovery_progress
+[ 67%] Building CXX object CMakeFiles/test_rc_recovery_progress.dir/test_rc_recovery_progress.cpp.o
+[ 68%] Linking CXX executable test_rc_recovery_boundaries
+[ 68%] Built target test_rc_recovery_boundaries
+Consolidate compiler generated dependencies of target test_rc_reprepare_admission
+[ 69%] Building CXX object CMakeFiles/test_rc_reprepare_admission.dir/test_rc_reprepare_admission.cpp.o
+[ 69%] Linking CXX executable test_rc_recovery_progress
+[ 69%] Built target test_rc_recovery_progress
+Consolidate compiler generated dependencies of target test_rc_reprepare_diagnostics
+[ 70%] Building CXX object CMakeFiles/test_rc_reprepare_diagnostics.dir/test_rc_reprepare_diagnostics.cpp.o
+[ 70%] Linking CXX executable test_rc_reprepare_admission
+[ 70%] Built target test_rc_reprepare_admission
+Consolidate compiler generated dependencies of target test_rc_takeoff_stage
+[ 71%] Building CXX object CMakeFiles/test_rc_takeoff_stage.dir/test_rc_takeoff_stage.cpp.o
+[ 71%] Linking CXX executable test_rc_reprepare_diagnostics
+[ 71%] Built target test_rc_reprepare_diagnostics
+Consolidate compiler generated dependencies of target test_rc_timing_recovery
+[ 71%] Building CXX object CMakeFiles/test_rc_timing_recovery.dir/test_rc_timing_recovery.cpp.o
+[ 72%] Linking CXX executable test_rc_takeoff_stage
+[ 72%] Built target test_rc_takeoff_stage
+Consolidate compiler generated dependencies of target test_receive_events
+[ 72%] Building CXX object CMakeFiles/test_receive_events.dir/test_receive_events.cpp.o
+[ 73%] Linking CXX executable test_rc_timing_recovery
+[ 73%] Built target test_rc_timing_recovery
+Consolidate compiler generated dependencies of target test_receive_schedule
+[ 74%] Building CXX object CMakeFiles/test_receive_schedule.dir/test_receive_schedule.cpp.o
+[ 75%] Linking CXX executable test_receive_events
+[ 75%] Built target test_receive_events
+Consolidate compiler generated dependencies of target test_receive_schedule_safety
+[ 76%] Built target test_receive_schedule_safety
+Consolidate compiler generated dependencies of target test_runtime_history_capacity
+[ 77%] Building CXX object CMakeFiles/test_runtime_history_capacity.dir/test_runtime_history_capacity.cpp.o
+[ 77%] Linking CXX executable test_receive_schedule
+[ 77%] Built target test_receive_schedule
+Consolidate compiler generated dependencies of target test_socket
+[ 78%] Building CXX object CMakeFiles/test_socket.dir/test_socket.cpp.o
+[ 79%] Linking CXX executable test_socket
+[ 79%] Built target test_socket
+Consolidate compiler generated dependencies of target test_socket_boundary
+[ 80%] Built target test_socket_boundary
+Consolidate compiler generated dependencies of target test_stage2_control_trace
+[ 80%] Building CXX object CMakeFiles/test_stage2_control_trace.dir/test_stage2_control_trace.cpp.o
+[ 80%] Linking CXX executable test_runtime_history_capacity
+[ 80%] Built target test_runtime_history_capacity
+Consolidate compiler generated dependencies of target test_stage2_publication_trace
+[ 80%] Building CXX object CMakeFiles/test_stage2_publication_trace.dir/test_stage2_publication_trace.cpp.o
+[ 81%] Linking CXX executable test_stage2_publication_trace
+[ 81%] Built target test_stage2_publication_trace
+Consolidate compiler generated dependencies of target test_stage2_runtime_trace
+[ 82%] Building CXX object CMakeFiles/test_stage2_runtime_trace.dir/test_stage2_runtime_trace.cpp.o
+[ 83%] Linking CXX executable test_stage2_control_trace
+[ 83%] Built target test_stage2_control_trace
+Consolidate compiler generated dependencies of target test_stage3_async_log_resources
+[ 84%] Built target test_stage3_async_log_resources
+Consolidate compiler generated dependencies of target test_stage3_native_navigation_gate
+[ 85%] Building CXX object CMakeFiles/test_stage3_native_navigation_gate.dir/test_stage3_native_navigation_gate.cpp.o
+[ 85%] Linking CXX executable test_stage2_runtime_trace
+[ 86%] Linking CXX executable test_stage3_native_navigation_gate
+[ 86%] Built target test_stage2_runtime_trace
+Consolidate compiler generated dependencies of target test_stage3_publication_combinations
+[ 86%] Building CXX object CMakeFiles/test_stage3_publication_combinations.dir/test_stage3_publication_combinations.cpp.o
+[ 86%] Built target test_stage3_native_navigation_gate
+Consolidate compiler generated dependencies of target test_stage3_state_invariants
+[ 86%] Building CXX object CMakeFiles/test_stage3_state_invariants.dir/test_stage3_state_invariants.cpp.o
+[ 87%] Linking CXX executable test_stage3_publication_combinations
+[ 87%] Built target test_stage3_publication_combinations
+Consolidate compiler generated dependencies of target test_stage3_vision_resource_budget
+[ 88%] Built target test_stage3_vision_resource_budget
+Consolidate compiler generated dependencies of target test_takeoff_evidence
+[ 89%] Building CXX object CMakeFiles/test_takeoff_evidence.dir/test_takeoff_evidence.cpp.o
+[ 90%] Linking CXX executable test_stage3_state_invariants
+[ 90%] Built target test_stage3_state_invariants
+Consolidate compiler generated dependencies of target test_velocity_command_input
+[ 91%] Built target test_velocity_command_input
+Consolidate compiler generated dependencies of target test_vertical_feedback_guard
+[ 93%] Built target test_vertical_feedback_guard
+Consolidate compiler generated dependencies of target test_vertical_feedback_regression
+[ 93%] Building CXX object CMakeFiles/test_vertical_feedback_regression.dir/test_vertical_feedback_regression.cpp.o
+[ 93%] Linking CXX executable test_takeoff_evidence
+[ 93%] Built target test_takeoff_evidence
+Consolidate compiler generated dependencies of target test_vertical_feedforward
+[ 94%] Built target test_vertical_feedforward
+Consolidate compiler generated dependencies of target test_vertical_integral_reversal
+[ 95%] Built target test_vertical_integral_reversal
+Consolidate compiler generated dependencies of target test_vertical_takeoff_ceiling
+[ 96%] Built target test_vertical_takeoff_ceiling
+Consolidate compiler generated dependencies of target test_vision_navigation
+[ 97%] Built target test_vision_navigation
+Consolidate compiler generated dependencies of target test_visual_runtime
+[ 98%] Building CXX object CMakeFiles/test_visual_runtime.dir/test_visual_runtime.cpp.o
+[ 99%] Linking CXX executable test_vertical_feedback_regression
+[ 99%] Built target test_vertical_feedback_regression
+[100%] Linking CXX executable test_visual_runtime
+[100%] Built target test_visual_runtime

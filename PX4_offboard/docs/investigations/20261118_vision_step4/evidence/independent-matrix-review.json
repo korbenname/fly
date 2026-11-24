@@ -1,0 +1,190 @@
+{
+  "reviewed_at": "2026-11-17T19:41:21.019598+00:00",
+  "reviewer": "independent read-only",
+  "scope": "actual normal ROS native input/output; synthetic PX4; x86_64 Humble",
+  "scenarios": [
+    {
+      "scenario": "feedback_stale",
+      "result_sha256": "9c1c0fdbfe06cef6434074d9db0b00c7f2c3ac67cdd203c36b64669cfa70d0e5",
+      "result": "PASS",
+      "error": null,
+      "all_gates_true": true,
+      "motion_checks": 8,
+      "observed_fault_events": [],
+      "final_phase": "SAFETY"
+    },
+    {
+      "scenario": "horizontal_feedback_invalid",
+      "result_sha256": "14446541489a0ec6e678e1c258c34c0233dbc73d7d7333ca5532e50aec82d95e",
+      "result": "PASS",
+      "error": null,
+      "all_gates_true": true,
+      "motion_checks": 9,
+      "observed_fault_events": [
+        {
+          "event": "horizontal_fault_observed",
+          "monotonic": 41866.450422004,
+          "scenario": "horizontal_feedback_invalid",
+          "reason": "VISUAL_RECOVERY_HORIZONTAL_PX4_ACTUAL_INVALID",
+          "phase": "DESCENT"
+        }
+      ],
+      "final_phase": "SAFETY"
+    },
+    {
+      "scenario": "horizontal_reset",
+      "result_sha256": "a62cb98101a7015fbb3ec6a8bb8bcdf0259b40726ac3a6a8f291943c2562bb60",
+      "result": "PASS",
+      "error": null,
+      "all_gates_true": true,
+      "motion_checks": 9,
+      "observed_fault_events": [
+        {
+          "event": "horizontal_fault_observed",
+          "monotonic": 41887.351777528,
+          "scenario": "horizontal_reset",
+          "reason": "VISUAL_RECOVERY_HORIZONTAL_INPUT_REVOKED",
+          "phase": "DESCENT"
+        }
+      ],
+      "final_phase": "SAFETY"
+    },
+    {
+      "scenario": "kill",
+      "result_sha256": "4b93024da3727dd564224467a05fd4159a9e8d6bee0830c902bc5eecaa535cfb",
+      "result": "PASS",
+      "error": null,
+      "all_gates_true": true,
+      "motion_checks": 8,
+      "observed_fault_events": [],
+      "final_phase": "SAFETY"
+    },
+    {
+      "scenario": "normal",
+      "result_sha256": "a6f5361cbd5b4d523c2bc2fe2804cb5ecfe0885f8233003e2c97c6969d44fb5d",
+      "result": "PASS",
+      "error": null,
+      "all_gates_true": true,
+      "motion_checks": 8,
+      "observed_fault_events": [],
+      "final_phase": "RC_READY_WAIT_ARM"
+    },
+    {
+      "scenario": "offboard_loss",
+      "result_sha256": "ce21dbc77d4d5a0d6c590322b3fcf558b7f053c721bea0e9f8aa529eb811fd9a",
+      "result": "PASS",
+      "error": null,
+      "all_gates_true": true,
+      "motion_checks": 8,
+      "observed_fault_events": [],
+      "final_phase": "SAFETY"
+    },
+    {
+      "scenario": "rc_takeover",
+      "result_sha256": "207438e6446a6a506f14b096071082d4074b82697ab0400335487e084b1bacf8",
+      "result": "PASS",
+      "error": null,
+      "all_gates_true": true,
+      "motion_checks": 8,
+      "observed_fault_events": [],
+      "final_phase": "SAFETY"
+    },
+    {
+      "scenario": "track_lost",
+      "result_sha256": "6a766c121dcd0316ce842bbf86e8789ffe6f7e530849fc2604a4509106d94cca",
+      "result": "PASS",
+      "error": null,
+      "all_gates_true": true,
+      "motion_checks": 9,
+      "observed_fault_events": [
+        {
+          "event": "horizontal_fault_observed",
+          "monotonic": 41761.156172878,
+          "scenario": "track_lost",
+          "reason": "VISUAL_RECOVERY_HORIZONTAL_INPUT_REVOKED",
+          "phase": "DESCENT"
+        }
+      ],
+      "final_phase": "SAFETY"
+    },
+    {
+      "scenario": "track_origin",
+      "result_sha256": "e15fc3fe4c1568ed6adc7da636f78473dbc559f0ee627fb007435531d7d68b52",
+      "result": "PASS",
+      "error": null,
+      "all_gates_true": true,
+      "motion_checks": 9,
+      "observed_fault_events": [
+        {
+          "event": "horizontal_fault_observed",
+          "monotonic": 41845.462194187,
+          "scenario": "track_origin",
+          "reason": "VISUAL_RECOVERY_HORIZONTAL_INPUT_REVOKED",
+          "phase": "DESCENT"
+        }
+      ],
+      "final_phase": "SAFETY"
+    },
+    {
+      "scenario": "track_reset",
+      "result_sha256": "13f54d5a9004f87ca6e175a2133097b0fe119b7325a2a04839845e9eaec21817",
+      "result": "PASS",
+      "error": null,
+      "all_gates_true": true,
+      "motion_checks": 9,
+      "observed_fault_events": [
+        {
+          "event": "horizontal_fault_observed",
+          "monotonic": 41824.328847448,
+          "scenario": "track_reset",
+          "reason": "VISUAL_RECOVERY_HORIZONTAL_INPUT_REVOKED",
+          "phase": "DESCENT"
+        }
+      ],
+      "final_phase": "SAFETY"
+    },
+    {
+      "scenario": "track_source",
+      "result_sha256": "f6c38326ac57994fb9981155c46b68288fb8e524fcad943e510c1b26938fc19c",
+      "result": "PASS",
+      "error": null,
+      "all_gates_true": true,
+      "motion_checks": 9,
+      "observed_fault_events": [
+        {
+          "event": "horizontal_fault_observed",
+          "monotonic": 41803.415241057,
+          "scenario": "track_source",
+          "reason": "VISUAL_RECOVERY_HORIZONTAL_INPUT_REVOKED",
+          "phase": "DESCENT"
+        }
+      ],
+      "final_phase": "SAFETY"
+    },
+    {
+      "scenario": "track_timeout",
+      "result_sha256": "1d953ff9ec63fa26f07d6af8c8c310b95c8fdc492e3e4e0e21791b43416ce498",
+      "result": "PASS",
+      "error": null,
+      "all_gates_true": true,
+      "motion_checks": 9,
+      "observed_fault_events": [
+        {
+          "event": "horizontal_fault_observed",
+          "monotonic": 41782.277373729,
+          "scenario": "track_timeout",
+          "reason": "VISUAL_RECOVERY_HORIZONTAL_TRACK_LOST_OR_WITHDRAWN",
+          "phase": "DESCENT"
+        }
+      ],
+      "final_phase": "SAFETY"
+    }
+  ],
+  "count": 12,
+  "all_pass": true,
+  "limits": [
+    "No firmware, ARM64 board, Agent, UART, camera, Position ULog, calibration or physical flight performance evidence",
+    "Seven horizontal fault scenarios cover descent entry and horizontal/yaw revocation, not completed fault landing",
+    "Fixed XY input cannot establish horizontal stability or drift performance"
+  ]
+}

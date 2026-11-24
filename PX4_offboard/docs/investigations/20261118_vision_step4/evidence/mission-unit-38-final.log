@@ -1,0 +1,43 @@
+test_initial_missing_data_does_not_latch_unused_mission (test_mission_cached_demand.CachedDemandTests) ... ok
+test_invalid_target_clears_terminal_and_frozen_phase_demands (test_mission_cached_demand.CachedDemandTests) ... ok
+test_actual_production_launch_and_config_choose_track (test_mission_horizontal.HorizontalMissionTests) ... ok
+test_before_native_height_gate_no_horizontal_or_yaw (test_mission_horizontal.HorizontalMissionTests) ... ok
+test_hold_waypoint_and_tracking_are_single_intent (test_mission_horizontal.HorizontalMissionTests) ... ok
+test_invalid_with_missing_or_nan_rotation_publishes_finite_zero (test_mission_horizontal.HorizontalMissionTests) ... ok
+test_missing_calibration_or_old_image_blocks_direct_publish (test_mission_horizontal.HorizontalMissionTests) ... ok
+test_native_revoke_after_tracking_clears_pending_velocity (test_mission_horizontal.HorizontalMissionTests) ... ok
+test_only_new_native_task_epoch_clears_tracking_failure (test_mission_horizontal.HorizontalMissionTests) ... ok
+test_standoff_too_close_retreat_and_world_vertical_ignored (test_mission_horizontal.HorizontalMissionTests) ... ok
+test_tilt_projection_retains_body_z_and_exact_attitude_stamp (test_mission_horizontal.HorizontalMissionTests) ... ok
+test_tracking_loss_latches_and_never_restarts_waypoint (test_mission_horizontal.HorizontalMissionTests) ... ok
+test_unconfirmed_or_outside_waypoint_falls_back_current_hold (test_mission_horizontal.HorizontalMissionTests) ... ok
+test_world_norm_clamp_does_not_distort_rotation (test_mission_horizontal.HorizontalMissionTests) ... ok
+test_yaw_rate_sign_bound_wrap_and_zero (test_mission_horizontal.HorizontalMissionTests) ... ok
+test_current_native_measured_hold_is_required (test_mission_native_gate.NativeGateTests) ... ok
+test_current_rechecks_original_sample_and_monotonic_age (test_mission_native_gate.NativeGateTests) ... ok
+test_duplicate_with_conflicting_safety_content_revokes (test_mission_native_gate.NativeGateTests) ... ok
+test_independent_monotonic_source_and_graph_validity (test_mission_native_gate.NativeGateTests) ... ok
+test_missing_target_and_unconfirmed_waypoint_keeps_native_hold (test_mission_native_gate.NativeGateTests) ... ok
+test_native_and_platform_reset_counters_must_match (test_mission_native_gate.NativeGateTests) ... ok
+test_no_native_gate_even_target_and_time_cannot_start_takeoff (test_mission_native_gate.NativeGateTests) ... ok
+test_old_ready_future_duplicate_and_local_progress_cannot_renew (test_mission_native_gate.NativeGateTests) ... ok
+test_production_horizontal_only_ignores_simulated_absolute_altitudes (test_mission_native_gate.NativeGateTests) ... ok
+test_restart_task_and_source_regression_revoke (test_mission_native_gate.NativeGateTests) ... ok
+test_stale_unknown_session_revokes_without_retiring_live_session (test_mission_native_gate.NativeGateTests) ... ok
+test_duplicate_snapshot_cannot_refresh_same_measurement (test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_identity_duplicate_never_renews_and_regression_needs_epoch (test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_identity_restart_quarantines_retired_source (test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_independent_receive_and_source_deadlines (test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_interpolation_at_measurement_time_no_first_sample_zeroing (test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_invalid_replay_cannot_revalidate_same_raw_sample (test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_local_reset_discards_old_image_history (test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_malformed_ready_snapshot_consumes_all_samples_before_rejection (test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_multiple_publishers_and_clock_regression_fail (test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_nan_frame_nonunit_attitude_and_alignment_reject (test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_optional_omega_is_none_not_fake_zero (test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_quaternion_sign_equivalence_and_pitch_right_vector (test_mission_sensor_contract.MissionSensorContractTests) ... ok
+
+----------------------------------------------------------------------
+Ran 38 tests in 0.846s
+
+OK

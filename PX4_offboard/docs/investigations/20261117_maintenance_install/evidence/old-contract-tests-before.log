@@ -1,0 +1,231 @@
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+======================================================================
+ERROR: test_ground_ready_prestream_does_not_require_heartbeat_off (test_navigation_prebuilt_install.InstallerTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 352, in test_ground_ready_prestream_does_not_require_heartbeat_off
+    self.assertEqual(m.require_ground(f)[0]['pid'],12)
+AttributeError: module 'navigation_prebuilt_install' has no attribute 'require_ground'
+
+======================================================================
+ERROR: test_old_or_pid_reused_snapshot_never_gets_freshened (test_navigation_prebuilt_install.InstallerTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 356, in test_old_or_pid_reused_snapshot_never_gets_freshened
+    m.validate_snapshot_age(state,100.1,90.)
+AttributeError: module 'navigation_prebuilt_install' has no attribute 'validate_snapshot_age'
+
+======================================================================
+ERROR: test_owned_agent_handoff_changed_program_is_never_accepted (test_navigation_prebuilt_install.InstallerTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 450, in test_owned_agent_handoff_changed_program_is_never_accepted
+    with self.assertRaisesRegex(m.InstallError,'摘要'):m.verify_agent(f,original,True)
+AttributeError: module 'navigation_prebuilt_install' has no attribute 'verify_agent'
+
+======================================================================
+ERROR: test_real_backend_missing_agent_requires_clean_free_uart_evidence (test_navigation_prebuilt_install.InstallerTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 459, in test_real_backend_missing_agent_requires_clean_free_uart_evidence
+    self.assertIsNone(backend.retained_agent(allow_missing=True))
+AttributeError: 'Backend' object has no attribute 'retained_agent'
+
+======================================================================
+ERROR: test_slow_service_query_precedes_latest_snapshot_read_without_extending_ttl (test_navigation_prebuilt_install.InstallerTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 400, in test_slow_service_query_precedes_latest_snapshot_read_without_extending_ttl
+    state=m.Backend.live_state(f,f.controller)
+AttributeError: type object 'Backend' has no attribute 'live_state'
+
+======================================================================
+ERROR: test_supervisor_snapshot_uses_identity_not_a_second_ipc_client (test_navigation_prebuilt_install.InstallerTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 372, in test_supervisor_snapshot_uses_identity_not_a_second_ipc_client
+    state=m.Backend.live_state(f,f.controller)
+AttributeError: type object 'Backend' has no attribute 'live_state'
+
+======================================================================
+FAIL: test_duplicate_controller_rejects_without_stop (test_navigation_prebuilt_install.InstallerTest)
+----------------------------------------------------------------------
+navigation_prebuilt_install.InstallError: 发现多个控制器，未切换服务
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 320, in test_duplicate_controller_rejects_without_stop
+    with self.assertRaisesRegex(m.InstallError,'恰好一个'):m.install(archive,sha,f)
+AssertionError: "恰好一个" does not match "发现多个控制器，未切换服务"
+
+======================================================================
+FAIL: test_ground_but_active_or_stale_rc_never_authorizes_switch (test_navigation_prebuilt_install.InstallerTest) (key='active')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 341, in test_ground_but_active_or_stale_rc_never_authorizes_switch
+    with self.assertRaises(m.InstallError):m.install(archive,sha,f)
+AssertionError: InstallError not raised
+
+======================================================================
+FAIL: test_ground_but_active_or_stale_rc_never_authorizes_switch (test_navigation_prebuilt_install.InstallerTest) (key='nav_state')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 341, in test_ground_but_active_or_stale_rc_never_authorizes_switch
+    with self.assertRaises(m.InstallError):m.install(archive,sha,f)
+AssertionError: InstallError not raised
+
+======================================================================
+FAIL: test_ground_but_active_or_stale_rc_never_authorizes_switch (test_navigation_prebuilt_install.InstallerTest) (key='heartbeat_enabled')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 341, in test_ground_but_active_or_stale_rc_never_authorizes_switch
+    with self.assertRaises(m.InstallError):m.install(archive,sha,f)
+AssertionError: InstallError not raised
+
+======================================================================
+FAIL: test_ground_but_active_or_stale_rc_never_authorizes_switch (test_navigation_prebuilt_install.InstallerTest) (key='rc_source_clock_valid')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 341, in test_ground_but_active_or_stale_rc_never_authorizes_switch
+    with self.assertRaises(m.InstallError):m.install(archive,sha,f)
+AssertionError: InstallError not raised
+
+======================================================================
+FAIL: test_ground_but_active_or_stale_rc_never_authorizes_switch (test_navigation_prebuilt_install.InstallerTest) (key='rc_mode_slot')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 341, in test_ground_but_active_or_stale_rc_never_authorizes_switch
+    with self.assertRaises(m.InstallError):m.install(archive,sha,f)
+AssertionError: InstallError not raised
+
+======================================================================
+FAIL: test_live_rc_configuration_mismatch_never_silently_inherited (test_navigation_prebuilt_install.InstallerTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 519, in test_live_rc_configuration_mismatch_never_silently_inherited
+    with self.assertRaisesRegex(m.InstallError,'RC/动作门'):m.install(archive,sha,f)
+AssertionError: InstallError not raised
+
+======================================================================
+FAIL: test_nan_or_incomplete_zero_thrust_proof_rejects (test_navigation_prebuilt_install.InstallerTest) (bad=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 330, in test_nan_or_incomplete_zero_thrust_proof_rejects
+    with self.assertRaisesRegex(m.InstallError,'零推力'):m.install(archive,sha,f)
+AssertionError: InstallError not raised
+
+======================================================================
+FAIL: test_nan_or_incomplete_zero_thrust_proof_rejects (test_navigation_prebuilt_install.InstallerTest) (bad=[0, 0, nan])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 330, in test_nan_or_incomplete_zero_thrust_proof_rejects
+    with self.assertRaisesRegex(m.InstallError,'零推力'):m.install(archive,sha,f)
+AssertionError: InstallError not raised
+
+======================================================================
+FAIL: test_nan_or_incomplete_zero_thrust_proof_rejects (test_navigation_prebuilt_install.InstallerTest) (bad=[0, 0, 1e-10])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 330, in test_nan_or_incomplete_zero_thrust_proof_rejects
+    with self.assertRaisesRegex(m.InstallError,'零推力'):m.install(archive,sha,f)
+AssertionError: InstallError not raised
+
+======================================================================
+FAIL: test_shared_agent_disappearance_is_not_treated_as_owned_handoff (test_navigation_prebuilt_install.InstallerTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 435, in test_shared_agent_disappearance_is_not_treated_as_owned_handoff
+    with self.assertRaises(m.InstallError):m.install(archive,sha,f)
+AssertionError: InstallError not raised
+
+======================================================================
+FAIL: test_unknown_or_armed_controller_rejected_without_changes (test_navigation_prebuilt_install.InstallerTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 264, in test_unknown_or_armed_controller_rejected_without_changes
+    with self.assertRaisesRegex(m.InstallError,'未解锁'):m.install(archive,sha,f)
+AssertionError: InstallError not raised
+
+======================================================================
+FAIL: test_unknown_supervisor_owned_agent_arguments_refuse_before_stop (test_navigation_prebuilt_install.InstallerTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_navigation_prebuilt_install.py", line 413, in test_unknown_supervisor_owned_agent_arguments_refuse_before_stop
+    with self.assertRaisesRegex(m.InstallError,'Agent参数'):m.install(archive,sha,f)
+AssertionError: InstallError not raised
+
+----------------------------------------------------------------------
+Ran 37 tests in 0.938s
+
+FAILED (failures=13, errors=6)

@@ -1,0 +1,24 @@
+FC01：维护切换适用于落地、拆桨、飞控断电；安装成功不等于飞行就绪。
+FC01：等待旧任务退出，已用10秒；服务=deactivating，仍存活PID=[25096, 28390]。
+FC01：等待旧任务退出，已用20秒；服务=deactivating，仍存活PID=[25096, 28390]。
+FC01：等待旧任务退出，已用30秒；服务=deactivating，仍存活PID=[25096, 28390]。
+FC01：等待旧任务退出，已用41秒；服务=deactivating，仍存活PID=[25096, 28390]。
+FC01：等待旧任务退出，已用51秒；服务=deactivating，仍存活PID=[25096, 28390]。
+FC01：等待旧任务退出，已用61秒；服务=deactivating，仍存活PID=[]。
+FC01：旧服务及所属FC01进程已退出（61.3秒）。
+FC01：等待原版软件恢复，已用10/600秒；等待原版软件启动。
+FC01：等待原版软件恢复，已用21/600秒；等待原版软件启动。
+FC01：等待原版软件恢复，已用31/600秒；等待原版软件启动。
+FC01：等待原版软件恢复，已用41/600秒；等待原版软件启动。
+FC01：等待原版软件恢复，已用51/600秒；等待原版软件启动。
+FC01：等待原版软件恢复，已用61/600秒；等待原版软件启动。
+FC01：等待原版软件恢复，已用71/600秒；等待原版软件启动。
+FC01：等待原版软件恢复，已用82/600秒；等待原版软件启动。
+FC01：等待原版软件恢复，已用92/600秒；等待原版软件启动。
+{
+  "backup": "/home/orangepi/FC01_navigation/prebuilt-backups/20261118T035408_258282Z-22282",
+  "restored_controller": "/home/orangepi/FC01_versions/20261117_stage3_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+  "restored_active": true
+}
+FC01_PREBUILT_ROLLBACK_OK
+FC01_ROLLBACK_COMMAND=bash /home/orangepi/Desktop/install_fc01.sh --rollback /home/orangepi/FC01_navigation/prebuilt-backups/20261118T035408_258282Z-22282

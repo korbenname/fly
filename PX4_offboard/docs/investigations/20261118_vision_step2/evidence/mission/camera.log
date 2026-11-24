@@ -1,0 +1,3 @@
+[INFO] [1794936207.274706754] [fc01_vision_image]: image input /step2/image, output state=/fc01/vision/target_observation relative=/fc01/vision/target_relative valid=/fc01/vision/target_valid; target shape=circle diameter=0.200 m; camera rotation configured
+[WARN] [1794936207.825642384] [fc01_vision_image]: cv_bridge conversion failed: Image is wrongly formed: height * step != size  or  120 * 480 != 0
+[INFO] [1794936207.905774558] [rclcpp]: signal_handler(SIGINT/SIGTERM)

@@ -1,0 +1,4 @@
+{"passed": true, "messages": 7, "report": "/home/jikl62/.cache/fc01-vision-step1-20261117/generated-interface.json"}
+[INFO] [1794933199.221719690] [fc01_mission]: consuming /fc01/vision/target_relative (use_vision_state=false)
+[INFO] [1794933199.223011616] [fc01_mission]: mission: mode=push, vision=/fc01/vision/target_relative, plant pose=/sim/platform_pose, out=/visioncontrol at 50 Hz
+FC01_STEP1_ROS_INTERFACE_PASS

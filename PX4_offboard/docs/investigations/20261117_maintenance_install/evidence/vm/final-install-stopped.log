@@ -1,0 +1,14 @@
+FC01：维护切换适用于落地、拆桨、飞控断电；安装成功不等于飞行就绪。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：停止旧服务，等待旧控制器实际退出。
+{
+  "entry": "/home/orangepi/FC01_versions/20261117_stage3_fix1",
+  "backup": "/home/orangepi/FC01_navigation/prebuilt-backups/20261117T140234_274294Z-5047",
+  "already_active": false,
+  "version": "20261117_stage3_fix1",
+  "service_pid": 5586,
+  "controller_pid": 6224
+}
+FC01_PREBUILT_INSTALL_OK entry=/home/orangepi/FC01_versions/20261117_stage3_fix1 service_pid=5586 controller_pid=6224
+FC01_FLIGHT_READINESS={"ready_for_manual_rc": false, "missing": ["DDS", "RC", "姿态", "位置", "电池", "PX4"], "phase": "IDLE", "reason": "DDS_SOURCE_CLOCK_UNSYNCHRONIZED_OR_STALE", "status_current": true, "note": "仅显示；人工RC准入/接管/Kill/失效保护由原生控制器判定"}
+FC01_ROLLBACK_COMMAND=bash /home/orangepi/install_fc01_20261117_maintenance.sh --rollback /home/orangepi/FC01_navigation/prebuilt-backups/20261117T140234_274294Z-5047

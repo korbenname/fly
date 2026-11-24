@@ -1,0 +1,178 @@
+Internal ctest changing into directory: /tmp/fc01-vision-step3-native-build
+Test project /tmp/fc01-vision-step3-native-build
+      Start  1: test_20261116_diagnostics
+ 1/86 Test  #1: test_20261116_diagnostics ...............   Passed    0.00 sec
+      Start  2: test_20261116_height_contract
+ 2/86 Test  #2: test_20261116_height_contract ...........   Passed    0.01 sec
+      Start  3: test_20261116_takeoff_expiry
+ 3/86 Test  #3: test_20261116_takeoff_expiry ............   Passed    0.00 sec
+      Start  4: test_ack_lifecycle
+ 4/86 Test  #4: test_ack_lifecycle ......................   Passed    0.00 sec
+      Start  5: test_async_log
+ 5/86 Test  #5: test_async_log ..........................   Passed    0.13 sec
+      Start  6: test_attitude_runtime
+ 6/86 Test  #6: test_attitude_runtime ...................   Passed    0.01 sec
+      Start  7: test_attitude_vertical
+ 7/86 Test  #7: test_attitude_vertical ..................   Passed    0.00 sec
+      Start  8: test_attitude_wire
+ 8/86 Test  #8: test_attitude_wire ......................   Passed    0.00 sec
+      Start  9: test_authority_boundary
+ 9/86 Test  #9: test_authority_boundary .................   Passed    0.00 sec
+      Start 10: test_authority_review
+10/86 Test #10: test_authority_review ...................   Passed    0.00 sec
+      Start 11: test_authority_runtime
+11/86 Test #11: test_authority_runtime ..................   Passed    0.01 sec
+      Start 12: test_authority_telemetry
+12/86 Test #12: test_authority_telemetry ................   Passed    0.00 sec
+      Start 13: test_c_m1_r2_regressions
+13/86 Test #13: test_c_m1_r2_regressions ................   Passed    0.00 sec
+      Start 14: test_control_diagnostics
+14/86 Test #14: test_control_diagnostics ................   Passed    0.00 sec
+      Start 15: test_m1_r3_interleavings
+15/86 Test #15: test_m1_r3_interleavings ................   Passed    0.01 sec
+      Start 16: test_m1_r4_ack_isolation
+16/86 Test #16: test_m1_r4_ack_isolation ................   Passed    0.02 sec
+      Start 17: test_m1_r6_recovery
+17/86 Test #17: test_m1_r6_recovery .....................   Passed    0.02 sec
+      Start 18: test_m1_s10_1hz_recovery
+18/86 Test #18: test_m1_s10_1hz_recovery ................   Passed    0.00 sec
+      Start 19: test_m1_safety
+19/86 Test #19: test_m1_safety ..........................   Passed    0.00 sec
+      Start 20: test_offline_timing
+20/86 Test #20: test_offline_timing .....................   Passed    0.00 sec
+      Start 21: test_overnight_stage5_vision_contract
+21/86 Test #21: test_overnight_stage5_vision_contract ...   Passed    0.00 sec
+      Start 22: test_overnight_stage6_ipc
+22/86 Test #22: test_overnight_stage6_ipc ...............   Passed    0.00 sec
+      Start 23: test_p0_attitude_audit
+23/86 Test #23: test_p0_attitude_audit ..................   Passed    0.00 sec
+      Start 24: test_p0_tilt_trigger_evidence
+24/86 Test #24: test_p0_tilt_trigger_evidence ...........   Passed    0.00 sec
+      Start 25: test_parent_lifetime
+25/86 Test #25: test_parent_lifetime ....................   Passed    0.00 sec
+      Start 26: test_publication_boundary
+26/86 Test #26: test_publication_boundary ...............   Passed    0.00 sec
+      Start 27: test_publication_runtime
+27/86 Test #27: test_publication_runtime ................   Passed    0.00 sec
+      Start 28: test_r62_armed_ground
+28/86 Test #28: test_r62_armed_ground ...................   Passed    0.00 sec
+      Start 29: test_r62_disarmed_prep_progress
+29/86 Test #29: test_r62_disarmed_prep_progress .........   Passed    0.00 sec
+      Start 30: test_r62b_ground_release
+30/86 Test #30: test_r62b_ground_release ................   Passed    0.00 sec
+      Start 31: test_r62c_arm_only
+31/86 Test #31: test_r62c_arm_only ......................   Passed    0.00 sec
+      Start 32: test_r62c_review2_disarm
+32/86 Test #32: test_r62c_review2_disarm ................   Passed    0.01 sec
+      Start 33: test_r62c_review2_recorded_trace
+33/86 Test #33: test_r62c_review2_recorded_trace ........   Passed    0.00 sec
+      Start 34: test_r62c_review3_bench_grace
+34/86 Test #34: test_r62c_review3_bench_grace ...........   Passed    0.01 sec
+      Start 35: test_r62c_review4_post_disarm
+35/86 Test #35: test_r62c_review4_post_disarm ...........   Passed    0.02 sec
+      Start 36: test_r62c_review_admission
+36/86 Test #36: test_r62c_review_admission ..............   Passed    0.00 sec
+      Start 37: test_r62c_review_clock
+37/86 Test #37: test_r62c_review_clock ..................   Passed    0.00 sec
+      Start 38: test_r62c_review_diagnostics
+38/86 Test #38: test_r62c_review_diagnostics ............   Passed    0.00 sec
+      Start 39: test_r62c_review_exit
+39/86 Test #39: test_r62c_review_exit ...................   Passed    0.00 sec
+      Start 40: test_r62c_review_sample
+40/86 Test #40: test_r62c_review_sample .................   Passed    0.00 sec
+      Start 41: test_r632_bounded_liftoff_reserve
+41/86 Test #41: test_r632_bounded_liftoff_reserve .......   Passed    0.00 sec
+      Start 42: test_r632_height_tracking
+42/86 Test #42: test_r632_height_tracking ...............   Passed    0.00 sec
+      Start 43: test_r632_prompt_176_ack
+43/86 Test #43: test_r632_prompt_176_ack ................   Passed    0.00 sec
+      Start 44: test_r632_ramp_height_guard
+44/86 Test #44: test_r632_ramp_height_guard .............   Passed    0.01 sec
+      Start 45: test_r632_ramp_schedule
+45/86 Test #45: test_r632_ramp_schedule .................   Passed    0.00 sec
+      Start 46: test_r632_skewed_176_ack
+46/86 Test #46: test_r632_skewed_176_ack ................   Passed    0.00 sec
+      Start 47: test_r632_takeoff_plant
+47/86 Test #47: test_r632_takeoff_plant .................   Passed    0.02 sec
+      Start 48: test_r63_normal_arm_evidence
+48/86 Test #48: test_r63_normal_arm_evidence ............   Passed    0.00 sec
+      Start 49: test_r63_takeoff_candidate
+49/86 Test #49: test_r63_takeoff_candidate ..............   Passed    0.00 sec
+      Start 50: test_r6_1_recovery_custody
+50/86 Test #50: test_r6_1_recovery_custody ..............   Passed    0.16 sec
+      Start 51: test_r6_partial_sinks
+51/86 Test #51: test_r6_partial_sinks ...................   Passed    0.00 sec
+      Start 52: test_r6_publication_audit
+52/86 Test #52: test_r6_publication_audit ...............   Passed    0.00 sec
+      Start 53: test_rc_before_ready_recovery
+53/86 Test #53: test_rc_before_ready_recovery ...........   Passed    0.01 sec
+      Start 54: test_rc_interface
+54/86 Test #54: test_rc_interface .......................   Passed    0.00 sec
+      Start 55: test_rc_navigation
+55/86 Test #55: test_rc_navigation ......................   Passed    0.03 sec
+      Start 56: test_rc_navigation_telemetry
+56/86 Test #56: test_rc_navigation_telemetry ............   Passed    0.00 sec
+      Start 57: test_rc_preparation_defer
+57/86 Test #57: test_rc_preparation_defer ...............   Passed    0.01 sec
+      Start 58: test_rc_recovery_boundaries
+58/86 Test #58: test_rc_recovery_boundaries .............   Passed    0.00 sec
+      Start 59: test_rc_recovery_progress
+59/86 Test #59: test_rc_recovery_progress ...............   Passed    0.00 sec
+      Start 60: test_rc_reprepare_admission
+60/86 Test #60: test_rc_reprepare_admission .............   Passed    0.00 sec
+      Start 61: test_rc_reprepare_diagnostics
+61/86 Test #61: test_rc_reprepare_diagnostics ...........   Passed    0.00 sec
+      Start 62: test_rc_takeoff_stage
+62/86 Test #62: test_rc_takeoff_stage ...................   Passed    0.00 sec
+      Start 63: test_rc_timing_recovery
+63/86 Test #63: test_rc_timing_recovery .................   Passed    0.01 sec
+      Start 64: test_receive_events
+64/86 Test #64: test_receive_events .....................   Passed    0.01 sec
+      Start 65: test_receive_schedule
+65/86 Test #65: test_receive_schedule ...................   Passed    0.00 sec
+      Start 66: test_receive_schedule_safety
+66/86 Test #66: test_receive_schedule_safety ............   Passed    0.00 sec
+      Start 67: test_runtime_history_capacity
+67/86 Test #67: test_runtime_history_capacity ...........   Passed    0.12 sec
+      Start 68: test_socket
+68/86 Test #68: test_socket .............................   Passed    0.00 sec
+      Start 69: test_socket_boundary
+69/86 Test #69: test_socket_boundary ....................   Passed    0.00 sec
+      Start 70: test_stage2_control_trace
+70/86 Test #70: test_stage2_control_trace ...............   Passed    0.06 sec
+      Start 71: test_stage2_publication_trace
+71/86 Test #71: test_stage2_publication_trace ...........   Passed    0.01 sec
+      Start 72: test_stage2_runtime_trace
+72/86 Test #72: test_stage2_runtime_trace ...............   Passed    0.01 sec
+      Start 73: test_stage3_async_log_resources
+73/86 Test #73: test_stage3_async_log_resources .........   Passed    0.00 sec
+      Start 74: test_stage3_native_navigation_gate
+74/86 Test #74: test_stage3_native_navigation_gate ......   Passed    0.01 sec
+      Start 75: test_stage3_publication_combinations
+75/86 Test #75: test_stage3_publication_combinations ....   Passed    0.00 sec
+      Start 76: test_stage3_state_invariants
+76/86 Test #76: test_stage3_state_invariants ............   Passed    0.02 sec
+      Start 77: test_stage3_vision_resource_budget
+77/86 Test #77: test_stage3_vision_resource_budget ......   Passed    0.01 sec
+      Start 78: test_takeoff_evidence
+78/86 Test #78: test_takeoff_evidence ...................   Passed    0.00 sec
+      Start 79: test_velocity_command_input
+79/86 Test #79: test_velocity_command_input .............   Passed    0.00 sec
+      Start 80: test_vertical_feedback_guard
+80/86 Test #80: test_vertical_feedback_guard ............   Passed    0.00 sec
+      Start 81: test_vertical_feedback_regression
+81/86 Test #81: test_vertical_feedback_regression .......   Passed    0.00 sec
+      Start 82: test_vertical_feedforward
+82/86 Test #82: test_vertical_feedforward ...............   Passed    0.00 sec
+      Start 83: test_vertical_integral_reversal
+83/86 Test #83: test_vertical_integral_reversal .........   Passed    0.00 sec
+      Start 84: test_vertical_takeoff_ceiling
+84/86 Test #84: test_vertical_takeoff_ceiling ...........   Passed    0.00 sec
+      Start 85: test_vision_navigation
+85/86 Test #85: test_vision_navigation ..................   Passed    0.00 sec
+      Start 86: test_visual_runtime
+86/86 Test #86: test_visual_runtime .....................   Passed    0.01 sec
+
+100% tests passed, 0 tests failed out of 86
+
+Total Test time (real) =   0.88 sec

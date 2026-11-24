@@ -1,0 +1,1 @@
+{"passed": true, "missing_config_visible": true, "no_valid_measurement": true, "restart_distinct_source": true, "rounds": [{"round": 0, "exit": 0, "source": "fc01_vision@62551-34051214605962"}, {"round": 1, "exit": 0, "source": "fc01_vision@62568-34052917737776"}, {"round": 2, "exit": 0, "source": "fc01_vision@62582-34054638183229"}]}

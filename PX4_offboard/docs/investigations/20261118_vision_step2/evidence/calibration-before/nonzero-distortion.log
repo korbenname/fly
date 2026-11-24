@@ -1,0 +1,3 @@
+[INFO] [1794935877.796279901] [fc01_vision_image]: image input /calibration/image, output state=/fc01/vision/target_observation relative=/fc01/vision/target_relative valid=/fc01/vision/target_valid; target shape=circle diameter=0.200 m; camera rotation configured
+[INFO] [1794935877.949338428] [fc01_vision_image]: using CameraInfo intrinsics fx=100.00 fy=100.00 cx=80.00 cy=60.00 (160x120)
+[INFO] [1794935878.082759181] [rclcpp]: signal_handler(SIGINT/SIGTERM)

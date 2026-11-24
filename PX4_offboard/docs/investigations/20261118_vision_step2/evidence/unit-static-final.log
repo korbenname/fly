@@ -1,0 +1,54 @@
+test_attitude_reset_and_writer_restart_change_epoch (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_coordinates_and_absolute_local_origin (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_dead_reckoning_and_invalid_last_payload_revoke (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_duplicate_raw_sample_does_not_extend_receive_ttl (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_invalid_new_sample_cannot_be_repaired_with_same_stamp (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_local_reset_explicit_invalid_then_new_epoch (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_multiple_publishers_and_host_clock_regression_revoke (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_nan_and_invalid_quaternion_revoke (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_old_future_zero_and_sample_after_envelope_rejected (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_omega_independently_stales_without_zero_fallback (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_omega_optional_policy_explicit (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_position_and_velocity_valid_are_independent (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_regressed_sample_latches_until_new_writer_epoch (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_source_age_and_monotonic_age_both_required (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_time_alignment_not_just_independent_freshness (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_yaw_90_degree_and_tilt (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_duplicate_snapshot_cannot_refresh_same_measurement (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_identity_duplicate_never_renews_and_regression_needs_epoch (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_identity_restart_quarantines_retired_source (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_independent_receive_and_source_deadlines (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_interpolation_at_measurement_time_no_first_sample_zeroing (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_invalid_replay_cannot_revalidate_same_raw_sample (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_local_reset_discards_old_image_history (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_malformed_ready_snapshot_consumes_all_samples_before_rejection (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_multiple_publishers_and_clock_regression_fail (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_nan_frame_nonunit_attitude_and_alignment_reject (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_optional_omega_is_none_not_fake_zero (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_quaternion_sign_equivalence_and_pitch_right_vector (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_initial_missing_data_does_not_latch_unused_mission (tests.test_mission_cached_demand.CachedDemandTests) ... ok
+test_invalid_target_clears_terminal_and_frozen_phase_demands (tests.test_mission_cached_demand.CachedDemandTests) ... ok
+test_installed_tools_keep_sibling_modules_and_runtime_dependencies (tests.test_overnight_stage5_ros_contract.RosEngineeringContractTests) ... ok
+test_message_generation_links_the_current_package_typesupport (tests.test_overnight_stage5_ros_contract.RosEngineeringContractTests) ... ok
+test_target_interface_receiver_is_built_linked_and_installed_independently (tests.test_overnight_stage5_ros_contract.RosEngineeringContractTests) ... ok
+test_actual_runtime_import_dependencies_vision_and_messages_are_complete (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+运行树必须自带本项目导入依赖，不能为了容量仅保留控制器而遗漏视觉消息/工具。 ... ok
+test_builder_keeps_file_count_total_and_member_size_limits (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+分别构造超过真实安全上限的运行内容；不修改 MAX_*、不把拒绝改为通过。 ... ok
+test_development_history_archives_caches_and_experiments_stay_outside_runtime (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+大历史 ZIP 不应挤占运行预算，排除只影响载荷，不删除源树任何文件。 ... ok
+test_extractor_independently_keeps_all_three_capacity_limits (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+直接造归档绕开 builder，仍须在创建安装目标前因原容量限制失败。 ... ok
+test_manifest_cannot_omit_current_native_source_hash (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+payload 摘要正确也不能省掉原生源码身份，过期清单不会自动刷新为成功。 ... ok
+test_old_release_manifest_is_preserved_and_not_silently_refreshed (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+旧身份即使所有内容 SHA 都匹配，也不能被静默解释成本次正式发行清单。 ... ok
+test_release_manifest_itself_still_obeys_per_member_budget (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+运行源码再小，附加的发布元数据也必须计入每项预算，不能绕过解包器上限。 ... ok
+test_selected_source_symlink_is_rejected_without_reading_as_regular_source (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+运行白名单中的链接不能伪装源码；外部文件仍由原所有者保留。 ... ok
+
+----------------------------------------------------------------------
+Ran 41 tests in 0.415s
+
+OK

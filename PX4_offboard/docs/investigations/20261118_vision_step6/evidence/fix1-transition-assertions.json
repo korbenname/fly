@@ -1,0 +1,220 @@
+{
+  "sampled_unique": true,
+  "empty_interval_between_observed_switches": true,
+  "transitions": [
+    {
+      "unix": 1794972880.0234463,
+      "monotonic": 51061.291180944,
+      "controllers": []
+    },
+    {
+      "unix": 1794972887.9899347,
+      "monotonic": 51069.257568128,
+      "controllers": [
+        {
+          "pid": 22053,
+          "exe": "/home/orangepi/FC01_versions/20261117_stage3_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+          "argv": [
+            "/home/orangepi/FC01_versions/20261117_stage3_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+            "--ros-args",
+            "--disable-external-lib-logs",
+            "--params-file",
+            "/home/orangepi/FC01_navigation/runtime.yaml",
+            "-p",
+            "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_zk4zefps/control.sock"
+          ],
+          "ppid": 21502,
+          "uid": 1000
+        }
+      ]
+    },
+    {
+      "unix": 1794974264.571633,
+      "monotonic": 52445.839381248,
+      "controllers": []
+    },
+    {
+      "unix": 1794974512.0616403,
+      "monotonic": 52693.329374,
+      "controllers": [
+        {
+          "pid": 28390,
+          "exe": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+          "argv": [
+            "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+            "--ros-args",
+            "--disable-external-lib-logs",
+            "--params-file",
+            "/home/orangepi/FC01_navigation/runtime.yaml",
+            "-p",
+            "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_2a28ipd2/control.sock"
+          ],
+          "ppid": 25096,
+          "uid": 1000
+        }
+      ]
+    },
+    {
+      "unix": 1794975158.9201944,
+      "monotonic": 53340.187937728,
+      "controllers": []
+    },
+    {
+      "unix": 1794975263.5351894,
+      "monotonic": 53444.802914288,
+      "controllers": [
+        {
+          "pid": 32066,
+          "exe": "/home/orangepi/FC01_versions/20261117_stage3_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+          "argv": [
+            "/home/orangepi/FC01_versions/20261117_stage3_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+            "--ros-args",
+            "--disable-external-lib-logs",
+            "--params-file",
+            "/home/orangepi/FC01_navigation/runtime.yaml",
+            "-p",
+            "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_c3q9fnnv/control.sock"
+          ],
+          "ppid": 31530,
+          "uid": 1000
+        }
+      ]
+    },
+    {
+      "unix": 1794975729.0558028,
+      "monotonic": 53910.323528864,
+      "controllers": []
+    },
+    {
+      "unix": 1794976430.36412,
+      "monotonic": 54611.631843904,
+      "controllers": [
+        {
+          "pid": 37919,
+          "exe": "/home/orangepi/FC01_versions/20261117_stage3_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+          "argv": [
+            "/home/orangepi/FC01_versions/20261117_stage3_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+            "--ros-args",
+            "--disable-external-lib-logs",
+            "--params-file",
+            "/home/orangepi/FC01_navigation/runtime.yaml",
+            "-p",
+            "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_b0hlfdqt/control.sock"
+          ],
+          "ppid": 37419,
+          "uid": 1000
+        }
+      ]
+    },
+    {
+      "unix": 1794976576.8385823,
+      "monotonic": 54758.10621424,
+      "controllers": []
+    },
+    {
+      "unix": 1794977123.0634365,
+      "monotonic": 55304.331160352,
+      "controllers": [
+        {
+          "pid": 43663,
+          "exe": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+          "argv": [
+            "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+            "--ros-args",
+            "--disable-external-lib-logs",
+            "--params-file",
+            "/home/orangepi/FC01_navigation/runtime.yaml",
+            "-p",
+            "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_46zm_kwr/control.sock"
+          ],
+          "ppid": 40501,
+          "uid": 1000
+        }
+      ]
+    },
+    {
+      "unix": 1794977194.9050405,
+      "monotonic": 55376.172672768,
+      "controllers": []
+    },
+    {
+      "unix": 1794977713.7065258,
+      "monotonic": 55894.974251824,
+      "controllers": [
+        {
+          "pid": 49638,
+          "exe": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+          "argv": [
+            "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+            "--ros-args",
+            "--disable-external-lib-logs",
+            "--params-file",
+            "/home/orangepi/FC01_navigation/runtime.yaml",
+            "-p",
+            "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_rf7bvmvu/control.sock"
+          ],
+          "ppid": 46163,
+          "uid": 1000
+        }
+      ]
+    },
+    {
+      "unix": 1794977791.9792156,
+      "monotonic": 55973.2468484,
+      "controllers": []
+    },
+    {
+      "unix": 1794978353.4308722,
+      "monotonic": 56534.698611056,
+      "controllers": [
+        {
+          "pid": 55665,
+          "exe": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+          "argv": [
+            "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+            "--ros-args",
+            "--disable-external-lib-logs",
+            "--params-file",
+            "/home/orangepi/FC01_navigation/runtime.yaml",
+            "-p",
+            "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_3wk_jnq1/control.sock"
+          ],
+          "ppid": 52149,
+          "uid": 1000
+        }
+      ]
+    },
+    {
+      "unix": 1794979221.0836465,
+      "monotonic": 57402.3514012,
+      "controllers": []
+    },
+    {
+      "unix": 1794979704.378326,
+      "monotonic": 57885.6460556,
+      "controllers": [
+        {
+          "pid": 64040,
+          "exe": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+          "argv": [
+            "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+            "--ros-args",
+            "--disable-external-lib-logs",
+            "--params-file",
+            "/home/orangepi/FC01_navigation/runtime.yaml",
+            "-p",
+            "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_g9a95c3g/control.sock"
+          ],
+          "ppid": 60803,
+          "uid": 1000
+        }
+      ]
+    },
+    {
+      "unix": 1794979775.502809,
+      "monotonic": 57956.770536736,
+      "controllers": []
+    }
+  ],
+  "limitation": "1s sampling; installer stop-and-wait is stronger transaction ordering evidence"
+}

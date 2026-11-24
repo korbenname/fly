@@ -1,0 +1,17 @@
+{
+  "source": "/home/jikl62/FC01_OrangePi_Navigation_20261028/target/src/fc01_mission/fc01_mission/mission_node.py",
+  "scenario": "platform reset invalidates target while terminal command is active",
+  "vision_rel_after_clear": null,
+  "target_locked_after_clear": false,
+  "terminal_start_after_clear": 10.0,
+  "flight_state_after_clear": "seek",
+  "next_guidance_velocity": [
+    1.2,
+    -0.3,
+    0.1
+  ],
+  "next_guidance_valid": true,
+  "reproduced": true,
+  "physical_control_exercised": false,
+  "production_default_control_enabled": false
+}

@@ -162,7 +162,7 @@ class ReleasePayloadPolicyTests(unittest.TestCase):
             }
         )
         self.assertTrue(required <= selected, sorted(required - selected))
-        self.assertEqual(len(list((package / 'msg').glob('*.msg'))), 5)
+        self.assertEqual(len(list((package / 'msg').glob('*.msg'))), 11)
         # 跟踪运行入口的项目内 import；外部 ROS/yaml 等依赖另由环境核验，不假装随包提供。
         for name in selected:
             if not name.endswith('.py'):

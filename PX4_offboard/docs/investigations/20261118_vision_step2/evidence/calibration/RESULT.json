@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checks": [
+    "nonzero_distortion_revokes",
+    "valid_camera_info_cannot_revive_latched_calibration",
+    "nan-k_reject_and_latch",
+    "nan-d_reject_and_latch",
+    "resolution_reject_and_latch",
+    "principal-point_reject_and_latch",
+    "unsupported-model_reject_and_latch",
+    "zero_distortion_model_requires_explicit_confirmation"
+  ],
+  "environment": "Humble x86_64 synthetic Image/CameraInfo",
+  "hardware": false,
+  "no_flight_controller": true
+}

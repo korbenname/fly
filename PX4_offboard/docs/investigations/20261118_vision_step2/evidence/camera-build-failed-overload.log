@@ -1,0 +1,40 @@
+Starting >>> jikl_fc01_system
+Finished <<< jikl_fc01_system [0.29s]
+Starting >>> fc01_mission
+Finished <<< fc01_mission [0.47s]
+Starting >>> fc01_vision
+--- stderr: fc01_vision
+/home/jikl62/FC01_OrangePi_Navigation_20261028/target/src/fc01_vision/src/vision_node.cpp: In member function ‘void fc01_vision::VisionNode::publishOnce()’:
+/home/jikl62/FC01_OrangePi_Navigation_20261028/target/src/fc01_vision/src/vision_node.cpp:231:59: error: call of overloaded ‘Time(int, rcl_clock_type_e)’ is ambiguous
+  231 |                          : rclcpp::Time(0, RCL_SYSTEM_TIME);
+      |                                                           ^
+In file included from /opt/ros/humble/include/rclcpp/rclcpp/clock.hpp:24,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/timer.hpp:27,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:30,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/any_executable.hpp:20,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/memory_strategy.hpp:25,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/memory_strategies.hpp:18,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/executor_options.hpp:20,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:37,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155,
+                 from /home/jikl62/FC01_OrangePi_Navigation_20261028/target/src/fc01_vision/include/fc01_vision/vision_node.hpp:11,
+                 from /home/jikl62/FC01_OrangePi_Navigation_20261028/target/src/fc01_vision/src/vision_node.cpp:1:
+/opt/ros/humble/include/rclcpp/rclcpp/time.hpp:54:12: note: candidate: ‘rclcpp::Time::Time(int64_t, rcl_clock_type_t)’
+   54 |   explicit Time(int64_t nanoseconds = 0, rcl_clock_type_t clock_type = RCL_SYSTEM_TIME);
+      |            ^~~~
+/opt/ros/humble/include/rclcpp/rclcpp/time.hpp:46:3: note: candidate: ‘rclcpp::Time::Time(int32_t, uint32_t, rcl_clock_type_t)’
+   46 |   Time(int32_t seconds, uint32_t nanoseconds, rcl_clock_type_t clock_type = RCL_SYSTEM_TIME);
+      |   ^~~~
+gmake[2]: *** [CMakeFiles/fc01_vision_node.dir/build.make:90：CMakeFiles/fc01_vision_node.dir/src/vision_node.cpp.o] 错误 1
+gmake[1]: *** [CMakeFiles/Makefile2:338：CMakeFiles/fc01_vision_node.dir/all] 错误 2
+gmake[1]: *** 正在等待未完成的任务....
+gmake: *** [Makefile:146：all] 错误 2
+---
+Failed   <<< fc01_vision [11.5s, exited with code 2]
+
+Summary: 2 packages finished [12.4s]
+  1 package failed: fc01_vision
+  1 package had stderr output: fc01_vision
+  1 package not processed

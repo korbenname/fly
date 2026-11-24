@@ -1,3 +1,7 @@
+# 兼容双合同：以下旧VisionState合同在px4_horizontal_enabled=false时保留。
+# 新PX4水平选择器：frame_id=px4_local_ned:<PlatformState.origin_id>，reset_counter为任务发送会话epoch。
+# 新选择器仅消费HOLD/CRUISE的XY和可选NED yaw；position.z和FOLLOW sticks无垂向权限。
+# 新选择器valid=false仅正常撤销本航点通道；另一条当前水平速度封套可接续，故障由仲裁器区分。
 # 本消息回答“旧视觉导航外环希望使用什么模式/位置/归一化杆量”，不是实测状态。
 # 它不同于VelocityCommand的FRD米/秒速度合同；FOLLOW sticks是[-1,1]请求，不能直接当m/s。
 # HOLD只在进入时锁当前位置，CRUISE给世界系绝对点，FOLLOW按当前视觉yaw转换水平杆量。

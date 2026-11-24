@@ -1,0 +1,10 @@
+{
+  "fc01_config_source_path": [
+    "/home/orangepi/FC01_versions/20261117_stage3_fix1/deployment/runtime.yaml",
+    "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/deployment/runtime.yaml"
+  ],
+  "fc01_entry_version": [
+    "20261117_stage3_fix1",
+    "20261118_vision_step6_fix1"
+  ]
+}

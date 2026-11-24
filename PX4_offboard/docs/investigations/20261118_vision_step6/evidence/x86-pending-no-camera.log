@@ -1,0 +1,111 @@
+[INFO] [launch]: All log files can be found below /home/jikl62/.ros/log/2026-11-18-11-42-29-954983-Shittim-Chest-169671
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [px4_state_bridge-1]: process started with pid [169703]
+[INFO] [fc01_vision_node-2]: process started with pid [169705]
+[INFO] [mission-3]: process started with pid [169707]
+[INFO] [fc01_target_interface_node-4]: process started with pid [169709]
+[fc01_vision_node-2] [WARN] [1794973350.322888211] [fc01_vision]: camera_fx not set; using 554.26 from camera_hfov_deg=60.0. Run a proper camera calibration before flight.
+[fc01_vision_node-2] [INFO] [1794973350.324693891] [fc01_vision]: publishing TargetObservation on /fc01/vision/target_observation at 30.0 Hz (BEST_EFFORT, VOLATILE, depth 1)
+[fc01_vision_node-2] [INFO] [1794973350.324715411] [fc01_vision]: target: shape=auto rect=0.000x0.000 m circle_d=0.000 m; intrinsics fx=554.26 fy=554.26 cx=320.00 cy=240.00
+[fc01_vision_node-2] [INFO] [1794973350.324766417] [fc01_vision]: cannot open /dev/video-1
+[mission-3] [INFO] [1794973350.376073587] [fc01_mission]: consuming /fc01/vision/target_observation (takes precedence over /fc01/vision/target_relative)
+[mission-3] [INFO] [1794973350.378422601] [fc01_mission]: mission: mode=track, vision=/fc01/vision/target_observation, plant pose=/fc01/platform/state, out=/visioncontrol at 50 Hz
+[px4_state_bridge-1] [INFO] [1794973350.406439225] [fc01_px4_state_bridge]: PX4 actual-state bridge; control_authority=false; output=/fc01/platform/state
+[fc01_vision_node-2] [INFO] [1794973350.824945768] [fc01_vision]: cannot open /dev/video-1
+[fc01_vision_node-2] [INFO] [1794973351.325104675] [fc01_vision]: cannot open /dev/video-1
+[fc01_vision_node-2] [INFO] [1794973351.825365727] [fc01_vision]: cannot open /dev/video-1
+[fc01_vision_node-2] [INFO] [1794973352.325627903] [fc01_vision]: cannot open /dev/video-1
+[fc01_vision_node-2] [INFO] [1794973352.825937999] [fc01_vision]: cannot open /dev/video-1
+[fc01_vision_node-2] [INFO] [1794973353.326231256] [fc01_vision]: cannot open /dev/video-1
+[fc01_vision_node-2] [INFO] [1794973353.826536027] [fc01_vision]: cannot open /dev/video-1
+[fc01_vision_node-2] [INFO] [1794973354.326702537] [fc01_vision]: cannot open /dev/video-1
+[fc01_vision_node-2] [INFO] [1794973354.826841060] [fc01_vision]: cannot open /dev/video-1
+[fc01_vision_node-2] [INFO] [1794973355.327075878] [fc01_vision]: cannot open /dev/video-1
+[fc01_vision_node-2] [INFO] [1794973355.827342749] [fc01_vision]: cannot open /dev/video-1
+[fc01_vision_node-2] [INFO] [1794973356.327593129] [fc01_vision]: cannot open /dev/video-1
+[fc01_vision_node-2] [INFO] [1794973356.827855110] [fc01_vision]: cannot open /dev/video-1
+[fc01_vision_node-2] [INFO] [1794973357.328023329] [fc01_vision]: cannot open /dev/video-1
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[fc01_vision_node-2] [INFO] [1794973357.659406671] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [fc01_target_interface_node-4]: sending signal 'SIGINT' to process[fc01_target_interface_node-4]
+[INFO] [mission-3]: sending signal 'SIGINT' to process[mission-3]
+[INFO] [fc01_vision_node-2]: sending signal 'SIGINT' to process[fc01_vision_node-2]
+[INFO] [px4_state_bridge-1]: sending signal 'SIGINT' to process[px4_state_bridge-1]
+[fc01_target_interface_node-4] [INFO] [1794973357.659508889] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[ERROR] [fc01_target_interface_node-4]: process has died [pid 169709, exit code -2, cmd '/home/jikl62/.cache/fc01-vision-step4-20261118/install/jikl_fc01_system/lib/jikl_fc01_system/fc01_target_interface_node --ros-args -r __node:=fc01_target_interface --params-file /tmp/launch_params_jgc2hz4m -r /fc01/vision/velocity_command_v2:=/fc01/vision/velocity_command_v2 -r /fc01/navigation/command:=/fc01/navigation/command -r /fc01/vision/target_observation:=/fc01/vision/target_observation'].
+[ERROR] [mission-3]: process has died [pid 169707, exit code -2, cmd '/home/jikl62/.cache/fc01-vision-step4-20261118/install/fc01_mission/lib/fc01_mission/mission --ros-args -r __node:=fc01_mission --params-file /tmp/fc01-step6-pending-live.x6cpv2hc/release/deployment/vision_mission.yaml --params-file /tmp/launch_params_vj4nvdzb -r /fc01/vision/target_observation:=/fc01/vision/target_observation -r /fc01/platform/state:=/fc01/platform/state -r /fc01/native/flight_state:=/fc01/native/flight_snapshot -r /navigation_command:=/fc01/navigation/command -r /visioncontrol:=/fc01/vision/velocity_command_v2 -r /fc01/vision/horizontal_command:=/fc01/vision/horizontal_command'].
+[ERROR] [px4_state_bridge-1]: process has died [pid 169703, exit code -2, cmd '/home/jikl62/.cache/fc01-vision-step4-20261118/install/fc01_mission/lib/fc01_mission/px4_state_bridge --ros-args -r __node:=fc01_px4_state_bridge --params-file /home/jikl62/.cache/fc01-vision-step4-20261118/install/fc01_mission/share/fc01_mission/config/platform.yaml -r /fc01/platform/state:=/fc01/platform/state'].
+[ERROR] [fc01_vision_node-2]: process has died [pid 169705, exit code -2, cmd '/home/jikl62/.cache/fc01-vision-step4-20261118/install/fc01_vision/lib/fc01_vision/fc01_vision_node --ros-args -r __node:=fc01_vision --params-file /tmp/fc01-step6-pending-live.x6cpv2hc/release/deployment/vision_camera.yaml --params-file /tmp/launch_params_ydopk_bg -r /fc01/vision/target_observation:=/fc01/vision/target_observation'].
+{
+  "schema_version": 1,
+  "mode": "track",
+  "enabled": true,
+  "calibration_state": "pending",
+  "mission_control_enabled": false,
+  "supervisor_pid": 169615,
+  "boot_id": "da4710ef-72f7-4ed9-b2c2-a6d88bde3cc6",
+  "receive_monotonic_ns": 71098981478592,
+  "auxiliary_pid": 169671,
+  "auxiliary_returncode": null,
+  "error": "",
+  "observations": {
+    "camera": {
+      "receive_monotonic_ns": 71098981187182,
+      "publisher_count": 1,
+      "value": {
+        "ready": false,
+        "reason": "CAMERA_FRAME_STALE_OR_DISCONNECTED",
+        "configuration": "CAMERA_CALIBRATION_UNCONFIRMED",
+        "source_id": "fc01_vision@169705-71092112690550",
+        "reset_counter": 0,
+        "calibration_id": "",
+        "extrinsics_id": "",
+        "target_model_id": "",
+        "stamp_kind": "v4l2_read_completion_system",
+        "read_seconds": 0,
+        "missing": [
+          "CAMERA_CALIBRATION",
+          "CAMERA_RECTIFICATION",
+          "CAMERA_EXTRINSICS",
+          "TARGET_MODEL",
+          "CAPTURE_LATENCY"
+        ],
+        "exposure_timestamp_measured": false
+      }
+    },
+    "mission": {
+      "receive_monotonic_ns": 71098939192058,
+      "publisher_count": 1,
+      "value": {
+        "kind": "mission_sensors",
+        "control_authority": false,
+        "platform_input_mode": "px4",
+        "missing": [
+          "POSITION_SOURCE_STALE",
+          "CAMERA_LEVER_ARM_UNCONFIRMED",
+          "POSITION_SOURCE_STALE",
+          "STANDOFF_CALIBRATION_UNCONFIRMED",
+          "NATIVE_PUBLISHER_NOT_UNIQUE",
+          "WAYPOINT_ORIGIN_UNCONFIRMED"
+        ],
+        "target_locked": false,
+        "continuous_new_frames": 0,
+        "target_reason": "POSITION_SOURCE_STALE",
+        "platform_reason": "POSITION_SOURCE_STALE",
+        "guidance_invalidated": false,
+        "native_navigation_current": false,
+        "native_phase": "",
+        "native_reason": "NATIVE_PUBLISHER_NOT_UNIQUE",
+        "origin_id": "px4_local:0:0:0:0:0:0",
+        "last_target_stamp_ns": 0,
+        "target_source": null,
+        "engage_mode": "track",
+        "horizontal_policy_reason": "WAIT_NATIVE",
+        "horizontal_fault": "",
+        "standoff_calibration_id": "",
+        "note": "原生独占人工RC起飞和1.5m垂直闭环；本节点只在原生到高授权后产生水平意图"
+      }
+    }
+  }
+}
+PENDING_CALIBRATION_NO_CAMERA_NO_DDS_WAIT_AND_CLEANUP_PASS

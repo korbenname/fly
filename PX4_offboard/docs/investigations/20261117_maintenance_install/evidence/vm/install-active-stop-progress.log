@@ -1,0 +1,10 @@
+MainPID=1590
+ActiveState=active
+SubState=running
+{"monotonic": 351.277499264, "unix": 1794922170.010029, "controllers": [{"pid": 428, "exe": "/home/orangepi/fc01-old/install/lib/jikl_fc01_system/fc01_system_node", "argv": ["/home/orangepi/fc01-old/install/lib/jikl_fc01_system/fc01_system_node", "--ros-args", "--disable-external-lib-logs", "--params-file", "/home/orangepi/FC01_navigation/runtime.yaml", "-p", "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_pqwnz8x4/control.sock"]}]}
+{"monotonic": 1148.583594816, "unix": 1794922967.316119, "controllers": [{"pid": 428, "exe": "/home/orangepi/fc01-old/install/lib/jikl_fc01_system/fc01_system_node", "argv": ["/home/orangepi/fc01-old/install/lib/jikl_fc01_system/fc01_system_node", "--ros-args", "--disable-external-lib-logs", "--params-file", "/home/orangepi/FC01_navigation/runtime.yaml", "-p", "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_pqwnz8x4/control.sock"]}]}
+{"monotonic": 1158.464899344, "unix": 1794922977.1972787, "controllers": []}
+Nov 17 13:42:57 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Consumed 2min 13.500s CPU time.
+Nov 17 13:43:03 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Found left-over process 426 (MicroXRCEAgent) in control group while starting unit. Ignoring.
+Nov 17 13:43:03 fc01-arm64-test-vm systemd[1]: This usually indicates unclean termination of a previous run, or service implementation deficiencies.
+Nov 17 13:43:03 fc01-arm64-test-vm systemd[1]: Started FC01 manual RC navigation controller.

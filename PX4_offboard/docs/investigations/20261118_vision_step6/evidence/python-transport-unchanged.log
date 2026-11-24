@@ -1,0 +1,36 @@
+Agent transport CONNECTED: UART /dev/ttyS2 115200; PID=174609
+WAITING: 控制器已启动，等待飞控反馈
+CONNECTED: 已连接；后台动作门关闭
+STOPPING: 等待原生退出
+STOPPING: 原生控制器退出，code=0
+STOPPED: 后台待命已停止
+�缺少新鲜未解锁接地退出证据
+STOPPED: 后台待命已停止
+uses_agent_and_launches_closed_gate_native (tests.test_standby.StandbyTests) ... ok
+test_latest_status_is_atomic_and_does_not_accumulate_files (tests.test_standby.StandbyTests) ... ok
+test_missing_device_retries_after_30_seconds_without_new_session_folders (tests.test_standby.StandbyTests) ... ok
+test_native_log_pump_rotates_real_subprocess_output (tests.test_standby.StandbyTests) ... ok
+test_no_fresh_state_is_waiting_even_while_native_is_alive (tests.test_standby.StandbyTests) ... ok
+test_orphan_wait_only_restores_transport_until_original_native_exits (tests.test_standby.StandbyTests) ... ok
+test_retained_owned_agent_is_reused_after_standby_stop_and_start (tests.test_standby.StandbyTests) ... ok
+test_socket_failure_waits_for_live_native_exit (tests.test_standby.StandbyTests) ... ok
+test_standby_overrides_source_csv_file_path_with_yaml_empty_string (tests.test_standby.StandbyTests) ... ok
+test_standby_runs_without_stdin_until_signal_and_only_requests_status (tests.test_standby.StandbyTests) ... ok
+test_steady_feedback_refreshes_snapshot_before_view_freshness_expires (tests.test_standby.StandbyTests) ... ok
+test_supervisor_respects_existing_operator_lock (tests.test_standby.StandbyTests) ... ok
+test_surviving_native_blocks_start_even_without_inherited_lock (tests.test_standby.StandbyTests) ... ok
+test_transport_reuses_one_matching_agent_and_never_spawns_duplicate (tests.test_standby.StandbyTests) ... ok
+test_transport_unknown_uart_owner_is_retained_with_backoff (tests.test_standby.StandbyTests) ... ok
+test_unknown_existing_socket_is_preserved_on_connect_failure (tests.test_standby.StandbyTests) ... ok
+test_blocked_background_handler_cannot_hold_python_exit (tests.test_standby_writer.StandbyWriterTests) ... ok
+test_blocked_status_has_bounded_close_and_only_latest_pending_snapshot (tests.test_standby_writer.StandbyWriterTests) ... ok
+test_blocked_status_write_cannot_prevent_ipc_read_or_graceful_stop (tests.test_standby_writer.StandbyWriterTests) ... ok
+test_delayed_snapshot_keeps_observation_time_and_renders_stale (tests.test_standby_writer.StandbyWriterTests) ... ok
+test_disk_full_and_full_stderr_pipe_preserve_status_and_bounded_exit (tests.test_standby_writer.StandbyWriterTests) ... ok
+test_full_journal_socket_does_not_change_stdout_flags_or_block_exit (tests.test_standby_writer.StandbyWriterTests) ... ok
+test_full_real_stdout_pipe_cannot_block_status_or_python_exit (tests.test_standby_writer.StandbyWriterTests) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 9.000s
+
+OK

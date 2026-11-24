@@ -1,0 +1,76 @@
+Arguments (pass arguments as '<name>:=<value>'):
+
+    'site_mission_config':
+        现场核验后的完整mission YAML路径
+
+    'control_enabled':
+        no description given
+        (default: 'false')
+
+    'vision_config':
+        no description given
+        (default: '/home/jikl62/.cache/fc01-vision-step4-20261118/install/fc01_vision/share/fc01_vision/config/vision.yaml')
+
+    'engage_mode':
+        no description given
+        (default: 'track')
+
+    'control_debug_hz':
+        no description given
+        (default: '0.0')
+
+    'start_camera':
+        no description given
+        (default: 'true')
+
+    'start_px4_bridge':
+        no description given
+        (default: 'true')
+
+    'platform_state_topic':
+        no description given
+        (default: '/fc01/platform/state')
+
+    'native_flight_topic':
+        no description given
+        (default: '/fc01/native/flight_state')
+
+    'mission_config':
+        no description given
+        (default: '/home/jikl62/.cache/fc01-vision-step4-20261118/install/fc01_mission/share/fc01_mission/config/mission.yaml')
+
+    'bridge_config':
+        no description given
+        (default: '/home/jikl62/.cache/fc01-vision-step4-20261118/install/fc01_mission/share/fc01_mission/config/platform.yaml')
+
+    'read_only_receiver':
+        no description given
+        (default: 'true')
+
+    'target_topic':
+        no description given
+        (default: '/fc01/vision/target_observation')
+
+    'navigation_topic':
+        no description given
+        (default: '/fc01/navigation/command')
+
+    'velocity_topic':
+        no description given
+        (default: '/fc01/vision/velocity_command_v2')
+
+    'horizontal_topic':
+        no description given
+        (default: '/fc01/vision/horizontal_command')
+
+    'publish_debug_image':
+        no description given
+        (default: 'false')
+
+    'show_tuning_window':
+        no description given
+        (default: 'false')
+
+    'use_vision_state':
+        no description given
+        (default: 'true')

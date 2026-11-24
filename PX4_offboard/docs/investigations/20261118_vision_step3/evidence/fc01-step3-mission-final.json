@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "checks": [
+    "platform_alone_never_starts_takeoff",
+    "historical_ready_timestamp_rejected",
+    "climb_and_target_detection_do_not_grant_horizontal_motion",
+    "actual_offboard_and_slot_one_required",
+    "fake_height_and_unsettled_vertical_speed_rejected",
+    "current_native_hold_allows_only_horizontal_v2_no_takeoff_waypoint",
+    "same_identity_conflicting_safety_payload_revokes_without_renewal",
+    "duplicate_snapshot_cannot_renew_native_or_local_ttl",
+    "native_dds_loss_revokes_and_new_current_feedback_recovers",
+    "kill_failsafe_and_rc_takeover_always_revoke",
+    "boot_process_and_coordinate_reset_provenance",
+    "no_flight_controller_or_fmu_input_publishers"
+  ],
+  "environment": "Ubuntu22.04 x86_64 Humble synthetic native/platform DDS",
+  "hardware": false,
+  "flight_controller_started": false,
+  "control_enabled_isolated_fixture": true
+}

@@ -1,0 +1,2 @@
+FC01_PX4_PLATFORM_BRIDGE_PASS
+[fc01_px4_state_bridge]: PX4 actual-state bridge; control_authority=false; output=/fc01/platform/state

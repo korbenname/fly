@@ -202,6 +202,69 @@ class PrebuiltServiceTests(unittest.TestCase):
                     service.check(fixture.entry, run=missing_library)
                 self.assertEqual(len(fixture.calls), 1)
 
+    def test_ldd_reuses_only_same_parent_verified_byte_identical_aliases(self):
+        with tempfile.TemporaryDirectory() as root:
+            fixture = Fixture(root)
+            alias = fixture.checker.with_name('checker_alias.so')
+            alias.write_bytes(fixture.checker.read_bytes())
+            other = fixture.entry / 'install/other/checker_alias.so'
+            other.parent.mkdir()
+            other.write_bytes(fixture.checker.read_bytes())
+            fixture.write_manifest()
+            with (patch.object(service.platform, 'machine', return_value='aarch64'),
+                  patch.dict(os.environ, ROS_DISTRO='humble', ROS_DOMAIN_ID='0',
+                             ROS_LOCALHOST_ONLY='0'),
+                  patch.object(Path, 'home', return_value=fixture.home),
+                  patch.object(service, 'check_type_support')):
+                service.check(fixture.entry, run=fixture.run)
+            checked = [Path(call[1]) for call in fixture.calls if call[0] == '/usr/bin/ldd']
+            self.assertEqual(len(checked), 3)
+            self.assertIn(other, checked)
+            self.assertEqual(sum(path in checked for path in (alias, fixture.checker)), 1)
+
+    def test_alias_hash_or_arch_failure_cannot_hide_behind_successful_ldd(self):
+        with tempfile.TemporaryDirectory() as root:
+            fixture = Fixture(root)
+            alias = fixture.checker.with_name('checker_alias.so')
+            original = fixture.checker.read_bytes()
+            alias.write_bytes(original)
+            fixture.write_manifest()
+            with (patch.object(service.platform, 'machine', return_value='aarch64'),
+                  patch.dict(os.environ, ROS_DISTRO='humble', ROS_DOMAIN_ID='0',
+                             ROS_LOCALHOST_ONLY='0'),
+                  patch.object(service, 'check_type_support')):
+                alias.write_bytes(original + b'changed')
+                with self.assertRaisesRegex(service.ControlError, 'hash/path'):
+                    service.check(fixture.entry, run=fixture.run)
+                malformed = bytearray(original)
+                malformed[18:20] = (62).to_bytes(2, 'little')
+                alias.write_bytes(malformed)
+                fixture.write_manifest()
+                with self.assertRaisesRegex(service.ControlError, 'ARM64'):
+                    service.check(fixture.entry, run=fixture.run)
+            self.assertEqual(fixture.calls, [])
+
+    def test_failed_ldd_is_not_reused_by_a_later_check(self):
+        with tempfile.TemporaryDirectory() as root:
+            fixture = Fixture(root)
+            alias = fixture.checker.with_name('checker_alias.so')
+            alias.write_bytes(fixture.checker.read_bytes())
+            fixture.write_manifest()
+            failing = []
+            def failure(argv, **kwargs):
+                failing.append(argv)
+                return subprocess.CompletedProcess(argv, 1, '', 'dependency error')
+            with (patch.object(service.platform, 'machine', return_value='aarch64'),
+                  patch.dict(os.environ, ROS_DISTRO='humble', ROS_DOMAIN_ID='0',
+                             ROS_LOCALHOST_ONLY='0'),
+                  patch.object(Path, 'home', return_value=fixture.home),
+                  patch.object(service, 'check_type_support')):
+                with self.assertRaisesRegex(service.ControlError, 'dependency error'):
+                    service.check(fixture.entry, run=failure)
+                service.check(fixture.entry, run=fixture.run)
+            self.assertEqual(len(failing), 1)
+            self.assertEqual(sum(call[0] == '/usr/bin/ldd' for call in fixture.calls), 2)
+
     def test_supervisor_uses_packaged_node_snapshot_and_original_agent(self):
         with tempfile.TemporaryDirectory() as root:
             fixture = Fixture(root)

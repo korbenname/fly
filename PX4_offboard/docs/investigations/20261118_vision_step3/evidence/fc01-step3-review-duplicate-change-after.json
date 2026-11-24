@@ -1,0 +1,26 @@
+{
+  "{'armed': False}": {
+    "duplicate_result": false,
+    "reason": "NATIVE_DUPLICATE_INCONSISTENT"
+  },
+  "{'offboard': False}": {
+    "duplicate_result": false,
+    "reason": "NATIVE_DUPLICATE_INCONSISTENT"
+  },
+  "{'landed': True}": {
+    "duplicate_result": false,
+    "reason": "NATIVE_DUPLICATE_INCONSISTENT"
+  },
+  "{'rc_mode_slot': 2}": {
+    "duplicate_result": false,
+    "reason": "NATIVE_DUPLICATE_INCONSISTENT"
+  },
+  "{'relative_height_m': 0.0, 'z_ned': 23.0}": {
+    "duplicate_result": false,
+    "reason": "NATIVE_DUPLICATE_INCONSISTENT"
+  },
+  "{'vz_ned': 1.0}": {
+    "duplicate_result": false,
+    "reason": "NATIVE_DUPLICATE_INCONSISTENT"
+  }
+}

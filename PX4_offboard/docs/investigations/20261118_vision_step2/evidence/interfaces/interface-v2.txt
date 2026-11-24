@@ -1,0 +1,19 @@
+# 制导目标速度 V2；独立类型和独立端点，旧 VelocityCommand V1 的字段布局保持不变。
+# 实际自机速度来自 PX4/状态桥；这里 vx/vy/vz 都是希望的速度，单位 m/s。
+# body_frd：x前、y右、z下；wz 为绕机体向下 z 轴的期望角速度，单位 rad/s。
+# 俯视顺时针 wz>0。wz=0 表示零速率请求，不是实测角速度，也不提供绝对航向。
+# 飞行执行语义由后续原生仲裁器决定；本阶段接收仅用于接口验证，不取得发布权。
+# valid=false 撤销本条请求，不得据此续鲜此前非零速度。源时刻/序号不以回调时间代替。
+uint16 schema_version 2
+uint64 sequence
+builtin_interfaces/Time stamp
+	int32 sec
+	uint32 nanosec
+uint32 reset_counter
+string source_id
+string frame_id
+bool valid
+float64 vx
+float64 vy
+float64 vz
+float64 wz

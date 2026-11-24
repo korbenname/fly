@@ -16,8 +16,11 @@ RCLCPP = r'''#pragma once
 #include <cstdint>
 #include <functional>
 #include <memory>
+#include <stdexcept>
 #include <string>
+#define RCLCPP_ERROR_THROTTLE(logger, clock, interval, ...) ((void)0)
 namespace rclcpp {
+namespace exceptions {struct RCLError:std::runtime_error {using std::runtime_error::runtime_error;};}
 struct Event {
   using SharedPtr=std::shared_ptr<Event>;
   bool value{};
@@ -29,11 +32,14 @@ struct Parameter {bool as_bool() const{return false;}};
 struct Time {std::int64_t nanoseconds() const{return 1000000000;}};
 struct Clock {Time now() const{return {};}};
 struct MessageInfo {
-  struct Rmw {std::int64_t received_timestamp{};};
-  const Rmw& get_rmw_message_info() const{static const Rmw value;return value;}
+  struct Rmw {std::int64_t received_timestamp{};struct Gid{unsigned char data[24]{};} publisher_gid;};
+  Rmw value{};
+  const Rmw& get_rmw_message_info() const{return value;}
 };
+struct KeepLast {explicit KeepLast(std::size_t){};};
 struct QoS {
   explicit QoS(std::size_t){}
+  explicit QoS(KeepLast){}
   QoS keep_last(int) const{return *this;}
   QoS reliable() const{return *this;}
   QoS best_effort() const{return *this;}
@@ -48,6 +54,9 @@ template<class T>struct Publisher {using SharedPtr=std::shared_ptr<Publisher<T>>
 class Node {
  public:
   explicit Node(const std::string&){}
+  int get_logger() const{return 0;}
+  Node* get_node_topics_interface(){return this;}
+  std::string resolve_topic_name(const std::string& topic) const{return topic;}
   Parameter get_parameter(const std::string&) const{return {};}
   template<class T>T declare_parameter(const std::string&,const T& value){return value;}
   template<class T,class Qos,class Callback>typename Subscription<T>::SharedPtr create_subscription(const std::string&,Qos,Callback){return std::make_shared<Subscription<T>>();}
@@ -123,12 +132,12 @@ MESSAGES = {
     'failsafe_flags': (
         'FailsafeFlags',
         0,
-        'bool manual_control_signal_lost{},offboard_control_signal_lost{},fd_critical_failure{};',
+        'bool manual_control_signal_lost{},offboard_control_signal_lost{},fd_critical_failure{},local_position_invalid{},local_velocity_invalid{};',
     ),
     'vehicle_local_position': (
         'VehicleLocalPosition',
         0,
-        'static constexpr std::uint8_t DIST_BOTTOM_SENSOR_RANGE=1;std::uint64_t timestamp_sample{};float x{},y{},z{},vx{},vy{},vz{},z_deriv{},ax{},ay{},az{},heading{},dist_bottom{},dist_bottom_var{};bool xy_valid{},z_valid{},v_xy_valid{},v_z_valid{},heading_good_for_control{},dead_reckoning{},dist_bottom_valid{};std::uint8_t xy_reset_counter{},z_reset_counter{},vxy_reset_counter{},vz_reset_counter{},heading_reset_counter{},dist_bottom_reset_counter{},dist_bottom_sensor_bitfield{};',
+        'static constexpr std::uint8_t DIST_BOTTOM_SENSOR_RANGE=1;std::uint64_t timestamp_sample{},ref_timestamp{};float x{},y{},z{},vx{},vy{},vz{},z_deriv{},ax{},ay{},az{},heading{},dist_bottom{},dist_bottom_var{};bool xy_valid{},z_valid{},v_xy_valid{},v_z_valid{},heading_good_for_control{},dead_reckoning{},dist_bottom_valid{};std::uint8_t xy_reset_counter{},z_reset_counter{},vxy_reset_counter{},vz_reset_counter{},heading_reset_counter{},dist_bottom_reset_counter{},dist_bottom_sensor_bitfield{};',
     ),
     'trajectory_setpoint': (
         'TrajectorySetpoint',
@@ -138,6 +147,29 @@ MESSAGES = {
 }
 # 视觉消息替身保持类型形状，用来发现适配器字段名或数组长度的编译错误。
 VISION_MESSAGES = {
+    'horizontal_velocity_command': (
+        'HorizontalVelocityCommand',
+        'std::uint64_t attitude_sample_stamp_ns{};std::string origin_id;'
+        'struct Command{std::uint16_t schema_version{2};std::uint64_t sequence{};Stamp stamp;'
+        'std::uint32_t reset_counter{};std::string source_id,frame_id;bool valid{};'
+        'double vx{},vy{},vz{},wz{};} command;',
+    ),
+    'native_flight_snapshot': (
+        'NativeFlightSnapshot',
+        'NativeFlightState state;std::array<double,4> attitude_wxyz{};std::string origin_id;std::uint64_t attitude_receive_monotonic_ns{};',
+    ),
+    'native_flight_state': (
+        'NativeFlightState',
+        'std::uint64_t sequence{};Stamp stamp;std::string source_id,boot_id,profile,phase,reason;'
+        'std::uint64_t controller_pid{},task_epoch{},native_monotonic_ns{};'
+        'bool feedback_current{},publication_current{},ready_wait_arm{},armed{},offboard{},landed{},'
+        'at_rest{},kill{},operator_takeover{},failsafe{},rc_navigation_enabled{},rc_manual_arm_proven{},'
+        'ground_reference_valid{},ground_reference_qualified{},liftoff_confirmed{},target_height_settled{},navigation_allowed{};'
+        'std::uint8_t rc_mode_slot{},rc_navigation_mode_slot{},z_reset_counter{},vz_reset_counter{},quat_reset_counter{};'
+        'std::uint64_t prestream_commits{},status_stamp_us{},land_stamp_us{},local_stamp_us{},local_sample_stamp_us{},'
+        'attitude_stamp_us{},attitude_sample_stamp_us{},local_receive_monotonic_ns{};'
+        'double reference_z_ned{},z_ned{},vz_ned{},relative_height_m{},target_height_m{},height_tolerance_m{},speed_tolerance_mps{},settle_seconds{};',
+    ),
     'vision_state': (
         'VisionState',
         'std::uint16_t valid_fields{};std::uint64_t sequence{};Stamp stamp;std::uint32_t reset_counter{};std::string frame_id,body_frame_id,source_id,angular_velocity_source;bool initialized{},tracking{},calibration_valid{};std::array<double,3> position{},velocity{},angular_velocity{};std::array<double,4> attitude{};std::array<double,36> pose_covariance{},twist_covariance{};double quality{};',
@@ -172,11 +204,11 @@ def main():
         vision = root / 'jikl_fc01_system/msg'
         vision.mkdir(parents=True)
         (vision / 'stamp.hpp').write_text(
-            '#pragma once\n#include <cstdint>\nnamespace jikl_fc01_system::msg {struct Stamp{std::int32_t sec{};std::uint32_t nanosec{};};}\n'
+            '#pragma once\n#include <cstdint>\nnamespace jikl_fc01_system::msg {struct Stamp{std::int32_t sec{};std::uint32_t nanosec{};template<class T> Stamp& operator=(const T& value){const auto ns=value.nanoseconds();sec=std::int32_t(ns/1000000000);nanosec=std::uint32_t(ns%1000000000);return *this;}};}\n'
         )
         for filename, (name, fields) in VISION_MESSAGES.items():
             (vision / (filename + '.hpp')).write_text(
-                '#pragma once\n#include <array>\n#include <cstdint>\n#include <memory>\n#include <string>\n#include "jikl_fc01_system/msg/stamp.hpp"\nnamespace jikl_fc01_system::msg {struct '
+                '#pragma once\n#include <array>\n#include <cstdint>\n#include <memory>\n#include <string>\n#include "jikl_fc01_system/msg/stamp.hpp"\n#include "jikl_fc01_system/msg/native_flight_state.hpp"\nnamespace jikl_fc01_system::msg {struct '
                 + name
                 + '{using ConstSharedPtr=std::shared_ptr<const '
                 + name

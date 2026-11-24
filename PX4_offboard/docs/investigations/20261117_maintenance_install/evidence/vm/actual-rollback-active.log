@@ -1,0 +1,8 @@
+FC01：维护切换适用于落地、拆桨、飞控断电；安装成功不等于飞行就绪。
+{
+  "backup": "/home/orangepi/FC01_navigation/prebuilt-backups/20261117T134041_006203Z-766",
+  "restored_controller": "/home/orangepi/fc01-old/install/lib/jikl_fc01_system/fc01_system_node",
+  "restored_active": true
+}
+FC01_PREBUILT_ROLLBACK_OK
+FC01_ROLLBACK_COMMAND=bash ./install_fc01.sh --rollback /home/orangepi/FC01_navigation/prebuilt-backups/20261117T134041_006203Z-766

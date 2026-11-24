@@ -1,0 +1,20 @@
+Starting >>> jikl_fc01_system
+--- stderr: jikl_fc01_system
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/src/fc01_system_node.cpp: In member function ‘std::string SystemNode::progress_fields(const fc01::Snapshot&, double) const’:
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/src/fc01_system_node.cpp:1791:53: error: passing ‘const fc01::CurrentControlCycle’ as ‘this’ argument discards qualifiers [-fpermissive]
+ 1791 |         s, now, server_->connected(), cycle_.current(now, config_.attitude.stall_seconds),
+      |                                       ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/src/fc01_system_node.cpp:26:
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/include/jikl_fc01_system/control_diagnostics.hpp:31:8: note:   in call to ‘bool fc01::CurrentControlCycle::current(double, double)’
+   31 |   bool current(double now, double stall_limit) {
+      |        ^~~~~~~
+gmake[2]: *** [CMakeFiles/fc01_system_node.dir/build.make:76：CMakeFiles/fc01_system_node.dir/src/fc01_system_node.cpp.o] 错误 1
+gmake[1]: *** [CMakeFiles/Makefile2:616：CMakeFiles/fc01_system_node.dir/all] 错误 2
+gmake: *** [Makefile:146：all] 错误 2
+---
+Failed   <<< jikl_fc01_system [9.02s, exited with code 2]
+
+Summary: 0 packages finished [9.17s]
+  1 package failed: jikl_fc01_system
+  1 package had stderr output: jikl_fc01_system
+  3 packages not processed

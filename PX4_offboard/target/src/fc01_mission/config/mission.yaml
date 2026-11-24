@@ -1,0 +1,305 @@
+fc01_mission:
+  ros__parameters:
+    # =========================================================================
+    # 制导/任务节点参数
+    # 节点订阅视觉相对位置 + 平台状态，跑状态机，输出：
+    #   /visioncontrol      VelocityCommandV2（旧诊断兼容，不给原生发布权限）
+    #   /fc01/vision/horizontal_command 带实际姿态采样戳/原点的生产水平封套
+    #   /navigation_command NavigationCommand（视觉锁定前的航点）
+    #   /mission/state      当前状态机阶段（字符串，仅遥测）
+    # 所有距离单位是米（m），速度 m/s，角度用弧度（rad）的会特别注明。
+    # =========================================================================
+
+    # ---- 频率与输出话题 -----------------------------------------------------
+
+    # 状态机/控制回路的运行频率（Hz）。越大越平滑，但 CPU 占用也越高。
+    control_hz: 100.0
+
+    # /visioncontrol 的发布频率（Hz）。它是最新设定值，不需要跟视觉帧率一样。
+    vision_control_hz: 50.0
+
+    # 是否发布 /visioncontrol（false = 只算不发，用于纯观察/调试）。
+    publish_vision_control: true
+
+    # 速度控制指令的话题名。
+    vision_control_topic: /visioncontrol
+    # 生产封套：独立保留制导生成时刻、匹配姿态原采样戳与PX4原点。
+    horizontal_command_topic: /fc01/vision/horizontal_command
+
+    # 消息里的 source_id 字段，接收端用来区分指令来源。
+    vision_control_source_id: fc01_mission
+
+    # 是否发布视觉锁定前的航点指令（NavigationCommand）。
+    publish_navigation_command: true
+
+    # 航点指令的话题名。飞控可以同时订阅它和 /visioncontrol。
+    navigation_command_topic: /navigation_command
+
+    # 航点指令的发布频率（Hz）。10 Hz 对位置控制足够。
+    navigation_command_hz: 10.0
+
+    # ---- 视觉锁定前的航点 ---------------------------------------------------
+    # 实机流程：等待原生人工RC起飞、真实离地与1.5m连续稳定授权，再计算水平意图。
+    # 新PX4水平选择器只消费NavigationCommand的XY，z占位不授予高度；旧模拟高度流程被隔离。
+    # 上游模拟分支只在platform_input_mode=simulation时保留；生产launch强制px4。
+    # 坐标是任务内部的世界系 ENU（x 向东、y 向北、z 向上），发布时会自动
+    # 转成消息要求的 NED（北/东/地）。
+
+    # 航点的世界 X 坐标（m，向东为正）。
+    navigation_waypoint_x: 0.0
+    # 仅 position-track 维护入口启用。原生检查本次起飞点及现场航点的实际距离。
+    position_takeoff_anchor_authority: false
+
+    # 航点的世界 Y 坐标（m，向北为正）。
+    navigation_waypoint_y: 0.0
+
+    # 仅simulation航点高度（m，世界 Z）；生产水平选择器忽略此项，固定原生1.5m。
+    navigation_waypoint_z: 0.0
+
+    # ---- 速度/航向限制 ------------------------------------------------------
+
+    # 航向误差 → 偏航角速度的增益（1/s）。值越大机头转得越快；
+    # 0 表示不主动转机头（保持当前航向）。
+    yaw_rate_gain: 3.0
+
+    # 仅simulation的机体系逐轴裁剪（m/s）；生产按世界水平模长限幅，保持完整旋转。
+    max_vx_mps: 0.0
+
+    # 仅simulation的机体系侧向限幅（m/s）；0 = 不限制。
+    max_vy_mps: 0.0
+
+    # 仅simulation的机体系垂向限幅（m/s）；生产不提供世界垂向权限。
+    max_vz_mps: 0.0
+
+    # ---- 输入话题 -----------------------------------------------------------
+
+    # 视觉兼容输出：目标相对相机的位置（机体系 FRD，m）。
+    relative_topic: /fc01/vision/target_relative
+
+    # 目标相对观测：TargetObservation（带valid_fields、协方差等）。
+    vision_state_topic: /fc01/vision/target_observation
+
+    # 参数名为兼容上游保留：true消费TargetObservation；false关闭目标输入，旧relative仅供诊断。
+    # USB目标检测节点仅发TargetObservation；统一launch显式设true。
+    use_vision_state: true
+
+    # 生产只消费PX4原子实际反馈；下面/sim话题仅显式simulation模式兼容。
+    platform_input_mode: px4
+    platform_state_topic: /fc01/platform/state
+    # 来自当前原生发布边界的到高/控制权与raw姿态原子证据；旧flight_state仅供诊断兼容。
+    # Mission不能从较低频的平台桥历史猜测原生已收到哪一帧姿态。
+    native_flight_topic: /fc01/native/flight_snapshot
+    native_flight_timeout_s: 0.3
+    require_angular_velocity: true
+    sensor_timeout_s: 0.3
+    sensor_alignment_s: 0.08
+    target_lock_frames: 3
+    # 现场查证后才能填写。旧上游杆臂数值留作背景，不因存在数值自动确认。
+    camera_extrinsics_confirmed: false
+    camera_extrinsics_id: ""
+    # 航点世界坐标必须绑定当前PX4 local origin_id，重定位后必须重新核对。
+    waypoint_alignment_confirmed: false
+    waypoint_alignment_origin_id: ""
+    # 默认原生定点；waypoint须额外确认地图原点和本轮起飞点2m半径。
+    horizontal_navigation_mode: hold
+    horizontal_max_radius_m: 2.0
+    horizontal_max_speed_mps: 0.5
+    horizontal_max_yaw_rate_rps: 0.35
+    # 1m是尚未确认的候选值，不冒充现场安全间距；缺少确认/记录ID则不进入跟踪。
+    standoff_calibration_confirmed: false
+    standoff_calibration_id: ""
+
+    # 平台位姿（世界系位置 + 机体 FLU 姿态四元数）。
+    platform_pose_topic: /sim/platform_pose
+
+    # 平台线速度（世界系，m/s）。
+    platform_velocity_topic: /sim/platform_velocity
+
+    # 平台角速度（机体系 FLU，rad/s）。
+    platform_angular_velocity_topic: /sim/platform_angular_velocity
+
+    # 目标接触力大小（N），用于顶住时限力；仅模拟接触夹具；实机无接触传感器不能把默认0解释为实际测量。
+    contact_force_topic: /sim/target_contact_force
+
+    # 飞控报告的“本回合已接触/结束”（Bool），impact 模式用。
+    impact_topic: /sim/impact
+
+    # 平台复位事件（Empty），收到后任务状态机回到起飞。
+    reset_event_topic: /sim/reset_event
+
+    # 任务状态字符串的输出话题（takeoff/seek/strike/push/retreat/hold）。
+    state_topic: /mission/state
+
+    # 任务状态字符串的发布频率（Hz）。
+    state_publish_hz: 10.0
+
+    # ---- 相机安装位置 -------------------------------------------------------
+    # 相机光心在机体 FLU 坐标系下的位置（x 前、y 左、z 上，单位 m）。
+    # 视觉测的是“相对相机光心”的位置，加这个偏移才能换算成相对机体中心。
+    # 必须和实际机架/仿真场景一致。
+
+    # 相机相对机体中心的前向偏移（m）。
+    camera_pos_x: 0.08
+
+    # 相机相对机体中心的左向偏移（m，左为正）。
+    camera_pos_y: 0.0
+
+    # 相机相对机体中心的上向偏移（m）。
+    camera_pos_z: 0.015
+
+    # ---- 目标先验（地图坐标） -----------------------------------------------
+    # 这是地图上绿灯的已知坐标，用于视觉锁定前的盲飞和静态冲撞。
+    # 闭环时只使用视觉测量，不读这里的“真值”。必须和 sim.yaml 一致。
+
+    # 目标的世界 X 坐标（m，东向）。
+    target_x: 0.315
+
+    # 目标的世界 Y 坐标（m，北向）。
+    target_y: -4.958
+
+    # 目标的灯心高度（m，世界 Z）。push_altitude_m=0 时会用到它。
+    target_base_z: 1.373
+
+    # 冲撞/顶住时机头保持的航向（°，世界系：0°=朝 +x 东，逆时针为正）。
+    # 灯面朝 -x（西），所以 0° 表示机头朝 +x、正对灯面。
+    target_face_yaw_deg: 0.0
+
+    # 目标运动方式：static = 固定在地图坐标（冲撞/顶住用精确地图点）；
+    # 其他值表示目标会动，瞄准点改用视觉估计。
+    target_motion: static
+
+    # ---- 起飞 / 巡航 --------------------------------------------------------
+
+    # 仅显式simulation分支的旧起飞高度参数（m，模拟世界绝对Z）。
+    # 实机不读取本参数；原生地面基准h=z0-z和rc_target_height=1.5m独占垂直闭环。
+    takeoff_altitude_m: 1.5
+
+    # 起飞阶段最大垂直速度（m/s）。越大起飞越快，但也越容易冲过高度。
+    takeoff_climb_mps: 0.7
+
+    # 到达起飞高度后原地悬停多久（s）再进入巡航，让姿态/相机稳定。
+    takeoff_hover_s: 0.8
+
+    # 盲飞巡航速度的 smoothstep 渐入时间（s）：两端加速度为零，起步不顿挫。
+    seek_ramp_s: 1.2
+
+    # 仅simulation旧任务：巡航段最大下降速度（m/s）。实机不产生下降需求。
+    cruise_descent_mps: 1.4
+
+    # ---- 视觉闭环 -----------------------------------------------------------
+
+    # 是否运行任务并下发控制指令。false 时输出零值且 valid=false，撤销指令，不宣称飞机实际悬停。
+    control_enabled: false
+
+    # 下列模式是上游simulation逻辑；实机只取水平跟踪/已确认航点，不执行冲撞/顶住。
+    # 生产只允许track，launch也默认track；下面push/impact仅为simulation兼容。
+    # 工作模式：
+    #   push   = 持续顶住（仅simulation）：撞上后继续给推力，顶 push_hold_s 秒再撤出
+    #   impact = 一次撞击：接触后由飞控收油
+    #   track  = 保持在目标前方 standoff_m 处跟踪，不撞
+    engage_mode: track
+
+    # track与目标的水平安全间距候选（m）；必须配合现场标定确认/ID才可使用。
+    standoff_m: 1.0
+
+    # 位置误差 → 期望速度的增益（1/s）。稳定条件：
+    # controller_gain × 飞控速度环时间常数 < 1。
+    controller_gain: 2.0
+
+    # 视觉接近段的速度限幅（m/s，三维速度模长）。
+    max_speed: 0.5
+
+    # 还没看到目标时，按地图坐标盲飞的速度上限（m/s）。
+    search_speed: 0.5
+
+    # track 模式的速度限幅（m/s）。
+    track_max_speed: 0.5
+
+    # 视觉数据超时（s）：超过这么久没有新视觉测量就当作目标丢失。
+    command_timeout_s: 0.5
+
+    # 旧模拟平台参数，生产使用sensor_timeout_s独立检查源和接收时效；
+    # 失效时显式发布valid=false，实际失效处置仍由原生控制器/PX4决定。
+    pose_timeout_s: 0.5
+
+    # 接触力数据超时（s）：超过这么久没更新就当作“没有接触”。
+    contact_timeout_s: 0.2
+
+    # ---- 冲撞段 -------------------------------------------------------------
+    # 视觉锁定后，瞄准点冻结为灯的地图坐标，机头朝 target_face_yaw_deg，
+    # 以 strike_speed 直线冲；冲到 strike_engage_m 交给 push。
+    # 这一段不依赖视觉持续可见。
+
+    # 冲撞速度（m/s）。<= 0 表示关闭冲撞，直接低速顶住。
+    strike_speed: 2.0
+
+    # 距目标多近开始冲撞（m）。视觉锁定且距离 <= 该值才进入 strike。
+    strike_trigger_m: 2.6
+
+    # 距目标多近把控制权交给 push（m）。0.10 ≈ 机头前脸贴到灯面。
+    strike_engage_m: 0.10
+
+    # 冲撞超时（s）：超过这么久还没接近到交接距离，就退回 seek 重新接近。
+    strike_timeout_s: 3.0
+
+    # 撞上后的冲量吸收时间（s）：这段时间反向阻尼，不继续往目标顶。
+    strike_settle_s: 0.25
+
+    # 冲量吸收段的反向速度上限（m/s）。越大刹车越猛。
+    strike_settle_brake_mps: 0.4
+
+    # ---- 持续顶住（push 模式）-----------------------------------------------
+
+    # 关闭冲撞时，距目标多近直接切换到 push（m）。
+    push_engage_m: 1.2
+
+    # 相对冻结瞄准点被弹开超过多远，退回 seek 重新接近（m）。
+    push_release_m: 1.8
+
+    # 顶住时朝目标给的速度指令（m/s）。稳态接触力约
+    # 质量 × push_speed / 飞控速度环时间常数。
+    push_speed: 0.3
+
+    # 接触力上限（N）。超过后按比例缩小速度指令，防止把机身顶翻。
+    push_max_force_n: 20.0
+
+    # 顶住时保持的机体高度（m，世界 Z）。0 表示用
+    # target_base_z + push_altitude_offset_m。
+    push_altitude_m: 1.35
+
+    # push_altitude_m=0 时，相对灯心的高度偏移（m）。
+    push_altitude_offset_m: 0.05
+
+    # ---- 顶住之后撤出 -------------------------------------------------------
+
+    # 从撞上开始顶住多少秒后撤出（s）。<= 0 表示一直顶住、不撤出。
+    push_hold_s: 3.0
+
+    # 撤出时的后退速度（m/s）。
+    retreat_speed: 0.8
+
+    # 撤到离灯多远后切换到 hold 悬停（m）。
+    retreat_distance_m: 1.0
+
+    # 撤出速度的 smoothstep 渐入时间（s），避免起步顿挫。
+    retreat_ramp_s: 0.5
+
+    # 世界系最低高度保护（m）：低于它不再向下给速度指令。
+    min_altitude_m: 0.20
+
+    # ---- impact 模式（一次撞击）---------------------------------------------
+
+    # 末制导冲撞速度（m/s）。
+    impact_speed: 5.0
+
+    # 距目标多近进入末制导（m）。
+    terminal_trigger_m: 2.2
+
+    # 末制导超时（s）：超时且没接触就视为脱靶，停止发指令。
+    terminal_timeout_s: 1.0
+
+    # ---- 调试 ---------------------------------------------------------------
+
+    # 控制调试日志频率（Hz）：打印状态、速度、实测航向、wz、视觉年龄等。
+    # 0 = 关闭；调参时设 5–20 即可。
+    control_debug_hz: 0.0

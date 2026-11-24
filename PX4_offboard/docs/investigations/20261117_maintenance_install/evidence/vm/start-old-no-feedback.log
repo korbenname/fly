@@ -1,0 +1,6 @@
+Tue Nov 17 13:25:00 UTC 2026
+lrwxrwxrwx 1 root root 10 Nov 17 13:25 /dev/ttyS2 -> /dev/pts/0
+MainPID=0
+WorkingDirectory=/home/orangepi/fc01-old
+ActiveState=inactive
+DropInPaths=

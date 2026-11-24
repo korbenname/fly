@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "mode": "track",
+  "enabled": true,
+  "calibration_state": "pending",
+  "mission_control_enabled": false,
+  "supervisor_pid": 169615,
+  "boot_id": "da4710ef-72f7-4ed9-b2c2-a6d88bde3cc6",
+  "receive_monotonic_ns": 71099512957407,
+  "auxiliary_pid": 169671,
+  "auxiliary_returncode": 0,
+  "error": "",
+  "observations": {
+    "camera": {
+      "receive_monotonic_ns": 71099447476071,
+      "publisher_count": 1,
+      "value": {
+        "ready": false,
+        "reason": "CAMERA_FRAME_STALE_OR_DISCONNECTED",
+        "configuration": "CAMERA_CALIBRATION_UNCONFIRMED",
+        "source_id": "fc01_vision@169705-71092112690550",
+        "reset_counter": 0,
+        "calibration_id": "",
+        "extrinsics_id": "",
+        "target_model_id": "",
+        "stamp_kind": "v4l2_read_completion_system",
+        "read_seconds": 0,
+        "missing": [
+          "CAMERA_CALIBRATION",
+          "CAMERA_RECTIFICATION",
+          "CAMERA_EXTRINSICS",
+          "TARGET_MODEL",
+          "CAPTURE_LATENCY"
+        ],
+        "exposure_timestamp_measured": false
+      }
+    },
+    "mission": {
+      "receive_monotonic_ns": 71099348668817,
+      "publisher_count": 1,
+      "value": {
+        "kind": "mission_sensors",
+        "control_authority": false,
+        "platform_input_mode": "px4",
+        "missing": [
+          "POSITION_SOURCE_STALE",
+          "CAMERA_LEVER_ARM_UNCONFIRMED",
+          "POSITION_SOURCE_STALE",
+          "STANDOFF_CALIBRATION_UNCONFIRMED",
+          "NATIVE_PUBLISHER_NOT_UNIQUE",
+          "WAYPOINT_ORIGIN_UNCONFIRMED"
+        ],
+        "target_locked": false,
+        "continuous_new_frames": 0,
+        "target_reason": "POSITION_SOURCE_STALE",
+        "platform_reason": "POSITION_SOURCE_STALE",
+        "guidance_invalidated": false,
+        "native_navigation_current": false,
+        "native_phase": "",
+        "native_reason": "NATIVE_PUBLISHER_NOT_UNIQUE",
+        "origin_id": "px4_local:0:0:0:0:0:0",
+        "last_target_stamp_ns": 0,
+        "target_source": null,
+        "engage_mode": "track",
+        "horizontal_policy_reason": "WAIT_NATIVE",
+        "horizontal_fault": "",
+        "standoff_calibration_id": "",
+        "note": "原生独占人工RC起飞和1.5m垂直闭环；本节点只在原生到高授权后产生水平意图"
+      }
+    }
+  }
+}

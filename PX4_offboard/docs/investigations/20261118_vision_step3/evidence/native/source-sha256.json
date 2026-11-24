@@ -1,0 +1,5 @@
+{
+  "native/src/jikl_fc01_system/include/jikl_fc01_system/attitude_altitude_core.hpp": "96d8a619bfdfb3c186a7569bb40a8efd680afb74c614e17ff0e55efcb53cacaf",
+  "native/src/jikl_fc01_system/include/jikl_fc01_system/takeoff_evidence.hpp": "90406dd3aa436d859b6721725b55c347d7a43f3f1af94ec8775dec7df7b9e41e",
+  "native/tests/test_stage3_native_navigation_gate.cpp": "abb937f1522dce2ca9fe84ecfda29d727010ec148f5c26bdd3a00093641fccef"
+}

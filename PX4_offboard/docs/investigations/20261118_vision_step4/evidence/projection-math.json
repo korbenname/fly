@@ -1,0 +1,29 @@
+{
+  "pitch_degrees": 30,
+  "desired_world_ned": [
+    1,
+    0,
+    0
+  ],
+  "body_frd_encoding": [
+    0.8660254037844387,
+    0,
+    0.49999999999999994
+  ],
+  "full_projection": [
+    1.0,
+    0.0,
+    0.0
+  ],
+  "zero_body_vz_before_projection": [
+    0.7500000000000001,
+    0.0,
+    -0.4330127018922193
+  ],
+  "pure_body_vertical_full_projection": [
+    0.49999999999999994,
+    0,
+    0.8660254037844387
+  ],
+  "conclusion": "Full3D and bodyvertical->zerohorizontal require explicit horizontal-intent filter; zeroing bodyz first distorts generalvector."
+}

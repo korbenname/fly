@@ -1,0 +1,10 @@
+MainPID=1755
+WorkingDirectory=/home/orangepi/FC01_versions/20261117_stage3_fix1
+ActiveState=active
+{
+  "backup": "/home/orangepi/FC01_navigation/prebuilt-backups/20261117T102322_451224Z-1125",
+  "runtime_sha256": "3eb2666597eeaaba0578ef05116c85cb21e24218cbbad67cc016fb8559643131",
+  "phase": "starting",
+  "dropin_sha256": "1cf424776d1ad57bab8c21e7a398ca4683ed83e2265201089aefa3132ecb4249"
+}
+   1755       1 /usr/bin/python3 /home/orangepi/FC01_versions/20261117_stage3_fix1/navigation_prebuilt_service.py

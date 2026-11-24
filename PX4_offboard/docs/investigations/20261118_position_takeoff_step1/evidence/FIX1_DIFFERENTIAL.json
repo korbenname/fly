@@ -1,0 +1,68 @@
+{
+  "node": {
+    "baseline": "c6fe7edaec84ce3dad68d6584b1d7fbb5c3c7bac",
+    "comparison": "strict-byte-identical",
+    "controlled_fixture_input": {
+      "diagnostic_controller_pid": 4242
+    },
+    "state_samples": 1350,
+    "lines": 1908,
+    "sha256": "3be6639f4020a1a495ac1739ab4a5acd841b9433dfdd5de2fd549ae11835cc61"
+  },
+  "powered-node": {
+    "baseline": "c6fe7edaec84ce3dad68d6584b1d7fbb5c3c7bac",
+    "comparison": "strict-byte-identical",
+    "driver_sha256": "fd0d83488b03c66f5734b72b9f1f9c9c1ecd5ab4dad4e474c9fe547fd901415d",
+    "state_samples": 707,
+    "phase_counts": {
+      "IDLE": 41,
+      "RC_PRESTREAM": 80,
+      "RC_READY_WAIT_ARM": 11,
+      "RC_ARMED_WAIT_NAVIGATION": 3,
+      "ARMED_GROUND": 21,
+      "THRUST_RAMP": 117,
+      "ASCEND": 131,
+      "HEIGHT_HOLD": 6,
+      "DESCENT": 155,
+      "LANDED": 61,
+      "REQUEST_DISARM": 3,
+      "SAFE_DISARMED": 1,
+      "SAFETY": 77
+    },
+    "sink_order_counts": {
+      "TARGET,HEARTBEAT": 587,
+      "TARGET,HEARTBEAT,COMMAND": 1
+    },
+    "trace_sha256": "bb711f52e7658805b0163717c2e25f4e2f47b8fe68ebab1437352c82fc765c45",
+    "normalization": {
+      "diagnostic_controller_pid": 4242
+    },
+    "float_sink_encoding": "hexfloat exact for all target/command floating fields",
+    "scope": "Synthetic 20Hz source feedback and fake ROS; production node/control/publish code.",
+    "hardware_or_flight_validation": false
+  },
+  "test_stage2_control_trace": {
+    "baseline": "c6fe7edaec84ce3dad68d6584b1d7fbb5c3c7bac",
+    "source_sha256": "4b8f684b367f210b31c84195e605e874550b376125e5f30a187e763a144f86c5",
+    "comparison": "strict-byte-identical",
+    "lines": 14626,
+    "bytes": 2485479,
+    "sha256": "82efd1071b1affe0feb8a62c164989d6616d7471af068a1ef6be585fa2838675"
+  },
+  "test_stage2_publication_trace": {
+    "baseline": "c6fe7edaec84ce3dad68d6584b1d7fbb5c3c7bac",
+    "source_sha256": "0e0ee079fdaf5e9569189beeae28cfcbea1d41d095ec53bd4ec830709ba1c1ca",
+    "comparison": "strict-byte-identical",
+    "lines": 10779,
+    "bytes": 466537,
+    "sha256": "4a9a25a5511b6156a9539bcfa55f67429af8bb425b54e1133d595ebf91c1605a"
+  },
+  "test_stage2_runtime_trace": {
+    "baseline": "c6fe7edaec84ce3dad68d6584b1d7fbb5c3c7bac",
+    "source_sha256": "69ba8fb940af92194a521eef394401ddd12f8a8eadfd32965ca492a4af0ac0b7",
+    "comparison": "strict-byte-identical",
+    "lines": 966,
+    "bytes": 256454,
+    "sha256": "dfe14871bca040c800d1062a5e5f0349c0ea51a48276a40030d4b31984ca6408"
+  }
+}

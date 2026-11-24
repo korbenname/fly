@@ -1,0 +1,7 @@
+{"kind":"startup","profile":"ground","controller_build":"FC01_RECOVERY_DIAGNOSTIC_V5_20261110","lifecycle_policy":"FC01_SAFE_LIFECYCLE_V1_20261109","safety_event_policy":"R2_DISCRETE_EVENT_PREFLIGHT_V2_20261108","runtime_mode":"diagnostic","entry_version":"unknown","config_path":"","config_source_path":"","flight_enabled":false,"flight_actions_enabled":false,"arm_enabled":false,"takeoff_enabled":false,"rc_navigation_enabled":false,"visual_navigation_enabled":false,"aa_hover_thrust":-1,"aa_takeoff_reserve_thrust":0,"aa_thrust_max":-1,"rc_target_height":1.5,"automatic_arm":false,"rc_navigation_policy":"RC_NAVIGATION_MANUAL_ARM_V1","takeoff_policy":"NAV_TAKEOFF_EVIDENCE_V2_20261103","vertical_control_policy":"R632_SCHEDULED_TAKEOFF_CEILING_V1","socket":"/tmp/fc01-step4-inputs-zffu6gsf/control.sock"}
+RAW_ATTITUDE_FIRST_CONTENT_AND_TTL_PASS
+PREINTENT_BOOTSTRAP_AND_NORMAL_NAV_WITHDRAW_PASS
+TRACK_WITHDRAW_BURST_LATCH_WITHOUT_INVALID_RENEWAL_PASS
+COMMAND_ORIGIN_A_B_A_REVOKED_PASS
+TRANSPORT_GID_A_B_A_REVOKED_PASS
+RAW_LOCAL_MUTATION_AND_REFERENCE_A_B_A_REVOKED_PASS

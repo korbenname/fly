@@ -1,0 +1,2 @@
+COMMAND: g++ -std=c++17 -Wall -Wextra -Werror -pedantic -I /home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/include -I /home/jikl62/FC01_OrangePi_Navigation_20261028/native/tests /home/jikl62/FC01_OrangePi_Navigation_20261028/docs/investigations/20261118_vision_step3/evidence/native/reproduce_cached_height.cpp -o /tmp/fc01-step3-baseline-te75_6xz/cached-height-candidate
+PASS: duplicate local sample did not complete target settling

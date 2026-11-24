@@ -1,0 +1,16 @@
+{
+  "baseline": "2948bfe4e6a26b5ee58bf02e4e9988e484fad81e",
+  "source_sha256": {
+    "native/src/jikl_fc01_system/include/jikl_fc01_system/horizontal_navigation.hpp": "1797732aaefbfe2b27c3d65ad22020d03043a241708c747bb712ff1235b3a7c8",
+    "native/src/jikl_fc01_system/include/jikl_fc01_system/attitude_types.hpp": "8b8a22883053a6db91c6d99961b3c99273d8400eeb88c892e737c3bc937566da",
+    "native/src/jikl_fc01_system/include/jikl_fc01_system/attitude_altitude_core.hpp": "0e27559fdbb5e2f2a77db024e520beff5a7d39de745755d55ff4d49a17318888",
+    "native/tests/test_horizontal_navigation.cpp": "8e36d4746038090b5ace61154e204fe4c53a10c343971c414e4dd723c64995e5",
+    "native/tests/test_horizontal_runtime.cpp": "b02cedb26d5e84dff86be9569ef418235248bcc50f47bfda8bf825f73272dbcb"
+  },
+  "ctest88": "/tmp/fc01-step4-native-ctest.log",
+  "pure_sanitizer": "/tmp/fc01-step4-horizontal-navigation-san.log",
+  "runtime_sanitizer": "/tmp/fc01-step4-horizontal-runtime-san.log",
+  "before_height_suspend": "/tmp/fc01-step4-height-suspend-before.log",
+  "after_height_suspend": "/tmp/fc01-step4-height-suspend-after.log",
+  "differential": "/tmp/fc01-step4-no-visual-differential/summary.json"
+}

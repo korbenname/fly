@@ -1,0 +1,3 @@
+[INFO] [1794942004.356805939] [fc01_mission]: consuming /fc01/vision/target_observation (takes precedence over /fc01/vision/target_relative)
+[INFO] [1794942004.360547840] [fc01_mission]: mission: mode=track, vision=/fc01/vision/target_observation, plant pose=/fc01/platform/state, out=/step4/mission/v2 at 50 Hz
+FC01_MISSION_HORIZONTAL_ROS_PASS 8 named checks

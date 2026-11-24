@@ -1,0 +1,41 @@
+test_atomic_bad_schema_q_origin_source_or_receive_never_grants_motion (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_atomic_duplicate_payload_changes_and_old_raw_cannot_extend_receipt (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_atomic_snapshot_accepts_native_raw_missing_from_bridge_and_copies_raw_q (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_atomic_source_expiry_and_platform_origin_change_revoke_current (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_current_native_measured_hold_is_required (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_current_rechecks_original_sample_and_monotonic_age (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_duplicate_with_conflicting_safety_content_revokes (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_independent_monotonic_source_and_graph_validity (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_missing_target_and_unconfirmed_waypoint_keeps_native_hold (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_native_and_platform_reset_counters_must_match (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_no_native_gate_even_target_and_time_cannot_start_takeoff (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_old_ready_future_duplicate_and_local_progress_cannot_renew (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_production_horizontal_only_ignores_simulated_absolute_altitudes (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_restart_task_and_source_regression_revoke (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_stale_unknown_session_revokes_without_retiring_live_session (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_camera_120hz_cannot_starve_platform_50hz_bracketing (tests.test_mission_pending_alignment.PendingAlignmentTests) ... ok
+test_new_frames_cannot_refresh_expired_pending_or_clear_active_fault (tests.test_mission_pending_alignment.PendingAlignmentTests) ... ok
+test_new_invalid_frame_clears_pending_before_future_platform_can_revive (tests.test_mission_pending_alignment.PendingAlignmentTests) ... ok
+test_source_reset_retracts_pending_before_alignment (tests.test_mission_pending_alignment.PendingAlignmentTests) ... ok
+test_actual_production_launch_and_config_choose_track (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_atomic_binding_origin_receipt_and_invalid_q_retract_finite_zero (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_before_native_height_gate_no_horizontal_or_yaw (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_bridge_latest_ahead_of_native_encodes_only_common_raw_attitude (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_decimated_platform_does_not_need_native_raw_sample_in_history (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_hold_waypoint_and_tracking_are_single_intent (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_invalid_with_missing_or_nan_rotation_publishes_finite_zero (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_missing_calibration_or_old_image_blocks_direct_publish (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_native_confirmed_attitude_missing_or_stale_retracts (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_native_revoke_after_tracking_clears_pending_velocity (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_only_new_native_task_epoch_clears_tracking_failure (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_standoff_too_close_retreat_and_world_vertical_ignored (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_tilt_projection_retains_body_z_and_exact_attitude_stamp (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_tracking_loss_latches_and_never_restarts_waypoint (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_unconfirmed_or_outside_waypoint_falls_back_current_hold (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_world_norm_clamp_does_not_distort_rotation (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_yaw_rate_sign_bound_wrap_and_zero (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 36 tests in 0.892s
+
+OK

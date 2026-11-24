@@ -1,0 +1,20 @@
+{
+  "baseline": "80b32f1ed7737ecbccc021085f5a45647bb376c1",
+  "installer_commit": "41e1532e73d36005a80cd134807a70b0c0263675",
+  "unchanged_control_paths": [
+    "native/src",
+    "native/config",
+    "native/tools",
+    "launcher.py",
+    "standby.py",
+    "navigation_service.py",
+    "navigation_prebuilt_service.py"
+  ],
+  "control_changes": [],
+  "host_test_log": "evidence/host-89-tests.log",
+  "host_test_result": "89 PASS",
+  "installer_sha256": "96d6b6f9b0005a859d856152631821cf0d4677bc1826fc2356a6318f45e75a5c",
+  "archive_sha256": "5d0f2f150ca9ce70cb86138e512c0af2c768a3267a9ad48820bce60fdbfb1373",
+  "host_hardware_operated": false,
+  "remote_push_performed": false
+}

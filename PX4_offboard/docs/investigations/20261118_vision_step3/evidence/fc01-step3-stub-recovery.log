@@ -1,0 +1,6 @@
+test_actual_tick_recovery_uses_current_stationary_evidence (test_rc_recovery_adapter.RcRecoveryAdapterTest) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 2.702s
+
+OK

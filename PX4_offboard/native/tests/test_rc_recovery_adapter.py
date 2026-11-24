@@ -148,6 +148,26 @@ struct RecoveryNode {
 };
 int main(){
   {RecoveryNode n;n.recover();assert(n.retained_local_events>=80);
+    // 原子观察消息必须复制同一发布周期的状态、原始姿态、样本戳和首次接收时刻。
+    // 这里只检查只读观察层；没有增加或绕过任何飞行授权。
+    n.now+=.11;recovery_test_steady=n.now;recovery_test_wall_ns+=110000000;
+    n.node.publish_native_flight_state();
+    const auto observed=n.node.native_state_pub_->last;
+    const auto atom=n.node.native_snapshot_pub_->last;
+    assert(atom.state.sequence==observed.sequence);
+    assert(atom.state.attitude_sample_stamp_us==observed.attitude_sample_stamp_us);
+    assert(atom.state.attitude_sample_stamp_us==n.node.attitude_.timestamp_sample);
+    assert(atom.state.quat_reset_counter==n.node.attitude_.quat_reset_counter);
+    for(unsigned i=0;i<4;++i)assert(atom.attitude_wxyz[i]==double(n.node.attitude_.q[i]));
+    assert(atom.origin_id==n.node.horizontal_origin());
+    assert(atom.attitude_receive_monotonic_ns==std::uint64_t(n.node.attitude_sample_.received*1e9));
+    n.now+=.11;recovery_test_steady=n.now;recovery_test_wall_ns+=110000000;
+    n.node.publish_native_flight_state();
+    const auto repeated=n.node.native_snapshot_pub_->last;
+    assert(repeated.state.sequence>atom.state.sequence);
+    assert(repeated.state.attitude_sample_stamp_us==atom.state.attitude_sample_stamp_us);
+    assert(repeated.attitude_receive_monotonic_ns==atom.attitude_receive_monotonic_ns);
+    std::cout<<"ACTUAL_TICK_ATOMIC_NATIVE_SNAPSHOT_PASS\n";
     std::cout<<"ACTUAL_TICK_DIAGNOSTIC_EVENT_RECOVERY_PASS\n";}
   for(int unsafe:{1,2}){RecoveryNode n;n.remain_faulted(100,unsafe);
     // One healthy tick cannot reuse proof accumulated before the unsafe event.
@@ -185,12 +205,16 @@ int main(){
 
 
 # 生成最小API/消息替身，并仅在临时源码副本中公开私有成员、替换时钟与入口名。
-def write_fixture(root):
+def write_fixture(root, *, capture_messages=False):
     (root / 'rclcpp').mkdir()
     ros = fixture.RCLCPP.replace('return 1000000000;', 'return ::recovery_test_wall_ns;')
-    ros = ros.replace(
-        'void publish(const T&){};', 'unsigned calls{};void publish(const T&){++calls;};'
+    # 默认保留历史夹具文本合同；sink差分测试还会在同一处安装自己的逐字段记录器。
+    # 只有本文件的只读快照检查需要保存最后一条消息，不能让它破坏其他测试的插桩。
+    publisher = (
+        'unsigned calls{};T last{};void publish(const T& value){++calls;last=value;};'
+        if capture_messages else 'unsigned calls{};void publish(const T&){++calls;};'
     )
+    ros = ros.replace('void publish(const T&){};', publisher)
     (root / 'rclcpp/rclcpp.hpp').write_text(ros)
     messages = root / 'px4_msgs/msg'
     messages.mkdir(parents=True)
@@ -209,12 +233,12 @@ def write_fixture(root):
     vision.mkdir(parents=True)
     (vision / 'stamp.hpp').write_text(
         '#pragma once\n#include <cstdint>\nnamespace jikl_fc01_system::msg {'
-        'struct Stamp{std::int32_t sec{};std::uint32_t nanosec{};};}\n'
+        'struct Stamp{std::int32_t sec{};std::uint32_t nanosec{};template<class T> Stamp& operator=(const T& value){const auto ns=value.nanoseconds();sec=std::int32_t(ns/1000000000);nanosec=std::uint32_t(ns%1000000000);return *this;}};}\n'
     )
     for filename, (name, fields) in fixture.VISION_MESSAGES.items():
         (vision / (filename + '.hpp')).write_text(
             '#pragma once\n#include <array>\n#include <cstdint>\n#include <memory>\n#include <string>\n'
-            '#include "jikl_fc01_system/msg/stamp.hpp"\nnamespace jikl_fc01_system::msg {'
+            '#include "jikl_fc01_system/msg/stamp.hpp"\n#include "jikl_fc01_system/msg/native_flight_state.hpp"\nnamespace jikl_fc01_system::msg {'
             'struct ' + name + '{using ConstSharedPtr=std::shared_ptr<const ' + name + '>;'
             'std::uint16_t schema_version{1};' + fields + '};}\n'
         )
@@ -253,7 +277,7 @@ class RcRecoveryAdapterTest(unittest.TestCase):
     def test_actual_tick_recovery_uses_current_stationary_evidence(self):
         with tempfile.TemporaryDirectory(prefix='fc01_recovery_tick_') as directory:
             root = Path(directory)
-            write_fixture(root)
+            write_fixture(root, capture_messages=True)
             executable = root / 'test'
             subprocess.run(
                 [
@@ -282,6 +306,7 @@ class RcRecoveryAdapterTest(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr + '\n' + result.stdout[-12000:])
             for marker in (
                 'ACTUAL_TICK_DIAGNOSTIC_EVENT_RECOVERY_PASS',
+                'ACTUAL_TICK_ATOMIC_NATIVE_SNAPSHOT_PASS',
                 'ACTUAL_TICK_QUEUED_UNSAFE_EVIDENCE_VETO_PASS',
                 'ACTUAL_TICK_NO_ARMED_OR_OFFBOARD_REACQUIRE_PASS',
                 'ACTUAL_TICK_LATER_FAULT_DIAGNOSTICS_PASS',

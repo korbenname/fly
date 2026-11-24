@@ -1,0 +1,10 @@
+{
+  "archive": "dist/arm64_fix1/FC01_OrangePi_20261117_stage3_fix1_arm64.tar.gz",
+  "bytes": 6498104,
+  "sha256": "5d0f2f150ca9ce70cb86138e512c0af2c768a3267a9ad48820bce60fdbfb1373",
+  "installer": "dist/arm64_fix1/install_fc01.sh",
+  "installer_sha256": "c52f285e32241cf3a12a8daf67e60cc4ae8ff61a2afe91eb94648dd2626eecff",
+  "source_commit": "4c85a9e7e0c66193104164f03f4bfe28de709b9d",
+  "control_candidate_commit": "adc55d0b7c67e80bf9d77b1082208c898f95b756",
+  "files": 4974
+}

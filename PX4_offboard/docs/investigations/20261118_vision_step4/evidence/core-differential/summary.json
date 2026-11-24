@@ -1,0 +1,49 @@
+{
+  "baseline": "2948bfe4e6a26b5ee58bf02e4e9988e484fad81e",
+  "current_git_head": "2948bfe4e6a26b5ee58bf02e4e9988e484fad81e",
+  "current_includes_uncommitted_step4": true,
+  "includes_height_suspend_fix": true,
+  "includes_prevalid_bootstrap_observation_fix": true,
+  "results": {
+    "control": {
+      "baseline": {
+        "sha256": "82efd1071b1affe0feb8a62c164989d6616d7471af068a1ef6be585fa2838675",
+        "lines": 14626,
+        "bytes": 2485479
+      },
+      "current": {
+        "sha256": "82efd1071b1affe0feb8a62c164989d6616d7471af068a1ef6be585fa2838675",
+        "lines": 14626,
+        "bytes": 2485479
+      },
+      "byte_identical": true
+    },
+    "runtime": {
+      "baseline": {
+        "sha256": "dfe14871bca040c800d1062a5e5f0349c0ea51a48276a40030d4b31984ca6408",
+        "lines": 966,
+        "bytes": 256454
+      },
+      "current": {
+        "sha256": "dfe14871bca040c800d1062a5e5f0349c0ea51a48276a40030d4b31984ca6408",
+        "lines": 966,
+        "bytes": 256454
+      },
+      "byte_identical": true
+    },
+    "publication": {
+      "baseline": {
+        "sha256": "4a9a25a5511b6156a9539bcfa55f67429af8bb425b54e1133d595ebf91c1605a",
+        "lines": 10779,
+        "bytes": 466537
+      },
+      "current": {
+        "sha256": "4a9a25a5511b6156a9539bcfa55f67429af8bb425b54e1133d595ebf91c1605a",
+        "lines": 10779,
+        "bytes": 466537
+      },
+      "byte_identical": true
+    }
+  },
+  "all_byte_identical": true
+}

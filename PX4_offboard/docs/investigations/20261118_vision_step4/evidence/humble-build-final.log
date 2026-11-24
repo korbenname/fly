@@ -1,0 +1,10 @@
+Starting >>> jikl_fc01_system
+Finished <<< jikl_fc01_system [43.9s]
+Starting >>> fc01_mission
+Finished <<< fc01_mission [0.54s]
+Starting >>> fc01_vision
+Finished <<< fc01_vision [0.61s]
+Starting >>> fc01_bringup
+Finished <<< fc01_bringup [0.59s]
+
+Summary: 4 packages finished [45.8s]

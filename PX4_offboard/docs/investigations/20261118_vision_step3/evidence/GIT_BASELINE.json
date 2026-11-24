@@ -1,0 +1,17 @@
+{
+  "baseline_head": "827f1f4535bc55b1bfa3fc2e97439367af226831",
+  "branch": "readability/fc01-chinese-20261111",
+  "origin_main_cached": "377a945d9cd1147baad8871cd5387b9e63cd774d",
+  "local_main_exists": false,
+  "ancestors": {
+    "4c85a9e7e0c66193104164f03f4bfe28de709b9d": true,
+    "adc55d0b7c67e80bf9d77b1082208c898f95b756": true,
+    "41e1532e73d36005a80cd134807a70b0c0263675": true
+  },
+  "hardware_used": false,
+  "unrelated_untracked_preserved": [
+    "tools/",
+    "tests/test_micovio_clock_candidate.py",
+    "tests/test_micovio_uart0_reader.py"
+  ]
+}

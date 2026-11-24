@@ -1,0 +1,25 @@
+[INFO] [launch]: All log files can be found below /home/jikl62/.ros/log/2026-11-18-00-14-53-977878-Shittim-Chest-41340
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [mission-1]: process started with pid [41341]
+[INFO] [fc01_target_interface_node-2]: process started with pid [41343]
+[mission-1] [INFO] [1794932094.236776615] [fc01_mission]: consuming /fc01/vision/target_observation (takes precedence over /fc01/vision/target_relative)
+[mission-1] [INFO] [1794932094.238400614] [fc01_mission]: mission: mode=push, vision=/fc01/vision/target_relative, plant pose=/sim/platform_pose, out=/visioncontrol at 50 Hz
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [fc01_target_interface_node-2]: sending signal 'SIGINT' to process[fc01_target_interface_node-2]
+[INFO] [mission-1]: sending signal 'SIGINT' to process[mission-1]
+[fc01_target_interface_node-2] [INFO] [1794932095.046196358] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[fc01_target_interface_node-2] [INFO] [1794932095.047139564] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[mission-1] Traceback (most recent call last):
+[mission-1]   File "/home/jikl62/.cache/fc01-vision-step1-20261117/install/fc01_mission/lib/fc01_mission/mission", line 33, in <module>
+[mission-1]     sys.exit(load_entry_point('fc01-mission==0.1.0', 'console_scripts', 'mission')())
+[mission-1]   File "/home/jikl62/.cache/fc01-vision-step1-20261117/install/fc01_mission/lib/python3.10/site-packages/fc01_mission/mission_node.py", line 1154, in main
+[mission-1]     node.destroy_node()
+[mission-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/node.py", line 1691, in destroy_node
+[mission-1]     self.destroy_service(self._services[0])
+[mission-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/node.py", line 1615, in destroy_service
+[mission-1]     service.destroy()
+[mission-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/service.py", line 93, in destroy
+[mission-1]     self.__service.destroy_when_not_in_use()
+[mission-1] KeyboardInterrupt
+[ERROR] [mission-1]: process has died [pid 41341, exit code -2, cmd '/home/jikl62/.cache/fc01-vision-step1-20261117/install/fc01_mission/lib/fc01_mission/mission --ros-args -r __node:=fc01_mission --params-file /home/jikl62/.cache/fc01-vision-step1-20261117/install/fc01_mission/share/fc01_mission/config/mission.yaml --params-file /tmp/launch_params_stjw7an5 -r /fc01/vision/target_observation:=/step1/remapped_target -r /navigation_command:=/step1/remapped_navigation -r /visioncontrol:=/step1/remapped_velocity'].
+[INFO] [fc01_target_interface_node-2]: process has finished cleanly [pid 41343]

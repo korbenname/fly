@@ -1,0 +1,27 @@
+.........F.....F
+======================================================================
+FAIL: test_actual_node_tick_and_status_bytes (tests.test_stage3_control_equivalence.Stage3CoreEquivalenceTests)
+节点源码来自本轮基线；证据中的基线身份也必须在整个调用期间保持正确。
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_stage3_control_equivalence.py", line 37, in test_actual_node_tick_and_status_bytes
+    super().test_actual_node_tick_and_status_bytes()
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_stage2_core_equivalence.py", line 225, in test_actual_node_tick_and_status_bytes
+    self.assertEqual(outputs[0], outputs[1], '节点状态字节/发布顺序与基线不一致')
+AssertionError: b'TRA[1730 chars]":0,"visual_state_sequence":0,"visual_command_[16162658 chars]:-1}' != b'TRA[1730 chars]":0,"px4_horizontal_enabled":false,"horizontal[17296658 chars]:-1}' : 节点状态字节/发布顺序与基线不一致
+
+======================================================================
+FAIL: test_powered_rc_lifecycle_and_all_sink_fields_match_baseline (tests.test_stage3_control_equivalence.Stage3PoweredNodeEquivalenceTests)
+仅将既有完整节点驱动的不可变输入基线切为本轮 f06715a。
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_stage3_control_equivalence.py", line 56, in test_powered_rc_lifecycle_and_all_sink_fields_match_baseline
+    super().test_powered_rc_lifecycle_and_all_sink_fields_match_baseline()
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/test_stage2_powered_node_equivalence.py", line 286, in test_powered_rc_lifecycle_and_all_sink_fields_match_baseline
+    self.assertEqual(records[0], records[1], 'powered node behavior differs from 5198d33')
+AssertionError: b'POW[1683 chars]":0,"visual_state_sequence":0,"visual_command_[9032461 chars]88:1' != b'POW[1683 chars]":0,"px4_horizontal_enabled":false,"horizontal[9627022 chars]88:1' : powered node behavior differs from 5198d33
+
+----------------------------------------------------------------------
+Ran 16 tests in 21.470s
+
+FAILED (failures=2)

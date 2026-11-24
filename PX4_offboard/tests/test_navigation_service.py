@@ -453,57 +453,17 @@ class NavigationServiceTests(unittest.TestCase):
         self.api()
         self.assertTrue((ROOT / 'navigation.py').exists(), 'navigation management/view missing')
         m = importlib.import_module('navigation')
-        row = dict(
-            status='READY_WAIT_ARM',
-            reason='ready',
-            supervisor_pid=10,
-            updated_unix=1000,
-            state_age_seconds=0.1,
-            feedback_current=True,
-            state=dict(
-                phase='RC_READY_WAIT_ARM',
-                armed=False,
-                nav_state=15,
-                relative_height_m=0.01,
-                status_fresh=True,
-                local_fresh=True,
-                source_timing={
-                    name: dict(
-                        source_reason='VALID',
-                        receipt_reason='VALID',
-                        timeout_s=timeout,
-                        envelope_age_s=0.02,
-                        sample_age_s=0.02,
-                        receipt_age_s=0.02,
-                        sample_progress_age_s=0.02,
-                    )
-                    for name, timeout in (
-                        ('status', 2.5),
-                        ('land', 2.5),
-                        ('local', 0.5),
-                        ('attitude', 0.5),
-                        ('flags', 2.5),
-                        ('battery', 1.0),
-                    )
-                },
-            ),
-        )
-        self.assertIn(
-            'STARTING', m.render_status(row, {'ActiveState': 'active', 'MainPID': '11'}, now=1001)
-        )
-        self.assertIn(
-            'STALE', m.render_status(row, {'ActiveState': 'active', 'MainPID': '10'}, now=1020)
-        )
-        self.assertIn(
-            '[READY_WAIT_ARM]',
-            m.render_status(row, {'ActiveState': 'active', 'MainPID': '10'}, now=1000.1),
-        )
-        self.assertIn(
-            '[STALE]', m.render_status(row, {'ActiveState': 'active', 'MainPID': '10'}, now=1001)
-        )
-        self.assertIn(
-            'STOPPED', m.render_status(row, {'ActiveState': 'inactive', 'MainPID': '0'}, now=1001)
-        )
+        from tests.test_navigation_feedback_freshness import ready_state
+        row = dict(status='READY_WAIT_ARM', reason='ready', supervisor_pid=10,
+                   controller_pid=22, state_controller_pid=22, boot_id='current-boot',
+                   updated_unix=1000, state_age_seconds=.1, feedback_current=True,
+                   state=dict(ready_state(), relative_height_m=.01))
+        info = dict(ActiveState='active', MainPID='10', boot_id='current-boot')
+        self.assertIn('[STALE]', m.render_status(row, dict(info, MainPID='11'), now=1001))
+        self.assertIn('[STALE]', m.render_status(row, info, now=1020))
+        self.assertIn('[READY_WAIT_ARM]', m.render_status(row, info, now=1000.1))
+        self.assertIn('[STALE]', m.render_status(row, info, now=1001))
+        self.assertIn('STOPPED', m.render_status(row, dict(info, ActiveState='inactive', MainPID='0'), now=1001))
 
     # 监督器角色元数据独立保留，不用于填补原生动作门的真假。
     def test_role_metadata_does_not_override_actual_native_gate_values(self):

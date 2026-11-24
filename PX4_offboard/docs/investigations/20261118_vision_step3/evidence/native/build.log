@@ -1,0 +1,258 @@
+[  0%] Building CXX object CMakeFiles/test_20261116_diagnostics.dir/test_20261116_diagnostics.cpp.o
+[  0%] Building CXX object CMakeFiles/test_20261116_height_contract.dir/test_20261116_height_contract.cpp.o
+[  1%] Linking CXX executable test_20261116_height_contract
+[  2%] Linking CXX executable test_20261116_diagnostics
+[  2%] Built target test_20261116_height_contract
+[  2%] Building CXX object CMakeFiles/test_20261116_takeoff_expiry.dir/test_20261116_takeoff_expiry.cpp.o
+[  2%] Built target test_20261116_diagnostics
+[  3%] Building CXX object CMakeFiles/test_ack_lifecycle.dir/test_ack_lifecycle.cpp.o
+[  3%] Linking CXX executable test_ack_lifecycle
+[  4%] Linking CXX executable test_20261116_takeoff_expiry
+[  4%] Built target test_ack_lifecycle
+[  5%] Building CXX object CMakeFiles/test_async_log.dir/test_async_log.cpp.o
+[  5%] Built target test_20261116_takeoff_expiry
+[  6%] Building CXX object CMakeFiles/test_attitude_runtime.dir/test_attitude_runtime.cpp.o
+[  6%] Linking CXX executable test_async_log
+[  6%] Built target test_async_log
+[  7%] Building CXX object CMakeFiles/test_attitude_vertical.dir/test_attitude_vertical.cpp.o
+[  8%] Linking CXX executable test_attitude_vertical
+[  8%] Built target test_attitude_vertical
+[  8%] Building CXX object CMakeFiles/test_attitude_wire.dir/test_attitude_wire.cpp.o
+[  8%] Linking CXX executable test_attitude_runtime
+[  8%] Built target test_attitude_runtime
+[  8%] Building CXX object CMakeFiles/test_authority_boundary.dir/test_authority_boundary.cpp.o
+[  9%] Linking CXX executable test_attitude_wire
+[  9%] Built target test_attitude_wire
+[ 10%] Building CXX object CMakeFiles/test_authority_review.dir/test_authority_review.cpp.o
+[ 11%] Linking CXX executable test_authority_boundary
+[ 11%] Built target test_authority_boundary
+[ 12%] Building CXX object CMakeFiles/test_authority_runtime.dir/test_authority_runtime.cpp.o
+[ 12%] Linking CXX executable test_authority_review
+[ 12%] Built target test_authority_review
+[ 13%] Building CXX object CMakeFiles/test_authority_telemetry.dir/test_authority_telemetry.cpp.o
+[ 13%] Linking CXX executable test_authority_runtime
+[ 13%] Built target test_authority_runtime
+[ 14%] Building CXX object CMakeFiles/test_c_m1_r2_regressions.dir/test_c_m1_r2_regressions.cpp.o
+[ 14%] Linking CXX executable test_authority_telemetry
+[ 14%] Built target test_authority_telemetry
+[ 14%] Building CXX object CMakeFiles/test_control_diagnostics.dir/test_control_diagnostics.cpp.o
+[ 15%] Linking CXX executable test_control_diagnostics
+[ 15%] Built target test_control_diagnostics
+[ 15%] Building CXX object CMakeFiles/test_m1_r3_interleavings.dir/test_m1_r3_interleavings.cpp.o
+[ 16%] Linking CXX executable test_c_m1_r2_regressions
+[ 16%] Built target test_c_m1_r2_regressions
+[ 17%] Building CXX object CMakeFiles/test_m1_r4_ack_isolation.dir/test_m1_r4_ack_isolation.cpp.o
+[ 18%] Linking CXX executable test_m1_r3_interleavings
+[ 18%] Built target test_m1_r3_interleavings
+[ 19%] Building CXX object CMakeFiles/test_m1_r6_recovery.dir/test_m1_r6_recovery.cpp.o
+[ 19%] Linking CXX executable test_m1_r4_ack_isolation
+[ 19%] Built target test_m1_r4_ack_isolation
+[ 20%] Building CXX object CMakeFiles/test_m1_s10_1hz_recovery.dir/test_m1_s10_1hz_recovery.cpp.o
+[ 20%] Linking CXX executable test_m1_r6_recovery
+[ 20%] Built target test_m1_r6_recovery
+[ 21%] Building CXX object CMakeFiles/test_m1_safety.dir/test_m1_safety.cpp.o
+[ 21%] Linking CXX executable test_m1_s10_1hz_recovery
+[ 21%] Built target test_m1_s10_1hz_recovery
+[ 21%] Building CXX object CMakeFiles/test_offline_timing.dir/test_offline_timing.cpp.o
+[ 22%] Linking CXX executable test_m1_safety
+[ 23%] Linking CXX executable test_offline_timing
+[ 23%] Built target test_m1_safety
+[ 23%] Built target test_offline_timing
+[ 23%] Building CXX object CMakeFiles/test_overnight_stage5_vision_contract.dir/test_overnight_stage5_vision_contract.cpp.o
+[ 24%] Building CXX object CMakeFiles/test_overnight_stage6_ipc.dir/test_overnight_stage6_ipc.cpp.o
+[ 25%] Linking CXX executable test_overnight_stage5_vision_contract
+[ 25%] Built target test_overnight_stage5_vision_contract
+[ 26%] Building CXX object CMakeFiles/test_p0_attitude_audit.dir/test_p0_attitude_audit.cpp.o
+[ 26%] Linking CXX executable test_overnight_stage6_ipc
+[ 26%] Built target test_overnight_stage6_ipc
+[ 27%] Building CXX object CMakeFiles/test_p0_tilt_trigger_evidence.dir/test_p0_tilt_trigger_evidence.cpp.o
+[ 27%] Linking CXX executable test_p0_attitude_audit
+[ 27%] Built target test_p0_attitude_audit
+[ 28%] Building CXX object CMakeFiles/test_parent_lifetime.dir/test_parent_lifetime.cpp.o
+[ 29%] Linking CXX executable test_parent_lifetime
+[ 29%] Built target test_parent_lifetime
+[ 29%] Building CXX object CMakeFiles/test_publication_boundary.dir/test_publication_boundary.cpp.o
+[ 30%] Linking CXX executable test_publication_boundary
+[ 30%] Built target test_publication_boundary
+[ 30%] Building CXX object CMakeFiles/test_publication_runtime.dir/test_publication_runtime.cpp.o
+[ 30%] Linking CXX executable test_p0_tilt_trigger_evidence
+[ 30%] Built target test_p0_tilt_trigger_evidence
+[ 30%] Building CXX object CMakeFiles/test_r62_armed_ground.dir/test_r62_armed_ground.cpp.o
+[ 31%] Linking CXX executable test_publication_runtime
+[ 31%] Built target test_publication_runtime
+[ 32%] Building CXX object CMakeFiles/test_r62_disarmed_prep_progress.dir/test_r62_disarmed_prep_progress.cpp.o
+[ 33%] Linking CXX executable test_r62_armed_ground
+[ 33%] Built target test_r62_armed_ground
+[ 34%] Building CXX object CMakeFiles/test_r62b_ground_release.dir/test_r62b_ground_release.cpp.o
+[ 34%] Linking CXX executable test_r62_disarmed_prep_progress
+[ 34%] Built target test_r62_disarmed_prep_progress
+[ 35%] Building CXX object CMakeFiles/test_r62c_arm_only.dir/test_r62c_arm_only.cpp.o
+[ 35%] Linking CXX executable test_r62b_ground_release
+[ 35%] Built target test_r62b_ground_release
+[ 35%] Building CXX object CMakeFiles/test_r62c_review2_disarm.dir/test_r62c_review2_disarm.cpp.o
+[ 36%] Linking CXX executable test_r62c_arm_only
+[ 36%] Built target test_r62c_arm_only
+[ 36%] Building CXX object CMakeFiles/test_r62c_review2_recorded_trace.dir/test_r62c_review2_recorded_trace.cpp.o
+[ 37%] Linking CXX executable test_r62c_review2_disarm
+[ 37%] Built target test_r62c_review2_disarm
+[ 37%] Building CXX object CMakeFiles/test_r62c_review3_bench_grace.dir/test_r62c_review3_bench_grace.cpp.o
+[ 38%] Linking CXX executable test_r62c_review2_recorded_trace
+[ 38%] Built target test_r62c_review2_recorded_trace
+[ 39%] Building CXX object CMakeFiles/test_r62c_review4_post_disarm.dir/test_r62c_review4_post_disarm.cpp.o
+[ 40%] Linking CXX executable test_r62c_review3_bench_grace
+[ 40%] Built target test_r62c_review3_bench_grace
+[ 41%] Building CXX object CMakeFiles/test_r62c_review_admission.dir/test_r62c_review_admission.cpp.o
+[ 41%] Linking CXX executable test_r62c_review_admission
+[ 41%] Built target test_r62c_review_admission
+[ 42%] Building CXX object CMakeFiles/test_r62c_review_clock.dir/test_r62c_review_clock.cpp.o
+[ 42%] Linking CXX executable test_r62c_review4_post_disarm
+[ 42%] Built target test_r62c_review4_post_disarm
+[ 42%] Building CXX object CMakeFiles/test_r62c_review_diagnostics.dir/test_r62c_review_diagnostics.cpp.o
+[ 43%] Linking CXX executable test_r62c_review_diagnostics
+[ 43%] Built target test_r62c_review_diagnostics
+[ 44%] Linking CXX executable test_r62c_review_clock
+[ 44%] Building CXX object CMakeFiles/test_r62c_review_exit.dir/test_r62c_review_exit.cpp.o
+[ 44%] Built target test_r62c_review_clock
+[ 44%] Building CXX object CMakeFiles/test_r62c_review_sample.dir/test_r62c_review_sample.cpp.o
+[ 45%] Linking CXX executable test_r62c_review_sample
+[ 45%] Built target test_r62c_review_sample
+[ 46%] Building CXX object CMakeFiles/test_r632_bounded_liftoff_reserve.dir/test_r632_bounded_liftoff_reserve.cpp.o
+[ 47%] Linking CXX executable test_r62c_review_exit
+[ 47%] Built target test_r62c_review_exit
+[ 48%] Building CXX object CMakeFiles/test_r632_height_tracking.dir/test_r632_height_tracking.cpp.o
+[ 48%] Linking CXX executable test_r632_bounded_liftoff_reserve
+[ 48%] Built target test_r632_bounded_liftoff_reserve
+[ 49%] Building CXX object CMakeFiles/test_r632_prompt_176_ack.dir/test_r632_prompt_176_ack.cpp.o
+[ 49%] Linking CXX executable test_r632_height_tracking
+[ 49%] Built target test_r632_height_tracking
+[ 49%] Building CXX object CMakeFiles/test_r632_ramp_height_guard.dir/test_r632_ramp_height_guard.cpp.o
+[ 50%] Linking CXX executable test_r632_prompt_176_ack
+[ 50%] Built target test_r632_prompt_176_ack
+[ 50%] Building CXX object CMakeFiles/test_r632_ramp_schedule.dir/test_r632_ramp_schedule.cpp.o
+[ 51%] Linking CXX executable test_r632_ramp_height_guard
+[ 51%] Built target test_r632_ramp_height_guard
+[ 51%] Building CXX object CMakeFiles/test_r632_skewed_176_ack.dir/test_r632_skewed_176_ack.cpp.o
+[ 52%] Linking CXX executable test_r632_ramp_schedule
+[ 52%] Built target test_r632_ramp_schedule
+[ 53%] Building CXX object CMakeFiles/test_r632_takeoff_plant.dir/test_r632_takeoff_plant.cpp.o
+[ 54%] Linking CXX executable test_r632_skewed_176_ack
+[ 54%] Built target test_r632_skewed_176_ack
+[ 55%] Building CXX object CMakeFiles/test_r63_normal_arm_evidence.dir/test_r63_normal_arm_evidence.cpp.o
+[ 55%] Linking CXX executable test_r632_takeoff_plant
+[ 55%] Built target test_r632_takeoff_plant
+[ 56%] Building CXX object CMakeFiles/test_r63_takeoff_candidate.dir/test_r63_takeoff_candidate.cpp.o
+[ 56%] Linking CXX executable test_r63_normal_arm_evidence
+[ 56%] Built target test_r63_normal_arm_evidence
+[ 57%] Building CXX object CMakeFiles/test_r6_1_recovery_custody.dir/test_r6_1_recovery_custody.cpp.o
+[ 57%] Linking CXX executable test_r63_takeoff_candidate
+[ 57%] Built target test_r63_takeoff_candidate
+[ 57%] Building CXX object CMakeFiles/test_r6_partial_sinks.dir/test_r6_partial_sinks.cpp.o
+[ 58%] Linking CXX executable test_r6_1_recovery_custody
+[ 58%] Built target test_r6_1_recovery_custody
+[ 58%] Building CXX object CMakeFiles/test_r6_publication_audit.dir/test_r6_publication_audit.cpp.o
+[ 59%] Linking CXX executable test_r6_publication_audit
+[ 59%] Built target test_r6_publication_audit
+[ 60%] Building CXX object CMakeFiles/test_rc_before_ready_recovery.dir/test_rc_before_ready_recovery.cpp.o
+[ 61%] Linking CXX executable test_r6_partial_sinks
+[ 61%] Built target test_r6_partial_sinks
+[ 62%] Building CXX object CMakeFiles/test_rc_interface.dir/test_rc_interface.cpp.o
+[ 62%] Linking CXX executable test_rc_interface
+[ 62%] Linking CXX executable test_rc_before_ready_recovery
+[ 62%] Built target test_rc_interface
+[ 63%] Building CXX object CMakeFiles/test_rc_navigation.dir/test_rc_navigation.cpp.o
+[ 63%] Built target test_rc_before_ready_recovery
+[ 64%] Building CXX object CMakeFiles/test_rc_navigation_telemetry.dir/test_rc_navigation_telemetry.cpp.o
+[ 65%] Linking CXX executable test_rc_navigation_telemetry
+[ 65%] Built target test_rc_navigation_telemetry
+[ 65%] Building CXX object CMakeFiles/test_rc_preparation_defer.dir/test_rc_preparation_defer.cpp.o
+[ 65%] Linking CXX executable test_rc_navigation
+[ 65%] Built target test_rc_navigation
+[ 65%] Building CXX object CMakeFiles/test_rc_recovery_boundaries.dir/test_rc_recovery_boundaries.cpp.o
+[ 66%] Linking CXX executable test_rc_preparation_defer
+[ 66%] Built target test_rc_preparation_defer
+[ 67%] Building CXX object CMakeFiles/test_rc_recovery_progress.dir/test_rc_recovery_progress.cpp.o
+[ 68%] Linking CXX executable test_rc_recovery_boundaries
+[ 68%] Built target test_rc_recovery_boundaries
+[ 69%] Building CXX object CMakeFiles/test_rc_reprepare_admission.dir/test_rc_reprepare_admission.cpp.o
+[ 69%] Linking CXX executable test_rc_recovery_progress
+[ 69%] Built target test_rc_recovery_progress
+[ 70%] Building CXX object CMakeFiles/test_rc_reprepare_diagnostics.dir/test_rc_reprepare_diagnostics.cpp.o
+[ 70%] Linking CXX executable test_rc_reprepare_admission
+[ 70%] Built target test_rc_reprepare_admission
+[ 71%] Building CXX object CMakeFiles/test_rc_takeoff_stage.dir/test_rc_takeoff_stage.cpp.o
+[ 71%] Linking CXX executable test_rc_reprepare_diagnostics
+[ 71%] Built target test_rc_reprepare_diagnostics
+[ 71%] Building CXX object CMakeFiles/test_rc_timing_recovery.dir/test_rc_timing_recovery.cpp.o
+[ 72%] Linking CXX executable test_rc_takeoff_stage
+[ 72%] Built target test_rc_takeoff_stage
+[ 72%] Building CXX object CMakeFiles/test_receive_events.dir/test_receive_events.cpp.o
+[ 73%] Linking CXX executable test_rc_timing_recovery
+[ 73%] Built target test_rc_timing_recovery
+[ 74%] Building CXX object CMakeFiles/test_receive_schedule.dir/test_receive_schedule.cpp.o
+[ 75%] Linking CXX executable test_receive_events
+[ 75%] Built target test_receive_events
+[ 76%] Building CXX object CMakeFiles/test_receive_schedule_safety.dir/test_receive_schedule_safety.cpp.o
+[ 76%] Linking CXX executable test_receive_schedule
+[ 76%] Built target test_receive_schedule
+[ 77%] Building CXX object CMakeFiles/test_runtime_history_capacity.dir/test_runtime_history_capacity.cpp.o
+[ 77%] Linking CXX executable test_receive_schedule_safety
+[ 77%] Built target test_receive_schedule_safety
+[ 78%] Building CXX object CMakeFiles/test_socket.dir/test_socket.cpp.o
+[ 79%] Linking CXX executable test_socket
+[ 79%] Built target test_socket
+[ 79%] Building CXX object CMakeFiles/test_socket_boundary.dir/test_socket_boundary.cpp.o
+[ 80%] Linking CXX executable test_socket_boundary
+[ 80%] Linking CXX executable test_runtime_history_capacity
+[ 80%] Built target test_socket_boundary
+[ 80%] Building CXX object CMakeFiles/test_stage2_control_trace.dir/test_stage2_control_trace.cpp.o
+[ 80%] Built target test_runtime_history_capacity
+[ 80%] Building CXX object CMakeFiles/test_stage2_publication_trace.dir/test_stage2_publication_trace.cpp.o
+[ 81%] Linking CXX executable test_stage2_publication_trace
+[ 81%] Built target test_stage2_publication_trace
+[ 82%] Building CXX object CMakeFiles/test_stage2_runtime_trace.dir/test_stage2_runtime_trace.cpp.o
+[ 83%] Linking CXX executable test_stage2_control_trace
+[ 83%] Built target test_stage2_control_trace
+[ 84%] Building CXX object CMakeFiles/test_stage3_async_log_resources.dir/test_stage3_async_log_resources.cpp.o
+[ 84%] Linking CXX executable test_stage3_async_log_resources
+[ 84%] Built target test_stage3_async_log_resources
+[ 85%] Building CXX object CMakeFiles/test_stage3_native_navigation_gate.dir/test_stage3_native_navigation_gate.cpp.o
+[ 85%] Linking CXX executable test_stage2_runtime_trace
+[ 85%] Built target test_stage2_runtime_trace
+[ 85%] Building CXX object CMakeFiles/test_stage3_publication_combinations.dir/test_stage3_publication_combinations.cpp.o
+[ 86%] Linking CXX executable test_stage3_publication_combinations
+[ 86%] Built target test_stage3_publication_combinations
+[ 86%] Building CXX object CMakeFiles/test_stage3_state_invariants.dir/test_stage3_state_invariants.cpp.o
+[ 87%] Linking CXX executable test_stage3_native_navigation_gate
+[ 87%] Built target test_stage3_native_navigation_gate
+[ 87%] Building CXX object CMakeFiles/test_stage3_vision_resource_budget.dir/test_stage3_vision_resource_budget.cpp.o
+[ 88%] Linking CXX executable test_stage3_vision_resource_budget
+[ 88%] Built target test_stage3_vision_resource_budget
+[ 89%] Building CXX object CMakeFiles/test_takeoff_evidence.dir/test_takeoff_evidence.cpp.o
+[ 90%] Linking CXX executable test_stage3_state_invariants
+[ 90%] Built target test_stage3_state_invariants
+[ 91%] Building CXX object CMakeFiles/test_velocity_command_input.dir/test_velocity_command_input.cpp.o
+[ 91%] Linking CXX executable test_takeoff_evidence
+[ 91%] Built target test_takeoff_evidence
+[ 92%] Building CXX object CMakeFiles/test_vertical_feedback_guard.dir/test_vertical_feedback_guard.cpp.o
+[ 92%] Linking CXX executable test_velocity_command_input
+[ 92%] Built target test_velocity_command_input
+[ 92%] Building CXX object CMakeFiles/test_vertical_feedback_regression.dir/test_vertical_feedback_regression.cpp.o
+[ 93%] Linking CXX executable test_vertical_feedback_guard
+[ 93%] Built target test_vertical_feedback_guard
+[ 93%] Building CXX object CMakeFiles/test_vertical_feedforward.dir/test_vertical_feedforward.cpp.o
+[ 94%] Linking CXX executable test_vertical_feedforward
+[ 94%] Built target test_vertical_feedforward
+[ 94%] Building CXX object CMakeFiles/test_vertical_integral_reversal.dir/test_vertical_integral_reversal.cpp.o
+[ 95%] Linking CXX executable test_vertical_integral_reversal
+[ 95%] Built target test_vertical_integral_reversal
+[ 96%] Building CXX object CMakeFiles/test_vertical_takeoff_ceiling.dir/test_vertical_takeoff_ceiling.cpp.o
+[ 97%] Linking CXX executable test_vertical_feedback_regression
+[ 97%] Built target test_vertical_feedback_regression
+[ 98%] Building CXX object CMakeFiles/test_vision_navigation.dir/test_vision_navigation.cpp.o
+[ 98%] Linking CXX executable test_vertical_takeoff_ceiling
+[ 98%] Built target test_vertical_takeoff_ceiling
+[ 99%] Building CXX object CMakeFiles/test_visual_runtime.dir/test_visual_runtime.cpp.o
+[ 99%] Linking CXX executable test_vision_navigation
+[ 99%] Built target test_vision_navigation
+[100%] Linking CXX executable test_visual_runtime
+[100%] Built target test_visual_runtime

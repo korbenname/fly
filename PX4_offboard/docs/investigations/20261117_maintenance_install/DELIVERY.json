@@ -1,0 +1,14 @@
+{
+  "archive": "/home/jikl62/FC01_OrangePi_Navigation_20261028/dist/arm64_fix1/FC01_OrangePi_20261117_stage3_fix1_arm64.tar.gz",
+  "archive_sha256": "5d0f2f150ca9ce70cb86138e512c0af2c768a3267a9ad48820bce60fdbfb1373",
+  "archive_bytes": 6498104,
+  "archive_source_commit": "4c85a9e7e0c66193104164f03f4bfe28de709b9d",
+  "control_candidate_commit": "adc55d0b7c67e80bf9d77b1082208c898f95b756",
+  "version": "20261117_stage3_fix1",
+  "installer": "dist/arm64_maintenance/install_fc01_20261117_maintenance.sh",
+  "installer_sha256": "96d6b6f9b0005a859d856152631821cf0d4677bc1826fc2356a6318f45e75a5c",
+  "installer_source_commit": "41e1532e73d36005a80cd134807a70b0c0263675",
+  "installer_source_sha256": "98d807c04a8a08066c99ccd8351d4bbcf5404ddaff1551b75cf09a95638a6c9b",
+  "payload_files": 4974,
+  "reused_archive_unchanged": true
+}

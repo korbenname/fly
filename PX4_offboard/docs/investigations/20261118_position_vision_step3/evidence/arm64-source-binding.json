@@ -1,0 +1,9 @@
+{
+  "native": 60,
+  "target": 52,
+  "installed": 7583,
+  "source_archive_commit": "53a37ddb807c7a39c324e506808cd5bbcac9891a",
+  "control_candidate_commit": "b2ee5215e03a7c375714efb5f562f788473369a9",
+  "release_commit": "c7de1387c635cf1733e1d1e1a20a8c24d7ad7752",
+  "controller_sha256": "2664fd6af966c16e1f5e351d4d6b8374be1bb0ad07be61f3157dc2a4c870ce8a"
+}

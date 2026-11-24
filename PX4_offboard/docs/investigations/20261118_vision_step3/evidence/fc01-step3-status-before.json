@@ -1,0 +1,37 @@
+{
+  "missing_controller_identity": {
+    "first_line": "FC01 导航控制  [READY_WAIT_ARM]",
+    "manual_arm_prompt": true,
+    "actual_mode": true
+  },
+  "restarted_supervisor": {
+    "first_line": "FC01 导航控制  [STARTING]",
+    "manual_arm_prompt": false,
+    "actual_mode": false
+  },
+  "changed_boot": {
+    "first_line": "FC01 导航控制  [STARTING]",
+    "manual_arm_prompt": false,
+    "actual_mode": false
+  },
+  "stale_ready_label_current_ascend": {
+    "first_line": "FC01 导航控制  [READY_WAIT_ARM]",
+    "manual_arm_prompt": true,
+    "actual_mode": true
+  },
+  "ready_ground_not_at_rest": {
+    "first_line": "FC01 导航控制  [READY_WAIT_ARM]",
+    "manual_arm_prompt": true,
+    "actual_mode": true
+  },
+  "ready_no_ground_zero": {
+    "first_line": "FC01 导航控制  [READY_WAIT_ARM]",
+    "manual_arm_prompt": true,
+    "actual_mode": true
+  },
+  "ready_no_prestream_commits": {
+    "first_line": "FC01 导航控制  [READY_WAIT_ARM]",
+    "manual_arm_prompt": true,
+    "actual_mode": true
+  }
+}

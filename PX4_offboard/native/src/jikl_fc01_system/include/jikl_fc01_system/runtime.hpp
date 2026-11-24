@@ -602,6 +602,8 @@ public:
     c.reference_z_reset = attitude_core_.reference_z_reset();
     c.reference_vz_reset = attitude_core_.reference_vz_reset();
     c.reference_quat_reset = attitude_core_.reference_quat_reset();
+    c.takeoff_position_anchor = attitude_core_.takeoff_position_anchor();
+    c.liftoff_confirmed = attitude_core_.liftoff_confirmed();
     c.authority = attitude_core_.authority_state();
     c.offboard_observed = attitude_core_.offboard_observed();
     // && 左侧先检查操作员是否干预；括号只豁免已明确请求的 Offboard 退出过程，Kill 不豁免。
@@ -632,6 +634,10 @@ public:
     c.yaw_reference = attitude_core_.yaw_reference();
     c.visual_motion_allowed = attitude_core_.visual_current(c.feedback, now);
     c.visual_target_q = attitude_core_.visual_result().q;
+    if (config_.attitude.px4_position_mission_enabled) {
+      c.position_intent = attitude_core_.position_intent();
+      c.position_descent_hold = attitude_core_.position_descent_hold();
+    }
     // 发布完整性锁存也关闭边界；即使普通 shutdown 参数为 false，仍不能越过故障门。
     c.shutdown = c.shutdown || s.publication_fault_latched;
     return c;

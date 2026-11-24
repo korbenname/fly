@@ -12,11 +12,11 @@ struct PublisherPlan {
   bool mode{}, trajectory{}, attitude{};
 };
 // 地面 profile 无任何设定值发布者；未知 profile 抛错，不退回有动力的默认模式。
-inline PublisherPlan publisher_plan(const std::string& profile) {
+inline PublisherPlan publisher_plan(const std::string& profile, bool px4_takeoff_position = false) {
   if (profile == "ground")
     return {};
   if (profile == "attitude_altitude")
-    return {true, false, true};
+    return {true, px4_takeoff_position, !px4_takeoff_position};
   if (profile == "flight" || profile == "sim")
     return {true, true, false};
   throw std::invalid_argument("UNKNOWN_CONTROL_PROFILE");

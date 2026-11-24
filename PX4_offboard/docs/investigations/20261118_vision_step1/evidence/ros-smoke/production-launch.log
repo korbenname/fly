@@ -1,0 +1,27 @@
+[INFO] [launch]: All log files can be found below /home/jikl62/.ros/log/2026-11-18-00-33-20-100193-Shittim-Chest-46152
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [fc01_vision_node-1]: process started with pid [46153]
+[INFO] [mission-2]: process started with pid [46155]
+[INFO] [fc01_target_interface_node-3]: process started with pid [46157]
+[fc01_vision_node-1] [WARN] [1794933200.227020896] [fc01_vision]: camera_fx not set; using 554.26 from camera_hfov_deg=60.0. Run a proper camera calibration before flight.
+[fc01_vision_node-1] [INFO] [1794933200.228694883] [fc01_vision]: publishing TargetObservation on /fc01/vision/target_observation at 30.0 Hz (BEST_EFFORT, VOLATILE, depth 1)
+[fc01_vision_node-1] [INFO] [1794933200.229004014] [fc01_vision]: target: shape=auto rect=0.000x0.000 m circle_d=0.000 m; intrinsics fx=554.26 fy=554.26 cx=320.00 cy=240.00
+[fc01_vision_node-1] [ WARN:0] global ./modules/videoio/src/cap_v4l.cpp (890) open VIDEOIO(V4L2:/dev/video99999): can't open camera by index
+[fc01_vision_node-1] [INFO] [1794933200.230415646] [fc01_vision]: cannot open /dev/video99999
+[mission-2] [INFO] [1794933200.384566280] [fc01_mission]: consuming /fc01/vision/target_observation (takes precedence over /fc01/vision/target_relative)
+[mission-2] [INFO] [1794933200.386102641] [fc01_mission]: mission: mode=push, vision=/fc01/vision/target_relative, plant pose=/sim/platform_pose, out=/visioncontrol at 50 Hz
+[fc01_vision_node-1] [ WARN:0] global ./modules/videoio/src/cap_v4l.cpp (890) open VIDEOIO(V4L2:/dev/video99999): can't open camera by index
+[fc01_vision_node-1] [INFO] [1794933200.730564569] [fc01_vision]: cannot open /dev/video99999
+[fc01_vision_node-1] [ WARN:0] global ./modules/videoio/src/cap_v4l.cpp (890) open VIDEOIO(V4L2:/dev/video99999): can't open camera by index
+[fc01_vision_node-1] [INFO] [1794933201.230784448] [fc01_vision]: cannot open /dev/video99999
+[fc01_vision_node-1] [ WARN:0] global ./modules/videoio/src/cap_v4l.cpp (890) open VIDEOIO(V4L2:/dev/video99999): can't open camera by index
+[fc01_vision_node-1] [INFO] [1794933201.730952292] [fc01_vision]: cannot open /dev/video99999
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [fc01_target_interface_node-3]: sending signal 'SIGINT' to process[fc01_target_interface_node-3]
+[INFO] [mission-2]: sending signal 'SIGINT' to process[mission-2]
+[INFO] [fc01_vision_node-1]: sending signal 'SIGINT' to process[fc01_vision_node-1]
+[fc01_target_interface_node-3] [INFO] [1794933201.870984664] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[fc01_vision_node-1] [INFO] [1794933201.871741959] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [fc01_target_interface_node-3]: process has finished cleanly [pid 46157]
+[INFO] [mission-2]: process has finished cleanly [pid 46155]
+[INFO] [fc01_vision_node-1]: process has finished cleanly [pid 46153]

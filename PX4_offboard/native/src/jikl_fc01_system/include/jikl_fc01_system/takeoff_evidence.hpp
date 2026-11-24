@@ -160,4 +160,82 @@ private:
   double first_height_{}, latest_height_{}, motion_at_{-1};
   bool detector_was_airborne_{};
 };
+// 到高证据与离地证据分开：阶段进入或一条缓存高度不能制造稳定窗口。
+// sample_stamp是PX4原始测量微秒；observed_at是本机单调秒，两种时间必须各自连续、不能跨域相减。
+struct TargetHeightEvidence {
+  bool confirmed{};
+  unsigned samples{};
+  std::uint64_t first_sample_stamp{}, last_sample_stamp{};
+  double first_observed_at{-1}, last_observed_at{-1};
+};
+class TargetHeightSettling {
+public:
+  void reset() {
+    *this = TargetHeightSettling{};
+  }
+  const TargetHeightEvidence& evidence() const {
+    return e_;
+  }
+  // condition由Core同时核对离地、非降落、最终轨迹及实测高度/垂速容差。
+  // height单位m且相对本次地面上正，speed单位m/s且向上正；只保存数值以识别同戳换值。
+  // 本对象只累计/撤销证据，不改变推力、姿态或高度目标。
+  template <class C>
+  bool observe(const C& c, bool condition, std::uint64_t sample, double height, double speed,
+               double now) {
+    if (!condition || !sample || !std::isfinite(height) || !std::isfinite(speed) ||
+        !std::isfinite(now) || (observed_at_ >= 0 && now < observed_at_) || sample < seen_ ||
+        (sample == seen_ && (height != height_ || speed != speed_))) {
+      clear_window();
+      seen_ = std::max(seen_, sample);
+      height_ = height;
+      speed_ = speed;
+      observed_at_ = now;
+      return false;
+    }
+    observed_at_ = now;
+    // 重复外壳最多保留尚未过期的已确认状态，不能启动/推进/完成稳定计时。
+    if (sample == seen_) {
+      // 过期不只影响返回值，还须撤销内部confirmed，避免无参查询继续报告到高。
+      // 不重置seen_，因为同一条旧样本不能在下一周期重新启动稳定窗口。
+      if (!current(c, sample, now)) {
+        if (e_.confirmed)
+          clear_window();
+        return false;
+      }
+      return true;
+    }
+    if (e_.last_observed_at >= 0 &&
+        (now - e_.last_observed_at > c.local_timeout ||
+         double(sample - e_.last_sample_stamp) * 1e-6 > c.local_timeout))
+      clear_window();
+    seen_ = sample;
+    height_ = height;
+    speed_ = speed;
+    if (!e_.samples) {
+      e_.first_sample_stamp = sample;
+      e_.first_observed_at = now;
+    }
+    e_.last_sample_stamp = sample;
+    e_.last_observed_at = now;
+    ++e_.samples;
+    // 至少三条独立样本，并同时覆盖源域与主机域稳定时长；迟到补包和重复控制周期都不凑时长。
+    e_.confirmed = e_.samples >= 3 && sample > e_.first_sample_stamp &&
+                   now - e_.first_observed_at + 1e-9 >= c.settle_seconds &&
+                   double(sample - e_.first_sample_stamp) * 1e-6 + 1e-9 >= c.settle_seconds;
+    return e_.confirmed;
+  }
+  template <class C> bool current(const C& c, std::uint64_t sample, double now) const {
+    return e_.confirmed && sample >= e_.last_sample_stamp &&
+           double(sample - e_.last_sample_stamp) * 1e-6 <= c.local_timeout && std::isfinite(now) &&
+           now >= e_.last_observed_at && now - e_.last_observed_at <= c.local_timeout;
+  }
+
+private:
+  void clear_window() {
+    e_ = TargetHeightEvidence{};
+  }
+  TargetHeightEvidence e_;
+  std::uint64_t seen_{};
+  double height_{}, speed_{}, observed_at_{-1};
+};
 } // namespace fc01::attitude

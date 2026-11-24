@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""显式检查隔离 Humble 安装中的五种消息；只做类型加载和本机 CDR 往返。
+"""显式检查隔离 Humble 安装中的公开消息；只做类型加载和本机 CDR 往返。
 
 输入：--prefix 指向本轮 install/jikl_fc01_system，--report 指向开发 cache 的 JSON。
 输出：逐消息的身份、字段/常量/默认值及 CDR 证据；任一检查失败均返回非零。
@@ -23,8 +23,14 @@ MESSAGE_NAMES = (
     'VisionState',
     'NavigationCommand',
     'VelocityCommand',
+    'VelocityCommandV2',
+    'TargetObservation',
+    'PlatformState',
+    'NativeFlightState',
+    'NativeFlightSnapshot',
     'VisionHealth',
     'AttitudeThrustPreview',
+    'HorizontalVelocityCommand',
 )
 SOURCE_PACKAGE = Path(__file__).resolve().parents[1] / 'native/src' / PACKAGE
 SUPPORTED_TYPE = re.compile(
@@ -43,7 +49,7 @@ def digest(data):
 
 
 def literal_value(type_name, text):
-    # 只解析当前五份 MSG 实际使用的简单声明；不充当完整 ROS MSG 语法解析器。
+    # 只解析当前 MSG 实际使用的简单声明；不充当完整 ROS MSG 语法解析器。
     if text is not None:
         if type_name == 'bool':
             require(text in ('true', 'false', 'True', 'False'), 'unsupported bool literal: ' + text)
@@ -183,6 +189,63 @@ def cdr_padding_ranges(fields, values, wire):
     return padding
 
 
+def check_horizontal_envelope(message_class, source, row, prefix):
+    """嵌套类型独立严格合同；九种原消息的CDR布局检查保持原样。"""
+    from rclpy.serialization import serialize_message, deserialize_message
+    from jikl_fc01_system.msg import VelocityCommandV2
+    declarations=[line.split('#',1)[0].strip() for line in source.decode().splitlines()]
+    require([x for x in declarations if x]==[
+        'uint16 schema_version 1','jikl_fc01_system/VelocityCommandV2 command',
+        'uint64 attitude_sample_stamp_ns','string origin_id'], 'unexpected envelope source layout')
+    require(list(message_class.get_fields_and_field_types().items())==[
+        ('schema_version','uint16'),('command','jikl_fc01_system/VelocityCommandV2'),
+        ('attitude_sample_stamp_ns','uint64'),('origin_id','string')], 'envelope generated layout differs')
+    message_class.__class__.__import_type_support__()
+    require(message_class.__class__._TYPE_SUPPORT is not None,'envelope type support missing')
+    defaults=message_class()
+    require(defaults.schema_version==1 and defaults.command==VelocityCommandV2() and
+            defaults.attitude_sample_stamp_ns==0 and defaults.origin_id=='','envelope defaults differ')
+    msg=message_class();fields,_=parse_declarations((SOURCE_PACKAGE/'msg/VelocityCommandV2.msg').read_bytes())
+    fill_fixture(msg.command,fields)
+    msg.attitude_sample_stamp_ns=(1<<60)+777
+    msg.origin_id='px4_local:fixture_相机'
+    wire=serialize_message(msg);restored=deserialize_message(wire,message_class)
+    require(restored==msg,'nested CDR roundtrip differs')
+    require(deserialize_message(serialize_message(restored),message_class)==msg,'nested second roundtrip differs')
+    row.update(passed=True,fields=list(message_class.get_fields_and_field_types().items()),
+        python_module=module_identity(importlib.import_module(message_class.__module__),prefix),
+        type_support_loaded=True,cdr_bytes=len(wire),cdr_sha256=digest(wire),
+        cdr_twice_decoded_fields_exact=True,nested_fixture={
+            field['name']:field_value(msg.command,field) for field in fields},
+        attitude_sample_stamp_ns=msg.attitude_sample_stamp_ns,origin_id=msg.origin_id)
+
+
+def check_native_snapshot(message_class, source, row, prefix):
+    """原生已消费姿态与授权状态同包，旧NativeFlightState保持原布局。"""
+    from rclpy.serialization import serialize_message, deserialize_message
+    from jikl_fc01_system.msg import NativeFlightState
+    declarations=[line.split('#',1)[0].strip() for line in source.decode().splitlines()]
+    require([x for x in declarations if x]==[
+        'uint16 schema_version 1','NativeFlightState state',
+        'float64[4] attitude_wxyz','string origin_id','uint64 attitude_receive_monotonic_ns'], 'unexpected native snapshot source layout')
+    require(list(message_class.get_fields_and_field_types().items())==[
+        ('schema_version','uint16'),('state','jikl_fc01_system/NativeFlightState'),
+        ('attitude_wxyz','double[4]'),('origin_id','string'),('attitude_receive_monotonic_ns','uint64')], 'native snapshot generated layout differs')
+    message_class.__class__.__import_type_support__()
+    require(message_class.__class__._TYPE_SUPPORT is not None,'native snapshot type support missing')
+    defaults=message_class()
+    require(defaults.schema_version==1 and defaults.state==NativeFlightState() and
+            list(defaults.attitude_wxyz)==[0.]*4 and defaults.origin_id=='' and defaults.attitude_receive_monotonic_ns==0,'snapshot defaults differ')
+    msg=message_class();fields,_=parse_declarations((SOURCE_PACKAGE/'msg/NativeFlightState.msg').read_bytes())
+    fill_fixture(msg.state,fields);msg.attitude_wxyz=[.5,.5,-.5,.5];msg.attitude_receive_monotonic_ns=(1<<60)+999;msg.origin_id='px4_local:fixture_原生'
+    wire=serialize_message(msg);restored=deserialize_message(wire,message_class)
+    require(restored==msg,'snapshot nested CDR roundtrip differs')
+    require(deserialize_message(serialize_message(restored),message_class)==msg,'snapshot second roundtrip differs')
+    row.update(passed=True,fields=list(message_class.get_fields_and_field_types().items()),
+        python_module=module_identity(importlib.import_module(message_class.__module__),prefix),
+        type_support_loaded=True,cdr_bytes=len(wire),cdr_sha256=digest(wire),cdr_twice_decoded_fields_exact=True)
+
+
 def check_installation(prefix, report):
     """加载已安装类型并检查本机序列化；调用方先 source 正确 overlay，本函数不初始化 ROS。"""
     # ROS 依赖只在显式执行时加载；导入脚本或阅读/测试解析函数不需要 ROS 环境。
@@ -211,8 +274,14 @@ def check_installation(prefix, report):
         row['source_msg_sha256'] = digest(source)
         row['installed_msg'] = {'path': str(installed_path), 'sha256': digest(installed)}
         require(source == installed, name + ': installed MSG differs from current source bytes')
-        fields, constants = parse_declarations(source)
         message_class = get_message(row['type'])
+        if name=='NativeFlightSnapshot':
+            check_native_snapshot(message_class,source,row,prefix)
+            continue
+        if name=='HorizontalVelocityCommand':
+            check_horizontal_envelope(message_class,source,row,prefix)
+            continue
+        fields, constants = parse_declarations(source)
         package_module = importlib.import_module(PACKAGE + '.msg')
         require(
             getattr(package_module, name) is message_class, name + ': get_message class mismatch'
@@ -237,9 +306,11 @@ def check_installation(prefix, report):
         expected_defaults = {field['name']: field['default'] for field in fields}
         actual_defaults = {field['name']: field_value(defaults, field) for field in fields}
         require(actual_defaults == expected_defaults, name + ': generated field defaults differ')
-        require(defaults.schema_version == 1, name + ': expected schema V1 default')
+        schema_version = expected_defaults['schema_version']
+        require(defaults.schema_version == schema_version, name + ': schema default differs')
         require(
-            message_class.SCHEMA_VERSION__DEFAULT == 1, name + ': schema default metadata differs'
+            message_class.SCHEMA_VERSION__DEFAULT == schema_version,
+            name + ': schema default metadata differs',
         )
         message_class.__class__.__import_type_support__()
         require(

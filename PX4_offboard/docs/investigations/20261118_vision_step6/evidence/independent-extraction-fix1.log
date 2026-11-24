@@ -1,0 +1,3 @@
+FIX1_SHA_MANIFEST_EXTRACT_OK 7748
+Independent extract_checked with pinned SHA/source c6fe7edaec84ce3dad68d6584b1d7fbb5c3c7bac; 7748 payload files plus ARM64_RELEASE.json.
+Transient extraction path: /home/jikl62/.cache/fc01-arm64-step6-20261118/fix1-independent-extract

@@ -12,7 +12,8 @@ struct OwnershipCounts {
   std::size_t attitude_publishers{}, attitude_subscribers{}, other_publishers{};
 };
 // 存在竞争者立即拒绝；地面 profile 要求零发布者，动力 profile 只允许所选的一类设定值。
-inline bool owns_setpoints(const std::string& profile, const OwnershipCounts& c) {
+inline bool owns_setpoints(const std::string& profile, const OwnershipCounts& c,
+                           bool px4_takeoff_position = false) {
   // 纯bool输出，无状态副作用。ROS图数量匹配仍不证明对端已收到/采用目标；最终出口需再观察。
   if (c.other_publishers)
     return false;
@@ -21,10 +22,11 @@ inline bool owns_setpoints(const std::string& profile, const OwnershipCounts& c)
   // 生产路径要求一个本机心跳发布者和一个预期订阅者；多源和缺源同样不能通过。
   if (c.mode_publishers != 1 || c.mode_subscribers != 1)
     return false;
-  if (profile == "attitude_altitude")
+  if (profile == "attitude_altitude" && !px4_takeoff_position)
     return c.attitude_publishers == 1 && c.attitude_subscribers == 1 &&
            c.trajectory_publishers == 0;
-  if (profile == "flight" || profile == "sim")
+  if (profile == "flight" || profile == "sim" ||
+      (profile == "attitude_altitude" && px4_takeoff_position))
     return c.trajectory_publishers == 1 && c.trajectory_subscribers == 1 &&
            c.attitude_publishers == 0;
   return false;

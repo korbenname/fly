@@ -1,0 +1,20 @@
+Starting >>> jikl_fc01_system
+[1.393s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/delivery/position-vision-step3-build/install' in the environment variable AMENT_PREFIX_PATH doesn't contain any 'local_setup.*' files.
+Finished <<< jikl_fc01_system [10min 29s]
+Starting >>> fc01_mission
+Finished <<< fc01_mission [6.98s]
+Starting >>> fc01_vision
+--- stderr: fc01_vision
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    PYTHON_EXECUTABLE
+
+
+---
+Finished <<< fc01_vision [3min 58s]
+Starting >>> fc01_bringup
+Finished <<< fc01_bringup [5.32s]
+
+Summary: 4 packages finished [14min 40s]
+  1 package had stderr output: fc01_vision

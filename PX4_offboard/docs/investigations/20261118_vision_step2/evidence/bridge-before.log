@@ -1,0 +1,3 @@
+Old mission _message_age(now=100s, sample=1s): 0.15
+Old mission _message_age(now=100s, sample=101s): 0.0
+Old platform callbacks only _on_pose updates monotonic; no velocity/omega time tracking, valid mask, source identity or reset tracking.

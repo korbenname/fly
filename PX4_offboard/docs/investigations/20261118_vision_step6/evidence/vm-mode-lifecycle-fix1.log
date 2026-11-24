@@ -1,0 +1,610 @@
+FC01：维护切换适用于落地、拆桨、飞控断电；安装成功不等于飞行就绪。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（100.4秒）。
+FC01：检查统一消息、Python模块和全部ELF架构；完整动态依赖随后随配置统一核对。
+FC01_PREBUILT_RUNTIME_DEPENDENCIES_OK
+
+FC01：开始完整服务软件预检（文件/动态依赖/参数），旧服务此时保持原状态。
+FC01_SOFTWARE_CHECK_BEGIN 完整文件与本机运行条件
+FC01_SOFTWARE_CHECK_PROGRESS 文件清单通过 elapsed=44.0s
+FC01_SOFTWARE_CHECK_PROGRESS ELF架构通过 paths=565 elapsed=50.7s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=50 elapsed=63.0s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=100 elapsed=73.2s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=150 elapsed=83.2s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=200 elapsed=93.3s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=250 elapsed=103.3s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=300 elapsed=112.8s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖通过 unique=338 elapsed=120.4s
+FC01_SOFTWARE_CHECK_PROGRESS 统一消息与Python加载通过 elapsed=130.9s
+FC01_SOFTWARE_CHECK_DONE elapsed=132.0s
+FC01_PREBUILT_CHECK_OK version=20261118_vision_step6_fix1
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：等待新版软件初始化/IPC，已用10/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用20/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用30/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用41/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用51/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用61/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用71/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用81/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用92/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用102/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用112/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用122/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用132/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用142/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用152/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用163/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用173/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用183/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用193/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用203/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用214/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用224/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用234/600秒；等待当前监督器/控制器的只读IPC状态；不要求飞机反馈。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（235.5秒）；飞机就绪另行显示。
+{
+  "entry": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1",
+  "backup": "/home/orangepi/FC01_navigation/prebuilt-backups/20261118T043903_782776Z-38030",
+  "already_active": false,
+  "version": "20261118_vision_step6_fix1",
+  "service_pid": 40501,
+  "controller_pid": 43663
+}
+FC01_PREBUILT_INSTALL_OK entry=/home/orangepi/FC01_versions/20261118_vision_step6_fix1 service_pid=40501 controller_pid=43663
+FC01_FLIGHT_READINESS={"ready_for_manual_rc": false, "missing": ["DDS", "RC", "姿态", "位置", "电池", "PX4"], "phase": "IDLE", "reason": "DDS_SOURCE_CLOCK_UNSYNCHRONIZED_OR_STALE", "status_current": true, "target_height_m": 1.5, "native_navigation_allowed": null, "current_command_source": null, "vision": {"mode": "altitude", "current": true, "camera_current": false, "mission_current": false, "camera": null, "mission": null, "calibration_state": "not_required", "mission_control_enabled": false, "error": ""}, "note": "仅显示；人工RC准入/接管/Kill/失效保护由原生控制器判定"}
+FC01_ROLLBACK_COMMAND=bash /home/orangepi/Desktop/install_fc01.sh --rollback /home/orangepi/FC01_navigation/prebuilt-backups/20261118T043903_782776Z-38030
+FINAL_FIX1_INACTIVE_BASELINE_INSTALL_PASS
+FC01_SOFTWARE_CHECK_BEGIN 完整文件与本机运行条件
+FC01_SOFTWARE_CHECK_PROGRESS 文件清单通过 elapsed=44.8s
+FC01_SOFTWARE_CHECK_PROGRESS ELF架构通过 paths=565 elapsed=51.6s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=50 elapsed=63.3s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=100 elapsed=74.3s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=150 elapsed=84.8s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=200 elapsed=95.7s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=250 elapsed=107.0s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=300 elapsed=117.0s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖通过 unique=338 elapsed=124.9s
+FC01_SOFTWARE_CHECK_PROGRESS 统一消息与Python加载通过 elapsed=134.8s
+FC01_SOFTWARE_CHECK_DONE elapsed=136.2s
+FC01_PREBUILT_CHECK_OK version=20261118_vision_step6_fix1
+FC01_VISION_MODE_CONFIG_OK {"mode": "track", "entry": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1", "backup": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/deployment/mode-backup-20261118T044636_734019Z", "automatic_arm": false, "calibration_state": "pending", "mission_control_enabled": false, "note": "配置完成；服务尚未启动。启动后原生RC/到高/失效保护仍独立判定。"}
+FC01：等待新版软件初始化/IPC，已用10/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用21/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用31/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用41/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用51/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用61/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用72/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用82/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用92/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用102/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用112/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用123/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用133/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用143/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用154/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用164/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用174/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用184/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用194/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用205/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用215/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用225/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用236/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用246/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用256/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用266/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用277/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用287/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用297/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用308/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用319/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用329/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用339/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用349/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用360/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用371/600秒；等待当前监督器/控制器的只读IPC状态；不要求飞机反馈。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（376.8秒）；飞机就绪另行显示。
+FINAL_FIX1_ARM64_PENDING_TRACK_PASS
+{
+  "service": {
+    "TimeoutStartUSec": "10min",
+    "MainPID": "46163",
+    "Result": "success",
+    "ExecMainStatus": "0",
+    "ExecStart": "{ path=/bin/bash ; argv[]=/bin/bash /home/orangepi/FC01_versions/20261118_vision_step6_fix1/prebuilt_boot.sh ; ignore_errors=no ; start_time=[Wed 2026-11-18 04:49:00 UTC] ; stop_time=[n/a] ; pid=46163 ; code=(null) ; status=0/0 }",
+    "ControlGroup": "/system.slice/fc01-navigation.service",
+    "Environment": "HOME=/home/orangepi FC01_PROJECT_ROOT=/home/orangepi/sdk ROS_DOMAIN_ID=0 ROS_LOCALHOST_ONLY=0 PYTHONUNBUFFERED=1",
+    "WorkingDirectory": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1",
+    "User": "orangepi",
+    "LoadState": "loaded",
+    "ActiveState": "active",
+    "SubState": "running",
+    "FragmentPath": "/etc/systemd/system/fc01-navigation.service",
+    "DropInPaths": "/etc/systemd/system/fc01-navigation.service.d/zzzz-fc01-prebuilt.conf",
+    "UnitFileState": "enabled"
+  },
+  "controllers": [
+    {
+      "pid": 49638,
+      "uid": 1000,
+      "argv": [
+        "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+        "--ros-args",
+        "--disable-external-lib-logs",
+        "--params-file",
+        "/home/orangepi/FC01_navigation/runtime.yaml",
+        "-p",
+        "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_rf7bvmvu/control.sock"
+      ],
+      "exe": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+      "cwd": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1",
+      "sha256": "26ca623c7e421dad68fa771d6356c77b7e464d90853d03a965e105343ecd36fb",
+      "start_ticks": 5589393
+    }
+  ],
+  "flight_readiness": {
+    "ready_for_manual_rc": false,
+    "missing": [
+      "DDS",
+      "RC",
+      "姿态",
+      "位置",
+      "电池",
+      "PX4"
+    ],
+    "phase": "IDLE",
+    "reason": "DDS_SOURCE_CLOCK_UNSYNCHRONIZED_OR_STALE",
+    "status_current": true,
+    "target_height_m": 1.5,
+    "native_navigation_allowed": null,
+    "current_command_source": null,
+    "vision": {
+      "mode": "track",
+      "current": true,
+      "camera_current": true,
+      "mission_current": true,
+      "camera": {
+        "ready": false,
+        "reason": "CAMERA_FRAME_STALE_OR_DISCONNECTED",
+        "configuration": "CAMERA_CALIBRATION_UNCONFIRMED",
+        "source_id": "fc01_vision@49224-55756208847008",
+        "reset_counter": 0,
+        "calibration_id": "",
+        "extrinsics_id": "",
+        "target_model_id": "",
+        "stamp_kind": "v4l2_read_completion_system",
+        "read_seconds": 0,
+        "missing": [
+          "CAMERA_CALIBRATION",
+          "CAMERA_RECTIFICATION",
+          "CAMERA_EXTRINSICS",
+          "TARGET_MODEL",
+          "CAPTURE_LATENCY"
+        ],
+        "exposure_timestamp_measured": false
+      },
+      "mission": {
+        "kind": "mission_sensors",
+        "control_authority": false,
+        "platform_input_mode": "px4",
+        "missing": [
+          "POSITION_SOURCE_STALE",
+          "CAMERA_LEVER_ARM_UNCONFIRMED",
+          "POSITION_SOURCE_STALE",
+          "STANDOFF_CALIBRATION_UNCONFIRMED",
+          "quaternion norm invalid",
+          "WAYPOINT_ORIGIN_UNCONFIRMED"
+        ],
+        "target_locked": false,
+        "continuous_new_frames": 0,
+        "target_reason": "POSITION_SOURCE_STALE",
+        "platform_reason": "POSITION_SOURCE_STALE",
+        "guidance_invalidated": false,
+        "native_navigation_current": false,
+        "native_phase": "",
+        "native_reason": "quaternion norm invalid",
+        "origin_id": "px4_local:0:0:0:0:0:0",
+        "last_target_stamp_ns": 0,
+        "target_source": null,
+        "engage_mode": "track",
+        "horizontal_policy_reason": "WAIT_NATIVE",
+        "horizontal_fault": "",
+        "standoff_calibration_id": "",
+        "note": "原生独占人工RC起飞和1.5m垂直闭环；本节点只在原生到高授权后产生水平意图"
+      },
+      "calibration_state": "pending",
+      "mission_control_enabled": false,
+      "error": ""
+    },
+    "note": "仅显示；人工RC准入/接管/Kill/失效保护由原生控制器判定"
+  },
+  "vision": {
+    "mode": "track",
+    "current": true,
+    "camera_current": true,
+    "mission_current": true,
+    "camera": {
+      "ready": false,
+      "reason": "CAMERA_FRAME_STALE_OR_DISCONNECTED",
+      "configuration": "CAMERA_CALIBRATION_UNCONFIRMED",
+      "source_id": "fc01_vision@49224-55756208847008",
+      "reset_counter": 0,
+      "calibration_id": "",
+      "extrinsics_id": "",
+      "target_model_id": "",
+      "stamp_kind": "v4l2_read_completion_system",
+      "read_seconds": 0,
+      "missing": [
+        "CAMERA_CALIBRATION",
+        "CAMERA_RECTIFICATION",
+        "CAMERA_EXTRINSICS",
+        "TARGET_MODEL",
+        "CAPTURE_LATENCY"
+      ],
+      "exposure_timestamp_measured": false
+    },
+    "mission": {
+      "kind": "mission_sensors",
+      "control_authority": false,
+      "platform_input_mode": "px4",
+      "missing": [
+        "POSITION_SOURCE_STALE",
+        "CAMERA_LEVER_ARM_UNCONFIRMED",
+        "POSITION_SOURCE_STALE",
+        "STANDOFF_CALIBRATION_UNCONFIRMED",
+        "quaternion norm invalid",
+        "WAYPOINT_ORIGIN_UNCONFIRMED"
+      ],
+      "target_locked": false,
+      "continuous_new_frames": 0,
+      "target_reason": "POSITION_SOURCE_STALE",
+      "platform_reason": "POSITION_SOURCE_STALE",
+      "guidance_invalidated": false,
+      "native_navigation_current": false,
+      "native_phase": "",
+      "native_reason": "quaternion norm invalid",
+      "origin_id": "px4_local:0:0:0:0:0:0",
+      "last_target_stamp_ns": 0,
+      "target_source": null,
+      "engage_mode": "track",
+      "horizontal_policy_reason": "WAIT_NATIVE",
+      "horizontal_fault": "",
+      "standoff_calibration_id": "",
+      "note": "原生独占人工RC起飞和1.5m垂直闭环；本节点只在原生到高授权后产生水平意图"
+    },
+    "calibration_state": "pending",
+    "mission_control_enabled": false,
+    "error": ""
+  }
+}
+FC01_SOFTWARE_CHECK_BEGIN 完整文件与本机运行条件
+FC01_SOFTWARE_CHECK_PROGRESS 文件清单通过 elapsed=47.2s
+FC01_SOFTWARE_CHECK_PROGRESS ELF架构通过 paths=565 elapsed=55.2s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=50 elapsed=68.8s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=100 elapsed=80.1s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=150 elapsed=91.3s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=200 elapsed=104.3s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=250 elapsed=115.2s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=300 elapsed=125.4s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖通过 unique=338 elapsed=133.9s
+FC01_SOFTWARE_CHECK_PROGRESS 统一消息与Python加载通过 elapsed=144.0s
+FC01_SOFTWARE_CHECK_DONE elapsed=145.4s
+FC01_PREBUILT_CHECK_OK version=20261118_vision_step6_fix1
+FC01_VISION_MODE_CONFIG_OK {"mode": "track", "entry": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1", "backup": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/deployment/mode-backup-20261118T045635_222062Z", "automatic_arm": false, "calibration_state": "confirmed", "mission_control_enabled": true, "note": "配置完成；服务尚未启动。启动后原生RC/到高/失效保护仍独立判定。"}
+FC01：等待新版软件初始化/IPC，已用10/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用20/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用30/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用41/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用51/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用61/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用71/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用81/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用91/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用102/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用112/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用122/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用132/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用143/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用153/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用163/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用173/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用183/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用194/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用204/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用214/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用224/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用234/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用245/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用255/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用265/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用275/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用285/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用296/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用306/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用316/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用326/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用337/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用347/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用357/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用368/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用378/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用389/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用399/600秒；等待新版服务和唯一控制器进程。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（408.8秒）；飞机就绪另行显示。
+FINAL_FIX1_ARM64_CONFIRMED_FIXTURE_TRACK_PASS
+{
+  "service": {
+    "TimeoutStartUSec": "10min",
+    "MainPID": "52149",
+    "Result": "success",
+    "ExecMainStatus": "0",
+    "ExecStart": "{ path=/bin/bash ; argv[]=/bin/bash /home/orangepi/FC01_versions/20261118_vision_step6_fix1/prebuilt_boot.sh ; ignore_errors=no ; start_time=[Wed 2026-11-18 04:59:09 UTC] ; stop_time=[n/a] ; pid=52149 ; code=(null) ; status=0/0 }",
+    "ControlGroup": "/system.slice/fc01-navigation.service",
+    "Environment": "HOME=/home/orangepi FC01_PROJECT_ROOT=/home/orangepi/sdk ROS_DOMAIN_ID=0 ROS_LOCALHOST_ONLY=0 PYTHONUNBUFFERED=1",
+    "WorkingDirectory": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1",
+    "User": "orangepi",
+    "LoadState": "loaded",
+    "ActiveState": "active",
+    "SubState": "running",
+    "FragmentPath": "/etc/systemd/system/fc01-navigation.service",
+    "DropInPaths": "/etc/systemd/system/fc01-navigation.service.d/zzzz-fc01-prebuilt.conf",
+    "UnitFileState": "enabled"
+  },
+  "controllers": [
+    {
+      "pid": 55665,
+      "uid": 1000,
+      "argv": [
+        "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+        "--ros-args",
+        "--disable-external-lib-logs",
+        "--params-file",
+        "/home/orangepi/FC01_navigation/runtime.yaml",
+        "-p",
+        "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_3wk_jnq1/control.sock"
+      ],
+      "exe": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+      "cwd": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1",
+      "sha256": "26ca623c7e421dad68fa771d6356c77b7e464d90853d03a965e105343ecd36fb",
+      "start_ticks": 5653322
+    }
+  ],
+  "flight_readiness": {
+    "ready_for_manual_rc": false,
+    "missing": [
+      "DDS",
+      "RC",
+      "姿态",
+      "位置",
+      "电池",
+      "PX4"
+    ],
+    "phase": "IDLE",
+    "reason": "DDS_SOURCE_CLOCK_UNSYNCHRONIZED_OR_STALE",
+    "status_current": true,
+    "target_height_m": 1.5,
+    "native_navigation_allowed": null,
+    "current_command_source": null,
+    "vision": {
+      "mode": "track",
+      "current": true,
+      "camera_current": true,
+      "mission_current": true,
+      "camera": {
+        "ready": false,
+        "reason": "CAMERA_FRAME_STALE_OR_DISCONNECTED",
+        "configuration": "CONFIGURATION_CONFIRMED",
+        "source_id": "fc01_vision@55151-56344063761728",
+        "reset_counter": 0,
+        "calibration_id": "SYNTHETIC-VM-K",
+        "extrinsics_id": "SYNTHETIC-VM-extrinsics",
+        "target_model_id": "SYNTHETIC-VM-circle",
+        "stamp_kind": "v4l2_read_completion_system",
+        "read_seconds": 0,
+        "missing": [],
+        "exposure_timestamp_measured": false
+      },
+      "mission": {
+        "kind": "mission_sensors",
+        "control_authority": false,
+        "platform_input_mode": "px4",
+        "missing": [
+          "POSITION_SOURCE_STALE",
+          "POSITION_SOURCE_STALE",
+          "quaternion norm invalid",
+          "WAYPOINT_ORIGIN_UNCONFIRMED"
+        ],
+        "target_locked": false,
+        "continuous_new_frames": 0,
+        "target_reason": "POSITION_SOURCE_STALE",
+        "platform_reason": "POSITION_SOURCE_STALE",
+        "guidance_invalidated": false,
+        "native_navigation_current": false,
+        "native_phase": "",
+        "native_reason": "quaternion norm invalid",
+        "origin_id": "px4_local:0:0:0:0:0:0",
+        "last_target_stamp_ns": 0,
+        "target_source": null,
+        "engage_mode": "track",
+        "horizontal_policy_reason": "WAIT_NATIVE",
+        "horizontal_fault": "",
+        "standoff_calibration_id": "SYNTHETIC-VM-distance",
+        "note": "原生独占人工RC起飞和1.5m垂直闭环；本节点只在原生到高授权后产生水平意图"
+      },
+      "calibration_state": "confirmed",
+      "mission_control_enabled": true,
+      "error": ""
+    },
+    "note": "仅显示；人工RC准入/接管/Kill/失效保护由原生控制器判定"
+  },
+  "vision": {
+    "mode": "track",
+    "current": true,
+    "camera_current": true,
+    "mission_current": true,
+    "camera": {
+      "ready": false,
+      "reason": "CAMERA_FRAME_STALE_OR_DISCONNECTED",
+      "configuration": "CONFIGURATION_CONFIRMED",
+      "source_id": "fc01_vision@55151-56344063761728",
+      "reset_counter": 0,
+      "calibration_id": "SYNTHETIC-VM-K",
+      "extrinsics_id": "SYNTHETIC-VM-extrinsics",
+      "target_model_id": "SYNTHETIC-VM-circle",
+      "stamp_kind": "v4l2_read_completion_system",
+      "read_seconds": 0,
+      "missing": [],
+      "exposure_timestamp_measured": false
+    },
+    "mission": {
+      "kind": "mission_sensors",
+      "control_authority": false,
+      "platform_input_mode": "px4",
+      "missing": [
+        "POSITION_SOURCE_STALE",
+        "POSITION_SOURCE_STALE",
+        "quaternion norm invalid",
+        "WAYPOINT_ORIGIN_UNCONFIRMED"
+      ],
+      "target_locked": false,
+      "continuous_new_frames": 0,
+      "target_reason": "POSITION_SOURCE_STALE",
+      "platform_reason": "POSITION_SOURCE_STALE",
+      "guidance_invalidated": false,
+      "native_navigation_current": false,
+      "native_phase": "",
+      "native_reason": "quaternion norm invalid",
+      "origin_id": "px4_local:0:0:0:0:0:0",
+      "last_target_stamp_ns": 0,
+      "target_source": null,
+      "engage_mode": "track",
+      "horizontal_policy_reason": "WAIT_NATIVE",
+      "horizontal_fault": "",
+      "standoff_calibration_id": "SYNTHETIC-VM-distance",
+      "note": "原生独占人工RC起飞和1.5m垂直闭环；本节点只在原生到高授权后产生水平意图"
+    },
+    "calibration_state": "confirmed",
+    "mission_control_enabled": true,
+    "error": ""
+  }
+}
+FC01：维护切换适用于落地、拆桨、飞控断电；安装成功不等于飞行就绪。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（215.8秒）。
+FC01：检查统一消息、Python模块和全部ELF架构；完整动态依赖随后随配置统一核对。
+FC01_PREBUILT_RUNTIME_DEPENDENCIES_OK
+
+FC01：开始完整服务软件预检（文件/动态依赖/参数），旧服务此时保持原状态。
+FC01_SOFTWARE_CHECK_BEGIN 完整文件与本机运行条件
+FC01_SOFTWARE_CHECK_PROGRESS 文件清单通过 elapsed=104.9s
+FC01_SOFTWARE_CHECK_PROGRESS ELF架构通过 paths=565 elapsed=119.4s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=50 elapsed=149.2s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=100 elapsed=175.4s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=150 elapsed=200.5s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=200 elapsed=226.9s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=250 elapsed=254.0s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=300 elapsed=278.4s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖通过 unique=338 elapsed=298.5s
+FC01_SOFTWARE_CHECK_PROGRESS 统一消息与Python加载通过 elapsed=320.8s
+FC01_SOFTWARE_CHECK_DONE elapsed=325.2s
+FC01_PREBUILT_CHECK_OK version=20261118_vision_step6_fix1
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（4.5秒）；飞机就绪另行显示。
+{
+  "entry": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1",
+  "backup": "/home/orangepi/FC01_navigation/prebuilt-backups/20261118T043903_782776Z-38030",
+  "already_active": true,
+  "version": "20261118_vision_step6_fix1",
+  "service_pid": 52149,
+  "controller_pid": 55665
+}
+FC01_PREBUILT_INSTALL_OK entry=/home/orangepi/FC01_versions/20261118_vision_step6_fix1 service_pid=52149 controller_pid=55665
+FC01_FLIGHT_READINESS={"ready_for_manual_rc": false, "missing": ["DDS", "RC", "姿态", "位置", "电池", "PX4"], "phase": "IDLE", "reason": "DDS_SOURCE_CLOCK_UNSYNCHRONIZED_OR_STALE", "status_current": true, "target_height_m": 1.5, "native_navigation_allowed": null, "current_command_source": null, "vision": {"mode": "track", "current": true, "camera_current": true, "mission_current": true, "camera": {"ready": false, "reason": "CAMERA_FRAME_STALE_OR_DISCONNECTED", "configuration": "CONFIGURATION_CONFIRMED", "source_id": "fc01_vision@55151-56344063761728", "reset_counter": 0, "calibration_id": "SYNTHETIC-VM-K", "extrinsics_id": "SYNTHETIC-VM-extrinsics", "target_model_id": "SYNTHETIC-VM-circle", "stamp_kind": "v4l2_read_completion_system", "read_seconds": 0, "missing": [], "exposure_timestamp_measured": false}, "mission": {"kind": "mission_sensors", "control_authority": false, "platform_input_mode": "px4", "missing": ["POSITION_SOURCE_STALE", "POSITION_SOURCE_STALE", "quaternion norm invalid", "WAYPOINT_ORIGIN_UNCONFIRMED"], "target_locked": false, "continuous_new_frames": 0, "target_reason": "POSITION_SOURCE_STALE", "platform_reason": "POSITION_SOURCE_STALE", "guidance_invalidated": false, "native_navigation_current": false, "native_phase": "", "native_reason": "quaternion norm invalid", "origin_id": "px4_local:0:0:0:0:0:0", "last_target_stamp_ns": 0, "target_source": null, "engage_mode": "track", "horizontal_policy_reason": "WAIT_NATIVE", "horizontal_fault": "", "standoff_calibration_id": "SYNTHETIC-VM-distance", "note": "原生独占人工RC起飞和1.5m垂直闭环；本节点只在原生到高授权后产生水平意图"}, "calibration_state": "confirmed", "mission_control_enabled": true, "error": ""}, "note": "仅显示；人工RC准入/接管/Kill/失效保护由原生控制器判定"}
+FC01_ROLLBACK_COMMAND=bash /home/orangepi/Desktop/install_fc01.sh --rollback /home/orangepi/FC01_navigation/prebuilt-backups/20261118T043903_782776Z-38030
+{
+  "repeat_keeps_supervisor_and_controller": true,
+  "service_pid": "52149",
+  "controller": [
+    {
+      "pid": 55665,
+      "exe": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+      "argv": [
+        "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+        "--ros-args",
+        "--disable-external-lib-logs",
+        "--params-file",
+        "/home/orangepi/FC01_navigation/runtime.yaml",
+        "-p",
+        "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_3wk_jnq1/control.sock"
+      ],
+      "ppid": 52149,
+      "uid": 1000
+    }
+  ]
+}
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（4.7秒）；飞机就绪另行显示。
+FINAL_FIX1_ARM64_TRACK_REPEAT_PASS
+FC01_VM_READONLY_NO_FEEDBACK_OUTPUT_PASS {"setpoint": 0, "command": 0, "heartbeat": 0}
+FC01_SOFTWARE_CHECK_BEGIN 完整文件与本机运行条件
+FC01_SOFTWARE_CHECK_PROGRESS 文件清单通过 elapsed=54.3s
+FC01_SOFTWARE_CHECK_PROGRESS ELF架构通过 paths=565 elapsed=62.7s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=50 elapsed=77.9s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=100 elapsed=90.7s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=150 elapsed=103.0s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=200 elapsed=116.1s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=250 elapsed=129.8s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=300 elapsed=142.7s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖通过 unique=338 elapsed=153.8s
+FC01_SOFTWARE_CHECK_PROGRESS 统一消息与Python加载通过 elapsed=166.9s
+FC01_SOFTWARE_CHECK_DONE elapsed=168.2s
+FC01_PREBUILT_CHECK_OK version=20261118_vision_step6_fix1
+FC01_VISION_MODE_CONFIG_OK {"mode": "altitude", "entry": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1", "backup": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/deployment/mode-backup-20261118T052025_491321Z", "automatic_arm": false, "calibration_state": "not_required", "mission_control_enabled": false, "note": "配置完成；服务尚未启动。启动后原生RC/到高/失效保护仍独立判定。"}
+FC01：等待新版软件初始化/IPC，已用10/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用20/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用31/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用41/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用51/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用61/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用71/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用82/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用92/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用103/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用113/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用123/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用133/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用144/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用154/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用164/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用174/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用184/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用195/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用205/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用215/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用225/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用235/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用246/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用256/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用266/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用276/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用286/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用297/600秒；等待新版服务和唯一控制器进程。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（300.8秒）；飞机就绪另行显示。
+FINAL_FIX1_ARM64_RETURN_ALTITUDE_PASS
+FINAL_FIX1_TRACK_AUXILIARIES_EXITED_ALTITUDE_PASS
+FC01：维护切换适用于落地、拆桨、飞控断电；安装成功不等于飞行就绪。
+FC01：等待旧任务退出，已用10秒；服务=deactivating，仍存活PID=[60803, 64040]。
+FC01：等待旧任务退出，已用20秒；服务=deactivating，仍存活PID=[60803, 64040]。
+FC01：等待旧任务退出，已用30秒；服务=deactivating，仍存活PID=[60803, 64040]。
+FC01：等待旧任务退出，已用40秒；服务=deactivating，仍存活PID=[60803, 64040]。
+FC01：等待旧任务退出，已用50秒；服务=deactivating，仍存活PID=[60803, 64040]。
+FC01：旧服务及所属FC01进程已退出（60.8秒）。
+{
+  "backup": "/home/orangepi/FC01_navigation/prebuilt-backups/20261118T043903_782776Z-38030",
+  "restored_controller": null,
+  "restored_active": false
+}
+FC01_PREBUILT_ROLLBACK_OK
+FC01_ROLLBACK_COMMAND=bash /home/orangepi/Desktop/install_fc01.sh --rollback /home/orangepi/FC01_navigation/prebuilt-backups/20261118T043903_782776Z-38030
+FINAL_FIX1_INACTIVE_ROLLBACK_RUNTIME_BYTE_IDENTICAL_PASS
+FINAL_FIX1_ARM64_MODE_LIFECYCLE_SUITE_PASS

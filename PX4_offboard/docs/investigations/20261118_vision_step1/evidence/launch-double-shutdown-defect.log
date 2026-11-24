@@ -1,0 +1,24 @@
+[INFO] [launch]: All log files can be found below /home/jikl62/.ros/log/2026-11-18-00-17-24-403956-Shittim-Chest-42138
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [mission-1]: process started with pid [42139]
+[INFO] [fc01_target_interface_node-2]: process started with pid [42141]
+[mission-1] [INFO] [1794932244.983298582] [fc01_mission]: consuming /fc01/vision/target_observation (takes precedence over /fc01/vision/target_relative)
+[mission-1] [INFO] [1794932244.984869220] [fc01_mission]: mission: mode=push, vision=/fc01/vision/target_relative, plant pose=/sim/platform_pose, out=/visioncontrol at 50 Hz
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [fc01_target_interface_node-2]: sending signal 'SIGINT' to process[fc01_target_interface_node-2]
+[INFO] [mission-1]: sending signal 'SIGINT' to process[mission-1]
+[fc01_target_interface_node-2] [INFO] [1794932245.778486706] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[mission-1] Traceback (most recent call last):
+[mission-1]   File "/home/jikl62/.cache/fc01-vision-step1-20261117/install/fc01_mission/lib/fc01_mission/mission", line 33, in <module>
+[mission-1]     sys.exit(load_entry_point('fc01-mission==0.1.0', 'console_scripts', 'mission')())
+[mission-1]   File "/home/jikl62/.cache/fc01-vision-step1-20261117/install/fc01_mission/lib/python3.10/site-packages/fc01_mission/mission_node.py", line 1153, in main
+[mission-1]     rclpy.shutdown()
+[mission-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/__init__.py", line 130, in shutdown
+[mission-1]     _shutdown(context=context)
+[mission-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/utilities.py", line 58, in shutdown
+[mission-1]     return context.shutdown()
+[mission-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/context.py", line 102, in shutdown
+[mission-1]     self.__context.shutdown()
+[mission-1] rclpy._rclpy_pybind11.RCLError: failed to shutdown: rcl_shutdown already called on the given context, at ./src/rcl/init.c:241
+[INFO] [fc01_target_interface_node-2]: process has finished cleanly [pid 42141]
+[ERROR] [mission-1]: process has died [pid 42139, exit code 1, cmd '/home/jikl62/.cache/fc01-vision-step1-20261117/install/fc01_mission/lib/fc01_mission/mission --ros-args -r __node:=fc01_mission --params-file /home/jikl62/.cache/fc01-vision-step1-20261117/install/fc01_mission/share/fc01_mission/config/mission.yaml --params-file /tmp/launch_params_90tif52q -r /fc01/vision/target_observation:=/step1/remapped_target -r /navigation_command:=/step1/remapped_navigation -r /visioncontrol:=/step1/remapped_velocity'].

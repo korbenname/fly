@@ -1,0 +1,93 @@
+Nov 17 14:00:22 fc01-arm64-test-vm fc01-navigation[3888]: STOPPED: 后台待命已停止
+Nov 17 14:00:22 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Deactivated successfully.
+Nov 17 14:00:22 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Unit process 426 (MicroXRCEAgent) remains running after unit stopped.
+Nov 17 14:00:22 fc01-arm64-test-vm systemd[1]: Stopped FC01 manual RC navigation controller.
+Nov 17 14:00:22 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Consumed 1min 57.188s CPU time.
+Nov 17 14:03:47 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Found left-over process 426 (MicroXRCEAgent) in control group while starting unit. Ignoring.
+Nov 17 14:03:47 fc01-arm64-test-vm systemd[1]: This usually indicates unclean termination of a previous run, or service implementation deficiencies.
+Nov 17 14:03:47 fc01-arm64-test-vm systemd[1]: Started FC01 manual RC navigation controller.
+Nov 17 14:05:12 fc01-arm64-test-vm fc01-navigation[5586]: FC01_PREBUILT_SERVICE version=20261117_stage3_fix1 source_commit=4c85a9e7e0c66193104164f03f4bfe28de709b9d inherited_config=/home/orangepi/FC01_versions/20261117_stage3_fix1/deployment/runtime.yaml
+Nov 17 14:05:57 fc01-arm64-test-vm fc01-navigation[5586]: Agent transport CONNECTED: UART /dev/ttyS2 115200; PID=426
+Nov 17 14:05:57 fc01-arm64-test-vm fc01-navigation[5586]: WAITING: 控制器已启动，等待飞控反馈
+Nov 17 14:05:58 fc01-arm64-test-vm fc01-navigation[5586]: WAITING: 等待飞控新鲜状态和本地位置
+Nov 17 14:10:04 fc01-arm64-test-vm systemd[1]: Stopping FC01 manual RC navigation controller...
+Nov 17 14:10:04 fc01-arm64-test-vm fc01-navigation[5586]: STOPPING: 等待原生退出
+Nov 17 14:11:05 fc01-arm64-test-vm fc01-navigation[5586]: STOPPING: 原生控制器退出，code=0
+Nov 17 14:11:05 fc01-arm64-test-vm fc01-navigation[5586]: 保留本次 IPC 目录：[Errno 39] Directory not empty: '/home/orangepi/.cache/fc01_operator/ipc/s_xzl53hgr'
+Nov 17 14:11:05 fc01-arm64-test-vm fc01-navigation[5586]: STOPPED: 后台待命已停止
+Nov 17 14:11:05 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Deactivated successfully.
+Nov 17 14:11:05 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Unit process 426 (MicroXRCEAgent) remains running after unit stopped.
+Nov 17 14:11:05 fc01-arm64-test-vm systemd[1]: Stopped FC01 manual RC navigation controller.
+Nov 17 14:11:05 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Consumed 2min 31.150s CPU time.
+Nov 17 14:19:24 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Found left-over process 426 (MicroXRCEAgent) in control group while starting unit. Ignoring.
+Nov 17 14:19:24 fc01-arm64-test-vm systemd[1]: This usually indicates unclean termination of a previous run, or service implementation deficiencies.
+Nov 17 14:19:24 fc01-arm64-test-vm systemd[1]: Starting FC01 manual RC navigation controller...
+Nov 17 14:19:24 fc01-arm64-test-vm fc01-navigation[7889]: VM_TEST_CANDIDATE_START_FAILURE
+Nov 17 14:19:24 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Control process exited, code=exited, status=23/n/a
+Nov 17 14:19:24 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Failed with result 'exit-code'.
+Nov 17 14:19:24 fc01-arm64-test-vm systemd[1]: fc01-navigation.service: Unit process 426 (MicroXRCEAgent) remains running after unit stopped.
+Nov 17 14:19:24 fc01-arm64-test-vm systemd[1]: Failed to start FC01 manual RC navigation controller.
+Nov 17 14:19:26 fc01-arm64-test-vm systemd[1]: Stopped FC01 manual RC navigation controller.
+{
+  "schema": 1,
+  "entry": "/home/orangepi/FC01_versions/20261117_stage3_fix1",
+  "archive_sha256": "5d0f2f150ca9ce70cb86138e512c0af2c768a3267a9ad48820bce60fdbfb1373",
+  "service": {
+    "MainPID": "0",
+    "ExecStart": "{ path=/bin/bash ; argv[]=/bin/bash /home/orangepi/fc01-old/navigation_boot.sh run --mode flight-test --confirm-flight-test ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+    "Environment": "HOME=/home/orangepi FC01_PROJECT_ROOT=/home/orangepi/sdk ROS_DOMAIN_ID=0 ROS_LOCALHOST_ONLY=0 PYTHONUNBUFFERED=1",
+    "WorkingDirectory": "/home/orangepi/fc01-old",
+    "User": "orangepi",
+    "LoadState": "loaded",
+    "ActiveState": "inactive",
+    "SubState": "dead",
+    "FragmentPath": "/etc/systemd/system/fc01-navigation.service",
+    "DropInPaths": "/etc/systemd/system/fc01-navigation.service.d/10-vm-start-failure.conf",
+    "UnitFileState": "enabled"
+  },
+  "controller": null,
+  "runtime_path": "/home/orangepi/FC01_navigation/runtime.yaml",
+  "runtime_sha256": "929eb1cb029d3a6af38197e0d8e396ca9145a0d5b83a8465dd049f715cefe13c",
+  "runtime_mode": 384,
+  "environment": {
+    "environment": {
+      "ROS_DOMAIN_ID": "0",
+      "ROS_LOCALHOST_ONLY": "0"
+    },
+    "sdk_root": "/home/orangepi/sdk",
+    "original_entry": "/home/orangepi/fc01-old",
+    "agent_path": "/home/orangepi/fc01_agent_build_offline/MicroXRCEAgent",
+    "service_mode": "flight-test"
+  },
+  "files": [
+    {
+      "path": "/etc/systemd/system/fc01-navigation.service",
+      "mode": 420,
+      "sha256": "c7b56ab4ee555e2c8133d745421993ea6f6ca2259098af6fb8a44643a5d8f6fe",
+      "present": true,
+      "backup": "file-000"
+    },
+    {
+      "path": "/etc/systemd/system/fc01-navigation.service.d/10-vm-start-failure.conf",
+      "mode": 420,
+      "sha256": "172dab7c7c4eddf5bfd51b362412c97aa42217234e0c18a7114d086ca812441f",
+      "present": true,
+      "backup": "file-001"
+    },
+    {
+      "path": "/etc/systemd/system/fc01-navigation.service.d/zzzz-fc01-prebuilt.conf",
+      "present": false
+    }
+  ],
+  "agent": null,
+  "agent_owned": false,
+  "boot_id": "6c94b06a-16ad-4609-8749-fcfe6ff85974",
+  "phase": "failed_restored",
+  "error": "CalledProcessError(1, ['sudo', '-n', '/usr/bin/systemctl', 'start', 'fc01-navigation.service'])"
+}
+#!/bin/sh
+# VM-only fault injection, no aircraft interaction. Old service cwd passes.
+case "$PWD" in
+ /home/orangepi/FC01_versions/20261117_stage3_fix1) echo 'VM_TEST_CANDIDATE_START_FAILURE' >&2; exit 23 ;;
+esac
+exit 0

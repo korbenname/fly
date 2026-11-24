@@ -1,0 +1,866 @@
+[
+  {
+    "scenario": "feedback_stale",
+    "original_file": "command.json",
+    "original_bytes": 251,
+    "original_sha256": "6d8446bb8c7b67968f683747218a320e63b0ee5cfaa862c7f62fe01c4a3b3e41",
+    "archive_file": "ros-matrix/feedback_stale/command.json",
+    "archive_bytes": 251,
+    "archive_sha256": "6d8446bb8c7b67968f683747218a320e63b0ee5cfaa862c7f62fe01c4a3b3e41"
+  },
+  {
+    "scenario": "feedback_stale",
+    "original_file": "controller.log",
+    "original_bytes": 6455993,
+    "original_sha256": "8eef19fcdb9b8867f013d50d0e7aef38b1256a438a0d4e638e78ec2d9bc6b91f",
+    "archive_file": "ros-matrix/feedback_stale/controller.log.gz",
+    "archive_bytes": 280812,
+    "archive_sha256": "a920adf5c113c8f217cf50a31b76bcb16395e562eac1fbec9912d265b66ec8f0"
+  },
+  {
+    "scenario": "feedback_stale",
+    "original_file": "feedback.jsonl",
+    "original_bytes": 99830,
+    "original_sha256": "c5e261285f5651067b73342ec6458806af6ed65a06738f8435d9a388c33f815e",
+    "archive_file": "ros-matrix/feedback_stale/feedback.jsonl.gz",
+    "archive_bytes": 13546,
+    "archive_sha256": "ad0aa839dfe66d357ec254880851cb4b04321caf9690c9cf48b8bbeae48b4cdd"
+  },
+  {
+    "scenario": "feedback_stale",
+    "original_file": "native-states.json",
+    "original_bytes": 66413,
+    "original_sha256": "0559724f6026ab1933a178234c009be5664446eb19e344defd9779536cf2e195",
+    "archive_file": "ros-matrix/feedback_stale/native-states.json",
+    "archive_bytes": 66413,
+    "archive_sha256": "0559724f6026ab1933a178234c009be5664446eb19e344defd9779536cf2e195"
+  },
+  {
+    "scenario": "feedback_stale",
+    "original_file": "received.jsonl",
+    "original_bytes": 82459,
+    "original_sha256": "0af3617197d8206cb34954a3e885f1c80292db541f6ade7bd2f9cec387ee0ae2",
+    "archive_file": "ros-matrix/feedback_stale/received.jsonl.gz",
+    "archive_bytes": 11301,
+    "archive_sha256": "f54552435e90a2d410026c37c396ac31f441abe76149fac5ca1bbef4e6c9a2c3"
+  },
+  {
+    "scenario": "feedback_stale",
+    "original_file": "result.json",
+    "original_bytes": 22914,
+    "original_sha256": "9c1c0fdbfe06cef6434074d9db0b00c7f2c3ac67cdd203c36b64669cfa70d0e5",
+    "archive_file": "ros-matrix/feedback_stale/result.json",
+    "archive_bytes": 22914,
+    "archive_sha256": "9c1c0fdbfe06cef6434074d9db0b00c7f2c3ac67cdd203c36b64669cfa70d0e5"
+  },
+  {
+    "scenario": "feedback_stale",
+    "original_file": "runtime.yaml",
+    "original_bytes": 2335,
+    "original_sha256": "f0365f87174da27d4c4b3b31bb72c6ba170457bcda601c76cf4b5d15f8f7d1d7",
+    "archive_file": "ros-matrix/feedback_stale/runtime.yaml",
+    "archive_bytes": 2335,
+    "archive_sha256": "f0365f87174da27d4c4b3b31bb72c6ba170457bcda601c76cf4b5d15f8f7d1d7"
+  },
+  {
+    "scenario": "feedback_stale",
+    "original_file": "states.jsonl",
+    "original_bytes": 6619643,
+    "original_sha256": "278d059dc7b5c5b87cb18efb940fe0a40cdd98b2dd3a9d778ad74adf28a5ce6e",
+    "archive_file": "ros-matrix/feedback_stale/states.jsonl.gz",
+    "archive_bytes": 262983,
+    "archive_sha256": "051095ee99edd638f238f7b7a34f930ad4d71748835a4ef8040b3a87aeaf6fda"
+  },
+  {
+    "scenario": "horizontal_feedback_invalid",
+    "original_file": "command.json",
+    "original_bytes": 264,
+    "original_sha256": "365131d63126a91d5322a140b37aa5b3ea365a4b9aa2cd2f06f9d558d5715757",
+    "archive_file": "ros-matrix/horizontal_feedback_invalid/command.json",
+    "archive_bytes": 264,
+    "archive_sha256": "365131d63126a91d5322a140b37aa5b3ea365a4b9aa2cd2f06f9d558d5715757"
+  },
+  {
+    "scenario": "horizontal_feedback_invalid",
+    "original_file": "controller.log",
+    "original_bytes": 6035638,
+    "original_sha256": "fe722d7ab1864de010c0d98fdd4096df36df7a45b8897ca3499e44b237c2257c",
+    "archive_file": "ros-matrix/horizontal_feedback_invalid/controller.log.gz",
+    "archive_bytes": 263250,
+    "archive_sha256": "a00b8fd372741f458cf044dbe99916d15ef8ebad5a322229ba453e296b2a72a0"
+  },
+  {
+    "scenario": "horizontal_feedback_invalid",
+    "original_file": "feedback.jsonl",
+    "original_bytes": 92556,
+    "original_sha256": "db39eee42f42d330d2b5851635d6a075f4a55181ab91450e8ed8e0eb125f0ef5",
+    "archive_file": "ros-matrix/horizontal_feedback_invalid/feedback.jsonl.gz",
+    "archive_bytes": 12409,
+    "archive_sha256": "5fa9ab345e7c97b9563d58d74ee9868f2c0033e48ef0cf74cfff39efcc18563a"
+  },
+  {
+    "scenario": "horizontal_feedback_invalid",
+    "original_file": "native-states.json",
+    "original_bytes": 61255,
+    "original_sha256": "cb382e23d13ee85b6097702ffe4f5afefceed629be120f5baddc2b901f98ed7d",
+    "archive_file": "ros-matrix/horizontal_feedback_invalid/native-states.json",
+    "archive_bytes": 61255,
+    "archive_sha256": "cb382e23d13ee85b6097702ffe4f5afefceed629be120f5baddc2b901f98ed7d"
+  },
+  {
+    "scenario": "horizontal_feedback_invalid",
+    "original_file": "received.jsonl",
+    "original_bytes": 80151,
+    "original_sha256": "2c39fc5a61cd46d80f2afdf92ed1085288e3b1efec677043d52e8c49c5baa641",
+    "archive_file": "ros-matrix/horizontal_feedback_invalid/received.jsonl.gz",
+    "archive_bytes": 10980,
+    "archive_sha256": "ff9af66cee39f67b719de0e99bbf6c5cc73ddbfb18f27d383dcb18cc21df8d50"
+  },
+  {
+    "scenario": "horizontal_feedback_invalid",
+    "original_file": "result.json",
+    "original_bytes": 22767,
+    "original_sha256": "14446541489a0ec6e678e1c258c34c0233dbc73d7d7333ca5532e50aec82d95e",
+    "archive_file": "ros-matrix/horizontal_feedback_invalid/result.json",
+    "archive_bytes": 22767,
+    "archive_sha256": "14446541489a0ec6e678e1c258c34c0233dbc73d7d7333ca5532e50aec82d95e"
+  },
+  {
+    "scenario": "horizontal_feedback_invalid",
+    "original_file": "runtime.yaml",
+    "original_bytes": 2335,
+    "original_sha256": "c3f324bf2fcdc819269c0d5668480639989945ae77b6b44e205ca4ef8f201d6b",
+    "archive_file": "ros-matrix/horizontal_feedback_invalid/runtime.yaml",
+    "archive_bytes": 2335,
+    "archive_sha256": "c3f324bf2fcdc819269c0d5668480639989945ae77b6b44e205ca4ef8f201d6b"
+  },
+  {
+    "scenario": "horizontal_feedback_invalid",
+    "original_file": "states.jsonl",
+    "original_bytes": 6172463,
+    "original_sha256": "826da0c346a1b5b583d7af046446632d825f1b9d6d186f596586380b964f126a",
+    "archive_file": "ros-matrix/horizontal_feedback_invalid/states.jsonl.gz",
+    "archive_bytes": 245885,
+    "archive_sha256": "cecd8c91f7114020bcfad7fe181df2a78224ef31af1c56c160f24392a509fcb1"
+  },
+  {
+    "scenario": "horizontal_reset",
+    "original_file": "command.json",
+    "original_bytes": 253,
+    "original_sha256": "c92631cf3149f1e424f47aac2d906426db846e468f18dbcaedce203fb75179e0",
+    "archive_file": "ros-matrix/horizontal_reset/command.json",
+    "archive_bytes": 253,
+    "archive_sha256": "c92631cf3149f1e424f47aac2d906426db846e468f18dbcaedce203fb75179e0"
+  },
+  {
+    "scenario": "horizontal_reset",
+    "original_file": "controller.log",
+    "original_bytes": 6014089,
+    "original_sha256": "4824c60ebbd116ab9d60addc0e0eccbb4f8db96bf4b61100191564ec5d89a25a",
+    "archive_file": "ros-matrix/horizontal_reset/controller.log.gz",
+    "archive_bytes": 262953,
+    "archive_sha256": "2f11520779dad42df80d99b78ccb0594ab713c3c9f3e4b18dffd320fb5377d5b"
+  },
+  {
+    "scenario": "horizontal_reset",
+    "original_file": "feedback.jsonl",
+    "original_bytes": 92049,
+    "original_sha256": "497754d22ae717ab030d9e21e34d395d58e28e5ee4124ef2870a46d4dc64b092",
+    "archive_file": "ros-matrix/horizontal_reset/feedback.jsonl.gz",
+    "archive_bytes": 12365,
+    "archive_sha256": "2d21bf689a3d2344b008dbf767cd8b8461bffcc9443794a484b03565ae0e5b7f"
+  },
+  {
+    "scenario": "horizontal_reset",
+    "original_file": "native-states.json",
+    "original_bytes": 60695,
+    "original_sha256": "a0f46caf9aa046f5ab79b2354476c9e19283ce51c00697dd2e556533f07e62b5",
+    "archive_file": "ros-matrix/horizontal_reset/native-states.json",
+    "archive_bytes": 60695,
+    "archive_sha256": "a0f46caf9aa046f5ab79b2354476c9e19283ce51c00697dd2e556533f07e62b5"
+  },
+  {
+    "scenario": "horizontal_reset",
+    "original_file": "received.jsonl",
+    "original_bytes": 79625,
+    "original_sha256": "e4c59265749925a8f0afbce2545a8bd81d41ad63db1fd7b04f83c01a7ac84103",
+    "archive_file": "ros-matrix/horizontal_reset/received.jsonl.gz",
+    "archive_bytes": 10913,
+    "archive_sha256": "20b61a399fcb987700908779cd17989086e4ad753d7e45208da6537090e3f203"
+  },
+  {
+    "scenario": "horizontal_reset",
+    "original_file": "result.json",
+    "original_bytes": 22729,
+    "original_sha256": "a62cb98101a7015fbb3ec6a8bb8bcdf0259b40726ac3a6a8f291943c2562bb60",
+    "archive_file": "ros-matrix/horizontal_reset/result.json",
+    "archive_bytes": 22729,
+    "archive_sha256": "a62cb98101a7015fbb3ec6a8bb8bcdf0259b40726ac3a6a8f291943c2562bb60"
+  },
+  {
+    "scenario": "horizontal_reset",
+    "original_file": "runtime.yaml",
+    "original_bytes": 2335,
+    "original_sha256": "8b1f5da6fb95041d96802e900f4ceea5d3632785bb98606357f4a68b68bfdbc8",
+    "archive_file": "ros-matrix/horizontal_reset/runtime.yaml",
+    "archive_bytes": 2335,
+    "archive_sha256": "8b1f5da6fb95041d96802e900f4ceea5d3632785bb98606357f4a68b68bfdbc8"
+  },
+  {
+    "scenario": "horizontal_reset",
+    "original_file": "states.jsonl",
+    "original_bytes": 6158511,
+    "original_sha256": "a7ba41087acbdfe395412319b61e19bf2e673db2f4b5ca012c56c46a038cc22d",
+    "archive_file": "ros-matrix/horizontal_reset/states.jsonl.gz",
+    "archive_bytes": 245667,
+    "archive_sha256": "adf0b46d8c785cc217682d9b7cefa88ad319aa99da5c1c4427cdc5fed4658267"
+  },
+  {
+    "scenario": "kill",
+    "original_file": "command.json",
+    "original_bytes": 241,
+    "original_sha256": "11e2e495adc46d9f4b0b50547f3747d1762649a1dc365b32b569da366aeab24b",
+    "archive_file": "ros-matrix/kill/command.json",
+    "archive_bytes": 241,
+    "archive_sha256": "11e2e495adc46d9f4b0b50547f3747d1762649a1dc365b32b569da366aeab24b"
+  },
+  {
+    "scenario": "kill",
+    "original_file": "controller.log",
+    "original_bytes": 6261601,
+    "original_sha256": "14f9a368c3fc71582803a0f34e504b8ef3c8b427bd7bb42329b4a6136e0fc717",
+    "archive_file": "ros-matrix/kill/controller.log.gz",
+    "archive_bytes": 271531,
+    "archive_sha256": "0592e664eca7ae0a99252d42a49d053e308e7abba893cb6dc6e5187070da7730"
+  },
+  {
+    "scenario": "kill",
+    "original_file": "feedback.jsonl",
+    "original_bytes": 96227,
+    "original_sha256": "f535ae73719681953af9fab350de929978beb254a79812709c5ed5566707a922",
+    "archive_file": "ros-matrix/kill/feedback.jsonl.gz",
+    "archive_bytes": 12978,
+    "archive_sha256": "c9db62c71689c4fe6a18e688a958377ee99981988b874ee5c3b80ab72e7b72e6"
+  },
+  {
+    "scenario": "kill",
+    "original_file": "native-states.json",
+    "original_bytes": 63463,
+    "original_sha256": "416c0b5d809f98e146d469829d803222eeef65b93556d04dd9cbf31f4fa487e7",
+    "archive_file": "ros-matrix/kill/native-states.json",
+    "archive_bytes": 63463,
+    "archive_sha256": "416c0b5d809f98e146d469829d803222eeef65b93556d04dd9cbf31f4fa487e7"
+  },
+  {
+    "scenario": "kill",
+    "original_file": "received.jsonl",
+    "original_bytes": 79358,
+    "original_sha256": "cf89440718a79cbe94a63508c5b9af3264b770d0e8e629d69a91041685acbcb3",
+    "archive_file": "ros-matrix/kill/received.jsonl.gz",
+    "archive_bytes": 10867,
+    "archive_sha256": "c14ee48b9e7ad1b34d2dab71a257086317dae01443b1452ded5a1b1628b5bcef"
+  },
+  {
+    "scenario": "kill",
+    "original_file": "result.json",
+    "original_bytes": 22733,
+    "original_sha256": "4b93024da3727dd564224467a05fd4159a9e8d6bee0830c902bc5eecaa535cfb",
+    "archive_file": "ros-matrix/kill/result.json",
+    "archive_bytes": 22733,
+    "archive_sha256": "4b93024da3727dd564224467a05fd4159a9e8d6bee0830c902bc5eecaa535cfb"
+  },
+  {
+    "scenario": "kill",
+    "original_file": "runtime.yaml",
+    "original_bytes": 2335,
+    "original_sha256": "fe2ff26f981b8e91ce1c0435ac701d4b83c7b37d8c6f27efe1c4212255253844",
+    "archive_file": "ros-matrix/kill/runtime.yaml",
+    "archive_bytes": 2335,
+    "archive_sha256": "fe2ff26f981b8e91ce1c0435ac701d4b83c7b37d8c6f27efe1c4212255253844"
+  },
+  {
+    "scenario": "kill",
+    "original_file": "states.jsonl",
+    "original_bytes": 6417378,
+    "original_sha256": "0e931e47ec22c95c3a3ad59ae188ea2ddf703e89d33d8368180f873ae9e49ac1",
+    "archive_file": "ros-matrix/kill/states.jsonl.gz",
+    "archive_bytes": 254159,
+    "archive_sha256": "497a1ed143643c1f072e8125f5dc5576d36c2487865644b6c8fd32f4d3788d24"
+  },
+  {
+    "scenario": "normal",
+    "original_file": "command.json",
+    "original_bytes": 243,
+    "original_sha256": "dd64fcfd0b18434c516bde4596958c9e23f30cd5d01dc62c6eda0c514c1a40d4",
+    "archive_file": "ros-matrix/normal/command.json",
+    "archive_bytes": 243,
+    "archive_sha256": "dd64fcfd0b18434c516bde4596958c9e23f30cd5d01dc62c6eda0c514c1a40d4"
+  },
+  {
+    "scenario": "normal",
+    "original_file": "controller.log",
+    "original_bytes": 13318778,
+    "original_sha256": "71cbf1ae7438fa7bf7055fae152711508c9db8e7c707c1e28f92dc1be4aea24a",
+    "archive_file": "ros-matrix/normal/controller.log.gz",
+    "archive_bytes": 572375,
+    "archive_sha256": "8c9d0c0d35030dd32993b3d810dd47135361073ed33eb56ad0daf8b1be1f87bf"
+  },
+  {
+    "scenario": "normal",
+    "original_file": "feedback.jsonl",
+    "original_bytes": 200456,
+    "original_sha256": "f6d481f3c9d0de9c60f3972bf01caf05fd17461cbed44ff3869bef3739250050",
+    "archive_file": "ros-matrix/normal/feedback.jsonl.gz",
+    "archive_bytes": 26205,
+    "archive_sha256": "0c1cb60b457ad49093c20916f8539dae5bdfbf0d354c7ee74ddbd90b0604c4c4"
+  },
+  {
+    "scenario": "normal",
+    "original_file": "native-states.json",
+    "original_bytes": 137270,
+    "original_sha256": "45950312bfdf1a7126f518963cf0b3af736d00da4e9ddd75663f18983c6a535f",
+    "archive_file": "ros-matrix/normal/native-states.json",
+    "archive_bytes": 137270,
+    "archive_sha256": "45950312bfdf1a7126f518963cf0b3af736d00da4e9ddd75663f18983c6a535f"
+  },
+  {
+    "scenario": "normal",
+    "original_file": "received.jsonl",
+    "original_bytes": 183977,
+    "original_sha256": "0132e4fc0e1314fd77bd8d96f4b6d333d5bbf4cf479f8ea7edabedaf1a3ab65d",
+    "archive_file": "ros-matrix/normal/received.jsonl.gz",
+    "archive_bytes": 23390,
+    "archive_sha256": "86ff7fcb8b557769ec28283089e780cf7291ba8228c469a745a064e52a9ea808"
+  },
+  {
+    "scenario": "normal",
+    "original_file": "result.json",
+    "original_bytes": 24878,
+    "original_sha256": "a6f5361cbd5b4d523c2bc2fe2804cb5ecfe0885f8233003e2c97c6969d44fb5d",
+    "archive_file": "ros-matrix/normal/result.json",
+    "archive_bytes": 24878,
+    "archive_sha256": "a6f5361cbd5b4d523c2bc2fe2804cb5ecfe0885f8233003e2c97c6969d44fb5d"
+  },
+  {
+    "scenario": "normal",
+    "original_file": "runtime.yaml",
+    "original_bytes": 2335,
+    "original_sha256": "b528687e1f2045b5607d65f3b27f3974addecfb73e8e0a38960472138ac9f764",
+    "archive_file": "ros-matrix/normal/runtime.yaml",
+    "archive_bytes": 2335,
+    "archive_sha256": "b528687e1f2045b5607d65f3b27f3974addecfb73e8e0a38960472138ac9f764"
+  },
+  {
+    "scenario": "normal",
+    "original_file": "states.jsonl",
+    "original_bytes": 13677385,
+    "original_sha256": "b8842d4980529e7c4382926dd8186864f4e8e0f2c2e16f26857fca217349164e",
+    "archive_file": "ros-matrix/normal/states.jsonl.gz",
+    "archive_bytes": 535395,
+    "archive_sha256": "63ea37955b84054258a2ae01c7a83651cc34f9e8b1921209d919d9e6dcdc0f1f"
+  },
+  {
+    "scenario": "offboard_loss",
+    "original_file": "command.json",
+    "original_bytes": 250,
+    "original_sha256": "96ed6976ad84338498c8dc2114810ff7799604da29c2e65040f46adce20dcbd3",
+    "archive_file": "ros-matrix/offboard_loss/command.json",
+    "archive_bytes": 250,
+    "archive_sha256": "96ed6976ad84338498c8dc2114810ff7799604da29c2e65040f46adce20dcbd3"
+  },
+  {
+    "scenario": "offboard_loss",
+    "original_file": "controller.log",
+    "original_bytes": 6229744,
+    "original_sha256": "98d70d3c9a2b8b2b75b0c5a21b4ac8316eb0f4cfb9523f6dd98e878019376cde",
+    "archive_file": "ros-matrix/offboard_loss/controller.log.gz",
+    "archive_bytes": 270796,
+    "archive_sha256": "28aae7763edd73dcc3ea225428571472efe5ec72e005a0837b63be6f4616a64e"
+  },
+  {
+    "scenario": "offboard_loss",
+    "original_file": "feedback.jsonl",
+    "original_bytes": 95933,
+    "original_sha256": "9d45674c701e4248227b47f2a44ac27aea44599eb1a63ee63d638fb7a4402605",
+    "archive_file": "ros-matrix/offboard_loss/feedback.jsonl.gz",
+    "archive_bytes": 12904,
+    "archive_sha256": "6dd960d1d9e386633f65c09a51b795b26ef52d7d0e14cda9ad302db92c14ec5a"
+  },
+  {
+    "scenario": "offboard_loss",
+    "original_file": "native-states.json",
+    "original_bytes": 63136,
+    "original_sha256": "bcd9cd252ea75f475e45faee75313b9eb7c5e11b54b791bdd89bc3e1073c5cf3",
+    "archive_file": "ros-matrix/offboard_loss/native-states.json",
+    "archive_bytes": 63136,
+    "archive_sha256": "bcd9cd252ea75f475e45faee75313b9eb7c5e11b54b791bdd89bc3e1073c5cf3"
+  },
+  {
+    "scenario": "offboard_loss",
+    "original_file": "received.jsonl",
+    "original_bytes": 78637,
+    "original_sha256": "2c1e2e9c54ef10c06bfc800da27630672cf5247821b3c6c44765fa0bc00187a8",
+    "archive_file": "ros-matrix/offboard_loss/received.jsonl.gz",
+    "archive_bytes": 10793,
+    "archive_sha256": "440a62dbb9c8e7ec7b8be39e1ce2b8fbedbbaae39f43104eabaf38b984fca993"
+  },
+  {
+    "scenario": "offboard_loss",
+    "original_file": "result.json",
+    "original_bytes": 22727,
+    "original_sha256": "ce21dbc77d4d5a0d6c590322b3fcf558b7f053c721bea0e9f8aa529eb811fd9a",
+    "archive_file": "ros-matrix/offboard_loss/result.json",
+    "archive_bytes": 22727,
+    "archive_sha256": "ce21dbc77d4d5a0d6c590322b3fcf558b7f053c721bea0e9f8aa529eb811fd9a"
+  },
+  {
+    "scenario": "offboard_loss",
+    "original_file": "runtime.yaml",
+    "original_bytes": 2335,
+    "original_sha256": "92191031086df1047154d41ae02ad52e5b8b1ba8027a63a6002357680646477a",
+    "archive_file": "ros-matrix/offboard_loss/runtime.yaml",
+    "archive_bytes": 2335,
+    "archive_sha256": "92191031086df1047154d41ae02ad52e5b8b1ba8027a63a6002357680646477a"
+  },
+  {
+    "scenario": "offboard_loss",
+    "original_file": "states.jsonl",
+    "original_bytes": 6374208,
+    "original_sha256": "cb3defe4bb3a16c38f83488057b14fdcdd72df8ef79c676eae80538275e0ca6a",
+    "archive_file": "ros-matrix/offboard_loss/states.jsonl.gz",
+    "archive_bytes": 252702,
+    "archive_sha256": "70a3332e9ca71ae6d027878c5417beffe708c781e0ab6d22170275214480ef46"
+  },
+  {
+    "scenario": "rc_takeover",
+    "original_file": "command.json",
+    "original_bytes": 248,
+    "original_sha256": "7d05c5cf351f8bbb20464576a99df27f14cdcbd30212d4bf38f8cd0b9aeb99a0",
+    "archive_file": "ros-matrix/rc_takeover/command.json",
+    "archive_bytes": 248,
+    "archive_sha256": "7d05c5cf351f8bbb20464576a99df27f14cdcbd30212d4bf38f8cd0b9aeb99a0"
+  },
+  {
+    "scenario": "rc_takeover",
+    "original_file": "controller.log",
+    "original_bytes": 6470509,
+    "original_sha256": "2690b65b7343749b4f2edb41dc33971d575d6b290dd8837d6add62be81983f3b",
+    "archive_file": "ros-matrix/rc_takeover/controller.log.gz",
+    "archive_bytes": 281553,
+    "archive_sha256": "0d56b470f1ce442b436ef0beeae532049ef302e43ef98cd34df77751a2264521"
+  },
+  {
+    "scenario": "rc_takeover",
+    "original_file": "feedback.jsonl",
+    "original_bytes": 99698,
+    "original_sha256": "1978cafd4488c2a896447098ac3a0330691527e169e867a41807092706bf0b04",
+    "archive_file": "ros-matrix/rc_takeover/feedback.jsonl.gz",
+    "archive_bytes": 13573,
+    "archive_sha256": "779e2e23822e30b09ecf1d90998ac4758b9e5fa0b4915bc4ebb4f6e9bbc0acd1"
+  },
+  {
+    "scenario": "rc_takeover",
+    "original_file": "native-states.json",
+    "original_bytes": 66886,
+    "original_sha256": "6c40e0a70ab6ac9af6497d733c219332208d106773057ab225056029e4b4ccc7",
+    "archive_file": "ros-matrix/rc_takeover/native-states.json",
+    "archive_bytes": 66886,
+    "archive_sha256": "6c40e0a70ab6ac9af6497d733c219332208d106773057ab225056029e4b4ccc7"
+  },
+  {
+    "scenario": "rc_takeover",
+    "original_file": "received.jsonl",
+    "original_bytes": 83033,
+    "original_sha256": "f8730f7a4b5e9aac195a50bc1778c46be3f095e6a6969ec69da4e6b75510cf55",
+    "archive_file": "ros-matrix/rc_takeover/received.jsonl.gz",
+    "archive_bytes": 11340,
+    "archive_sha256": "19d3868e22ae4686450e8925dcf38b6296b85ff7c560605f4844a07c36248a86"
+  },
+  {
+    "scenario": "rc_takeover",
+    "original_file": "result.json",
+    "original_bytes": 23070,
+    "original_sha256": "207438e6446a6a506f14b096071082d4074b82697ab0400335487e084b1bacf8",
+    "archive_file": "ros-matrix/rc_takeover/result.json",
+    "archive_bytes": 23070,
+    "archive_sha256": "207438e6446a6a506f14b096071082d4074b82697ab0400335487e084b1bacf8"
+  },
+  {
+    "scenario": "rc_takeover",
+    "original_file": "runtime.yaml",
+    "original_bytes": 2335,
+    "original_sha256": "ffdfa2c30dc411b5407f0dad5346860e065bfaf086607f8a548dd8f51898e37d",
+    "archive_file": "ros-matrix/rc_takeover/runtime.yaml",
+    "archive_bytes": 2335,
+    "archive_sha256": "ffdfa2c30dc411b5407f0dad5346860e065bfaf086607f8a548dd8f51898e37d"
+  },
+  {
+    "scenario": "rc_takeover",
+    "original_file": "states.jsonl",
+    "original_bytes": 6635351,
+    "original_sha256": "b45e45ec275413fe63478afe4708ffb28ae1425200dd001eed421fb5af40ad24",
+    "archive_file": "ros-matrix/rc_takeover/states.jsonl.gz",
+    "archive_bytes": 263744,
+    "archive_sha256": "9813e24f09dda463770928ccbc122a3405f938b94e4a98cdb8d2dc79241ca5e8"
+  },
+  {
+    "scenario": "track_lost",
+    "original_file": "command.json",
+    "original_bytes": 247,
+    "original_sha256": "df7d6e70aa59095de2a7e7551142c5bf69613585d697127688ab694cdabcbe05",
+    "archive_file": "ros-matrix/track_lost/command.json",
+    "archive_bytes": 247,
+    "archive_sha256": "df7d6e70aa59095de2a7e7551142c5bf69613585d697127688ab694cdabcbe05"
+  },
+  {
+    "scenario": "track_lost",
+    "original_file": "controller.log",
+    "original_bytes": 6050052,
+    "original_sha256": "cab8bebddf516c9c498bd7c6869f3db0664305c3c5657b002cce6912590a1760",
+    "archive_file": "ros-matrix/track_lost/controller.log.gz",
+    "archive_bytes": 264131,
+    "archive_sha256": "8c43ccbfb657dc02377bbb7a789b97697a4d4c12ca58d1bbe6b18d6db5fb2c98"
+  },
+  {
+    "scenario": "track_lost",
+    "original_file": "feedback.jsonl",
+    "original_bytes": 92943,
+    "original_sha256": "1a2f3c4d8d1512df7ac5e098546f2655dfb6fb82e0943dde3901914e25182766",
+    "archive_file": "ros-matrix/track_lost/feedback.jsonl.gz",
+    "archive_bytes": 12394,
+    "archive_sha256": "cb83d4b8132e4043bc0c93307f7bcabe3f651a2ac9ba5d32f025f49f5422f2fd"
+  },
+  {
+    "scenario": "track_lost",
+    "original_file": "native-states.json",
+    "original_bytes": 62297,
+    "original_sha256": "f03dda7109b43d8926f7d9ea1596cab1964c57e1fef624180550bfe92bb54bd1",
+    "archive_file": "ros-matrix/track_lost/native-states.json",
+    "archive_bytes": 62297,
+    "archive_sha256": "f03dda7109b43d8926f7d9ea1596cab1964c57e1fef624180550bfe92bb54bd1"
+  },
+  {
+    "scenario": "track_lost",
+    "original_file": "received.jsonl",
+    "original_bytes": 80394,
+    "original_sha256": "439c33f6fac1ee1a21ace45f219121d7d55b5cef44128926c7d4010bfa697d8c",
+    "archive_file": "ros-matrix/track_lost/received.jsonl.gz",
+    "archive_bytes": 11052,
+    "archive_sha256": "ab3646269caddb9912bb6c1525aebed0a52593013c81a6c6507dae2080e1caa8"
+  },
+  {
+    "scenario": "track_lost",
+    "original_file": "result.json",
+    "original_bytes": 22707,
+    "original_sha256": "6a766c121dcd0316ce842bbf86e8789ffe6f7e530849fc2604a4509106d94cca",
+    "archive_file": "ros-matrix/track_lost/result.json",
+    "archive_bytes": 22707,
+    "archive_sha256": "6a766c121dcd0316ce842bbf86e8789ffe6f7e530849fc2604a4509106d94cca"
+  },
+  {
+    "scenario": "track_lost",
+    "original_file": "runtime.yaml",
+    "original_bytes": 2335,
+    "original_sha256": "014a902497ec0f171143d9b7792e3ff646bc6b2ac212efa66f482bb5a36a60c9",
+    "archive_file": "ros-matrix/track_lost/runtime.yaml",
+    "archive_bytes": 2335,
+    "archive_sha256": "014a902497ec0f171143d9b7792e3ff646bc6b2ac212efa66f482bb5a36a60c9"
+  },
+  {
+    "scenario": "track_lost",
+    "original_file": "states.jsonl",
+    "original_bytes": 6202190,
+    "original_sha256": "ffc28fb4785e73cd4ae08aea71574454340f7bbd55f7c8e16b08f6dfd1a865e4",
+    "archive_file": "ros-matrix/track_lost/states.jsonl.gz",
+    "archive_bytes": 247236,
+    "archive_sha256": "578ddd47c88c155f49ed9d815acfb419326eb8af25b11c53e6753cf5134bf9b0"
+  },
+  {
+    "scenario": "track_origin",
+    "original_file": "command.json",
+    "original_bytes": 249,
+    "original_sha256": "11086c1b9fbf0524b91a835da413a6d07a394cbd583b1d4f5b4dd5f4621b018f",
+    "archive_file": "ros-matrix/track_origin/command.json",
+    "archive_bytes": 249,
+    "archive_sha256": "11086c1b9fbf0524b91a835da413a6d07a394cbd583b1d4f5b4dd5f4621b018f"
+  },
+  {
+    "scenario": "track_origin",
+    "original_file": "controller.log",
+    "original_bytes": 6086220,
+    "original_sha256": "9e555573371291961a19243eaa8f70d62b65d90f033553976f9289e5376bcfc8",
+    "archive_file": "ros-matrix/track_origin/controller.log.gz",
+    "archive_bytes": 266242,
+    "archive_sha256": "834bc08d3f82c735bc7fac3dfcd1fc81d4aa43d446111ec353a7d39528208e3d"
+  },
+  {
+    "scenario": "track_origin",
+    "original_file": "feedback.jsonl",
+    "original_bytes": 92872,
+    "original_sha256": "863650d117dfc6451c45dbd1e9b2bf432f943de88a7fc0219a11e82f0a371a77",
+    "archive_file": "ros-matrix/track_origin/feedback.jsonl.gz",
+    "archive_bytes": 12398,
+    "archive_sha256": "cd39389b0879faccd4e870d5c364a081c1624a0d887e1abe8cc664493a5fea57"
+  },
+  {
+    "scenario": "track_origin",
+    "original_file": "native-states.json",
+    "original_bytes": 61943,
+    "original_sha256": "388b6def427bc92076add4b6e6ec4af755638d83c6738e9a3cbb0dabe8d04f2b",
+    "archive_file": "ros-matrix/track_origin/native-states.json",
+    "archive_bytes": 61943,
+    "archive_sha256": "388b6def427bc92076add4b6e6ec4af755638d83c6738e9a3cbb0dabe8d04f2b"
+  },
+  {
+    "scenario": "track_origin",
+    "original_file": "received.jsonl",
+    "original_bytes": 80307,
+    "original_sha256": "b05c070685e93f281b41f38646598852a9a481ee9a768fc99fd331757e0645dd",
+    "archive_file": "ros-matrix/track_origin/received.jsonl.gz",
+    "archive_bytes": 11037,
+    "archive_sha256": "6a676501b945b41a90963bbce4d19c919ab2022ed53f07f626961f21172c30d1"
+  },
+  {
+    "scenario": "track_origin",
+    "original_file": "result.json",
+    "original_bytes": 22707,
+    "original_sha256": "e15fc3fe4c1568ed6adc7da636f78473dbc559f0ee627fb007435531d7d68b52",
+    "archive_file": "ros-matrix/track_origin/result.json",
+    "archive_bytes": 22707,
+    "archive_sha256": "e15fc3fe4c1568ed6adc7da636f78473dbc559f0ee627fb007435531d7d68b52"
+  },
+  {
+    "scenario": "track_origin",
+    "original_file": "runtime.yaml",
+    "original_bytes": 2335,
+    "original_sha256": "ead3b345d5e249118fd17e7e9d77bb3ce34b9c166f6bed82b3189161e49cf82b",
+    "archive_file": "ros-matrix/track_origin/runtime.yaml",
+    "archive_bytes": 2335,
+    "archive_sha256": "ead3b345d5e249118fd17e7e9d77bb3ce34b9c166f6bed82b3189161e49cf82b"
+  },
+  {
+    "scenario": "track_origin",
+    "original_file": "states.jsonl",
+    "original_bytes": 6216087,
+    "original_sha256": "b54774aaf2463cf795bce2d00c5e3f96a2dcf158020b77287b6873de159dbfbd",
+    "archive_file": "ros-matrix/track_origin/states.jsonl.gz",
+    "archive_bytes": 247085,
+    "archive_sha256": "8e75bdea0ebea345488b4c3f3c3c915b158f228d2774bab0aca022e37b0234c9"
+  },
+  {
+    "scenario": "track_reset",
+    "original_file": "command.json",
+    "original_bytes": 248,
+    "original_sha256": "d239613d3b05a9437e3e9e5f7b47c004f8fd5d947e0b58605ba509147bbc3db9",
+    "archive_file": "ros-matrix/track_reset/command.json",
+    "archive_bytes": 248,
+    "archive_sha256": "d239613d3b05a9437e3e9e5f7b47c004f8fd5d947e0b58605ba509147bbc3db9"
+  },
+  {
+    "scenario": "track_reset",
+    "original_file": "controller.log",
+    "original_bytes": 6008579,
+    "original_sha256": "94af772d10d115066d0271aa26c492d387472a4de1ef521d5db366b2285b4e28",
+    "archive_file": "ros-matrix/track_reset/controller.log.gz",
+    "archive_bytes": 262289,
+    "archive_sha256": "c0a1f2fcabd4af2bbd68b64075e0d12a533a34addc0c3e687c56be56a44b1542"
+  },
+  {
+    "scenario": "track_reset",
+    "original_file": "feedback.jsonl",
+    "original_bytes": 92272,
+    "original_sha256": "c9fe21a3e2cde5dd5c4d4edf031936fe69028c613f5fc1927c50f8702469c650",
+    "archive_file": "ros-matrix/track_reset/feedback.jsonl.gz",
+    "archive_bytes": 12343,
+    "archive_sha256": "1c41aa4f19a6c821a53a2847d9fc6ece357fbf130cd6bf9cd202474887d5a917"
+  },
+  {
+    "scenario": "track_reset",
+    "original_file": "native-states.json",
+    "original_bytes": 61672,
+    "original_sha256": "07e6a551e4c5eda327c7991fe9547feb3611ce5b98a33ca0518a54e422a89be2",
+    "archive_file": "ros-matrix/track_reset/native-states.json",
+    "archive_bytes": 61672,
+    "archive_sha256": "07e6a551e4c5eda327c7991fe9547feb3611ce5b98a33ca0518a54e422a89be2"
+  },
+  {
+    "scenario": "track_reset",
+    "original_file": "received.jsonl",
+    "original_bytes": 79428,
+    "original_sha256": "86e6305ee5b69c462df03d34f7726ebf1b2843c00799978a4c39248ff91b836a",
+    "archive_file": "ros-matrix/track_reset/received.jsonl.gz",
+    "archive_bytes": 10959,
+    "archive_sha256": "645bbb30f51025b8fae69f98f17275808492cdd22e4e54149bf90246e34087cd"
+  },
+  {
+    "scenario": "track_reset",
+    "original_file": "result.json",
+    "original_bytes": 22711,
+    "original_sha256": "13f54d5a9004f87ca6e175a2133097b0fe119b7325a2a04839845e9eaec21817",
+    "archive_file": "ros-matrix/track_reset/result.json",
+    "archive_bytes": 22711,
+    "archive_sha256": "13f54d5a9004f87ca6e175a2133097b0fe119b7325a2a04839845e9eaec21817"
+  },
+  {
+    "scenario": "track_reset",
+    "original_file": "runtime.yaml",
+    "original_bytes": 2335,
+    "original_sha256": "b3007b512062be05774c9ca27026cac3793595c431252ce6a60532a4ce0d5f48",
+    "archive_file": "ros-matrix/track_reset/runtime.yaml",
+    "archive_bytes": 2335,
+    "archive_sha256": "b3007b512062be05774c9ca27026cac3793595c431252ce6a60532a4ce0d5f48"
+  },
+  {
+    "scenario": "track_reset",
+    "original_file": "states.jsonl",
+    "original_bytes": 6157864,
+    "original_sha256": "6f6a64d9193d9a8739085c691aa2da5227505406beb40194ab8a13f49dd34efb",
+    "archive_file": "ros-matrix/track_reset/states.jsonl.gz",
+    "archive_bytes": 244379,
+    "archive_sha256": "317d438d130dc0b1dabb8fab7a0f5af8bdb97637564f9a1a50d9d579ea12a91f"
+  },
+  {
+    "scenario": "track_source",
+    "original_file": "command.json",
+    "original_bytes": 249,
+    "original_sha256": "a65eb2c66f3bb0ff03095b2698bbca976bb1363bb5dbaff5233d61ae0080a416",
+    "archive_file": "ros-matrix/track_source/command.json",
+    "archive_bytes": 249,
+    "archive_sha256": "a65eb2c66f3bb0ff03095b2698bbca976bb1363bb5dbaff5233d61ae0080a416"
+  },
+  {
+    "scenario": "track_source",
+    "original_file": "controller.log",
+    "original_bytes": 6068694,
+    "original_sha256": "d9bfba1af752320dfaaf6a04b53133c9cccfd4f4d37653e03a7ff2f45fbe24d0",
+    "archive_file": "ros-matrix/track_source/controller.log.gz",
+    "archive_bytes": 264598,
+    "archive_sha256": "3715a12e39144454a18e9dba83b9ba1b439bb79c4fcd02ec69270b6fd0d091ef"
+  },
+  {
+    "scenario": "track_source",
+    "original_file": "feedback.jsonl",
+    "original_bytes": 93019,
+    "original_sha256": "880c597cf6466e8e5e858c2192c55c3a3991221e2d0a85d0865afc646e21b824",
+    "archive_file": "ros-matrix/track_source/feedback.jsonl.gz",
+    "archive_bytes": 12456,
+    "archive_sha256": "2ca571bb016d2512bf78583fe74a81d610216cd92c24b6ed483821d158eea28b"
+  },
+  {
+    "scenario": "track_source",
+    "original_file": "native-states.json",
+    "original_bytes": 61597,
+    "original_sha256": "4a0cf8d76877db3fa2a2cb5084680a6865e3aaf8a93a3cb99c1646118544f39f",
+    "archive_file": "ros-matrix/track_source/native-states.json",
+    "archive_bytes": 61597,
+    "archive_sha256": "4a0cf8d76877db3fa2a2cb5084680a6865e3aaf8a93a3cb99c1646118544f39f"
+  },
+  {
+    "scenario": "track_source",
+    "original_file": "received.jsonl",
+    "original_bytes": 80635,
+    "original_sha256": "b87dd10d26192a6c3a0b30fd0c6e92163c3c41442564262713c513aa9971899a",
+    "archive_file": "ros-matrix/track_source/received.jsonl.gz",
+    "archive_bytes": 11066,
+    "archive_sha256": "2cc3eaaf648c71d3aefee335a38b5a01fee074de1ba8cff35b02f366b49a27c2"
+  },
+  {
+    "scenario": "track_source",
+    "original_file": "result.json",
+    "original_bytes": 22726,
+    "original_sha256": "f6c38326ac57994fb9981155c46b68288fb8e524fcad943e510c1b26938fc19c",
+    "archive_file": "ros-matrix/track_source/result.json",
+    "archive_bytes": 22726,
+    "archive_sha256": "f6c38326ac57994fb9981155c46b68288fb8e524fcad943e510c1b26938fc19c"
+  },
+  {
+    "scenario": "track_source",
+    "original_file": "runtime.yaml",
+    "original_bytes": 2335,
+    "original_sha256": "c118a403e4f5b177c3662007b2fb2eae9e50cc90a95ffe0f03b086ff660e059e",
+    "archive_file": "ros-matrix/track_source/runtime.yaml",
+    "archive_bytes": 2335,
+    "archive_sha256": "c118a403e4f5b177c3662007b2fb2eae9e50cc90a95ffe0f03b086ff660e059e"
+  },
+  {
+    "scenario": "track_source",
+    "original_file": "states.jsonl",
+    "original_bytes": 6202522,
+    "original_sha256": "620129d4a74d22fa3ea86923c33e19b434fa0a98a3f17edfc4c4d8287a9479df",
+    "archive_file": "ros-matrix/track_source/states.jsonl.gz",
+    "archive_bytes": 246795,
+    "archive_sha256": "194563f6588f699437fc157a8d80de518468c44c725fc7af4b46a3eb703e63c2"
+  },
+  {
+    "scenario": "track_timeout",
+    "original_file": "command.json",
+    "original_bytes": 250,
+    "original_sha256": "6780172171e39d3928771ef98341cf92a0c37445da3adfe70a195035da38094b",
+    "archive_file": "ros-matrix/track_timeout/command.json",
+    "archive_bytes": 250,
+    "archive_sha256": "6780172171e39d3928771ef98341cf92a0c37445da3adfe70a195035da38094b"
+  },
+  {
+    "scenario": "track_timeout",
+    "original_file": "controller.log",
+    "original_bytes": 6074244,
+    "original_sha256": "c445451ee18b6f6c7268e0b0b6e93e2a73d334e383f15e81167e46d19985da7b",
+    "archive_file": "ros-matrix/track_timeout/controller.log.gz",
+    "archive_bytes": 266160,
+    "archive_sha256": "7982c17fd4dce9aba4fb234bbcd8372bf0c045c3d5855662995c1088f57cea90"
+  },
+  {
+    "scenario": "track_timeout",
+    "original_file": "feedback.jsonl",
+    "original_bytes": 93299,
+    "original_sha256": "d2114e6178fe86e2ebd8f73bc065c9ddfa515c53b238e4bfd83db8495be1439a",
+    "archive_file": "ros-matrix/track_timeout/feedback.jsonl.gz",
+    "archive_bytes": 12528,
+    "archive_sha256": "a85e128bf5302eb3ad4a5efff1911f8c93373f493595c48502ebc3cc6af1777e"
+  },
+  {
+    "scenario": "track_timeout",
+    "original_file": "native-states.json",
+    "original_bytes": 61396,
+    "original_sha256": "34af22f9b497a9cc6b49a67d6ee8903863a1d4a1119d6fd48dc8351382f0347b",
+    "archive_file": "ros-matrix/track_timeout/native-states.json",
+    "archive_bytes": 61396,
+    "archive_sha256": "34af22f9b497a9cc6b49a67d6ee8903863a1d4a1119d6fd48dc8351382f0347b"
+  },
+  {
+    "scenario": "track_timeout",
+    "original_file": "received.jsonl",
+    "original_bytes": 80694,
+    "original_sha256": "dec6787ec6e8400551a85817027b9fbb052f4e268df1d85d503672e2772b2d00",
+    "archive_file": "ros-matrix/track_timeout/received.jsonl.gz",
+    "archive_bytes": 11142,
+    "archive_sha256": "67abf2976ef8acbf44c0abf0b2ae64e0faee427c24fd39456eb2ec5cc607a9a1"
+  },
+  {
+    "scenario": "track_timeout",
+    "original_file": "result.json",
+    "original_bytes": 22757,
+    "original_sha256": "1d953ff9ec63fa26f07d6af8c8c310b95c8fdc492e3e4e0e21791b43416ce498",
+    "archive_file": "ros-matrix/track_timeout/result.json",
+    "archive_bytes": 22757,
+    "archive_sha256": "1d953ff9ec63fa26f07d6af8c8c310b95c8fdc492e3e4e0e21791b43416ce498"
+  },
+  {
+    "scenario": "track_timeout",
+    "original_file": "runtime.yaml",
+    "original_bytes": 2335,
+    "original_sha256": "19f95318414a0cb0bf0fdf04aa43a5167827ddf8a011c065340cfb83acf76e1b",
+    "archive_file": "ros-matrix/track_timeout/runtime.yaml",
+    "archive_bytes": 2335,
+    "archive_sha256": "19f95318414a0cb0bf0fdf04aa43a5167827ddf8a011c065340cfb83acf76e1b"
+  },
+  {
+    "scenario": "track_timeout",
+    "original_file": "states.jsonl",
+    "original_bytes": 6203264,
+    "original_sha256": "340357cf75c4cf13c4d5477727b072c8ee2b0e93c4d09c72830090034b81452c",
+    "archive_file": "ros-matrix/track_timeout/states.jsonl.gz",
+    "archive_bytes": 248110,
+    "archive_sha256": "a266e8049d711d906179759aadcc18c465d1f6818ecb40d3e75710297e546cdc"
+  }
+]

@@ -1,0 +1,53 @@
+FC01：维护切换适用于落地、拆桨、飞控断电；安装成功不等于飞行就绪。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（124.4秒）。
+FC01：检查统一消息、Python模块和全部ELF架构；完整动态依赖随后随配置统一核对。
+FC01_PREBUILT_RUNTIME_DEPENDENCIES_OK
+
+FC01：开始完整服务软件预检（文件/动态依赖/参数），旧服务此时保持原状态。
+FC01_SOFTWARE_CHECK_BEGIN 完整文件与本机运行条件
+FC01_SOFTWARE_CHECK_PROGRESS 文件清单通过 elapsed=47.0s
+FC01_SOFTWARE_CHECK_PROGRESS ELF架构通过 paths=565 elapsed=53.9s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=50 elapsed=66.2s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=100 elapsed=78.4s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=150 elapsed=92.0s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=200 elapsed=103.8s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=250 elapsed=114.9s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖 checked=300 elapsed=125.3s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖通过 unique=338 elapsed=134.1s
+FC01_SOFTWARE_CHECK_PROGRESS 统一消息与Python加载通过 elapsed=144.4s
+FC01_SOFTWARE_CHECK_DONE elapsed=145.6s
+FC01_PREBUILT_CHECK_OK version=20261118_vision_step6_fix1
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（2.6秒）；飞机就绪另行显示。
+{
+  "entry": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1",
+  "backup": "/home/orangepi/FC01_navigation/prebuilt-backups/20261118T035408_258282Z-22282",
+  "already_active": true,
+  "version": "20261118_vision_step6_fix1",
+  "service_pid": 25096,
+  "controller_pid": 28390
+}
+FC01_PREBUILT_INSTALL_OK entry=/home/orangepi/FC01_versions/20261118_vision_step6_fix1 service_pid=25096 controller_pid=28390
+FC01_FLIGHT_READINESS={"ready_for_manual_rc": false, "missing": ["DDS", "RC", "姿态", "位置", "电池", "PX4"], "phase": "IDLE", "reason": "DDS_SOURCE_CLOCK_UNSYNCHRONIZED_OR_STALE", "status_current": true, "target_height_m": 1.23, "native_navigation_allowed": null, "current_command_source": null, "vision": {"mode": "altitude", "current": true, "camera_current": false, "mission_current": false, "camera": null, "mission": null, "calibration_state": "not_required", "mission_control_enabled": false, "error": ""}, "note": "仅显示；人工RC准入/接管/Kill/失效保护由原生控制器判定"}
+FC01_ROLLBACK_COMMAND=bash /home/orangepi/Desktop/install_fc01.sh --rollback /home/orangepi/FC01_navigation/prebuilt-backups/20261118T035408_258282Z-22282
+{
+  "repeat_keeps_supervisor_and_controller": true,
+  "service_pid": "25096",
+  "controller": [
+    {
+      "pid": 28390,
+      "exe": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+      "argv": [
+        "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+        "--ros-args",
+        "--disable-external-lib-logs",
+        "--params-file",
+        "/home/orangepi/FC01_navigation/runtime.yaml",
+        "-p",
+        "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_2a28ipd2/control.sock"
+      ],
+      "ppid": 25096,
+      "uid": 1000
+    }
+  ]
+}

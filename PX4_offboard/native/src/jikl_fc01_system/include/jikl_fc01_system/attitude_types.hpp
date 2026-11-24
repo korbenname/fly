@@ -6,6 +6,8 @@
 #include "jikl_fc01_system/vertical_feedback_guard.hpp"
 #include "jikl_fc01_system/authority.hpp"
 #include "jikl_fc01_system/vision_navigation.hpp"
+#include "jikl_fc01_system/horizontal_navigation.hpp"
+#include "jikl_fc01_system/takeoff_position.hpp"
 #include <cstdint>
 
 namespace fc01::attitude {
@@ -34,6 +36,19 @@ struct Config {
   // 两个对象直接作为Config成员存在，寿命跟随Config；不是可空指针，也不会自行订阅传感器。
   VerticalFeedbackConfig feedback_guard;
   vision::Config visual;
+  // 新PX4实际反馈水平路线必须显式选择；旧VisionState接口及默认关闭保持兼容。
+  bool px4_horizontal_enabled{};
+  // 独立接管路线：FC01 只发送 NED 轨迹目标，PX4 计算姿态和推力。
+  bool px4_takeoff_position_hold{};
+  bool px4_position_mission_enabled{}, px4_position_waypoint_enabled{};
+  std::string px4_position_waypoint_origin_id;
+  double px4_position_waypoint_north_m{}, px4_position_waypoint_east_m{};
+  // NED 下降速度 m/s。需要按现场 PX4 着陆检测阈值核对，旧姿态模式继续使用 aa_max_descent。
+  double px4_takeoff_position_descent_speed{.30};
+  double takeoff_position_safety_radius() const {
+    // 任务半径可收紧。撤销任务后仍在已验证的基础定点包络内完成受监督下降。
+    return px4_position_mission_enabled ? 2. : visual.max_radius;
+  }
   // 预发送/地面证据时长为 s，loop_hz 为 Hz，stall_seconds 是相邻控制步允许的最大秒间隔。
   double prestream_seconds{1.2}, ground_seconds{2}, loop_hz{20}, stall_seconds{.3};
   // 各数据源有独立秒级时限；状态/着陆低频反馈与姿态/本地位置的限制不能混用。
@@ -69,6 +84,27 @@ struct Config {
   void validate() const {
     // const 成员函数承诺不改这份配置。validate() 成功只说明参数相容，仍不代表遥测新鲜/允许起飞。
     visual.validate();
+    if ((px4_position_mission_enabled && !px4_takeoff_position_hold) ||
+        (px4_position_waypoint_enabled &&
+         (!px4_position_mission_enabled || px4_position_waypoint_origin_id.empty() ||
+          !vision::identity_within_budget(px4_position_waypoint_origin_id) ||
+          !std::isfinite(px4_position_waypoint_north_m) ||
+          !std::isfinite(px4_position_waypoint_east_m))) ||
+        (px4_takeoff_position_hold &&
+        (!rc_navigation_enabled || visual.enabled != px4_position_mission_enabled ||
+         px4_horizontal_enabled != px4_position_mission_enabled ||
+         rc_target_height != 1.5 || rc_navigation_mode_slot != 1 ||
+         rc_arm_to_navigation_timeout != 8. ||
+         !std::isfinite(px4_takeoff_position_descent_speed) ||
+         px4_takeoff_position_descent_speed <= 0 || px4_takeoff_position_descent_speed > .5)))
+      throw std::invalid_argument("PX4_TAKEOFF_POSITION_REQUIRES_EXCLUSIVE_MANUAL_RC_1_5M");
+    if (px4_position_mission_enabled &&
+        (visual.max_radius > 2. || visual.max_speed > .5 || visual.max_yaw_rate > .35 ||
+         visual.max_acceleration > .6))
+      throw std::invalid_argument("PX4_POSITION_MISSION_EXCEEDS_OBSERVATION_LIMITS");
+    if (px4_horizontal_enabled && visual.enabled &&
+        (!std::isfinite(rc_target_height) || std::abs(rc_target_height-1.5)>1e-9))
+      throw std::invalid_argument("PX4_HORIZONTAL_REQUIRES_NATIVE_1_5M_TARGET");
     // 视觉必须沿现有RC路线且不得超过原高度、速度、倾角包络，接口存在不构成独立控制权。
     if (visual.enabled &&
         (!rc_navigation_enabled || visual.max_tilt_deg > max_tilt_deg ||
@@ -152,6 +188,8 @@ struct Config {
 struct Feedback {
   // 视觉实际状态和目标命令使用各自消息合同；即使存在输入，也必须 visual.enabled 和导航阶段同时成立。
   vision::Input visual_input;
+  horizontal::Input horizontal_input;
+  TakeoffPositionSample takeoff_position;
   // 四元数不是四个欧拉角：{1,0,0,0} 表示零旋转；w 在前，与ROS geometry_msgs 的字段布局不同。
   Quaternion q{1, 0, 0, 0};
   // 三个计数分别标记姿态、位置、速度参考是否被估计器重置；计数不等价于任务编号。
@@ -356,6 +394,8 @@ inline const char* name(FaultClass f) {
 struct Output {
   // visual_motion 表示这份计划使用视觉运动目标；当前默认视觉关闭，不由有消息这一事实自动置权。
   bool visual_motion{};
+  // 位置模式的水平轨迹目标。z 仍由本轮原生高度计划独立编码。
+  std::optional<horizontal::PositionIntent> position_intent;
   // q 为姿态目标 wxyz；thrust为机体FRD归一化向量，上推力写成z负值，准备阶段保持精确零。
   bool publish{};
   Quaternion q{1, 0, 0, 0};

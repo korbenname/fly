@@ -1,0 +1,4 @@
+/home/jikl62/FC01_OrangePi_Navigation_20261028/target/src/fc01_mission/fc01_mission/mission_node.py
+[INFO] [1794942768.740978747] [fc01_mission]: consuming /fc01/vision/target_observation (takes precedence over /fc01/vision/target_relative)
+[INFO] [1794942768.743716798] [fc01_mission]: mission: mode=track, vision=/fc01/vision/target_observation, plant pose=/fc01/platform/state, out=/step4/mission/v2 at 50 Hz
+FC01_MISSION_HORIZONTAL_ROS_PASS 8 named checks

@@ -1,0 +1,312 @@
+[
+  {
+    "scenario": "normal",
+    "result": "PASS",
+    "error": null,
+    "metrics": {
+      "target_m": 1.5,
+      "overshoot_m": 0.13927439809009323,
+      "settling_entry_from_ramp_s": 7.893301648997294,
+      "height_hold_from_ramp_s": 10.179716376995202,
+      "hold_observation_s": 2.0017658569995547,
+      "hold_max_abs_error_m": 0.13927439809009323,
+      "hold_rms_error_m": 0.12791808422824408,
+      "horizontal_drift_m": 0.0,
+      "horizontal_drift_interpretation": "fixed XY input, not measured capability",
+      "max_heartbeat_receive_gap_s": 0.053935619005642366,
+      "max_heartbeat_wire_gap_s": 0.050759,
+      "max_heartbeat_gap_including_window_edges_s": 0.053935619005642366,
+      "max_target_gap_including_window_edges_s": 0.054100280001875944,
+      "heartbeat_window": "Offboard confirmed through Disarm command (includes descent), or fault injection; excludes deliberate stop/reprepare"
+    },
+    "gates": {
+      "ordered_phases": true,
+      "converged_2s": true,
+      "hold_error_within_config": true,
+      "heartbeat_below_stall_budget": true,
+      "target_and_heartbeat_window_covered": true,
+      "monotonic_wire": true,
+      "target_heartbeat_pairs": true,
+      "inputs_unchanged_during_run": true
+    }
+  },
+  {
+    "scenario": "range_unavailable",
+    "result": "PASS",
+    "error": null,
+    "metrics": {
+      "target_m": 1.5,
+      "overshoot_m": 0.13517501662477027,
+      "settling_entry_from_ramp_s": 7.9229986339996685,
+      "height_hold_from_ramp_s": 10.080648266004573,
+      "hold_observation_s": 2.0006977939992794,
+      "hold_max_abs_error_m": 0.13517501662477027,
+      "hold_rms_error_m": 0.12160149984297552,
+      "horizontal_drift_m": 0.0,
+      "horizontal_drift_interpretation": "fixed XY input, not measured capability",
+      "max_heartbeat_receive_gap_s": 0.052874223998514935,
+      "max_heartbeat_wire_gap_s": 0.050833,
+      "max_heartbeat_gap_including_window_edges_s": 0.052874223998514935,
+      "max_target_gap_including_window_edges_s": 0.053409276995807886,
+      "heartbeat_window": "Offboard confirmed through Disarm command (includes descent), or fault injection; excludes deliberate stop/reprepare"
+    },
+    "gates": {
+      "ordered_phases": true,
+      "converged_2s": true,
+      "hold_error_within_config": true,
+      "heartbeat_below_stall_budget": true,
+      "target_and_heartbeat_window_covered": true,
+      "monotonic_wire": true,
+      "target_heartbeat_pairs": true,
+      "inputs_unchanged_during_run": true
+    }
+  },
+  {
+    "scenario": "feedback_stale",
+    "result": "PASS",
+    "error": null,
+    "metrics": {
+      "target_m": 1.5,
+      "overshoot_m": 0.13906866121452577,
+      "settling_entry_from_ramp_s": 7.900069313000131,
+      "height_hold_from_ramp_s": 10.126861217002443,
+      "hold_observation_s": 2.0001813319977373,
+      "hold_max_abs_error_m": 0.13906866121452577,
+      "hold_rms_error_m": 0.12625358875077614,
+      "horizontal_drift_m": 0.0,
+      "horizontal_drift_interpretation": "fixed XY input, not measured capability",
+      "max_heartbeat_receive_gap_s": 0.05297752799378941,
+      "max_heartbeat_wire_gap_s": 0.050647,
+      "max_heartbeat_gap_including_window_edges_s": 0.05297752799378941,
+      "max_target_gap_including_window_edges_s": 0.05318375099886907,
+      "heartbeat_window": "Offboard confirmed through Disarm command (includes descent), or fault injection; excludes deliberate stop/reprepare"
+    },
+    "gates": {
+      "ordered_phases": true,
+      "converged_2s": true,
+      "hold_error_within_config": true,
+      "heartbeat_below_stall_budget": true,
+      "target_and_heartbeat_window_covered": true,
+      "monotonic_wire": true,
+      "target_heartbeat_pairs": true,
+      "inputs_unchanged_during_run": true
+    }
+  },
+  {
+    "scenario": "quat_reset",
+    "result": "PASS",
+    "error": null,
+    "metrics": {
+      "target_m": 1.5,
+      "overshoot_m": 0.1393848528155952,
+      "settling_entry_from_ramp_s": 7.862437124997086,
+      "height_hold_from_ramp_s": 10.081389377002779,
+      "hold_observation_s": 2.0006205339959706,
+      "hold_max_abs_error_m": 0.1393848528155952,
+      "hold_rms_error_m": 0.12703965979433213,
+      "horizontal_drift_m": 0.0,
+      "horizontal_drift_interpretation": "fixed XY input, not measured capability",
+      "max_heartbeat_receive_gap_s": 0.052873508000629954,
+      "max_heartbeat_wire_gap_s": 0.050623,
+      "max_heartbeat_gap_including_window_edges_s": 0.052873508000629954,
+      "max_target_gap_including_window_edges_s": 0.053207637000014074,
+      "heartbeat_window": "Offboard confirmed through Disarm command (includes descent), or fault injection; excludes deliberate stop/reprepare"
+    },
+    "gates": {
+      "ordered_phases": true,
+      "converged_2s": true,
+      "hold_error_within_config": true,
+      "heartbeat_below_stall_budget": true,
+      "target_and_heartbeat_window_covered": true,
+      "monotonic_wire": true,
+      "target_heartbeat_pairs": true,
+      "inputs_unchanged_during_run": true
+    }
+  },
+  {
+    "scenario": "vertical_reset",
+    "result": "PASS",
+    "error": null,
+    "metrics": {
+      "target_m": 1.5,
+      "overshoot_m": 0.13950625264058392,
+      "settling_entry_from_ramp_s": 7.912557754993031,
+      "height_hold_from_ramp_s": 10.177337736997288,
+      "hold_observation_s": 2.000539786997251,
+      "hold_max_abs_error_m": 0.13950625264058392,
+      "hold_rms_error_m": 0.12768480317705783,
+      "horizontal_drift_m": 0.0,
+      "horizontal_drift_interpretation": "fixed XY input, not measured capability",
+      "max_heartbeat_receive_gap_s": 0.053971583998645656,
+      "max_heartbeat_wire_gap_s": 0.050649,
+      "max_heartbeat_gap_including_window_edges_s": 0.053971583998645656,
+      "max_target_gap_including_window_edges_s": 0.054145059002621565,
+      "heartbeat_window": "Offboard confirmed through Disarm command (includes descent), or fault injection; excludes deliberate stop/reprepare"
+    },
+    "gates": {
+      "ordered_phases": true,
+      "converged_2s": true,
+      "hold_error_within_config": true,
+      "heartbeat_below_stall_budget": true,
+      "target_and_heartbeat_window_covered": true,
+      "monotonic_wire": true,
+      "target_heartbeat_pairs": true,
+      "inputs_unchanged_during_run": true
+    }
+  },
+  {
+    "scenario": "offboard_loss",
+    "result": "PASS",
+    "error": null,
+    "metrics": {
+      "target_m": 1.5,
+      "overshoot_m": 0.13964045591768648,
+      "settling_entry_from_ramp_s": 7.906987640999432,
+      "height_hold_from_ramp_s": 10.226810690997809,
+      "hold_observation_s": 2.0007750670047244,
+      "hold_max_abs_error_m": 0.13964045591768648,
+      "hold_rms_error_m": 0.12865450050245333,
+      "horizontal_drift_m": 0.0,
+      "horizontal_drift_interpretation": "fixed XY input, not measured capability",
+      "max_heartbeat_receive_gap_s": 0.05291072199906921,
+      "max_heartbeat_wire_gap_s": 0.050831,
+      "max_heartbeat_gap_including_window_edges_s": 0.05291072199906921,
+      "max_target_gap_including_window_edges_s": 0.05347084400273161,
+      "heartbeat_window": "Offboard confirmed through Disarm command (includes descent), or fault injection; excludes deliberate stop/reprepare"
+    },
+    "gates": {
+      "ordered_phases": true,
+      "converged_2s": true,
+      "hold_error_within_config": true,
+      "heartbeat_below_stall_budget": true,
+      "target_and_heartbeat_window_covered": true,
+      "monotonic_wire": true,
+      "target_heartbeat_pairs": true,
+      "inputs_unchanged_during_run": true
+    }
+  },
+  {
+    "scenario": "offboard_flag",
+    "result": "PASS",
+    "error": null,
+    "metrics": {
+      "target_m": 1.5,
+      "overshoot_m": 0.1392597657525525,
+      "settling_entry_from_ramp_s": 7.902361879001546,
+      "height_hold_from_ramp_s": 10.129483015996811,
+      "hold_observation_s": 2.0016567740021856,
+      "hold_max_abs_error_m": 0.1392597657525525,
+      "hold_rms_error_m": 0.12668501093265688,
+      "horizontal_drift_m": 0.0,
+      "horizontal_drift_interpretation": "fixed XY input, not measured capability",
+      "max_heartbeat_receive_gap_s": 0.053039154001453426,
+      "max_heartbeat_wire_gap_s": 0.050654,
+      "max_heartbeat_gap_including_window_edges_s": 0.053039154001453426,
+      "max_target_gap_including_window_edges_s": 0.05380096700537251,
+      "heartbeat_window": "Offboard confirmed through Disarm command (includes descent), or fault injection; excludes deliberate stop/reprepare"
+    },
+    "gates": {
+      "ordered_phases": true,
+      "converged_2s": true,
+      "hold_error_within_config": true,
+      "heartbeat_below_stall_budget": true,
+      "target_and_heartbeat_window_covered": true,
+      "monotonic_wire": true,
+      "target_heartbeat_pairs": true,
+      "inputs_unchanged_during_run": true
+    }
+  },
+  {
+    "scenario": "rc_takeover",
+    "result": "PASS",
+    "error": null,
+    "metrics": {
+      "target_m": 1.5,
+      "overshoot_m": 0.1394808535203087,
+      "settling_entry_from_ramp_s": 7.913544285998796,
+      "height_hold_from_ramp_s": 10.179078389002825,
+      "hold_observation_s": 2.0013634329952765,
+      "hold_max_abs_error_m": 0.1394808535203087,
+      "hold_rms_error_m": 0.1278933198459906,
+      "horizontal_drift_m": 0.0,
+      "horizontal_drift_interpretation": "fixed XY input, not measured capability",
+      "max_heartbeat_receive_gap_s": 0.052572669002984185,
+      "max_heartbeat_wire_gap_s": 0.050716,
+      "max_heartbeat_gap_including_window_edges_s": 0.052572669002984185,
+      "max_target_gap_including_window_edges_s": 0.052958667001803406,
+      "heartbeat_window": "Offboard confirmed through Disarm command (includes descent), or fault injection; excludes deliberate stop/reprepare"
+    },
+    "gates": {
+      "ordered_phases": true,
+      "converged_2s": true,
+      "hold_error_within_config": true,
+      "heartbeat_below_stall_budget": true,
+      "target_and_heartbeat_window_covered": true,
+      "monotonic_wire": true,
+      "target_heartbeat_pairs": true,
+      "inputs_unchanged_during_run": true
+    }
+  },
+  {
+    "scenario": "kill",
+    "result": "PASS",
+    "error": null,
+    "metrics": {
+      "target_m": 1.5,
+      "overshoot_m": 0.13933926009983288,
+      "settling_entry_from_ramp_s": 7.902659198996844,
+      "height_hold_from_ramp_s": 10.125881915002537,
+      "hold_observation_s": 2.0012870639984612,
+      "hold_max_abs_error_m": 0.13933926009983288,
+      "hold_rms_error_m": 0.1268067525355875,
+      "horizontal_drift_m": 0.0,
+      "horizontal_drift_interpretation": "fixed XY input, not measured capability",
+      "max_heartbeat_receive_gap_s": 0.05307489699771395,
+      "max_heartbeat_wire_gap_s": 0.050661,
+      "max_heartbeat_gap_including_window_edges_s": 0.05307489699771395,
+      "max_target_gap_including_window_edges_s": 0.053414328998769633,
+      "heartbeat_window": "Offboard confirmed through Disarm command (includes descent), or fault injection; excludes deliberate stop/reprepare"
+    },
+    "gates": {
+      "ordered_phases": true,
+      "converged_2s": true,
+      "hold_error_within_config": true,
+      "heartbeat_below_stall_budget": true,
+      "target_and_heartbeat_window_covered": true,
+      "monotonic_wire": true,
+      "target_heartbeat_pairs": true,
+      "inputs_unchanged_during_run": true
+    }
+  },
+  {
+    "scenario": "velocity_warning",
+    "result": "PASS",
+    "error": null,
+    "metrics": {
+      "target_m": 1.5,
+      "overshoot_m": 0.13959005954377202,
+      "settling_entry_from_ramp_s": 7.904555745000835,
+      "height_hold_from_ramp_s": 10.17886821400316,
+      "hold_observation_s": 2.0037844049948035,
+      "hold_max_abs_error_m": 0.13959005954377202,
+      "hold_rms_error_m": 0.12788828535287713,
+      "horizontal_drift_m": 0.0,
+      "horizontal_drift_interpretation": "fixed XY input, not measured capability",
+      "max_heartbeat_receive_gap_s": 0.052438071004871745,
+      "max_heartbeat_wire_gap_s": 0.050728,
+      "max_heartbeat_gap_including_window_edges_s": 0.052438071004871745,
+      "max_target_gap_including_window_edges_s": 0.052999599000031594,
+      "heartbeat_window": "Offboard confirmed through Disarm command (includes descent), or fault injection; excludes deliberate stop/reprepare"
+    },
+    "gates": {
+      "ordered_phases": true,
+      "converged_2s": true,
+      "hold_error_within_config": true,
+      "heartbeat_below_stall_budget": true,
+      "target_and_heartbeat_window_covered": true,
+      "monotonic_wire": true,
+      "target_heartbeat_pairs": true,
+      "inputs_unchanged_during_run": true
+    }
+  }
+]

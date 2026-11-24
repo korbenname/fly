@@ -1,0 +1,25 @@
+{
+  "baseline": "827f1f4535bc55b1bfa3fc2e97439367af226831",
+  "comparison": "all control sink bytes exact; explicit control-state fields exact",
+  "lines": 1178,
+  "state_samples": 707,
+  "sink_sha256": "fcabfe83829068353f5eb6c6e4fec08ef5ad503d1cb3af2dd88704e93bf52c5b",
+  "state_fields": [
+    "phase",
+    "reason",
+    "armed",
+    "nav_state",
+    "relative_height_m",
+    "height_reference_z0",
+    "liftoff_confirmed",
+    "target_height_settled",
+    "navigation_allowed",
+    "rc_manual_arm_proven",
+    "last_target_local_thrust_z",
+    "target_local_commits",
+    "heartbeat_local_commits"
+  ],
+  "driver_sha256": "fd0d83488b03c66f5734b72b9f1f9c9c1ecd5ab4dad4e474c9fe547fd901415d",
+  "excluded_observations": "additive NativeFlightState and height stable-sample metadata; full logs preserved",
+  "hardware": false
+}

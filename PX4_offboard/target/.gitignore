@@ -1,0 +1,4 @@
+# 本工作区默认构建产物；源码身份由Git及UPSTREAM.json记录。
+/build/
+/install/
+/log/

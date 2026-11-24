@@ -1,0 +1,86 @@
+{
+  "environment": "QEMU system-aarch64 Cortex-A72, Ubuntu 22.04.5 ARM64, ROS 2 Humble, systemd 249",
+  "source_commit": "c7de1387c635cf1733e1d1e1a20a8c24d7ad7752",
+  "control_candidate_commit": "b2ee5215e03a7c375714efb5f562f788473369a9",
+  "tested_archive": "FC01_OrangePi_20261118_position_vision_step3_arm64.tar.gz",
+  "archive_sha256": "fdc2d179cfdd4dabdbd73b8d6a5ff89da3855938f1717c7726e0b41f82823e8c",
+  "tested_installer": "install_fc01.sh",
+  "installer_sha256": "7f5a3ebc8f7455b6adabee65d614fba4f9aa3b4aece87ef5e25db0025f2950d9",
+  "modes_tested": [
+    "inherited altitude",
+    "position",
+    "position-track (synthetic calibration only)"
+  ],
+  "arm64_elf": true,
+  "generated_messages_cdr_passed": 11,
+  "inherited_parameters": true,
+  "old_process_exit_before_new_start": true,
+  "controller_processes_per_mode": {
+    "altitude": [
+      [
+        "fc01_system_node",
+        76539
+      ]
+    ],
+    "position": [
+      [
+        "fc01_system_node",
+        81724
+      ]
+    ],
+    "position-track": [
+      [
+        "px4_state_bridge",
+        86823
+      ],
+      [
+        "fc01_vision_node",
+        86825
+      ],
+      [
+        "mission",
+        86827
+      ],
+      [
+        "fc01_target_interface_node",
+        86830
+      ],
+      [
+        "fc01_system_node",
+        87066
+      ]
+    ]
+  },
+  "no_hardware_ready": false,
+  "no_hardware_reason": [
+    "DDS",
+    "RC",
+    "姿态",
+    "位置",
+    "电池",
+    "PX4"
+  ],
+  "no_feedback_ros_outputs": {
+    "position": {
+      "attitude_setpoint": 0,
+      "trajectory_setpoint": 0,
+      "command": 0,
+      "heartbeat": 0
+    },
+    "position-track": {
+      "attitude_setpoint": 0,
+      "trajectory_setpoint": 0,
+      "command": 0,
+      "heartbeat": 0
+    }
+  },
+  "repeat_kept_same_processes": true,
+  "live_monitor_exits_without_restarting_service": true,
+  "rollback_fix1_source_commit": "c6fe7edaec84ce3dad68d6584b1d7fbb5c3c7bac",
+  "rollback_fix1_controller_binary_sha256": "26ca623c7e421dad68fa771d6356c77b7e464d90853d03a965e105343ecd36fb",
+  "rollback_runtime_sha256": "6ddd188b641f5528aed187922107fd152485a18dfb21a8346c149be9c47f5b93",
+  "rollback_runtime_byte_identical": true,
+  "rollback_service_files_byte_identical": true,
+  "hardware": "VM-only serial PTY and fake agent. No RC, PX4 firmware, attached camera, armed state, or physical flight.",
+  "lifecycle_passed": true
+}

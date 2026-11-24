@@ -1,0 +1,767 @@
+Agent transport CONNECTED: UART /dev/ttyS2 115200; PID=170664
+WAITING: 控制器已启动，等待飞控反馈
+HEIGHT_HOLD: native recovery
+STOPPING: 等待原生退出
+STOPPING: 原生控制器退出，code=0
+STOPPED: 后台待命已停止
+_copy_excludes_bytecode_without_losing_python_source (tests.test_arm64_bundle.BundleEvidenceTest) ... ok
+test_install_digest_alone_cannot_authorize_stale_mission_or_config (tests.test_arm64_bundle.BundleEvidenceTest) ... ok
+test_install_directory_link_is_explicitly_rejected (tests.test_arm64_bundle.BundleEvidenceTest) ... ok
+test_multiple_python_message_libraries_cannot_hide_overlay_ambiguity (tests.test_arm64_bundle.BundleEvidenceTest) ... ok
+test_standalone_installer_pins_archive_and_runs_without_project (tests.test_arm64_bundle.BundleEvidenceTest) ... ok
+test_target_source_closure_excludes_caches_and_unrelated_evidence (tests.test_arm64_bundle.BundleEvidenceTest) ... ok
+test_target_source_symlink_is_not_silently_dereferenced (tests.test_arm64_bundle.BundleEvidenceTest) ... ok
+test_atomic_publish_preserves_concurrently_created_empty_output (tests.test_arm64_runtime.Arm64RuntimeTests) ... ok
+test_existing_output_or_collision_never_overwrites (tests.test_arm64_runtime.Arm64RuntimeTests) ... ok
+test_guest_absolute_and_relative_links_stay_inside_arm_root (tests.test_arm64_runtime.Arm64RuntimeTests) ... ok
+test_incomplete_or_foreign_ldd_is_rejected (tests.test_arm64_runtime.Arm64RuntimeTests) ... ok
+test_ldd_dependency_free_python_extension_requires_verified_dynamic_elf (tests.test_arm64_runtime.Arm64RuntimeTests) ... ok
+test_runtime_closure_copies_soname_and_license_but_never_base_abi (tests.test_arm64_runtime.Arm64RuntimeTests) ... ok
+test_scan_identity_rejects_changed_build_or_runtime_dependency (tests.test_arm64_runtime.Arm64RuntimeTests) ... ok
+test_scan_repeated_external_dependency_keeps_provenance_consistent (tests.test_arm64_runtime.Arm64RuntimeTests) ... ok
+test_selected_ros_package_gets_colcon_registration_for_its_hooks (tests.test_arm64_runtime.Arm64RuntimeTests) ... ok
+test_soname_conflict_and_unexpected_ldd_text_fail_closed (tests.test_arm64_runtime.Arm64RuntimeTests) ... ok
+test_source_selection_excludes_cache_headers_and_unused_cv_python (tests.test_arm64_runtime.Arm64RuntimeTests) ... ok
+test_wrong_architecture_dependency_and_unsafe_destination_are_rejected (tests.test_arm64_runtime.Arm64RuntimeTests) ... ok
+test_absent_stale_and_invalid_aircraft_cache_never_gate_maintenance (tests.test_navigation_prebuilt_install.InstallerTest) ... {"output": "/tmp/fc01-runtime-test-rs7kbrpe/output", "files": 7, "copied_records": 1, "provided_by_target": 0}
+{"output": "/tmp/fc01-runtime-test-qbrlnwmy/output", "files": 9, "copied_records": 3, "provided_by_target": 2}
+{"report": "/tmp/fc01-runtime-test-4k1cqwbr/report.json", "elfs": 2, "packages": 1, "external_files": 0, "install_files": 2}
+{"output": "/tmp/fc01-runtime-test-3bflpbo5/output", "files": 11, "copied_records": 4, "provided_by_target": 2}
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+ok
+test_active_supervisor_without_controller_can_be_replaced_in_maintenance (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+ok
+test_archive_traversal_and_symlink_rejected (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：核对安装包、完整文件清单和本机软件条件。
+ok
+test_auxiliary_software_failure_during_switch_restores_old_service (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+ok
+test_bad_hash_and_architecture_rejected_before_stop (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：核对安装包、完整文件清单和本机软件条件。
+ok
+test_busy_old_controller_never_changes_service (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+ok
+test_corrupted_existing_payload_is_not_overwritten (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+ok
+test_delayed_graceful_exit_is_observed_before_new_start_without_force (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：等待旧任务退出，已用10秒；服务=deactivating，仍存活PID=[]。
+FC01：等待旧任务退出，已用20秒；服务=deactivating，仍存活PID=[]。
+FC01：等待旧任务退出，已用30秒；服务=deactivating，仍存活PID=[]。
+FC01：等待旧任务退出，已用40秒；服务=deactivating，仍存活PID=[]。
+FC01：等待旧任务退出，已用50秒；服务=deactivating，仍存活PID=[]。
+FC01：等待旧任务退出，已用60秒；服务=deactivating，仍存活PID=[]。
+FC01：旧服务及所属FC01进程已退出（61.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_dependency_subprocess_checks_each_hash_and_arch_before_reusing_ldd (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：检查统一消息、Python模块和全部ELF架构；完整动态依赖随后随配置统一核对。
+
+ok
+test_direct_navigation_queries_keep_exact_tree_and_repeat_install (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_duplicate_controller_rejects_without_stop (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+ok
+test_environment_file_and_saved_deployment_survive_stopped_install (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_explicit_paired_visual_runtime_can_be_inherited_without_aircraft_queries (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_external_unit_edit_blocks_rollback_before_overwrite (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_failed_new_start_restores_old_active (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+ok
+test_failed_new_start_restores_original_inactive_and_first_install_absence (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+ok
+test_failed_supervisor_without_controller_restores_old_active (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+ok
+test_first_install_rejects_symlinked_dropin_parent_before_writing (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+ok
+test_first_service_install_uses_existing_runtime_then_rollback_removes_only_created_unit (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+ok
+test_inactive_failed_candidate_can_roll_back_without_live_controller (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_install_cli_reports_success_with_malformed_optional_aircraft_json (tests.test_navigation_prebuilt_install.InstallerTest) ... ok
+test_install_groups_full_ldd_in_required_config_check_without_shell_bypass (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：检查统一消息、Python模块和全部ELF架构；完整动态依赖随后随配置统一核对。
+checked
+FC01：检查统一消息、Python模块和全部ELF架构；完整动态依赖随后随配置统一核对。
+checked
+ok
+test_install_repeat_rollback_and_effective_inheritance (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+ok
+test_invalid_backup_rejected_without_configuration_write (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_malformed_or_missing_readiness_is_separate_from_install_success (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_missing_dependency_rejected_before_stop (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+ok
+test_missing_existing_runtime_never_creates_parameters_or_service (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+ok
+test_missing_local_agent_executable_is_software_failure_before_stop (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+ok
+test_missing_visual_site_configuration_refuses_before_stopping_old_service (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+ok
+test_native_configuration_or_unit_parser_failure_is_before_stop (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+ok
+test_no_running_agent_or_session_query_is_needed_for_every_lifecycle (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+ok
+test_operator_parameter_change_during_preflight_is_not_replaced_by_stale_snapshot (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+ok
+test_optional_readiness_subprocess_failure_never_changes_success (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_original_dropin_and_environment_file_backed_up_unchanged (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_original_restart_different_parameters_is_not_reported_recovered (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_readiness_closed_gates_and_expired_sources_do_not_block_software_repeat (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_readiness_identity_and_freshness_are_display_only (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_real_size_manifest_never_enters_dependency_process_argv (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：检查统一消息、Python模块和全部ELF架构；完整动态依赖随后随配置统一核对。
+dependencies checked
+ok
+test_real_systemd_parser_accepts_scalar_working_directory (tests.test_navigation_prebuilt_install.InstallerTest) ... ok
+test_repeat_install_without_legacy_sdk_environment (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_rollback_dropin_edit_during_authentication_is_preserved_before_stop (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_rollback_dropin_edit_during_stop_is_not_erased_or_old_service_started (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+ok
+test_rollback_stops_candidate_before_original_starts (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+ok
+test_scalar_working_directory_rejects_ambiguous_values (tests.test_navigation_prebuilt_install.InstallerTest) ... ok
+test_service_or_controller_change_during_authentication_refuses_before_stop (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+ok
+test_software_acceptance_refuses_wrong_process_hash_runtime_or_dds (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_software_stop_deadline_keeps_old_controller_and_unit_without_starting_candidate (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：等待旧任务退出，已用10秒；服务=deactivating，仍存活PID=[]。
+FC01：等待旧任务退出，已用20秒；服务=deactivating，仍存活PID=[]。
+FC01：等待旧任务退出，已用30秒；服务=deactivating，仍存活PID=[]。
+FC01：等待旧任务退出，已用40秒；服务=deactivating，仍存活PID=[]。
+FC01：等待旧任务退出，已用50秒；服务=deactivating，仍存活PID=[]。
+FC01：等待旧任务退出，已用60秒；服务=deactivating，仍存活PID=[]。
+FC01：等待旧任务退出，已用70秒；服务=deactivating，仍存活PID=[]。
+FC01：等待旧任务退出，已用80秒；服务=deactivating，仍存活PID=[]。
+FC01：等待旧任务退出，已用90秒；服务=deactivating，仍存活PID=[]。
+FC01：等待旧任务退出，已用100秒；服务=deactivating，仍存活PID=[]。
+FC01：等待旧任务退出，已用111秒；服务=deactivating，仍存活PID=[]。
+ok
+test_startup_acceptance_waits_for_measured_slow_preflight_not_stale_feedback (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：等待新版软件初始化/IPC，已用10/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用20/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用30/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用40/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用50/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用60/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用70/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用80/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用90/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用100/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用110/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用120/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用130/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用140/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用150/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用160/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用170/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用180/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用190/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用200/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用210/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用220/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用230/600秒；等待新版服务和唯一控制器进程。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（240.0秒）；飞机就绪另行显示。
+FC01：等待新版软件初始化/IPC，已用10/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用20/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用30/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用40/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用50/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用60/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用70/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用80/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用90/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用100/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用110/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用120/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用130/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用140/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用150/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用160/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用170/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用180/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用190/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用200/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用210/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用220/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用230/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用240/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用250/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用260/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用270/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用280/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用290/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用300/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用310/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用320/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用330/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用340/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用350/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用360/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用370/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用380/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用390/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用400/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用410/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用420/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用430/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用440/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用450/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用460/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用470/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用480/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用490/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用500/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用510/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用520/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用530/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用540/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用550/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用560/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用570/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用580/600秒；等待新版服务和唯一控制器进程。
+FC01：等待新版软件初始化/IPC，已用590/600秒；等待新版服务和唯一控制器进程。
+ok
+test_startup_identity_must_stay_present_for_a_full_stability_window (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（1.8秒）；飞机就绪另行显示。
+ok
+test_status_cli_returns_software_success_while_flight_feedback_absent (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_stopped_candidate_repeat_keeps_original_backup_and_never_backs_up_itself (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+ok
+test_stopped_candidate_repeat_start_failure_restores_the_same_original_backup (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+ok
+test_stopped_environment_file_preserves_dds_and_agent_without_process_environment (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+ok
+test_stopped_old_service_preserves_static_environment_and_rollback_state (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+ok
+test_unknown_service_unit_or_runtime_symlink_refuses_before_stop (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+ok
+test_unlisted_bytecode_still_rejected_before_stopping_service (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+ok
+test_unmanaged_or_wrong_user_controller_refuses_before_stop (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+ok
+test_unmodified_sources_are_never_privileged_rewritten_on_rollback (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+ok
+test_unsupported_domain_preserved_and_rejected (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+ok
+test_visual_malformed_pair_height_and_slot_fail_before_stop (tests.test_navigation_prebuilt_install.InstallerTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+ok
+test_visual_migration_uses_new_verified_tool_and_old_entry_without_live_state (tests.test_navigation_prebuilt_install.InstallerTest) ... ok
+test_alias_hash_or_arch_failure_cannot_hide_behind_successful_ldd (tests.test_navigation_prebuilt_service.PrebuiltServiceTests) ... FC01_SOFTWARE_CHECK_BEGIN 完整文件与本机运行条件
+FC01_SOFTWARE_CHECK_BEGIN 完整文件与本机运行条件
+FC01_SOFTWARE_CHECK_PROGRESS 文件清单通过 elapsed=0.0s
+ok
+test_check_runs_only_ldd_and_packaged_checker_with_preserved_config (tests.test_navigation_prebuilt_service.PrebuiltServiceTests) ... FC01_SOFTWARE_CHECK_BEGIN 完整文件与本机运行条件
+FC01_SOFTWARE_CHECK_PROGRESS 文件清单通过 elapsed=0.0s
+FC01_SOFTWARE_CHECK_PROGRESS ELF架构通过 paths=2 elapsed=0.0s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖通过 unique=2 elapsed=0.0s
+FC01_SOFTWARE_CHECK_PROGRESS 统一消息与Python加载通过 elapsed=0.0s
+FC01_SOFTWARE_CHECK_DONE elapsed=0.0s
+ok
+test_environment_preserves_dds_and_discards_old_overlay_and_reserved_paths (tests.test_navigation_prebuilt_service.PrebuiltServiceTests) ... ok
+test_failed_ldd_is_not_reused_by_a_later_check (tests.test_navigation_prebuilt_service.PrebuiltServiceTests) ... FC01_SOFTWARE_CHECK_BEGIN 完整文件与本机运行条件
+FC01_SOFTWARE_CHECK_PROGRESS 文件清单通过 elapsed=0.0s
+FC01_SOFTWARE_CHECK_PROGRESS ELF架构通过 paths=3 elapsed=0.0s
+FC01_SOFTWARE_CHECK_BEGIN 完整文件与本机运行条件
+FC01_SOFTWARE_CHECK_PROGRESS 文件清单通过 elapsed=0.0s
+FC01_SOFTWARE_CHECK_PROGRESS ELF架构通过 paths=3 elapsed=0.0s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖通过 unique=2 elapsed=0.0s
+FC01_SOFTWARE_CHECK_PROGRESS 统一消息与Python加载通过 elapsed=0.0s
+FC01_SOFTWARE_CHECK_DONE elapsed=0.0s
+ok
+test_inherited_settings_refuse_incompatible_policy_without_mutation (tests.test_navigation_prebuilt_service.PrebuiltServiceTests) ... ok
+test_ldd_reuses_only_same_parent_verified_byte_identical_aliases (tests.test_navigation_prebuilt_service.PrebuiltServiceTests) ... FC01_SOFTWARE_CHECK_BEGIN 完整文件与本机运行条件
+FC01_SOFTWARE_CHECK_PROGRESS 文件清单通过 elapsed=0.0s
+FC01_SOFTWARE_CHECK_PROGRESS ELF架构通过 paths=4 elapsed=0.0s
+FC01_SOFTWARE_CHECK_PROGRESS 动态依赖通过 unique=3 elapsed=0.0s
+FC01_SOFTWARE_CHECK_PROGRESS 统一消息与Python加载通过 elapsed=0.0s
+FC01_SOFTWARE_CHECK_DONE elapsed=0.0s
+ok
+test_payload_hash_arch_and_dependency_errors_refuse_before_checker (tests.test_navigation_prebuilt_service.PrebuiltServiceTests) ... FC01_SOFTWARE_CHECK_BEGIN 完整文件与本机运行条件
+FC01_SOFTWARE_CHECK_BEGIN 完整文件与本机运行条件
+FC01_SOFTWARE_CHECK_PROGRESS 文件清单通过 elapsed=0.0s
+FC01_SOFTWARE_CHECK_BEGIN 完整文件与本机运行条件
+FC01_SOFTWARE_CHECK_PROGRESS 文件清单通过 elapsed=0.0s
+FC01_SOFTWARE_CHECK_PROGRESS ELF架构通过 paths=2 elapsed=0.0s
+ok
+test_snapshot_preserves_every_control_and_only_changes_identity (tests.test_navigation_prebuilt_service.PrebuiltServiceTests) ... ok
+test_supervisor_uses_packaged_node_snapshot_and_original_agent (tests.test_navigation_prebuilt_service.PrebuiltServiceTests) ... FC01_PREBUILT_SERVICE version=20261116.stage3-abcdef source_commit=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa inherited_config=/tmp/tmprxlt_so4/release/deployment/runtime.yaml
+ok
+test_altitude_restore_switches_only_visual_flags (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_config_hash_tamper_and_unrecorded_enabled_mode_fail_closed (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_default_altitude_aux_does_not_launch_or_import_ros (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_deployment_lock_prevents_concurrent_config_and_service (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_incomplete_nan_bad_quaternion_and_false_calibration_refuse_before_write (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_launch_only_contains_aux_and_cleanup_signals_process_group (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_migration_copies_verified_site_without_modifying_old_or_activating (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_mode_change_updates_only_current_install_receipt_and_failure_restores_it (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_pending_aux_launch_cannot_override_disabled_mission_control (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_pending_hashes_cannot_hide_calibration_confirmation_or_source_injection (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_pending_migrates_without_enabling_control_and_real_site_can_replace_it (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_pending_mode_does_not_mix_calibration_and_pending_marker_or_altitude (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_pending_track_is_software_only_and_does_not_claim_any_site_calibration (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_service_or_native_alive_blocks_without_reading_historical_status (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_site_cannot_borrow_candidate_intrinsics_or_override_task_safety (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_software_check_failure_restores_runtime_and_original_mode_bytes (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_stuck_observer_still_cleans_auxiliary_group_and_log (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_track_requires_site_sources_without_camera_connected_and_preserves_rc_thrust (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_unknown_runtime_edit_is_not_adopted_by_mode_configuration (tests.test_navigation_vision_mode.VisionModeTests) ... ok
+test_actual_service_writer_is_readable_by_both_status_entrypoints (tests.test_prebuilt_vision_status.PrebuiltVisionStatusTests) ... ok
+test_altitude_mode_does_not_require_camera (tests.test_prebuilt_vision_status.PrebuiltVisionStatusTests) ... ok
+test_clock_invalid_or_feedback_absent_remains_unknown (tests.test_prebuilt_vision_status.PrebuiltVisionStatusTests) ... ok
+test_current_camera_and_target_are_displayed_without_granting_native_authority (tests.test_prebuilt_vision_status.PrebuiltVisionStatusTests) ... ok
+test_historical_ready_or_native_authority_never_displays_current_grant (tests.test_prebuilt_vision_status.PrebuiltVisionStatusTests) ... ok
+test_installer_status_separates_vision_and_aircraft_and_never_mutates_observation (tests.test_prebuilt_vision_status.PrebuiltVisionStatusTests) ... ok
+test_multiple_publishers_or_malformed_child_cannot_show_a_current_lock (tests.test_prebuilt_vision_status.PrebuiltVisionStatusTests) ... ok
+test_outer_rewrite_cannot_refresh_camera_or_target_and_identity_is_required (tests.test_prebuilt_vision_status.PrebuiltVisionStatusTests) ... ok
+test_track_install_acceptance_requires_actual_auxiliary_software_but_no_sensor_feedback (tests.test_prebuilt_vision_status.PrebuiltVisionStatusTests) ... ok
+test_each_topic_envelope_receipt_and_raw_sample_ages_expire_at_its_ttl (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_future_sample_clock_skew_cannot_extend_raw_progress_lifetime (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_missing_invalid_or_native_rejected_timing_cannot_prompt_manual_arming (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_native_false_flags_and_transport_history_cannot_be_revived_by_valid_timing (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_native_valid_future_source_timestamp_does_not_extend_display_lifetime (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_sample_expiry_preserves_current_fault_and_recovery_diagnostics (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_supervisor_state_age_and_saved_snapshot_elapsed_both_consume_ttl (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_normal_paused_silent_stale_and_disconnected_real_ipc_controls (tests.test_navigation_feedback_freshness.LiveMonitorFreshnessTests) ... ok
+test_current_supervisor_boot_controller_and_ipc_state_identity_required (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_feedback_cutoff_remains_separate_from_current_process_and_readiness_facts (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_navigation_window_display_does_not_recreate_arm_deadline (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_ready_requires_current_native_phase_and_ground_zero_committed_zero_stream (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_dds_loss_and_expired_raw_samples_revoke_ready_display (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_historical_ready_is_stale_after_process_boot_or_identity_change (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_native_arm_window_and_wrong_slot_evidence_are_not_invented (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_ready_label_cannot_outlive_native_phase_or_ground_zero_stream (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_actual_generated_rc_configuration_is_valid (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_actual_native_rejects_automatic_arm_in_manual_route (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_all_valid_mode_slots_are_accepted_by_actual_native_config (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_check_session_is_accepted_by_actual_native_config (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_flight_session_is_accepted_by_actual_native_config (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_native_validator_rejects_legacy_flight_flag_in_attitude_mode (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_closed_read_only_view_does_not_stop_or_manage_service (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_current_native_fault_survives_expired_aircraft_feedback (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_current_service_instance_controls_snapshot_validity (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_diagnostic_mode_closes_every_action_authority_and_visual_gate (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_flight_test_requires_explicit_confirmation (tests.test_navigation_service.NavigationServiceTests) ... usage: python3 -m unittest [-h] [--mode {diagnostic,flight-test}]
+                           [--flight-test] [--confirm-flight-test]
+                           [--file FILE] [--prefix PREFIX]
+                           [--build-dir BUILD_DIR] [--require-existing-agent]
+                           [--require-rc-safe]
+                           [{run,prepare-config,validate-env,check-config,probe,build}]
+python3 -m unittest: error: Flight Test 必须同时提供 --confirm-flight-test；不会隐式开启动作门
+ok
+test_historical_phase_cannot_override_retry_or_channel_failure (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_load_profile_uses_bundle_candidate_and_writes_mode_metadata (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_load_profile_uses_settings_slot_and_preserves_base_when_omitted (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_mode_slot_is_configurable_and_rejects_invalid_values (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_native_fault_overrides_connected_and_ready_is_distinct (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_navigation_profile_keeps_program_arm_disabled_and_numeric_limits (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_old_binary_without_lifecycle_marker_is_not_accepted (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_old_or_disconnected_safety_cannot_override_transport_status (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_private_controller_does_not_require_the_sdk_controller_binary (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_release_entry_and_native_controller_share_the_current_identity (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_role_metadata_does_not_override_actual_native_gate_values (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_service_runs_private_native_with_status_only_and_graceful_recovery (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_shipped_mode_candidates_start_with_closed_gates (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_unknown_aircraft_feedback_cannot_become_ready (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_view_rejects_previous_boot_and_malformed_time (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_current_ipc_allows_no_aircraft_fields_and_waiting (tests.test_prebuilt_maintenance_lifecycle.LifecycleTest) ... ok
+test_ipc_has_to_advance_not_only_survive_as_a_file (tests.test_prebuilt_maintenance_lifecycle.LifecycleTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_old_or_wrong_identity_ipc_never_satisfies_install (tests.test_prebuilt_maintenance_lifecycle.LifecycleTest) ... ok
+test_owned_auxiliary_must_exit_before_start (tests.test_prebuilt_maintenance_lifecycle.LifecycleTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（1.2秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_proc_identity_and_cgroup_filter_preserve_external_nodes_and_agent (tests.test_prebuilt_maintenance_lifecycle.LifecycleTest) ... ok
+test_residual_owned_auxiliary_keeps_original_unit_and_never_starts_new (tests.test_prebuilt_maintenance_lifecycle.LifecycleTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：等待旧任务退出，已用10秒；服务=inactive，仍存活PID=[91]。
+FC01：等待旧任务退出，已用20秒；服务=inactive，仍存活PID=[91]。
+FC01：等待旧任务退出，已用30秒；服务=inactive，仍存活PID=[91]。
+FC01：等待旧任务退出，已用40秒；服务=inactive，仍存活PID=[91]。
+FC01：等待旧任务退出，已用50秒；服务=inactive，仍存活PID=[91]。
+FC01：等待旧任务退出，已用60秒；服务=inactive，仍存活PID=[91]。
+FC01：等待旧任务退出，已用70秒；服务=inactive，仍存活PID=[91]。
+FC01：等待旧任务退出，已用80秒；服务=inactive，仍存活PID=[91]。
+FC01：等待旧任务退出，已用90秒；服务=inactive，仍存活PID=[91]。
+FC01：等待旧任务退出，已用100秒；服务=inactive，仍存活PID=[91]。
+FC01：等待旧任务退出，已用111秒；服务=inactive，仍存活PID=[91]。
+ok
+test_systemd_software_failure_does_not_wait_whole_budget (tests.test_prebuilt_maintenance_lifecycle.LifecycleTest) ... FC01：核对安装包、完整文件清单和本机软件条件。
+FC01：安装包SHA、完整清单和ARM64提取通过（0.0秒）。
+FC01：停止旧服务，等待旧控制器实际退出。
+FC01：旧服务及所属FC01进程已退出（0.0秒）。
+FC01：新版软件路径、唯一进程、运行参数和IPC推进已核对（0.0秒）；飞机就绪另行显示。
+ok
+test_systemd_start_is_nonblocking_with_bounded_acceptance (tests.test_prebuilt_maintenance_lifecycle.LifecycleTest) ... ok
+test_actual_runtime_import_dependencies_vision_and_messages_are_complete (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+运行树必须自带本项目导入依赖，不能为了容量仅保留控制器而遗漏视觉消息/工具。 ... ok
+test_builder_keeps_file_count_total_and_member_size_limits (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+分别构造超过真实安全上限的运行内容；不修改 MAX_*、不把拒绝改为通过。 ... ok
+test_development_history_archives_caches_and_experiments_stay_outside_runtime (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+大历史 ZIP 不应挤占运行预算，排除只影响载荷，不删除源树任何文件。 ... ok
+test_extractor_independently_keeps_all_three_capacity_limits (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+直接造归档绕开 builder，仍须在创建安装目标前因原容量限制失败。 ... ok
+test_manifest_cannot_omit_current_native_source_hash (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+payload 摘要正确也不能省掉原生源码身份，过期清单不会自动刷新为成功。 ... ok
+test_old_release_manifest_is_preserved_and_not_silently_refreshed (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+旧身份即使所有内容 SHA 都匹配，也不能被静默解释成本次正式发行清单。 ... ok
+test_release_manifest_itself_still_obeys_per_member_budget (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+运行源码再小，附加的发布元数据也必须计入每项预算，不能绕过解包器上限。 ... ok
+test_selected_source_symlink_is_rejected_without_reading_as_regular_source (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+运行白名单中的链接不能伪装源码；外部文件仍由原所有者保留。 ... ok
+test_installed_tools_keep_sibling_modules_and_runtime_dependencies (tests.test_overnight_stage5_ros_contract.RosEngineeringContractTests) ... ok
+test_message_generation_links_the_current_package_typesupport (tests.test_overnight_stage5_ros_contract.RosEngineeringContractTests) ... ok
+test_target_interface_receiver_is_built_linked_and_installed_independently (tests.test_overnight_stage5_ros_contract.RosEngineeringContractTests) ... ok
+
+----------------------------------------------------------------------
+Ran 180 tests in 14.450s
+
+OK

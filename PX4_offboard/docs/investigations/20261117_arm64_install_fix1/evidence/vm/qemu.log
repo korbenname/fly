@@ -1,0 +1,2 @@
+qemu-system-aarch64: -device virtio-net-pci,netdev=n1: failed to find romfile "efi-virtio.rom"
+qemu-system-aarch64: rw: Could not open 'rw': No such file or directory

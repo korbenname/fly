@@ -1,0 +1,7 @@
+[
+  "/home/jikl62/.cache/fc01-vision-step4-20261118/install/jikl_fc01_system/lib/jikl_fc01_system/fc01_system_node",
+  "--ros-args",
+  "--disable-external-lib-logs",
+  "--params-file",
+  "/tmp/fc01-step4-verified-matrix/track_origin/runtime.yaml"
+]

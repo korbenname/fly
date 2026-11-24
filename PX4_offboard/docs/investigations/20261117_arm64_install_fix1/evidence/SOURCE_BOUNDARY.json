@@ -1,0 +1,14 @@
+{
+  "base_commit": "be9f6993e0c78593f077a3053665750265116b39",
+  "source_commit": "4c85a9e7e0c66193104164f03f4bfe28de709b9d",
+  "control_candidate_commit": "adc55d0b7c67e80bf9d77b1082208c898f95b756",
+  "payload_changed_paths": [
+    "navigation.py",
+    "navigation_prebuilt_install.py"
+  ],
+  "all_26_elf_bytes_unchanged": true,
+  "all_4874_installed_files_unchanged": true,
+  "native_source_and_config_changes": [],
+  "original_release_sha256": "3c876f6f98d45df994658ad3f68691c12dee0cf14befa18f2824a52f58d2a123",
+  "final_release_sha256": "5d0f2f150ca9ce70cb86138e512c0af2c768a3267a9ad48820bce60fdbfb1373"
+}

@@ -1,0 +1,17 @@
+FC01 导航控制  [STARTING]
+原因：等待当前服务进程生成状态
+最近故障锁存（历史）：OPERATOR_TAKEOVER_LATCHED
+最近反馈（历史，283.2 秒前；当前飞机状态未知）：模式 0  armed=False  相对高度：未知（REFERENCE_NOT_READY）
+最近动作门（历史）：flight_actions_enabled=true  takeoff_enabled=true  arm_enabled=false（程序解锁）  flight_enabled=false（通用控制入口）
+起飞平台：1.23 m  心跳预发送提交：0  日志丢弃：0
+导航档位：期望 1 / 观测 0
+最近恢复观察（历史）：首次故障 OPERATOR_TAKEOVER_LATCHED；最新故障 OPERATOR_TAKEOVER_LATCHED
+恢复等待原因：RC_SHUTDOWN_IN_PROGRESS
+恢复地面窗口：0.00/2.00 秒；新样本 status / land / local：0 / 0 / 0
+恢复证据就绪=false  本轮不安全事件=false  故障允许恢复=true
+阶段：FAULT；离地未确认；导航未允许
+离地等待：WAIT_NEW_AIRBORNE_DETECTOR_SAMPLES
+IPC：clean_eof；clean_eof: 控制台连接已关闭；没有残缺消息
+控制器：原生控制器退出，code=0
+请以飞控和遥控器的实际反馈确认飞机状态。
+窗口只显示状态。关闭窗口/Ctrl+C 不会停止控制服务。

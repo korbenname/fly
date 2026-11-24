@@ -1,0 +1,8 @@
+[INFO] [1794935337.178231787] [fc01_mission]: consuming /fc01/vision/target_observation (takes precedence over /fc01/vision/target_relative)
+[INFO] [1794935337.179744940] [fc01_mission]: mission: mode=push, vision=/fc01/vision/target_relative, plant pose=/sim/platform_pose, out=/visioncontrol at 50 Hz
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/ros_mission_sensor_smoke.py", line 302, in <module>
+    main()
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/ros_mission_sensor_smoke.py", line 277, in main
+    assert commands and all(not m.valid and m.vx==m.vy==m.vz==m.wz==0. for m in commands)
+AssertionError

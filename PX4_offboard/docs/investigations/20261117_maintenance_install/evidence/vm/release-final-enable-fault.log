@@ -1,0 +1,5 @@
+MainPID=0
+ExecStartPre={ path=/usr/local/bin/fc01-maintenance-fail-candidate.sh ; argv[]=/usr/local/bin/fc01-maintenance-fail-candidate.sh ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }
+WorkingDirectory=/home/orangepi/fc01-old
+ActiveState=inactive
+DropInPaths=/etc/systemd/system/fc01-navigation.service.d/10-vm-start-failure.conf

@@ -1,0 +1,5945 @@
+{
+  "environment": "Ubuntu 22.04.5 x86_64 / ROS 2 Humble / Fast DDS localhost",
+  "scope": "Real FC01 ROS executables and messages. Simulated RC and PX4 feedback, pinned PX4 PositionControl and Takeoff with three-axis point-mass dynamics, synthetic images or intentionally absent V4L2. No full PX4 firmware, USB camera, serial transport, ARM64, or aircraft in this test.",
+  "source_commit_used_for_build": "53a37ddb807c7a39c324e506808cd5bbcac9891a",
+  "verified_byte_identical_release_source_commit": "c7de1387c635cf1733e1d1e1a20a8c24d7ad7752",
+  "verification_fixture_commit": "18bb181ddf09c01179fd53d69d47a4d3e7b84655",
+  "checked_build_source_files": 126,
+  "native_x86_sha256": "86b7778eddfafe346dc6d59e1e65c78dc6976925a1e167cb8718e319d1dcb6d7",
+  "upstream_reference": "c4b32b92455a9c25fb1bce1262e8426f249f8521",
+  "px4_control_source": "07983bfb894b9372d7520d43ac10dc792d0b4b9f",
+  "scenarios": {
+    "disturbance": {
+      "scenario": "disturbance",
+      "result": "PASS",
+      "error": null,
+      "events": [
+        {
+          "event": "native_phase",
+          "monotonic_s": 99314.575349215,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "IDLE",
+          "reason": "IDLE_NO_AUTOMATIC_ARM"
+        },
+        {
+          "event": "native_phase",
+          "monotonic_s": 99316.678268217,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_PRESTREAM",
+          "reason": "RC_PRESTREAM_WAIT_NEW_GROUND_REFERENCE"
+        },
+        {
+          "event": "ready_ground_heartbeat_only",
+          "monotonic_s": 99318.585135689,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "z0": 2.0
+        },
+        {
+          "event": "native_phase",
+          "monotonic_s": 99318.682709784,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_READY_WAIT_ARM",
+          "reason": "RC_READY_WAIT_CH5_MANUAL_ARM"
+        },
+        {
+          "event": "native_phase",
+          "monotonic_s": 99318.933128267,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_ARMED_WAIT_NAVIGATION",
+          "reason": "RC_WAIT_MATCHED_SWITCH_AND_NEW_ARMED_STATUS"
+        },
+        {
+          "event": "independent_armed_offboard_status",
+          "monotonic_s": 99319.263550357,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "monotonic_s": 99319.434187441,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "ARMED_GROUND",
+          "reason": "RC_MANUAL_ARM_AND_NEW_OFFBOARD_CONFIRMED"
+        },
+        {
+          "event": "native_phase",
+          "monotonic_s": 99320.486360215,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "THRUST_RAMP",
+          "reason": "THRUST_RAMP"
+        },
+        {
+          "event": "external_horizontal_velocity_impulse",
+          "monotonic_s": 99323.016025219,
+          "height_m": 0.025264796686109037,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            1.974735203313891
+          ],
+          "velocity_ned_mps": [
+            0.35,
+            -0.2,
+            -0.14250451844379752
+          ]
+        },
+        {
+          "event": "native_liftoff_evidenced",
+          "monotonic_s": 99323.644399756,
+          "height_m": 0.19375169963772998,
+          "position_ned_m": [
+            2.458557317339505,
+            -1.869175609908448,
+            1.80624830036227
+          ],
+          "velocity_ned_mps": [
+            0.3111909869841689,
+            -0.17782342124948555,
+            -0.36714705131834585
+          ],
+          "controller_pid": 252834,
+          "observed_source_monotonic_ns": 99323643284481,
+          "observed_vertical_sample_us": 1795001581847973
+        },
+        {
+          "event": "heading_change_90deg_while_displaced",
+          "monotonic_s": 99323.646918243,
+          "height_m": 0.1938824175999354,
+          "position_ned_m": [
+            2.4586679789165355,
+            -1.869238845095393,
+            1.8061175824000646
+          ],
+          "velocity_ned_mps": [
+            0.31089254163806596,
+            -0.17765288113430325,
+            -0.3672389333176054
+          ],
+          "yaw_rad": 1.5707963267948966
+        },
+        {
+          "event": "native_phase",
+          "monotonic_s": 99323.744126665,
+          "height_m": 0.2302155155454686,
+          "position_ned_m": [
+            2.4847341125638973,
+            -1.8841337786062322,
+            1.7697844844545314
+          ],
+          "velocity_ned_mps": [
+            0.2348089364220905,
+            -0.1341765353990374,
+            -0.3875156036643725
+          ],
+          "phase": "ASCEND",
+          "reason": "ASCEND"
+        },
+        {
+          "event": "native_phase",
+          "monotonic_s": 99329.304662446,
+          "height_m": 1.4509160465496898,
+          "position_ned_m": [
+            2.231186093131528,
+            -1.739249189628533,
+            0.5490839534503101
+          ],
+          "velocity_ned_mps": [
+            0.014808964248554485,
+            -0.00846227008893347,
+            -0.022858372300205886
+          ],
+          "phase": "HEIGHT_HOLD",
+          "reason": "HEIGHT_HOLD"
+        },
+        {
+          "event": "native_1_5m_height_hold",
+          "monotonic_s": 99329.30475453,
+          "height_m": 1.4509160465496898,
+          "position_ned_m": [
+            2.231186093131528,
+            -1.739249189628533,
+            0.5490839534503101
+          ],
+          "velocity_ned_mps": [
+            0.014808964248554485,
+            -0.00846227008893347,
+            -0.022858372300205886
+          ],
+          "navigation_allowed": false
+        },
+        {
+          "event": "request_native_landing",
+          "monotonic_s": 99332.306098949,
+          "height_m": 1.4879688408367997,
+          "position_ned_m": [
+            2.243461057933421,
+            -1.7462672081234603,
+            0.5120311591632003
+          ],
+          "velocity_ned_mps": [
+            0.000892776415448054,
+            -0.0005125735040305458,
+            -0.005658469800965717
+          ]
+        },
+        {
+          "event": "native_phase",
+          "monotonic_s": 99332.35950354,
+          "height_m": 1.4868375711679973,
+          "position_ned_m": [
+            2.243507986719934,
+            -1.7462941515463901,
+            0.5131624288320028
+          ],
+          "velocity_ned_mps": [
+            0.0008843256011502213,
+            -0.0005077216022311714,
+            0.04956438238570197
+          ],
+          "phase": "DESCENT",
+          "reason": "LAND_ACCEPTED"
+        },
+        {
+          "event": "native_phase",
+          "monotonic_s": 99337.780522296,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.2465684329616873,
+            -1.7480512585072057,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0003332132808007551,
+            -0.00019130915196033748,
+            0.0
+          ],
+          "phase": "LANDED",
+          "reason": "LANDED"
+        },
+        {
+          "event": "wire_command",
+          "monotonic_s": 99340.737706199,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.2473327062117803,
+            -1.7484900539447399,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.00019558626951759147,
+            -0.00011229277316491504,
+            0.0
+          ],
+          "command": 400,
+          "p1": 0.0,
+          "p2": 0.0,
+          "stamp_us": 1795001598946559
+        },
+        {
+          "event": "native_phase",
+          "monotonic_s": 99340.837153614,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.2473518253225833,
+            -1.7485010308807878,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.00019214335397742843,
+            -0.000110316077486169,
+            0.0
+          ],
+          "phase": "REQUEST_DISARM",
+          "reason": "REQUEST_DISARM"
+        },
+        {
+          "event": "ack_independent_of_arming_state",
+          "monotonic_s": 99340.887997573,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.2473617741532976,
+            -1.7485067428450953,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0001903518103296364,
+            -0.00010928749094503426,
+            0.0
+          ],
+          "command": 400,
+          "armed": true
+        },
+        {
+          "event": "independent_disarmed_status",
+          "monotonic_s": 99341.090320681,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.247399189974561,
+            -1.7485282245490026,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.00018361413495870363,
+            -0.00010541916085236925,
+            0.0
+          ]
+        },
+        {
+          "event": "wire_command",
+          "monotonic_s": 99341.187835409,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.247399189974561,
+            -1.7485282245490026,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.00018361413495870363,
+            -0.00010541916085236925,
+            0.0
+          ],
+          "command": 176,
+          "p1": 1.0,
+          "p2": 7.0,
+          "stamp_us": 1795001599397181
+        },
+        {
+          "event": "native_phase",
+          "monotonic_s": 99341.237581549,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.247399189974561,
+            -1.7485282245490026,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.00018361413495870363,
+            -0.00010541916085236925,
+            0.0
+          ],
+          "phase": "SAFE_DISARMED",
+          "reason": "DISARM_ACK_AND_NEW_DISARMED_LANDED_STATUS"
+        },
+        {
+          "event": "native_phase",
+          "monotonic_s": 99341.287920676,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.247399189974561,
+            -1.7485282245490026,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.00018361413495870363,
+            -0.00010541916085236925,
+            0.0
+          ],
+          "phase": "RELEASE_OFFBOARD",
+          "reason": "RELEASE_OFFBOARD"
+        },
+        {
+          "event": "ack_independent_of_arming_state",
+          "monotonic_s": 99341.340275832,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.247399189974561,
+            -1.7485282245490026,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.00018361413495870363,
+            -0.00010541916085236925,
+            0.0
+          ],
+          "command": 176,
+          "armed": false
+        },
+        {
+          "event": "native_phase",
+          "monotonic_s": 99341.438369209,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.247399189974561,
+            -1.7485282245490026,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.00018361413495870363,
+            -0.00010541916085236925,
+            0.0
+          ],
+          "phase": "SAFETY",
+          "reason": "OPERATOR_TAKEOVER_LATCHED"
+        },
+        {
+          "event": "native_phase",
+          "monotonic_s": 99345.244228076,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.247399189974561,
+            -1.7485282245490026,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.00018361413495870363,
+            -0.00010541916085236925,
+            0.0
+          ],
+          "phase": "IDLE",
+          "reason": "RC_REPREPARE_NEW_DISARMED_GROUND_AND_CONTROLS_RESET"
+        },
+        {
+          "event": "native_phase",
+          "monotonic_s": 99345.29457793,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.247399189974561,
+            -1.7485282245490026,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.00018361413495870363,
+            -0.00010541916085236925,
+            0.0
+          ],
+          "phase": "RC_PRESTREAM",
+          "reason": "RC_PRESTREAM_WAIT_NEW_GROUND_REFERENCE"
+        },
+        {
+          "event": "new_ready_after_landing",
+          "monotonic_s": 99347.198799167,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.247399189974561,
+            -1.7485282245490026,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.00018361413495870363,
+            -0.00010541916085236925,
+            0.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "monotonic_s": 99347.348789887,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_READY_WAIT_ARM",
+          "reason": "RC_READY_WAIT_CH5_MANUAL_ARM"
+        }
+      ],
+      "metrics": {
+        "peak_horizontal_m": 0.31823983201153117,
+        "hold_max_horizontal_error_m": 0.010991189445597132,
+        "hold_rms_horizontal_error_m": 0.008874284043645266,
+        "height_overshoot_m": 0.0,
+        "height_hold_max_error_m": 0.03047783637156054,
+        "first_correction_before_target": {
+          "monotonic_s": 99323.690840505,
+          "stamp_us": 1795001581900259,
+          "position_ned_m": [
+            2.4718834690642635,
+            -1.8767905537503105,
+            1.7892072609188079
+          ],
+          "velocity_ned_mps": [
+            0.27406014905772275,
+            -0.15660579882616865,
+            -0.37731130523974715
+          ],
+          "acceleration_ned_mps2": [
+            -0.7933637663832438,
+            0.45335073458782627,
+            -0.18786188182814517
+          ],
+          "height_m": 0.21079273908119212,
+          "xy_error_m": 0.25555453109718546,
+          "measured_heading_rad": 1.5707963267948966,
+          "stage": "THRUST_RAMP",
+          "target": {
+            "received_at": 99323.643596184,
+            "timestamp_us": 1795001581853463,
+            "position": [
+              2.25,
+              -1.75,
+              1.0226646661758423
+            ],
+            "velocity": [
+              null,
+              null,
+              null
+            ],
+            "acceleration": [
+              null,
+              null,
+              null
+            ],
+            "jerk": [
+              null,
+              null,
+              null
+            ],
+            "yaw": 0.0,
+            "yaw_rate": null
+          },
+          "px4_thrust_ned": [
+            -0.03581757843494415,
+            0.020467188209295273,
+            -0.4846147894859314
+          ],
+          "liftoff_confirmed": true,
+          "armed": true,
+          "offboard": true,
+          "landed": false,
+          "cleanup": false
+        },
+        "first_return_after_yaw_change": {
+          "monotonic_s": 99324.146071894,
+          "stamp_us": 1795001582355527,
+          "position_ned_m": [
+            2.526309551609391,
+            -1.9078911725466148,
+            1.6010738436951506
+          ],
+          "velocity_ned_mps": [
+            -0.007403316448191543,
+            0.004230468327464348,
+            -0.4370811888357814
+          ],
+          "acceleration_ned_mps2": [
+            -0.4530212175731475,
+            0.2588693939793823,
+            -0.09317456082234604
+          ],
+          "height_m": 0.3989261563048494,
+          "xy_error_m": 0.31823983201153117,
+          "measured_heading_rad": 1.5707963267948966,
+          "stage": "ASCEND",
+          "target": {
+            "received_at": 99324.144775309,
+            "timestamp_us": 1795001582354630,
+            "position": [
+              2.25,
+              -1.75,
+              0.8723203539848328
+            ],
+            "velocity": [
+              null,
+              null,
+              null
+            ],
+            "acceleration": [
+              null,
+              null,
+              null
+            ],
+            "jerk": [
+              null,
+              null,
+              null
+            ],
+            "yaw": 0.0,
+            "yaw_rate": null
+          },
+          "px4_thrust_ned": [
+            -0.021875271573662758,
+            0.012500161305069923,
+            -0.4805750250816345
+          ],
+          "liftoff_confirmed": true,
+          "armed": true,
+          "offboard": true,
+          "landed": false,
+          "cleanup": false
+        },
+        "active_target_heartbeat_pairs": true,
+        "max_heartbeat_gap_s": 0.05148294800892472
+      },
+      "earlier_rerun_metrics": {
+        "peak_horizontal_m": 0.33340982943805875,
+        "hold_max_horizontal_error_m": 0.010778857957062654,
+        "hold_rms_horizontal_error_m": 0.0086660230868249,
+        "height_overshoot_m": 0.0,
+        "height_hold_max_error_m": 0.030344696421322315,
+        "first_correction_before_target": {
+          "monotonic_s": 98718.825922461,
+          "stamp_us": 1795000977035284,
+          "position_ned_m": [
+            2.4760921101377287,
+            -1.8791954915057207,
+            1.785071044691524
+          ],
+          "velocity_ned_mps": [
+            0.30412808366954563,
+            -0.17378747606350575,
+            -0.37991374225755753
+          ],
+          "acceleration_ned_mps2": [
+            -0.8464527489561011,
+            0.48368727953290575,
+            -0.2321567182886144
+          ],
+          "height_m": 0.2149289553084761,
+          "xy_error_m": 0.26040183811166845,
+          "measured_heading_rad": 1.5707963267948966,
+          "stage": "THRUST_RAMP",
+          "target": {
+            "received_at": 98718.819131269,
+            "timestamp_us": 1795000977028889,
+            "position": [
+              2.25,
+              -1.75,
+              1.006290078163147
+            ],
+            "velocity": [
+              null,
+              null,
+              null
+            ],
+            "acceleration": [
+              null,
+              null,
+              null
+            ],
+            "jerk": [
+              null,
+              null,
+              null
+            ],
+            "yaw": 0.0,
+            "yaw_rate": null
+          },
+          "px4_thrust_ned": [
+            -0.03811218589544296,
+            0.021778391674160957,
+            -0.4867696166038513
+          ],
+          "liftoff_confirmed": true,
+          "armed": true,
+          "offboard": true,
+          "landed": false,
+          "cleanup": false
+        },
+        "first_return_after_yaw_change": {
+          "monotonic_s": 98719.335919693,
+          "stamp_us": 1795000977544492,
+          "position_ned_m": [
+            2.5389322177962663,
+            -1.915104124292658,
+            1.5724498715266513
+          ],
+          "velocity_ned_mps": [
+            -0.021781119213269227,
+            0.012446353078158284,
+            -0.441367334410934
+          ],
+          "acceleration_ned_mps2": [
+            -0.44824757451125724,
+            0.2561415763114419,
+            -0.0612940726006639
+          ],
+          "height_m": 0.4275501284733487,
+          "xy_error_m": 0.33277800158531295,
+          "measured_heading_rad": 1.5707963267948966,
+          "stage": "ASCEND",
+          "target": {
+            "received_at": 98719.320236781,
+            "timestamp_us": 1795000977529947,
+            "position": [
+              2.25,
+              -1.75,
+              0.8559887409210205
+            ],
+            "velocity": [
+              null,
+              null,
+              null
+            ],
+            "acceleration": [
+              null,
+              null,
+              null
+            ],
+            "jerk": [
+              null,
+              null,
+              null
+            ],
+            "yaw": 0.0,
+            "yaw_rate": null
+          },
+          "px4_thrust_ned": [
+            -0.021766675636172295,
+            0.012438105419278145,
+            -0.4790768027305603
+          ],
+          "liftoff_confirmed": true,
+          "armed": true,
+          "offboard": true,
+          "landed": false,
+          "cleanup": false
+        },
+        "active_target_heartbeat_pairs": true,
+        "max_heartbeat_gap_s": 0.05630453900084831
+      }
+    },
+    "duplicate_frame": {
+      "scenario": "duplicate_frame",
+      "result": "PASS",
+      "error": null,
+      "events": [
+        {
+          "event": "native_phase",
+          "received_at": 99135.330645772,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "IDLE",
+          "reason": "IDLE_NO_AUTOMATIC_ARM",
+          "local_fresh": false
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99137.436538983,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_PRESTREAM",
+          "reason": "RC_PRESTREAM_WAIT_NEW_GROUND_REFERENCE",
+          "local_fresh": true
+        },
+        {
+          "event": "target_detected_on_ground_before_arm",
+          "received_at": 99139.393030605,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "current_ready_wait_arm",
+          "received_at": 99139.393115442,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "anchor_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99139.490009096,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_READY_WAIT_ARM",
+          "reason": "RC_READY_WAIT_CH5_MANUAL_ARM",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99139.741176848,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_ARMED_WAIT_NAVIGATION",
+          "reason": "RC_WAIT_MATCHED_SWITCH_AND_NEW_ARMED_STATUS",
+          "local_fresh": true
+        },
+        {
+          "event": "synthetic_manual_rc_arm_edge",
+          "received_at": 99139.741279866,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "synthetic_rc_selects_navigation_slot",
+          "received_at": 99139.840943242,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "slot": 1
+        },
+        {
+          "event": "synthetic_px4_new_offboard",
+          "received_at": 99140.041797962,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99140.191995994,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "ARMED_GROUND",
+          "reason": "RC_MANUAL_ARM_AND_NEW_OFFBOARD_CONFIRMED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99141.244216637,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "THRUST_RAMP",
+          "reason": "THRUST_RAMP",
+          "local_fresh": true
+        },
+        {
+          "event": "early_horizontal_disturbance",
+          "received_at": 99143.812075094,
+          "height_m": 0.030344184222239168,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            1.9696558157777608
+          ],
+          "velocity_ned_mps": [
+            0.22,
+            -0.14,
+            -0.15720466247311635
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99144.601614486,
+          "height_m": 0.2685631451878474,
+          "position_ned_m": [
+            2.406660048292888,
+            -1.8496927579312044,
+            1.7314368548121526
+          ],
+          "velocity_ned_mps": [
+            0.12358923784790982,
+            -0.07864769565884094,
+            -0.4046641742440471
+          ],
+          "phase": "ASCEND",
+          "reason": "ASCEND",
+          "local_fresh": true
+        },
+        {
+          "event": "native_stable_1_5m_authorization",
+          "received_at": 99149.915427225,
+          "height_m": 1.4472793676738482,
+          "position_ned_m": [
+            2.236208182994024,
+            -1.741224774773659,
+            0.5527206323261518
+          ],
+          "velocity_ned_mps": [
+            0.010868137677490937,
+            -0.006918298396530589,
+            -0.024549660642283935
+          ],
+          "stamp_ns": 1795001408125029627
+        },
+        {
+          "event": "px4_model_counteracts_preheight_drift",
+          "received_at": 99149.915979846,
+          "height_m": 1.4472793676738482,
+          "position_ned_m": [
+            2.236208182994024,
+            -1.741224774773659,
+            0.5527206323261518
+          ],
+          "velocity_ned_mps": [
+            0.010868137677490937,
+            -0.006918298396530589,
+            -0.024549660642283935
+          ],
+          "sample": {
+            "received_at": 99144.455018975,
+            "stamp_us": 1795001402664769,
+            "position_ned_m": [
+              2.3838945591630827,
+              -1.8352056285583687,
+              1.7882216041900172
+            ],
+            "velocity_ned_mps": [
+              0.1939848033176152,
+              -0.12344487487277069,
+              -0.3781776459293053
+            ],
+            "altitude_m": 0.2117783958099828,
+            "thrust_ned": [
+              -0.023789649829268456,
+              0.015138866379857063,
+              -0.4870968163013458
+            ],
+            "landed": false,
+            "offboard": true,
+            "armed": true,
+            "local_position_published": true
+          }
+        },
+        {
+          "event": "preheight_motion_limited_to_ground_anchor",
+          "received_at": 99149.916033751,
+          "height_m": 1.4472793676738482,
+          "position_ned_m": [
+            2.236208182994024,
+            -1.741224774773659,
+            0.5527206323261518
+          ],
+          "velocity_ned_mps": [
+            0.010868137677490937,
+            -0.006918298396530589,
+            -0.024549660642283935
+          ],
+          "native_targets": 197
+        },
+        {
+          "event": "exclusive_px4_trajectory_and_heartbeat",
+          "received_at": 99149.917874428,
+          "height_m": 1.4472793676738482,
+          "position_ned_m": [
+            2.236208182994024,
+            -1.741224774773659,
+            0.5527206323261518
+          ],
+          "velocity_ned_mps": [
+            0.010868137677490937,
+            -0.006918298396530589,
+            -0.024549660642283935
+          ],
+          "publishers": {
+            "trajectory_setpoint": 1,
+            "offboard_control_mode": 1,
+            "vehicle_attitude_setpoint": 0
+          }
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99150.01541549,
+          "height_m": 1.4496332587649432,
+          "position_ned_m": [
+            2.2372371297058953,
+            -1.741879757923823,
+            0.5503667412350569
+          ],
+          "velocity_ned_mps": [
+            0.01011303941979158,
+            -0.0064374228675230915,
+            -0.02345382310761577
+          ],
+          "phase": "HEIGHT_HOLD",
+          "reason": "HEIGHT_HOLD",
+          "local_fresh": true
+        },
+        {
+          "event": "track_withdraws_waypoint_and_moves",
+          "received_at": 99150.782631613,
+          "height_m": 1.4647719139841997,
+          "position_ned_m": [
+            2.2965479003577465,
+            -1.734485276828093,
+            0.5352280860158004
+          ],
+          "velocity_ned_mps": [
+            0.19613795325761296,
+            0.03210921911725605,
+            -0.016474486414650307
+          ],
+          "intent": {
+            "received_at": 99150.756428479,
+            "stamp_ns": 1795001408966297090,
+            "valid": true,
+            "v": [
+              0.49375104846277024,
+              0.07880293231799923,
+              -0.0
+            ],
+            "attitude_sample_stamp_ns": 1795001408865618000,
+            "origin": "px4_local:1000:0:0:0:0:0"
+          },
+          "wire": {
+            "received_at": 99150.767181976,
+            "timestamp_us": 1795001408976403,
+            "position": [
+              null,
+              null,
+              0.5
+            ],
+            "velocity": [
+              0.4750977158546448,
+              0.07566335797309875,
+              null
+            ],
+            "acceleration": [
+              null,
+              null,
+              null
+            ],
+            "yaw": 0.11597675085067749,
+            "yaw_rate": null,
+            "height_m": 1.4645368526076203
+          }
+        },
+        {
+          "event": "inject_duplicate_frame",
+          "received_at": 99150.782740876,
+          "height_m": 1.4647719139841997,
+          "position_ned_m": [
+            2.2965479003577465,
+            -1.734485276828093,
+            0.5352280860158004
+          ],
+          "velocity_ned_mps": [
+            0.19613795325761296,
+            0.03210921911725605,
+            -0.016474486414650307
+          ],
+          "last_image_stamp_ns": 1795001408976756810
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99150.867338863,
+          "height_m": 1.4645365933687793,
+          "position_ned_m": [
+            2.31380200529567,
+            -1.731641430803441,
+            0.5354634066312207
+          ],
+          "velocity_ned_mps": [
+            0.19617800282731424,
+            0.03259408457354044,
+            0.04465195449460963
+          ],
+          "phase": "DESCENT",
+          "reason": "VISUAL_RECOVERY_HORIZONTAL_INPUT_REVOKED",
+          "local_fresh": true
+        },
+        {
+          "event": "fault_revokes_active_motion",
+          "received_at": 99151.118696321,
+          "height_m": 1.4263444296176773,
+          "position_ned_m": [
+            2.3541483161391414,
+            -1.7247379492395738,
+            0.5736555703823228
+          ],
+          "velocity_ned_mps": [
+            0.12539755367708072,
+            0.02231055772121847,
+            0.22776351441638215
+          ],
+          "phase": "DESCENT",
+          "reason": "VISUAL_RECOVERY_HORIZONTAL_INPUT_REVOKED",
+          "phase_transition_s": 0.08459798699186649,
+          "safety_latched_s": null,
+          "first_descent_wire_s": 0.03451212299114559,
+          "first_invalid_intent_s": 0.02371154399588704,
+          "last_active_motion_wire_s": -0.015558900005999021,
+          "synthetic_frames_after_fault": 15,
+          "replayed_capture_stamp_ns": 1795001408976756810
+        },
+        {
+          "event": "restore_fresh_synthetic_images",
+          "received_at": 99151.118777843,
+          "height_m": 1.4263444296176773,
+          "position_ned_m": [
+            2.3541483161391414,
+            -1.7247379492395738,
+            0.5736555703823228
+          ],
+          "velocity_ned_mps": [
+            0.12539755367708072,
+            0.02231055772121847,
+            0.22776351441638215
+          ]
+        },
+        {
+          "event": "existing_automatic_protection_or_normal_landing",
+          "received_at": 99151.669017336,
+          "height_m": 1.2652673360379791,
+          "position_ned_m": [
+            2.3881925366642913,
+            -1.7178018911446487,
+            0.7347326639620209
+          ],
+          "velocity_ned_mps": [
+            0.008999379573687027,
+            0.0042631169219933505,
+            0.32326565031243104
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99156.128171888,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.2867150461099173,
+            -1.7340452975640195,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.005546619348661291,
+            0.00017925237561636112,
+            0.0
+          ],
+          "phase": "LANDED",
+          "reason": "LANDED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99159.184753981,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.2997534717502717,
+            -1.733623929407413,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.003198736417207819,
+            0.00010337487859040762,
+            0.0
+          ],
+          "phase": "REQUEST_DISARM",
+          "reason": "REQUEST_DISARM",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99159.536424196,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.300416116730841,
+            -1.7336025144374123,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.003079410602595513,
+            9.951857722969212e-05,
+            0.0
+          ],
+          "phase": "SAFE_DISARMED",
+          "reason": "DISARM_ACK_AND_NEW_DISARMED_LANDED_STATUS",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99159.586333078,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.300416116730841,
+            -1.7336025144374123,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.003079410602595513,
+            9.951857722969212e-05,
+            0.0
+          ],
+          "phase": "RELEASE_OFFBOARD",
+          "reason": "RELEASE_OFFBOARD",
+          "local_fresh": true
+        },
+        {
+          "event": "disarmed_landed_exit",
+          "received_at": 99159.591204594,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.300416116730841,
+            -1.7336025144374123,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.003079410602595513,
+            9.951857722969212e-05,
+            0.0
+          ]
+        }
+      ],
+      "camera": "synthetic ROS Image into real vision_image_node",
+      "frames_injected": 1071,
+      "metrics": {
+        "seconds_from_published_offboard_feedback_to_grant": 9.873629263005569,
+        "simulated_height_at_grant_m": 1.4472793676738482,
+        "simulated_ned_vz_at_grant_mps": -0.024549660642283935,
+        "peak_xy_error_during_climb_m": 0.20823719633700558,
+        "height_overshoot_m": 0.0,
+        "first_correction_height_m": 0.2117783958099828
+      }
+    },
+    "handoff": {
+      "scenario": "handoff",
+      "result": "PASS",
+      "error": null,
+      "events": [
+        {
+          "event": "native_phase",
+          "received_at": 99199.036562863,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "IDLE",
+          "reason": "IDLE_NO_AUTOMATIC_ARM",
+          "local_fresh": false
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99201.14139615,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_PRESTREAM",
+          "reason": "RC_PRESTREAM_WAIT_NEW_GROUND_REFERENCE",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99203.196104089,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_READY_WAIT_ARM",
+          "reason": "RC_READY_WAIT_CH5_MANUAL_ARM",
+          "local_fresh": true
+        },
+        {
+          "event": "current_ready_wait_arm",
+          "received_at": 99203.348661188,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "anchor_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99203.747167745,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_ARMED_WAIT_NAVIGATION",
+          "reason": "RC_WAIT_MATCHED_SWITCH_AND_NEW_ARMED_STATUS",
+          "local_fresh": true
+        },
+        {
+          "event": "synthetic_manual_rc_arm_edge",
+          "received_at": 99203.74729753,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "synthetic_rc_selects_navigation_slot",
+          "received_at": 99203.89726352,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "slot": 1
+        },
+        {
+          "event": "synthetic_px4_new_offboard",
+          "received_at": 99204.097673733,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99204.248141103,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "ARMED_GROUND",
+          "reason": "RC_MANUAL_ARM_AND_NEW_OFFBOARD_CONFIRMED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99205.300523053,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "THRUST_RAMP",
+          "reason": "THRUST_RAMP",
+          "local_fresh": true
+        },
+        {
+          "event": "early_horizontal_disturbance",
+          "received_at": 99207.865223227,
+          "height_m": 0.03019183769146805,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            1.969808162308532
+          ],
+          "velocity_ned_mps": [
+            0.22,
+            -0.14,
+            -0.15663794629136082
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99208.55683479,
+          "height_m": 0.2293390472542849,
+          "position_ned_m": [
+            2.392458481475845,
+            -1.8406553973338018,
+            1.770660952745715
+          ],
+          "velocity_ned_mps": [
+            0.1709032275431686,
+            -0.10875660066999437,
+            -0.38727465108237386
+          ],
+          "phase": "ASCEND",
+          "reason": "ASCEND",
+          "local_fresh": true
+        },
+        {
+          "event": "native_stable_1_5m_authorization",
+          "received_at": 99214.021450648,
+          "height_m": 1.4485861057913376,
+          "position_ned_m": [
+            2.23675581122992,
+            -1.7415719026286107,
+            0.5514138942086625
+          ],
+          "velocity_ned_mps": [
+            0.01049163801604103,
+            -0.006676491183654044,
+            -0.023939958434549925
+          ],
+          "stamp_ns": 1795001472230889028
+        },
+        {
+          "event": "px4_model_counteracts_preheight_drift",
+          "received_at": 99214.022074477,
+          "height_m": 1.4485861057913376,
+          "position_ned_m": [
+            2.23675581122992,
+            -1.7415719026286107,
+            0.5514138942086625
+          ],
+          "velocity_ned_mps": [
+            0.01049163801604103,
+            -0.006676491183654044,
+            -0.023939958434549925
+          ],
+          "sample": {
+            "received_at": 99208.512538073,
+            "stamp_us": 1795001466721980,
+            "position_ned_m": [
+              2.384664799585393,
+              -1.835695781555805,
+              1.7871515407636565
+            ],
+            "velocity_ned_mps": [
+              0.19289264995634053,
+              -0.12274986841387267,
+              -0.37874771767274956
+            ],
+            "altitude_m": 0.21284845923634355,
+            "thrust_ned": [
+              -0.023560278117656708,
+              0.014992906711995602,
+              -0.48691225051879883
+            ],
+            "landed": false,
+            "offboard": true,
+            "armed": true,
+            "local_position_published": true
+          }
+        },
+        {
+          "event": "preheight_motion_limited_to_ground_anchor",
+          "received_at": 99214.022128417,
+          "height_m": 1.4485861057913376,
+          "position_ned_m": [
+            2.23675581122992,
+            -1.7415719026286107,
+            0.5514138942086625
+          ],
+          "velocity_ned_mps": [
+            0.01049163801604103,
+            -0.006676491183654044,
+            -0.023939958434549925
+          ],
+          "native_targets": 198
+        },
+        {
+          "event": "exclusive_px4_trajectory_and_heartbeat",
+          "received_at": 99214.024427794,
+          "height_m": 1.4485861057913376,
+          "position_ned_m": [
+            2.23675581122992,
+            -1.7415719026286107,
+            0.5514138942086625
+          ],
+          "velocity_ned_mps": [
+            0.01049163801604103,
+            -0.006676491183654044,
+            -0.023939958434549925
+          ],
+          "publishers": {
+            "trajectory_setpoint": 1,
+            "offboard_control_mode": 1,
+            "vehicle_attitude_setpoint": 0
+          }
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99214.071541615,
+          "height_m": 1.4497086575418623,
+          "position_ned_m": [
+            2.2372443615316895,
+            -1.7418827980146265,
+            0.5502913424581377
+          ],
+          "velocity_ned_mps": [
+            0.010123879283476104,
+            -0.006442462506067385,
+            -0.023418088344957795
+          ],
+          "phase": "HEIGHT_HOLD",
+          "reason": "HEIGHT_HOLD",
+          "local_fresh": true
+        },
+        {
+          "event": "configured_waypoint_moves_without_target",
+          "received_at": 99216.004508701,
+          "height_m": 1.4796392494324717,
+          "position_ned_m": [
+            2.5127624763822642,
+            -1.6060851306869481,
+            0.5203607505675282
+          ],
+          "velocity_ned_mps": [
+            0.18479748763719087,
+            0.09672321810557342,
+            -0.009567597764776425
+          ],
+          "goal_ned_m": [
+            2.63,
+            -1.55
+          ]
+        },
+        {
+          "event": "camera_target_appears_after_valid_waypoint",
+          "received_at": 99216.004592788,
+          "height_m": 1.4796392494324717,
+          "position_ned_m": [
+            2.5127624763822642,
+            -1.6060851306869481,
+            0.5203607505675282
+          ],
+          "velocity_ned_mps": [
+            0.18479748763719087,
+            0.09672321810557342,
+            -0.009567597764776425
+          ]
+        },
+        {
+          "event": "track_withdraws_waypoint_and_moves",
+          "received_at": 99216.539907286,
+          "height_m": 1.4841699390460552,
+          "position_ned_m": [
+            2.5977371579228627,
+            -1.5647850066608047,
+            0.5158300609539448
+          ],
+          "velocity_ned_mps": [
+            0.1611105723104565,
+            0.06245017723905421,
+            -0.007443490447785537
+          ],
+          "intent": {
+            "received_at": 99216.525321381,
+            "stamp_ns": 1795001474735091127,
+            "valid": true,
+            "v": [
+              0.49215696375153273,
+              0.08821294140245309,
+              -0.0
+            ],
+            "attitude_sample_stamp_ns": 1795001474662280000,
+            "origin": "px4_local:1000:0:0:0:0:0"
+          },
+          "wire": {
+            "received_at": 99216.525927505,
+            "timestamp_us": 1795001474735669,
+            "position": [
+              null,
+              null,
+              0.5
+            ],
+            "velocity": [
+              0.26649683713912964,
+              0.04720687121152878,
+              null
+            ],
+            "acceleration": [
+              null,
+              null,
+              null
+            ],
+            "yaw": 0.10199455171823502,
+            "yaw_rate": null,
+            "height_m": 1.4840797889485597
+          }
+        },
+        {
+          "event": "existing_automatic_protection_or_normal_landing",
+          "received_at": 99216.539988506,
+          "height_m": 1.4841699390460552,
+          "position_ned_m": [
+            2.5977371579228627,
+            -1.5647850066608047,
+            0.5158300609539448
+          ],
+          "velocity_ned_mps": [
+            0.1611105723104565,
+            0.06245017723905421,
+            -0.007443490447785537
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99216.625921833,
+          "height_m": 1.4833160777445338,
+          "position_ned_m": [
+            2.6119399668962706,
+            -1.559469911562006,
+            0.5166839222554661
+          ],
+          "velocity_ned_mps": [
+            0.15578897968274352,
+            0.05793919016776755,
+            0.049526336400093254
+          ],
+          "phase": "DESCENT",
+          "reason": "LAND_ACCEPTED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99222.088875697,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.596140704625337,
+            -1.5638324556897079,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.004303810953044701,
+            0.001037885898759837,
+            0.0
+          ],
+          "phase": "LANDED",
+          "reason": "LANDED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99225.095372437,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.606133157840562,
+            -1.561422724779302,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0025044235462699945,
+            0.0006039544746631748,
+            0.0
+          ],
+          "phase": "REQUEST_DISARM",
+          "reason": "REQUEST_DISARM",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99225.496524599,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.6066434028950214,
+            -1.56129967658952,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0024125421950833242,
+            0.000581796819553304,
+            0.0
+          ],
+          "phase": "RELEASE_OFFBOARD",
+          "reason": "RELEASE_OFFBOARD",
+          "local_fresh": true
+        },
+        {
+          "event": "disarmed_landed_exit",
+          "received_at": 99225.496877026,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.6066434028950214,
+            -1.56129967658952,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0024125421950833242,
+            0.000581796819553304,
+            0.0
+          ]
+        }
+      ],
+      "camera": "synthetic ROS Image into real vision_image_node",
+      "frames_injected": 1166,
+      "metrics": {
+        "seconds_from_published_offboard_feedback_to_grant": 9.923776914991322,
+        "simulated_height_at_grant_m": 1.4485861057913376,
+        "simulated_ned_vz_at_grant_mps": -0.023939958434549925,
+        "peak_xy_error_during_climb_m": 0.20860461057502988,
+        "height_overshoot_m": 0.0,
+        "first_correction_height_m": 0.21284845923634355
+      }
+    },
+    "hold": {
+      "scenario": "hold",
+      "result": "PASS",
+      "error": null,
+      "events": [
+        {
+          "event": "native_phase",
+          "received_at": 99282.366470068,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "IDLE",
+          "reason": "IDLE_NO_AUTOMATIC_ARM",
+          "local_fresh": false
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99284.473546796,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_PRESTREAM",
+          "reason": "RC_PRESTREAM_WAIT_NEW_GROUND_REFERENCE",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99286.526812755,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_READY_WAIT_ARM",
+          "reason": "RC_READY_WAIT_CH5_MANUAL_ARM",
+          "local_fresh": true
+        },
+        {
+          "event": "current_ready_wait_arm",
+          "received_at": 99286.780977087,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "anchor_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99287.178672572,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_ARMED_WAIT_NAVIGATION",
+          "reason": "RC_WAIT_MATCHED_SWITCH_AND_NEW_ARMED_STATUS",
+          "local_fresh": true
+        },
+        {
+          "event": "synthetic_manual_rc_arm_edge",
+          "received_at": 99287.178833887,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "synthetic_rc_selects_navigation_slot",
+          "received_at": 99287.32920051,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "slot": 1
+        },
+        {
+          "event": "synthetic_px4_new_offboard",
+          "received_at": 99287.52953283,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99287.679722328,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "ARMED_GROUND",
+          "reason": "RC_MANUAL_ARM_AND_NEW_OFFBOARD_CONFIRMED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99288.731272322,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "THRUST_RAMP",
+          "reason": "THRUST_RAMP",
+          "local_fresh": true
+        },
+        {
+          "event": "early_horizontal_disturbance",
+          "received_at": 99291.294546965,
+          "height_m": 0.030316573199788754,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            1.9696834268002112
+          ],
+          "velocity_ned_mps": [
+            0.22,
+            -0.14,
+            -0.15702134425850084
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99292.0364877,
+          "height_m": 0.2493007893730146,
+          "position_ned_m": [
+            2.400415563888559,
+            -1.8457189950969373,
+            1.7506992106269854
+          ],
+          "velocity_ned_mps": [
+            0.1466592940420044,
+            -0.09332863944484862,
+            -0.3964792034115268
+          ],
+          "phase": "ASCEND",
+          "reason": "ASCEND",
+          "local_fresh": true
+        },
+        {
+          "event": "native_stable_1_5m_authorization",
+          "received_at": 99297.349763917,
+          "height_m": 1.4461628414455177,
+          "position_ned_m": [
+            2.2356486856311237,
+            -1.7408673704645683,
+            0.5538371585544823
+          ],
+          "velocity_ned_mps": [
+            0.011273235209379586,
+            -0.007173878106990748,
+            -0.025074912416749154
+          ],
+          "stamp_ns": 1795001555559008644
+        },
+        {
+          "event": "px4_model_counteracts_preheight_drift",
+          "received_at": 99297.350444206,
+          "height_m": 1.4461628414455177,
+          "position_ned_m": [
+            2.2356486856311237,
+            -1.7408673704645683,
+            0.5538371585544823
+          ],
+          "velocity_ned_mps": [
+            0.011273235209379586,
+            -0.007173878106990748,
+            -0.025074912416749154
+          ],
+          "sample": {
+            "received_at": 99291.956674137,
+            "stamp_us": 1795001550166395,
+            "position_ned_m": [
+              2.3875293379945965,
+              -1.8375186696303916,
+              1.781111695603175
+            ],
+            "velocity_ned_mps": [
+              0.18531632406196852,
+              -0.11792856939790974,
+              -0.38201275173466026
+            ],
+            "altitude_m": 0.21888830439682505,
+            "thrust_ned": [
+              -0.02319728583097458,
+              0.014761905185878277,
+              -0.4856129586696625
+            ],
+            "landed": false,
+            "offboard": true,
+            "armed": true,
+            "local_position_published": true
+          }
+        },
+        {
+          "event": "preheight_motion_limited_to_ground_anchor",
+          "received_at": 99297.350510916,
+          "height_m": 1.4461628414455177,
+          "position_ned_m": [
+            2.2356486856311237,
+            -1.7408673704645683,
+            0.5538371585544823
+          ],
+          "velocity_ned_mps": [
+            0.011273235209379586,
+            -0.007173878106990748,
+            -0.025074912416749154
+          ],
+          "native_targets": 196
+        },
+        {
+          "event": "exclusive_px4_trajectory_and_heartbeat",
+          "received_at": 99297.350634821,
+          "height_m": 1.4461628414455177,
+          "position_ned_m": [
+            2.2356486856311237,
+            -1.7408673704645683,
+            0.5538371585544823
+          ],
+          "velocity_ned_mps": [
+            0.011273235209379586,
+            -0.007173878106990748,
+            -0.025074912416749154
+          ],
+          "publishers": {
+            "trajectory_setpoint": 1,
+            "offboard_control_mode": 1,
+            "vehicle_attitude_setpoint": 0
+          }
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99297.399803827,
+          "height_m": 1.4473772211795972,
+          "position_ned_m": [
+            2.2361915147604505,
+            -1.7412128072176483,
+            0.5526227788204028
+          ],
+          "velocity_ned_mps": [
+            0.010895523569363755,
+            -0.00693351542741429,
+            -0.02450664874973188
+          ],
+          "phase": "HEIGHT_HOLD",
+          "reason": "HEIGHT_HOLD",
+          "local_fresh": true
+        },
+        {
+          "event": "no_target_hold",
+          "received_at": 99300.353054713,
+          "height_m": 1.4867946494906512,
+          "position_ned_m": [
+            2.246404867650024,
+            -1.7477121987881419,
+            0.5132053505093487
+          ],
+          "velocity_ned_mps": [
+            0.0010228506951143644,
+            -0.0006509001813166565,
+            -0.006210889603378819
+          ],
+          "lateral_error_m": 0.004261339108639934,
+          "camera": {
+            "ready": false,
+            "reason": "TARGET_NOT_DETECTED",
+            "configuration": "CONFIGURATION_CONFIRMED",
+            "source_id": "fc01_vision@252230-99282376517726",
+            "reset_counter": 0,
+            "calibration_id": "FIXTURE_ONLY_PINHOLE",
+            "extrinsics_id": "FIXTURE_ONLY_IDENTITY",
+            "target_model_id": "FIXTURE_ONLY_CIRCLE",
+            "stamp_kind": "image_header_source",
+            "read_seconds": 0,
+            "missing": [],
+            "exposure_timestamp_measured": false
+          }
+        },
+        {
+          "event": "existing_automatic_protection_or_normal_landing",
+          "received_at": 99300.353194203,
+          "height_m": 1.4867946494906512,
+          "position_ned_m": [
+            2.246404867650024,
+            -1.7477121987881419,
+            0.5132053505093487
+          ],
+          "velocity_ned_mps": [
+            0.0010228506951143644,
+            -0.0006509001813166565,
+            -0.006210889603378819
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99300.406452736,
+          "height_m": 1.485770543037023,
+          "position_ned_m": [
+            2.2464583657938038,
+            -1.747746242810063,
+            0.5142294569629771
+          ],
+          "velocity_ned_mps": [
+            0.001013216674264045,
+            -0.0006447694860468248,
+            0.047595574748868476
+          ],
+          "phase": "DESCENT",
+          "reason": "LAND_ACCEPTED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99305.817276927,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.249961295926038,
+            -1.7499753637063098,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0003824122017562924,
+            -0.00024335142230415358,
+            0.0
+          ],
+          "phase": "LANDED",
+          "reason": "LANDED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99308.92332884,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.2508709161934326,
+            -1.750554208692975,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0002186101232754544,
+            -0.00013911450572142388,
+            0.0
+          ],
+          "phase": "REQUEST_DISARM",
+          "reason": "REQUEST_DISARM",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99309.224146688,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.250904708452621,
+            -1.7505757126991193,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0002125248470726458,
+            -0.00013524208582408272,
+            0.0
+          ],
+          "phase": "SAFE_DISARMED",
+          "reason": "DISARM_ACK_AND_NEW_DISARMED_LANDED_STATUS",
+          "local_fresh": true
+        },
+        {
+          "event": "disarmed_landed_exit",
+          "received_at": 99309.279473685,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.250904708452621,
+            -1.7505757126991193,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0002125248470726458,
+            -0.00013524208582408272,
+            0.0
+          ]
+        }
+      ],
+      "camera": "synthetic ROS Image into real vision_image_node",
+      "frames_injected": 1181,
+      "metrics": {
+        "seconds_from_published_offboard_feedback_to_grant": 9.8202310869965,
+        "simulated_height_at_grant_m": 1.4461628414455177,
+        "simulated_ned_vz_at_grant_mps": -0.025074912416749154,
+        "peak_xy_error_during_climb_m": 0.20871015381449634,
+        "height_overshoot_m": 0.0,
+        "first_correction_height_m": 0.21888830439682505,
+        "hold_final_m": 0.004261339108639934,
+        "hold_last_2s_peak_m": 0.008067101920978476
+      }
+    },
+    "lock_loss": {
+      "scenario": "lock_loss",
+      "result": "PASS",
+      "error": null,
+      "events": [
+        {
+          "event": "native_phase",
+          "received_at": 99310.953060374,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "IDLE",
+          "reason": "RC_QUEUED_SAFETY_CONDITION",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99312.955723671,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_PRESTREAM",
+          "reason": "RC_PRESTREAM_WAIT_NEW_GROUND_REFERENCE",
+          "local_fresh": true
+        },
+        {
+          "event": "target_detected_on_ground_before_arm",
+          "received_at": 99314.917433578,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "current_ready_wait_arm",
+          "received_at": 99314.917567377,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "anchor_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99314.961939291,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_READY_WAIT_ARM",
+          "reason": "RC_READY_WAIT_CH5_MANUAL_ARM",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99315.262046359,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_ARMED_WAIT_NAVIGATION",
+          "reason": "RC_WAIT_MATCHED_SWITCH_AND_NEW_ARMED_STATUS",
+          "local_fresh": true
+        },
+        {
+          "event": "synthetic_manual_rc_arm_edge",
+          "received_at": 99315.262158376,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "synthetic_rc_selects_navigation_slot",
+          "received_at": 99315.411983044,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "slot": 1
+        },
+        {
+          "event": "synthetic_px4_new_offboard",
+          "received_at": 99315.61271362,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99315.76336593,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "ARMED_GROUND",
+          "reason": "RC_MANUAL_ARM_AND_NEW_OFFBOARD_CONFIRMED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99316.815578704,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "THRUST_RAMP",
+          "reason": "THRUST_RAMP",
+          "local_fresh": true
+        },
+        {
+          "event": "early_horizontal_disturbance",
+          "received_at": 99319.378596611,
+          "height_m": 0.030161368840827762,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            1.9698386311591722
+          ],
+          "velocity_ned_mps": [
+            0.22,
+            -0.14,
+            -0.15659959734432177
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99320.123138617,
+          "height_m": 0.24986745946519195,
+          "position_ned_m": [
+            2.4008552496688274,
+            -1.845998795393792,
+            1.750132540534808
+          ],
+          "velocity_ned_mps": [
+            0.14631195833022767,
+            -0.09310761157289216,
+            -0.3966167843737862
+          ],
+          "phase": "ASCEND",
+          "reason": "ASCEND",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99325.485206393,
+          "height_m": 1.4473392561248641,
+          "position_ned_m": [
+            2.236190881250489,
+            -1.7412123684622212,
+            0.5526607438751359
+          ],
+          "velocity_ned_mps": [
+            0.010927291281331946,
+            -0.006953734503693206,
+            -0.024521942658930963
+          ],
+          "phase": "HEIGHT_HOLD",
+          "reason": "HEIGHT_HOLD",
+          "local_fresh": true
+        },
+        {
+          "event": "native_stable_1_5m_authorization",
+          "received_at": 99325.48630606,
+          "height_m": 1.4474110332186325,
+          "position_ned_m": [
+            2.236222845542172,
+            -1.7412327093853934,
+            0.5525889667813674
+          ],
+          "velocity_ned_mps": [
+            0.010904795834800356,
+            -0.006939419060374003,
+            -0.02448841911290457
+          ],
+          "stamp_ns": 1795001583694617407
+        },
+        {
+          "event": "px4_model_counteracts_preheight_drift",
+          "received_at": 99325.487111939,
+          "height_m": 1.4474110332186325,
+          "position_ned_m": [
+            2.236222845542172,
+            -1.7412327093853934,
+            0.5525889667813674
+          ],
+          "velocity_ned_mps": [
+            0.010904795834800356,
+            -0.006939419060374003,
+            -0.02448841911290457
+          ],
+          "sample": {
+            "received_at": 99320.043462948,
+            "stamp_us": 1795001578253137,
+            "position_ned_m": [
+              2.3880380403464185,
+              -1.8378423893213607,
+              1.78046835770958
+            ],
+            "velocity_ned_mps": [
+              0.18484543319620883,
+              -0.11762891276532889,
+              -0.3823700266216371
+            ],
+            "altitude_m": 0.2195316422904201,
+            "thrust_ned": [
+              -0.023242181167006493,
+              0.014790469780564308,
+              -0.48569154739379883
+            ],
+            "landed": false,
+            "offboard": true,
+            "armed": true,
+            "local_position_published": true
+          }
+        },
+        {
+          "event": "preheight_motion_limited_to_ground_anchor",
+          "received_at": 99325.487207511,
+          "height_m": 1.4474110332186325,
+          "position_ned_m": [
+            2.236222845542172,
+            -1.7412327093853934,
+            0.5525889667813674
+          ],
+          "velocity_ned_mps": [
+            0.010904795834800356,
+            -0.006939419060374003,
+            -0.02448841911290457
+          ],
+          "native_targets": 197
+        },
+        {
+          "event": "exclusive_px4_trajectory_and_heartbeat",
+          "received_at": 99325.487371208,
+          "height_m": 1.4474110332186325,
+          "position_ned_m": [
+            2.236222845542172,
+            -1.7412327093853934,
+            0.5525889667813674
+          ],
+          "velocity_ned_mps": [
+            0.010904795834800356,
+            -0.006939419060374003,
+            -0.02448841911290457
+          ],
+          "publishers": {
+            "trajectory_setpoint": 1,
+            "offboard_control_mode": 1,
+            "vehicle_attitude_setpoint": 0
+          }
+        },
+        {
+          "event": "track_withdraws_waypoint_and_moves",
+          "received_at": 99326.305156903,
+          "height_m": 1.464061286224323,
+          "position_ned_m": [
+            2.2966866994467687,
+            -1.7342025749589935,
+            0.5359387137756769
+          ],
+          "velocity_ned_mps": [
+            0.19734230820211263,
+            0.03222603704669217,
+            -0.016801540719640674
+          ],
+          "intent": {
+            "received_at": 99326.296891233,
+            "stamp_ns": 1795001584506705955,
+            "valid": true,
+            "v": [
+              0.49375302874574917,
+              0.07879052356977634,
+              -0.0
+            ],
+            "attitude_sample_stamp_ns": 1795001584487901000,
+            "origin": "px4_local:1000:0:0:0:0:0"
+          },
+          "wire": {
+            "received_at": 99326.285851838,
+            "timestamp_us": 1795001584495671,
+            "position": [
+              null,
+              null,
+              0.5
+            ],
+            "velocity": [
+              0.4748031497001648,
+              0.07557428628206253,
+              null
+            ],
+            "acceleration": [
+              null,
+              null,
+              null
+            ],
+            "yaw": 0.12888973951339722,
+            "yaw_rate": null,
+            "height_m": 1.4637553100354965
+          }
+        },
+        {
+          "event": "inject_lock_loss",
+          "received_at": 99326.305264208,
+          "height_m": 1.464061286224323,
+          "position_ned_m": [
+            2.2966866994467687,
+            -1.7342025749589935,
+            0.5359387137756769
+          ],
+          "velocity_ned_mps": [
+            0.19734230820211263,
+            0.03222603704669217,
+            -0.016801540719640674
+          ],
+          "last_image_stamp_ns": 1795001584509735535
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99326.486616038,
+          "height_m": 1.4607673877495246,
+          "position_ned_m": [
+            2.3358689154891645,
+            -1.7277167038112384,
+            0.5392326122504754
+          ],
+          "velocity_ned_mps": [
+            0.1987512689987647,
+            0.03344429263989912,
+            0.09783938708508273
+          ],
+          "phase": "DESCENT",
+          "reason": "VISUAL_RECOVERY_HORIZONTAL_INPUT_REVOKED",
+          "local_fresh": true
+        },
+        {
+          "event": "fault_revokes_active_motion",
+          "received_at": 99326.737873819,
+          "height_m": 1.4140000521828602,
+          "position_ned_m": [
+            2.3762489175313437,
+            -1.720720161144753,
+            0.5859999478171398
+          ],
+          "velocity_ned_mps": [
+            0.12373331242697821,
+            0.022306170422729546,
+            0.24806939370930164
+          ],
+          "phase": "DESCENT",
+          "reason": "VISUAL_RECOVERY_HORIZONTAL_INPUT_REVOKED",
+          "phase_transition_s": 0.18135183000413235,
+          "safety_latched_s": null,
+          "first_descent_wire_s": 0.08074308799405117,
+          "first_invalid_intent_s": 0.031675712001742795,
+          "last_active_motion_wire_s": 0.031075710998266004,
+          "synthetic_frames_after_fault": 18,
+          "replayed_capture_stamp_ns": null
+        },
+        {
+          "event": "restore_fresh_synthetic_images",
+          "received_at": 99326.737967233,
+          "height_m": 1.4140000521828602,
+          "position_ned_m": [
+            2.3762489175313437,
+            -1.720720161144753,
+            0.5859999478171398
+          ],
+          "velocity_ned_mps": [
+            0.12373331242697821,
+            0.022306170422729546,
+            0.24806939370930164
+          ]
+        },
+        {
+          "event": "existing_automatic_protection_or_normal_landing",
+          "received_at": 99327.288441462,
+          "height_m": 1.2488228396899712,
+          "position_ned_m": [
+            2.4079704287197092,
+            -1.714102580371754,
+            0.7511771603100288
+          ],
+          "velocity_ned_mps": [
+            0.003347762458617098,
+            0.003331024951924413,
+            0.3250156622375774
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99331.745561317,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.2985211917263086,
+            -1.7318928977681554,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.005854250609496951,
+            0.0002430621086710478,
+            0.0
+          ],
+          "phase": "LANDED",
+          "reason": "LANDED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99334.752586905,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.3121142922799267,
+            -1.7313285270392011,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.003406476503407801,
+            0.00014143319397934477,
+            0.0
+          ],
+          "phase": "REQUEST_DISARM",
+          "reason": "REQUEST_DISARM",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99335.102829259,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.312789347993575,
+            -1.7313004994612626,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.003284917047631878,
+            0.00013638617778193946,
+            0.0
+          ],
+          "phase": "SAFE_DISARMED",
+          "reason": "DISARM_ACK_AND_NEW_DISARMED_LANDED_STATUS",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99335.152979832,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.312789347993575,
+            -1.7313004994612626,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.003284917047631878,
+            0.00013638617778193946,
+            0.0
+          ],
+          "phase": "RELEASE_OFFBOARD",
+          "reason": "RELEASE_OFFBOARD",
+          "local_fresh": true
+        },
+        {
+          "event": "disarmed_landed_exit",
+          "received_at": 99335.157740687,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.312789347993575,
+            -1.7313004994612626,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.003284917047631878,
+            0.00013638617778193946,
+            0.0
+          ]
+        }
+      ],
+      "camera": "synthetic ROS Image into real vision_image_node",
+      "frames_injected": 1066,
+      "metrics": {
+        "seconds_from_published_offboard_feedback_to_grant": 9.873592440009816,
+        "simulated_height_at_grant_m": 1.4474110332186325,
+        "simulated_ned_vz_at_grant_mps": -0.02448841911290457,
+        "peak_xy_error_during_climb_m": 0.2090904057218474,
+        "height_overshoot_m": 0.0,
+        "first_correction_height_m": 0.2195316422904201
+      }
+    },
+    "old_frame": {
+      "scenario": "old_frame",
+      "result": "PASS",
+      "error": null,
+      "events": [
+        {
+          "event": "native_phase",
+          "received_at": 99108.95963334,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "IDLE",
+          "reason": "IDLE_NO_AUTOMATIC_ARM",
+          "local_fresh": false
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99111.114256567,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_PRESTREAM",
+          "reason": "RC_PRESTREAM_WAIT_NEW_GROUND_REFERENCE",
+          "local_fresh": true
+        },
+        {
+          "event": "target_detected_on_ground_before_arm",
+          "received_at": 99113.024469074,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "current_ready_wait_arm",
+          "received_at": 99113.024549724,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "anchor_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99113.070098178,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_READY_WAIT_ARM",
+          "reason": "RC_READY_WAIT_CH5_MANUAL_ARM",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99113.370625877,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_ARMED_WAIT_NAVIGATION",
+          "reason": "RC_WAIT_MATCHED_SWITCH_AND_NEW_ARMED_STATUS",
+          "local_fresh": true
+        },
+        {
+          "event": "synthetic_manual_rc_arm_edge",
+          "received_at": 99113.370730322,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "synthetic_rc_selects_navigation_slot",
+          "received_at": 99113.47060017,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "slot": 1
+        },
+        {
+          "event": "synthetic_px4_new_offboard",
+          "received_at": 99113.671345233,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99113.872053672,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "ARMED_GROUND",
+          "reason": "RC_MANUAL_ARM_AND_NEW_OFFBOARD_CONFIRMED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99114.924690999,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "THRUST_RAMP",
+          "reason": "THRUST_RAMP",
+          "local_fresh": true
+        },
+        {
+          "event": "early_horizontal_disturbance",
+          "received_at": 99117.438582845,
+          "height_m": 0.03028802159666477,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            1.9697119784033352
+          ],
+          "velocity_ned_mps": [
+            0.22,
+            -0.14,
+            -0.15705245007306495
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99118.232193046,
+          "height_m": 0.27030521464234836,
+          "position_ned_m": [
+            2.4075333989446257,
+            -1.8502485267909212,
+            1.7296947853576516
+          ],
+          "velocity_ned_mps": [
+            0.12282722238354667,
+            -0.07816277985442764,
+            -0.40504110496559076
+          ],
+          "phase": "ASCEND",
+          "reason": "ASCEND",
+          "local_fresh": true
+        },
+        {
+          "event": "native_stable_1_5m_authorization",
+          "received_at": 99123.54577392,
+          "height_m": 1.4474273317149438,
+          "position_ned_m": [
+            2.2362188859218963,
+            -1.741230217957416,
+            0.5525726682850564
+          ],
+          "velocity_ned_mps": [
+            0.01088862853513574,
+            -0.0069291216095589804,
+            -0.024479754022126522
+          ],
+          "stamp_ns": 1795001381755072628
+        },
+        {
+          "event": "px4_model_counteracts_preheight_drift",
+          "received_at": 99123.546464169,
+          "height_m": 1.4474273317149438,
+          "position_ned_m": [
+            2.2362188859218963,
+            -1.741230217957416,
+            0.5525726682850564
+          ],
+          "velocity_ned_mps": [
+            0.01088862853513574,
+            -0.0069291216095589804,
+            -0.024479754022126522
+          ],
+          "sample": {
+            "received_at": 99118.099075936,
+            "stamp_us": 1795001376308726,
+            "position_ned_m": [
+              2.387207718067101,
+              -1.8373140024089119,
+              1.7818704099898375
+            ],
+            "velocity_ned_mps": [
+              0.18683574095895186,
+              -0.1188954715611602,
+              -0.3815937493513752
+            ],
+            "altitude_m": 0.21812959001016252,
+            "thrust_ned": [
+              -0.02328762412071228,
+              0.014819396659731865,
+              -0.48592719435691833
+            ],
+            "landed": false,
+            "offboard": true,
+            "armed": true,
+            "local_position_published": true
+          }
+        },
+        {
+          "event": "preheight_motion_limited_to_ground_anchor",
+          "received_at": 99123.546527725,
+          "height_m": 1.4474273317149438,
+          "position_ned_m": [
+            2.2362188859218963,
+            -1.741230217957416,
+            0.5525726682850564
+          ],
+          "velocity_ned_mps": [
+            0.01088862853513574,
+            -0.0069291216095589804,
+            -0.024479754022126522
+          ],
+          "native_targets": 197
+        },
+        {
+          "event": "exclusive_px4_trajectory_and_heartbeat",
+          "received_at": 99123.546675461,
+          "height_m": 1.4474273317149438,
+          "position_ned_m": [
+            2.2362188859218963,
+            -1.741230217957416,
+            0.5525726682850564
+          ],
+          "velocity_ned_mps": [
+            0.01088862853513574,
+            -0.0069291216095589804,
+            -0.024479754022126522
+          ],
+          "publishers": {
+            "trajectory_setpoint": 1,
+            "offboard_control_mode": 1,
+            "vehicle_attitude_setpoint": 0
+          }
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99123.594558565,
+          "height_m": 1.4485779645620758,
+          "position_ned_m": [
+            2.236727594640108,
+            -1.7415539414389827,
+            0.5514220354379243
+          ],
+          "velocity_ned_mps": [
+            0.01052543167314219,
+            -0.006697996562075912,
+            -0.02394331302811624
+          ],
+          "phase": "HEIGHT_HOLD",
+          "reason": "HEIGHT_HOLD",
+          "local_fresh": true
+        },
+        {
+          "event": "track_withdraws_waypoint_and_moves",
+          "received_at": 99124.362066042,
+          "height_m": 1.464054106707305,
+          "position_ned_m": [
+            2.296507686442191,
+            -1.7342220986591783,
+            0.535945893292695
+          ],
+          "velocity_ned_mps": [
+            0.19706312380867777,
+            0.03218863652945455,
+            -0.01680419662729195
+          ],
+          "intent": {
+            "received_at": 99124.361856664,
+            "stamp_ns": 1795001382571626390,
+            "valid": true,
+            "v": [
+              0.4937599800242197,
+              0.07874694995034585,
+              -0.0
+            ],
+            "attitude_sample_stamp_ns": 1795001382549870000,
+            "origin": "px4_local:1000:0:0:0:0:0"
+          },
+          "wire": {
+            "received_at": 99124.346365858,
+            "timestamp_us": 1795001382556262,
+            "position": [
+              null,
+              null,
+              0.5
+            ],
+            "velocity": [
+              0.4752546548843384,
+              0.07563725858926773,
+              null
+            ],
+            "acceleration": [
+              null,
+              null,
+              null
+            ],
+            "yaw": 0.12708531320095062,
+            "yaw_rate": null,
+            "height_m": 1.4637747004446076
+          }
+        },
+        {
+          "event": "inject_old_frame",
+          "received_at": 99124.3621662,
+          "height_m": 1.464054106707305,
+          "position_ned_m": [
+            2.296507686442191,
+            -1.7342220986591783,
+            0.535945893292695
+          ],
+          "velocity_ned_mps": [
+            0.19706312380867777,
+            0.03218863652945455,
+            -0.01680419662729195
+          ],
+          "last_image_stamp_ns": 1795001382555086255
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99124.496942198,
+          "height_m": 1.4602581930999403,
+          "position_ned_m": [
+            2.3233492193296827,
+            -1.7297854189757236,
+            0.5397418069000597
+          ],
+          "velocity_ned_mps": [
+            0.1830150995775857,
+            0.03068775612570745,
+            0.09568429659672859
+          ],
+          "phase": "DESCENT",
+          "reason": "VISUAL_RECOVERY_HORIZONTAL_INPUT_REVOKED",
+          "local_fresh": true
+        },
+        {
+          "event": "fault_revokes_active_motion",
+          "received_at": 99124.748390865,
+          "height_m": 1.4141514174245053,
+          "position_ned_m": [
+            2.3604033722419575,
+            -1.7233708995915524,
+            0.5858485825754947
+          ],
+          "velocity_ned_mps": [
+            0.11446074047803732,
+            0.02068458763987486,
+            0.24700795401038353
+          ],
+          "phase": "DESCENT",
+          "reason": "VISUAL_RECOVERY_HORIZONTAL_INPUT_REVOKED",
+          "phase_transition_s": 0.1347759980126284,
+          "safety_latched_s": null,
+          "first_descent_wire_s": 0.03528860000369605,
+          "first_invalid_intent_s": 0.030067249012063257,
+          "last_active_motion_wire_s": -0.015800341992871836,
+          "synthetic_frames_after_fault": 17,
+          "replayed_capture_stamp_ns": 1795001381972083031
+        },
+        {
+          "event": "restore_fresh_synthetic_images",
+          "received_at": 99124.748467736,
+          "height_m": 1.4141514174245053,
+          "position_ned_m": [
+            2.3604033722419575,
+            -1.7233708995915524,
+            0.5858485825754947
+          ],
+          "velocity_ned_mps": [
+            0.11446074047803732,
+            0.02068458763987486,
+            0.24700795401038353
+          ]
+        },
+        {
+          "event": "existing_automatic_protection_or_normal_landing",
+          "received_at": 99125.299207743,
+          "height_m": 1.2485701738241919,
+          "position_ned_m": [
+            2.389920529304205,
+            -1.7171275440315024,
+            0.7514298261758082
+          ],
+          "velocity_ned_mps": [
+            0.003388033370290613,
+            0.0033612991592297846,
+            0.32529177817274574
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99129.76017647,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.289829705689725,
+            -1.733282613630654,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.005393216751082923,
+            0.0001520768431324194,
+            0.0
+          ],
+          "phase": "LANDED",
+          "reason": "LANDED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99132.767549079,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.302352350491445,
+            -1.732929502606752,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.003138202372870807,
+            8.849040044256142e-05,
+            0.0
+          ],
+          "phase": "REQUEST_DISARM",
+          "reason": "REQUEST_DISARM",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99133.168627991,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.302983946379796,
+            -1.7329116929927006,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0030244687808753247,
+            8.528336345015608e-05,
+            0.0
+          ],
+          "phase": "RELEASE_OFFBOARD",
+          "reason": "RELEASE_OFFBOARD",
+          "local_fresh": true
+        },
+        {
+          "event": "disarmed_landed_exit",
+          "received_at": 99133.174980325,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.302983946379796,
+            -1.7329116929927006,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0030244687808753247,
+            8.528336345015608e-05,
+            0.0
+          ]
+        }
+      ],
+      "camera": "synthetic ROS Image into real vision_image_node",
+      "frames_injected": 1070,
+      "metrics": {
+        "seconds_from_published_offboard_feedback_to_grant": 9.874428687006002,
+        "simulated_height_at_grant_m": 1.4474273317149438,
+        "simulated_ned_vz_at_grant_mps": -0.024479754022126522,
+        "peak_xy_error_during_climb_m": 0.2089800389246439,
+        "height_overshoot_m": 0.0,
+        "first_correction_height_m": 0.21812959001016252
+      }
+    },
+    "px4_local_stale": {
+      "scenario": "px4_local_stale",
+      "result": "PASS",
+      "error": null,
+      "events": [
+        {
+          "event": "native_phase",
+          "received_at": 99180.211095722,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "IDLE",
+          "reason": "RC_QUEUED_SAFETY_CONDITION",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99182.218372876,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_PRESTREAM",
+          "reason": "RC_PRESTREAM_WAIT_NEW_GROUND_REFERENCE",
+          "local_fresh": true
+        },
+        {
+          "event": "target_detected_on_ground_before_arm",
+          "received_at": 99184.178343283,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "current_ready_wait_arm",
+          "received_at": 99184.178429912,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "anchor_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99184.224217885,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_READY_WAIT_ARM",
+          "reason": "RC_READY_WAIT_CH5_MANUAL_ARM",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99184.523980261,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_ARMED_WAIT_NAVIGATION",
+          "reason": "RC_WAIT_MATCHED_SWITCH_AND_NEW_ARMED_STATUS",
+          "local_fresh": true
+        },
+        {
+          "event": "synthetic_manual_rc_arm_edge",
+          "received_at": 99184.524072301,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "synthetic_rc_selects_navigation_slot",
+          "received_at": 99184.674602701,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "slot": 1
+        },
+        {
+          "event": "synthetic_px4_new_offboard",
+          "received_at": 99184.875325533,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99185.025881376,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "ARMED_GROUND",
+          "reason": "RC_MANUAL_ARM_AND_NEW_OFFBOARD_CONFIRMED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99186.078406276,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "THRUST_RAMP",
+          "reason": "THRUST_RAMP",
+          "local_fresh": true
+        },
+        {
+          "event": "early_horizontal_disturbance",
+          "received_at": 99188.642239197,
+          "height_m": 0.030211704040703058,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            1.969788295959297
+          ],
+          "velocity_ned_mps": [
+            0.22,
+            -0.14,
+            -0.15681498603548855
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99189.386377894,
+          "height_m": 0.2501134858878262,
+          "position_ned_m": [
+            2.4008553469576173,
+            -1.8459988572459542,
+            1.7498865141121738
+          ],
+          "velocity_ned_mps": [
+            0.14592288863739958,
+            -0.09286002144960197,
+            -0.3969281615013002
+          ],
+          "phase": "ASCEND",
+          "reason": "ASCEND",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99194.748304152,
+          "height_m": 1.447327180250674,
+          "position_ned_m": [
+            2.2361791940090026,
+            -1.7412049522825506,
+            0.5526728197493259
+          ],
+          "velocity_ned_mps": [
+            0.010918074165248825,
+            -0.006947856668588234,
+            -0.024526854363567593
+          ],
+          "phase": "HEIGHT_HOLD",
+          "reason": "HEIGHT_HOLD",
+          "local_fresh": true
+        },
+        {
+          "event": "native_stable_1_5m_authorization",
+          "received_at": 99194.749887671,
+          "height_m": 1.447422268319369,
+          "position_ned_m": [
+            2.2362214916815484,
+            -1.7412318689483377,
+            0.552577731680631
+          ],
+          "velocity_ned_mps": [
+            0.010888283895893885,
+            -0.006928899057033468,
+            -0.02448245404615698
+          ],
+          "stamp_ns": 1795001452959466659
+        },
+        {
+          "event": "px4_model_counteracts_preheight_drift",
+          "received_at": 99194.750408109,
+          "height_m": 1.447422268319369,
+          "position_ned_m": [
+            2.2362214916815484,
+            -1.7412318689483377,
+            0.552577731680631
+          ],
+          "velocity_ned_mps": [
+            0.010888283895893885,
+            -0.006928899057033468,
+            -0.02448245404615698
+          ],
+          "sample": {
+            "received_at": 99189.302372932,
+            "stamp_us": 1795001447512207,
+            "position_ned_m": [
+              2.387180737751257,
+              -1.8372968331199824,
+              1.782086975154055
+            ],
+            "velocity_ned_mps": [
+              0.18689880723544403,
+              -0.11893560492994736,
+              -0.3816276301557367
+            ],
+            "altitude_m": 0.2179130248459451,
+            "thrust_ned": [
+              -0.023314915597438812,
+              0.014836763963103294,
+              -0.48600971698760986
+            ],
+            "landed": false,
+            "offboard": true,
+            "armed": true,
+            "local_position_published": true
+          }
+        },
+        {
+          "event": "preheight_motion_limited_to_ground_anchor",
+          "received_at": 99194.750463921,
+          "height_m": 1.447422268319369,
+          "position_ned_m": [
+            2.2362214916815484,
+            -1.7412318689483377,
+            0.552577731680631
+          ],
+          "velocity_ned_mps": [
+            0.010888283895893885,
+            -0.006928899057033468,
+            -0.02448245404615698
+          ],
+          "native_targets": 197
+        },
+        {
+          "event": "exclusive_px4_trajectory_and_heartbeat",
+          "received_at": 99194.754413745,
+          "height_m": 1.447422268319369,
+          "position_ned_m": [
+            2.2362214916815484,
+            -1.7412318689483377,
+            0.552577731680631
+          ],
+          "velocity_ned_mps": [
+            0.010888283895893885,
+            -0.006928899057033468,
+            -0.02448245404615698
+          ],
+          "publishers": {
+            "trajectory_setpoint": 1,
+            "offboard_control_mode": 1,
+            "vehicle_attitude_setpoint": 0
+          }
+        },
+        {
+          "event": "track_withdraws_waypoint_and_moves",
+          "received_at": 99195.568123552,
+          "height_m": 1.4640550468917684,
+          "position_ned_m": [
+            2.2965960611005793,
+            -1.7342058378268783,
+            0.5359449531082316
+          ],
+          "velocity_ned_mps": [
+            0.19697836762267207,
+            0.03217911495646957,
+            -0.016804204628084407
+          ],
+          "intent": {
+            "received_at": 99195.544695698,
+            "stamp_ns": 1795001453754208504,
+            "valid": true,
+            "v": [
+              0.4937542469143412,
+              0.07878288934820753,
+              -0.0
+            ],
+            "attitude_sample_stamp_ns": 1795001453642573000,
+            "origin": "px4_local:1000:0:0:0:0:0"
+          },
+          "wire": {
+            "received_at": 99195.550461535,
+            "timestamp_us": 1795001453759843,
+            "position": [
+              null,
+              null,
+              0.5
+            ],
+            "velocity": [
+              0.475184828042984,
+              0.07566908746957779,
+              null
+            ],
+            "acceleration": [
+              null,
+              null,
+              null
+            ],
+            "yaw": 0.13070160150527954,
+            "yaw_rate": null,
+            "height_m": 1.4637914409395263
+          }
+        },
+        {
+          "event": "inject_px4_local_stale",
+          "received_at": 99195.568238483,
+          "height_m": 1.4640550468917684,
+          "position_ned_m": [
+            2.2965960611005793,
+            -1.7342058378268783,
+            0.5359449531082316
+          ],
+          "velocity_ned_mps": [
+            0.19697836762267207,
+            0.03217911495646957,
+            -0.016804204628084407
+          ],
+          "last_image_stamp_ns": 1795001453768780274
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99195.750382675,
+          "height_m": 1.4612252507597838,
+          "position_ned_m": [
+            2.335872365507001,
+            -1.7277031131259186,
+            0.5387747492402161
+          ],
+          "velocity_ned_mps": [
+            0.20001027909846109,
+            0.03365397242653169,
+            0.0939892073908056
+          ],
+          "phase": "DESCENT",
+          "reason": "VISUAL_RECOVERY_HORIZONTAL_PX4_ACTUAL_INVALID",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99196.201952122,
+          "height_m": 1.360227710921023,
+          "position_ned_m": [
+            2.3949282936446985,
+            -1.7171818066976847,
+            0.6397722890789769
+          ],
+          "velocity_ned_mps": [
+            0.06854716719494908,
+            0.013787400451620567,
+            0.2961094836124738
+          ],
+          "phase": "SAFETY",
+          "reason": "DDS_SOURCE_CLOCK_UNSYNCHRONIZED_OR_STALE",
+          "local_fresh": false
+        },
+        {
+          "event": "restore_inputs_while_armed",
+          "received_at": 99196.402272412,
+          "height_m": 1.2989314054328043,
+          "position_ned_m": [
+            2.4050887320206433,
+            -1.7149829572556836,
+            0.7010685945671957
+          ],
+          "velocity_ned_mps": [
+            0.04509380773887137,
+            0.010090869901334043,
+            0.3093970361540918
+          ],
+          "fault": "px4_local_stale"
+        },
+        {
+          "event": "fault_revokes_active_motion",
+          "received_at": 99196.95280506,
+          "height_m": 1.1285685971505974,
+          "position_ned_m": [
+            2.429918665164235,
+            -1.7094266372735334,
+            0.8714314028494027
+          ],
+          "velocity_ned_mps": [
+            0.04509380773887137,
+            0.010090869901334043,
+            0.3093970361540918
+          ],
+          "phase": "SAFETY",
+          "reason": "DDS_SOURCE_CLOCK_UNSYNCHRONIZED_OR_STALE",
+          "phase_transition_s": 0.18214419200376142,
+          "safety_latched_s": 0.633854629995767,
+          "first_descent_wire_s": 0.08295320799516048,
+          "first_invalid_intent_s": 0.09610477399837691,
+          "last_active_motion_wire_s": 0.032201078996877186,
+          "synthetic_frames_after_fault": 60,
+          "replayed_capture_stamp_ns": null
+        }
+      ],
+      "camera": "synthetic ROS Image into real vision_image_node",
+      "frames_injected": 750,
+      "metrics": {
+        "seconds_from_published_offboard_feedback_to_grant": 9.874562138007605,
+        "simulated_height_at_grant_m": 1.447422268319369,
+        "simulated_ned_vz_at_grant_mps": -0.02448245404615698,
+        "peak_xy_error_during_climb_m": 0.20897230031224467,
+        "height_overshoot_m": 0.0,
+        "first_correction_height_m": 0.2179130248459451
+      }
+    },
+    "rc_takeover": {
+      "scenario": "rc_takeover",
+      "result": "PASS",
+      "error": null,
+      "events": [
+        {
+          "event": "native_phase",
+          "received_at": 99161.597170318,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "IDLE",
+          "reason": "IDLE_NO_AUTOMATIC_ARM",
+          "local_fresh": false
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99163.804697682,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_PRESTREAM",
+          "reason": "RC_PRESTREAM_WAIT_NEW_GROUND_REFERENCE",
+          "local_fresh": true
+        },
+        {
+          "event": "target_detected_on_ground_before_arm",
+          "received_at": 99165.66520205,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "current_ready_wait_arm",
+          "received_at": 99165.665288663,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "anchor_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99165.760015719,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_READY_WAIT_ARM",
+          "reason": "RC_READY_WAIT_CH5_MANUAL_ARM",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99166.060917617,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_ARMED_WAIT_NAVIGATION",
+          "reason": "RC_WAIT_MATCHED_SWITCH_AND_NEW_ARMED_STATUS",
+          "local_fresh": true
+        },
+        {
+          "event": "synthetic_manual_rc_arm_edge",
+          "received_at": 99166.061097548,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "synthetic_rc_selects_navigation_slot",
+          "received_at": 99166.211161568,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "slot": 1
+        },
+        {
+          "event": "synthetic_px4_new_offboard",
+          "received_at": 99166.411451841,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99166.56223902,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "ARMED_GROUND",
+          "reason": "RC_MANUAL_ARM_AND_NEW_OFFBOARD_CONFIRMED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99167.614258995,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "THRUST_RAMP",
+          "reason": "THRUST_RAMP",
+          "local_fresh": true
+        },
+        {
+          "event": "early_horizontal_disturbance",
+          "received_at": 99170.177552031,
+          "height_m": 0.030212282659148437,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            1.9697877173408516
+          ],
+          "velocity_ned_mps": [
+            0.22,
+            -0.14,
+            -0.15685932163410465
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99170.872488477,
+          "height_m": 0.23068071849767469,
+          "position_ned_m": [
+            2.3913428324014503,
+            -1.8399454388094227,
+            1.7693192815023253
+          ],
+          "velocity_ned_mps": [
+            0.14838454310905566,
+            -0.09442652717276155,
+            -0.38779080151609824
+          ],
+          "phase": "ASCEND",
+          "reason": "ASCEND",
+          "local_fresh": true
+        },
+        {
+          "event": "native_stable_1_5m_authorization",
+          "received_at": 99176.28606503,
+          "height_m": 1.4474624673483931,
+          "position_ned_m": [
+            2.2366279486990894,
+            -1.741490515624753,
+            0.5525375326516069
+          ],
+          "velocity_ned_mps": [
+            0.010315531868912221,
+            -0.00656442622870781,
+            -0.02446383971447513
+          ],
+          "stamp_ns": 1795001434495567271
+        },
+        {
+          "event": "px4_model_counteracts_preheight_drift",
+          "received_at": 99176.286635758,
+          "height_m": 1.4474624673483931,
+          "position_ned_m": [
+            2.2366279486990894,
+            -1.741490515624753,
+            0.5525375326516069
+          ],
+          "velocity_ned_mps": [
+            0.010315531868912221,
+            -0.00656442622870781,
+            -0.02446383971447513
+          ],
+          "sample": {
+            "received_at": 99170.791639466,
+            "stamp_us": 1795001429001473,
+            "position_ned_m": [
+              2.3781832641754614,
+              -1.8315711681125155,
+              1.7993370553156498
+            ],
+            "velocity_ned_mps": [
+              0.18667694952745076,
+              -0.11879442236074919,
+              -0.37177939454749576
+            ],
+            "altitude_m": 0.2006629446843502,
+            "thrust_ned": [
+              -0.02269359864294529,
+              0.014441385865211487,
+              -0.48657500743865967
+            ],
+            "landed": false,
+            "offboard": true,
+            "armed": true,
+            "local_position_published": true
+          }
+        },
+        {
+          "event": "preheight_motion_limited_to_ground_anchor",
+          "received_at": 99176.286681538,
+          "height_m": 1.4474624673483931,
+          "position_ned_m": [
+            2.2366279486990894,
+            -1.741490515624753,
+            0.5525375326516069
+          ],
+          "velocity_ned_mps": [
+            0.010315531868912221,
+            -0.00656442622870781,
+            -0.02446383971447513
+          ],
+          "native_targets": 197
+        },
+        {
+          "event": "exclusive_px4_trajectory_and_heartbeat",
+          "received_at": 99176.29214516,
+          "height_m": 1.4474624673483931,
+          "position_ned_m": [
+            2.2366279486990894,
+            -1.741490515624753,
+            0.5525375326516069
+          ],
+          "velocity_ned_mps": [
+            0.010315531868912221,
+            -0.00656442622870781,
+            -0.02446383971447513
+          ],
+          "publishers": {
+            "trajectory_setpoint": 1,
+            "offboard_control_mode": 1,
+            "vehicle_attitude_setpoint": 0
+          }
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99176.385061116,
+          "height_m": 1.4497806648307363,
+          "position_ned_m": [
+            2.237625700252451,
+            -1.742080129139426,
+            0.5502193351692638
+          ],
+          "velocity_ned_mps": [
+            0.010859257790921749,
+            -0.005208163687459721,
+            -0.023384634910681542
+          ],
+          "phase": "HEIGHT_HOLD",
+          "reason": "VISUAL_HORIZONTAL_WAIT_INPUT_POINT_HOLD",
+          "local_fresh": true
+        },
+        {
+          "event": "track_withdraws_waypoint_and_moves",
+          "received_at": 99177.105108411,
+          "height_m": 1.4640964566226062,
+          "position_ned_m": [
+            2.2967990044821023,
+            -1.734246493640889,
+            0.5359035433773938
+          ],
+          "velocity_ned_mps": [
+            0.19716334774001892,
+            0.03241223559898224,
+            -0.016785151105372032
+          ],
+          "intent": {
+            "received_at": 99177.093203248,
+            "stamp_ns": 1795001435303047520,
+            "valid": true,
+            "v": [
+              0.49373946054721096,
+              0.07887550379268128,
+              -0.0
+            ],
+            "attitude_sample_stamp_ns": 1795001435227678000,
+            "origin": "px4_local:1000:0:0:0:0:0"
+          },
+          "wire": {
+            "received_at": 99177.086044251,
+            "timestamp_us": 1795001435295975,
+            "position": [
+              null,
+              null,
+              0.5
+            ],
+            "velocity": [
+              0.4748638868331909,
+              0.07567580789327621,
+              null
+            ],
+            "acceleration": [
+              null,
+              null,
+              null
+            ],
+            "yaw": 0.12980085611343384,
+            "yaw_rate": null,
+            "height_m": 1.463795017378375
+          }
+        },
+        {
+          "event": "inject_rc_takeover",
+          "received_at": 99177.10519331,
+          "height_m": 1.4640964566226062,
+          "position_ned_m": [
+            2.2967990044821023,
+            -1.734246493640889,
+            0.5359035433773938
+          ],
+          "velocity_ned_mps": [
+            0.19716334774001892,
+            0.03241223559898224,
+            -0.016785151105372032
+          ],
+          "last_image_stamp_ns": 1795001435296675477
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99177.186061189,
+          "height_m": 1.4638019872509664,
+          "position_ned_m": [
+            2.3136831465639665,
+            -1.7314528030938352,
+            0.5361980127490337
+          ],
+          "velocity_ned_mps": [
+            0.19609645537615322,
+            0.032703356247667396,
+            0.04535662461485115
+          ],
+          "phase": "DESCENT",
+          "reason": "TAKEOVER_REQUEST_PENDING_CONTROLLED_GROUND_RECOVERY",
+          "local_fresh": true
+        },
+        {
+          "event": "synthetic_px4_confirms_pilot_left_offboard",
+          "received_at": 99177.18620057,
+          "height_m": 1.4638019872509664,
+          "position_ned_m": [
+            2.3136831465639665,
+            -1.7314528030938352,
+            0.5361980127490337
+          ],
+          "velocity_ned_mps": [
+            0.19609645537615322,
+            0.032703356247667396,
+            0.04535662461485115
+          ],
+          "stamp_us": 1795001435396484
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99177.338360008,
+          "height_m": 1.4638019872509664,
+          "position_ned_m": [
+            2.3136831465639665,
+            -1.7314528030938352,
+            0.5361980127490337
+          ],
+          "velocity_ned_mps": [
+            0.19609645537615322,
+            0.032703356247667396,
+            0.04535662461485115
+          ],
+          "phase": "SAFETY",
+          "reason": "OPERATOR_TAKEOVER_LATCHED",
+          "local_fresh": true
+        },
+        {
+          "event": "restore_inputs_while_armed",
+          "received_at": 99177.539953701,
+          "height_m": 1.4638019872509664,
+          "position_ned_m": [
+            2.3136831465639665,
+            -1.7314528030938352,
+            0.5361980127490337
+          ],
+          "velocity_ned_mps": [
+            0.19609645537615322,
+            0.032703356247667396,
+            0.04535662461485115
+          ],
+          "fault": "rc_takeover"
+        },
+        {
+          "event": "fault_revokes_active_motion",
+          "received_at": 99178.091274934,
+          "height_m": 1.43874864886422,
+          "position_ned_m": [
+            2.421999647068536,
+            -1.7133886667650742,
+            0.5612513511357798
+          ],
+          "velocity_ned_mps": [
+            0.19609645537615322,
+            0.032703356247667396,
+            0.04535662461485115
+          ],
+          "phase": "SAFETY",
+          "reason": "OPERATOR_TAKEOVER_LATCHED",
+          "phase_transition_s": 0.08086787900538184,
+          "safety_latched_s": 0.23325663100695238,
+          "first_descent_wire_s": 0.031578516005538404,
+          "first_invalid_intent_s": 0.046985023000161164,
+          "last_active_motion_wire_s": -0.01914905899320729,
+          "synthetic_frames_after_fault": 43,
+          "replayed_capture_stamp_ns": null
+        }
+      ],
+      "camera": "synthetic ROS Image into real vision_image_node",
+      "frames_injected": 738,
+      "metrics": {
+        "seconds_from_published_offboard_feedback_to_grant": 9.874613188992953,
+        "simulated_height_at_grant_m": 1.4474624673483931,
+        "simulated_ned_vz_at_grant_mps": -0.02446383971447513,
+        "peak_xy_error_during_climb_m": 0.19948817123267437,
+        "height_overshoot_m": 0.0,
+        "first_correction_height_m": 0.2006629446843502
+      }
+    },
+    "stream_loss": {
+      "scenario": "stream_loss",
+      "result": "PASS",
+      "error": null,
+      "events": [
+        {
+          "event": "native_phase",
+          "received_at": 99227.550398298,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "IDLE",
+          "reason": "IDLE_NO_AUTOMATIC_ARM",
+          "local_fresh": false
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99229.755173827,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_PRESTREAM",
+          "reason": "RC_PRESTREAM_WAIT_NEW_GROUND_REFERENCE",
+          "local_fresh": true
+        },
+        {
+          "event": "target_detected_on_ground_before_arm",
+          "received_at": 99231.611443145,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "current_ready_wait_arm",
+          "received_at": 99231.611526342,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "anchor_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99231.708979495,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_READY_WAIT_ARM",
+          "reason": "RC_READY_WAIT_CH5_MANUAL_ARM",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99231.959692692,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_ARMED_WAIT_NAVIGATION",
+          "reason": "RC_WAIT_MATCHED_SWITCH_AND_NEW_ARMED_STATUS",
+          "local_fresh": true
+        },
+        {
+          "event": "synthetic_manual_rc_arm_edge",
+          "received_at": 99231.959770497,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "synthetic_rc_selects_navigation_slot",
+          "received_at": 99232.059240343,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "slot": 1
+        },
+        {
+          "event": "synthetic_px4_new_offboard",
+          "received_at": 99232.2597292,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99232.409828239,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "ARMED_GROUND",
+          "reason": "RC_MANUAL_ARM_AND_NEW_OFFBOARD_CONFIRMED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99233.462422103,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "THRUST_RAMP",
+          "reason": "THRUST_RAMP",
+          "local_fresh": true
+        },
+        {
+          "event": "early_horizontal_disturbance",
+          "received_at": 99236.024902316,
+          "height_m": 0.030174781013999175,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            1.9698252189860008
+          ],
+          "velocity_ned_mps": [
+            0.22,
+            -0.14,
+            -0.15669955733080196
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99236.820295458,
+          "height_m": 0.27009628044043343,
+          "position_ned_m": [
+            2.4075673748108573,
+            -1.8502701476839687,
+            1.7299037195595666
+          ],
+          "velocity_ned_mps": [
+            0.12266410391408539,
+            -0.07805897566052361,
+            -0.40497738960867546
+          ],
+          "phase": "ASCEND",
+          "reason": "ASCEND",
+          "local_fresh": true
+        },
+        {
+          "event": "native_stable_1_5m_authorization",
+          "received_at": 99242.083519167,
+          "height_m": 1.4462284255573612,
+          "position_ned_m": [
+            2.2356884465578477,
+            -1.740892632159067,
+            0.5537715744426388
+          ],
+          "velocity_ned_mps": [
+            0.011262531806171976,
+            -0.0071670655508812055,
+            -0.025040504723665594
+          ],
+          "stamp_ns": 1795001500292779118
+        },
+        {
+          "event": "px4_model_counteracts_preheight_drift",
+          "received_at": 99242.084078942,
+          "height_m": 1.4462284255573612,
+          "position_ned_m": [
+            2.2356884465578477,
+            -1.740892632159067,
+            0.5537715744426388
+          ],
+          "velocity_ned_mps": [
+            0.011262531806171976,
+            -0.0071670655508812055,
+            -0.025040504723665594
+          ],
+          "sample": {
+            "received_at": 99236.689052548,
+            "stamp_us": 1795001494898864,
+            "position_ned_m": [
+              2.387918737070947,
+              -1.8377664690406372,
+              1.7807246635624272
+            ],
+            "velocity_ned_mps": [
+              0.18481938634521553,
+              -0.11761233639455526,
+              -0.3822933054555786
+            ],
+            "altitude_m": 0.2192753364375728,
+            "thrust_ned": [
+              -0.02320978417992592,
+              0.014769854955375195,
+              -0.4857112467288971
+            ],
+            "landed": false,
+            "offboard": true,
+            "armed": true,
+            "local_position_published": true
+          }
+        },
+        {
+          "event": "preheight_motion_limited_to_ground_anchor",
+          "received_at": 99242.084128294,
+          "height_m": 1.4462284255573612,
+          "position_ned_m": [
+            2.2356884465578477,
+            -1.740892632159067,
+            0.5537715744426388
+          ],
+          "velocity_ned_mps": [
+            0.011262531806171976,
+            -0.0071670655508812055,
+            -0.025040504723665594
+          ],
+          "native_targets": 196
+        },
+        {
+          "event": "exclusive_px4_trajectory_and_heartbeat",
+          "received_at": 99242.084229601,
+          "height_m": 1.4462284255573612,
+          "position_ned_m": [
+            2.2356884465578477,
+            -1.740892632159067,
+            0.5537715744426388
+          ],
+          "velocity_ned_mps": [
+            0.011262531806171976,
+            -0.0071670655508812055,
+            -0.025040504723665594
+          ],
+          "publishers": {
+            "trajectory_setpoint": 1,
+            "offboard_control_mode": 1,
+            "vehicle_attitude_setpoint": 0
+          }
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99242.18337987,
+          "height_m": 1.4486296364875186,
+          "position_ned_m": [
+            2.2367560690497097,
+            -1.7415720282655547,
+            0.5513703635124814
+          ],
+          "velocity_ned_mps": [
+            0.01050963652223833,
+            -0.006687950115444034,
+            -0.023919109045736204
+          ],
+          "phase": "HEIGHT_HOLD",
+          "reason": "HEIGHT_HOLD",
+          "local_fresh": true
+        },
+        {
+          "event": "track_withdraws_waypoint_and_moves",
+          "received_at": 99242.94820508,
+          "height_m": 1.4640250335970066,
+          "position_ned_m": [
+            2.2956644105634627,
+            -1.7343785532302523,
+            0.5359749664029934
+          ],
+          "velocity_ned_mps": [
+            0.1950769450608863,
+            0.031839284525987784,
+            -0.0168173921021901
+          ],
+          "intent": {
+            "received_at": 99242.933285012,
+            "stamp_ns": 1795001501143042815,
+            "valid": true,
+            "v": [
+              0.4937492246289624,
+              0.07881435896014448,
+              -0.0
+            ],
+            "attitude_sample_stamp_ns": 1795001501023327000,
+            "origin": "px4_local:1000:0:0:0:0:0"
+          },
+          "wire": {
+            "received_at": 99242.934569315,
+            "timestamp_us": 1795001501144462,
+            "position": [
+              null,
+              null,
+              0.5
+            ],
+            "velocity": [
+              0.47491395473480225,
+              0.07563769072294235,
+              null
+            ],
+            "acceleration": [
+              null,
+              null,
+              null
+            ],
+            "yaw": 0.11781444400548935,
+            "yaw_rate": null,
+            "height_m": 1.4638155895845002
+          }
+        },
+        {
+          "event": "inject_stream_loss",
+          "received_at": 99242.948288618,
+          "height_m": 1.4640250335970066,
+          "position_ned_m": [
+            2.2956644105634627,
+            -1.7343785532302523,
+            0.5359749664029934
+          ],
+          "velocity_ned_mps": [
+            0.1950769450608863,
+            0.031839284525987784,
+            -0.0168173921021901
+          ],
+          "last_image_stamp_ns": 1795001501143710951
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99243.385219385,
+          "height_m": 1.4647905648630313,
+          "position_ned_m": [
+            2.4126062320155186,
+            -1.714892891476567,
+            0.5352094351369687
+          ],
+          "velocity_ned_mps": [
+            0.2726389739169105,
+            0.04624050412498159,
+            0.09603551350578095
+          ],
+          "phase": "DESCENT",
+          "reason": "VISUAL_RECOVERY_HORIZONTAL_INPUT_REVOKED",
+          "local_fresh": true
+        },
+        {
+          "event": "fault_revokes_active_motion",
+          "received_at": 99243.636119856,
+          "height_m": 1.4189589610194577,
+          "position_ned_m": [
+            2.4677128358564904,
+            -1.7053577940069944,
+            0.5810410389805422
+          ],
+          "velocity_ned_mps": [
+            0.17045629944381624,
+            0.030310797520896552,
+            0.2453434575379361
+          ],
+          "phase": "DESCENT",
+          "reason": "VISUAL_RECOVERY_HORIZONTAL_INPUT_REVOKED",
+          "phase_transition_s": 0.4369307669985574,
+          "safety_latched_s": null,
+          "first_descent_wire_s": 0.33613714699458797,
+          "first_invalid_intent_s": 0.29444768399116583,
+          "last_active_motion_wire_s": 0.28678307800146285,
+          "synthetic_frames_after_fault": 0,
+          "replayed_capture_stamp_ns": null
+        },
+        {
+          "event": "restore_fresh_synthetic_images",
+          "received_at": 99243.636178275,
+          "height_m": 1.4189589610194577,
+          "position_ned_m": [
+            2.4677128358564904,
+            -1.7053577940069944,
+            0.5810410389805422
+          ],
+          "velocity_ned_mps": [
+            0.17045629944381624,
+            0.030310797520896552,
+            0.2453434575379361
+          ]
+        },
+        {
+          "event": "existing_automatic_protection_or_normal_landing",
+          "received_at": 99244.187135402,
+          "height_m": 1.2542351287522568,
+          "position_ned_m": [
+            2.5115595266680124,
+            -1.6967033852960576,
+            0.745764871247743
+          ],
+          "velocity_ned_mps": [
+            0.004481204543368611,
+            0.003384837810639919,
+            0.3232078612398202
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99248.597287008,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.3599866203035553,
+            -1.721784690603768,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.00808531328744965,
+            0.0006747491175324739,
+            0.0
+          ],
+          "phase": "LANDED",
+          "reason": "LANDED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99251.603319607,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.3787540450698046,
+            -1.7202184800131348,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.004705800103627634,
+            0.0003927163183813421,
+            0.0
+          ],
+          "phase": "REQUEST_DISARM",
+          "reason": "REQUEST_DISARM",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99252.054409978,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.3799184046345285,
+            -1.7201213099269725,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.004496130054054854,
+            0.0003752185819433708,
+            0.0
+          ],
+          "phase": "RELEASE_OFFBOARD",
+          "reason": "RELEASE_OFFBOARD",
+          "local_fresh": true
+        },
+        {
+          "event": "disarmed_landed_exit",
+          "received_at": 99252.054929978,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.3799184046345285,
+            -1.7201213099269725,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.004496130054054854,
+            0.0003752185819433708,
+            0.0
+          ]
+        }
+      ],
+      "camera": "synthetic ROS Image into real vision_image_node",
+      "frames_injected": 1052,
+      "metrics": {
+        "seconds_from_published_offboard_feedback_to_grant": 9.823789967005723,
+        "simulated_height_at_grant_m": 1.4462284255573612,
+        "simulated_ned_vz_at_grant_mps": -0.025040504723665594,
+        "peak_xy_error_during_climb_m": 0.20896808008491427,
+        "height_overshoot_m": 0.0,
+        "first_correction_height_m": 0.2192753364375728
+      }
+    },
+    "unplugged": {
+      "scenario": "unplugged",
+      "result": "PASS",
+      "error": null,
+      "events": [
+        {
+          "event": "native_phase",
+          "received_at": 99253.648668054,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "IDLE",
+          "reason": "IDLE_NO_AUTOMATIC_ARM",
+          "local_fresh": false
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99255.751371251,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_PRESTREAM",
+          "reason": "RC_PRESTREAM_WAIT_NEW_GROUND_REFERENCE",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99257.805776901,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_READY_WAIT_ARM",
+          "reason": "RC_READY_WAIT_CH5_MANUAL_ARM",
+          "local_fresh": true
+        },
+        {
+          "event": "current_ready_wait_arm",
+          "received_at": 99257.958457952,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "anchor_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99258.306787036,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_ARMED_WAIT_NAVIGATION",
+          "reason": "RC_WAIT_MATCHED_SWITCH_AND_NEW_ARMED_STATUS",
+          "local_fresh": true
+        },
+        {
+          "event": "synthetic_manual_rc_arm_edge",
+          "received_at": 99258.306870007,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "synthetic_rc_selects_navigation_slot",
+          "received_at": 99258.457216625,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "slot": 1
+        },
+        {
+          "event": "synthetic_px4_new_offboard",
+          "received_at": 99258.657307208,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99258.858016867,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "ARMED_GROUND",
+          "reason": "RC_MANUAL_ARM_AND_NEW_OFFBOARD_CONFIRMED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99259.909615319,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "THRUST_RAMP",
+          "reason": "THRUST_RAMP",
+          "local_fresh": true
+        },
+        {
+          "event": "early_horizontal_disturbance",
+          "received_at": 99262.42648749,
+          "height_m": 0.030241259704940626,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            1.9697587402950594
+          ],
+          "velocity_ned_mps": [
+            0.22,
+            -0.14,
+            -0.157122115829824
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99263.166138368,
+          "height_m": 0.2483832375826538,
+          "position_ned_m": [
+            2.3999695682820117,
+            -1.8454351797613986,
+            1.7516167624173462
+          ],
+          "velocity_ned_mps": [
+            0.14604711927863545,
+            -0.09293907512318429,
+            -0.39610595348689487
+          ],
+          "phase": "ASCEND",
+          "reason": "ASCEND",
+          "local_fresh": true
+        },
+        {
+          "event": "native_stable_1_5m_authorization",
+          "received_at": 99268.527425392,
+          "height_m": 1.4471911755283915,
+          "position_ned_m": [
+            2.2361942515601014,
+            -1.7412168497090337,
+            0.5528088244716086
+          ],
+          "velocity_ned_mps": [
+            0.010878479361236449,
+            -0.006926264480747413,
+            -0.024591311766564542
+          ],
+          "stamp_ns": 1795001526736536033
+        },
+        {
+          "event": "px4_model_counteracts_preheight_drift",
+          "received_at": 99268.528618491,
+          "height_m": 1.4471911755283915,
+          "position_ned_m": [
+            2.2361942515601014,
+            -1.7412168497090337,
+            0.5528088244716086
+          ],
+          "velocity_ned_mps": [
+            0.010878479361236449,
+            -0.006926264480747413,
+            -0.024591311766564542
+          ],
+          "sample": {
+            "received_at": 99263.06682694,
+            "stamp_us": 1795001521276088,
+            "position_ned_m": [
+              2.3832375792939766,
+              -1.8347875504596023,
+              1.7898095169757802
+            ],
+            "velocity_ned_mps": [
+              0.19524412453336287,
+              -0.1242462609124492,
+              -0.37696760450352973
+            ],
+            "altitude_m": 0.21019048302421983,
+            "thrust_ned": [
+              -0.028484193608164787,
+              0.018126310780644417,
+              -0.4872901439666748
+            ],
+            "landed": false,
+            "offboard": true,
+            "armed": true,
+            "local_position_published": true
+          }
+        },
+        {
+          "event": "preheight_motion_limited_to_ground_anchor",
+          "received_at": 99268.52875548,
+          "height_m": 1.4471911755283915,
+          "position_ned_m": [
+            2.2361942515601014,
+            -1.7412168497090337,
+            0.5528088244716086
+          ],
+          "velocity_ned_mps": [
+            0.010878479361236449,
+            -0.006926264480747413,
+            -0.024591311766564542
+          ],
+          "native_targets": 197
+        },
+        {
+          "event": "exclusive_px4_trajectory_and_heartbeat",
+          "received_at": 99268.529050938,
+          "height_m": 1.4471911755283915,
+          "position_ned_m": [
+            2.2361942515601014,
+            -1.7412168497090337,
+            0.5528088244716086
+          ],
+          "velocity_ned_mps": [
+            0.010878479361236449,
+            -0.006926264480747413,
+            -0.024591311766564542
+          ],
+          "publishers": {
+            "trajectory_setpoint": 1,
+            "offboard_control_mode": 1,
+            "vehicle_attitude_setpoint": 0
+          }
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99268.677150682,
+          "height_m": 1.4507186825998724,
+          "position_ned_m": [
+            2.2377239520990435,
+            -1.7421907526510179,
+            0.5492813174001278
+          ],
+          "velocity_ned_mps": [
+            0.009721938283844165,
+            -0.006189272036948916,
+            -0.0229507753767555
+          ],
+          "phase": "HEIGHT_HOLD",
+          "reason": "VISUAL_HORIZONTAL_WAIT_INPUT_POINT_HOLD",
+          "local_fresh": true
+        },
+        {
+          "event": "no_target_hold",
+          "received_at": 99271.531725946,
+          "height_m": 1.4870528632460027,
+          "position_ned_m": [
+            2.24645722936028,
+            -1.7477459593898452,
+            0.5129471367539973
+          ],
+          "velocity_ned_mps": [
+            0.0010289173964786187,
+            -0.000653567746713851,
+            -0.006089062894051961
+          ],
+          "lateral_error_m": 0.004199038327747052,
+          "camera": {
+            "ready": false,
+            "reason": "CAMERA_FRAME_STALE_OR_DISCONNECTED",
+            "configuration": "CONFIGURATION_CONFIRMED",
+            "source_id": "fc01_vision@251858-99254247636877",
+            "reset_counter": 0,
+            "calibration_id": "FIXTURE_ONLY_PINHOLE",
+            "extrinsics_id": "FIXTURE_ONLY_IDENTITY",
+            "target_model_id": "FIXTURE_ONLY_CIRCLE",
+            "stamp_kind": "v4l2_read_completion_system",
+            "read_seconds": 0,
+            "missing": [],
+            "exposure_timestamp_measured": false
+          }
+        },
+        {
+          "event": "existing_automatic_protection_or_normal_landing",
+          "received_at": 99271.531892918,
+          "height_m": 1.4870528632460027,
+          "position_ned_m": [
+            2.24645722936028,
+            -1.7477459593898452,
+            0.5129471367539973
+          ],
+          "velocity_ned_mps": [
+            0.0010289173964786187,
+            -0.000653567746713851,
+            -0.006089062894051961
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99271.632817562,
+          "height_m": 1.4862076506206199,
+          "position_ned_m": [
+            2.246562042244513,
+            -1.7478125364744663,
+            0.5137923493793801
+          ],
+          "velocity_ned_mps": [
+            0.0010100430072846355,
+            -0.0006415787454020548,
+            0.04992892666195453
+          ],
+          "phase": "DESCENT",
+          "reason": "LAND_ACCEPTED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99277.093189043,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.2500726901739334,
+            -1.750042498048247,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.00037786351697655535,
+            -0.00024001869168597512,
+            0.0
+          ],
+          "phase": "LANDED",
+          "reason": "LANDED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99280.150545815,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.250960849571867,
+            -1.7506066563941083,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.00021792998781960268,
+            -0.00013842900466849462,
+            0.0
+          ],
+          "phase": "REQUEST_DISARM",
+          "reason": "REQUEST_DISARM",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99280.451908577,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.2509936539135764,
+            -1.750627493693358,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.00021202280291983026,
+            -0.00013467676417029784,
+            0.0
+          ],
+          "phase": "SAFE_DISARMED",
+          "reason": "DISARM_ACK_AND_NEW_DISARMED_LANDED_STATUS",
+          "local_fresh": true
+        },
+        {
+          "event": "disarmed_landed_exit",
+          "received_at": 99280.506434138,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.2509936539135764,
+            -1.750627493693358,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.00021202280291983026,
+            -0.00013467676417029784,
+            0.0
+          ]
+        }
+      ],
+      "camera": "production V4L2 node, deliberately absent device",
+      "frames_injected": 0,
+      "metrics": {
+        "seconds_from_published_offboard_feedback_to_grant": 9.870118184000603,
+        "simulated_height_at_grant_m": 1.4471911755283915,
+        "simulated_ned_vz_at_grant_mps": -0.024591311766564542,
+        "peak_xy_error_during_climb_m": 0.20803393373210832,
+        "height_overshoot_m": 0.0,
+        "first_correction_height_m": 0.21019048302421983,
+        "hold_final_m": 0.004199038327747052,
+        "hold_last_2s_peak_m": 0.007911673878392398
+      }
+    },
+    "xy_reset": {
+      "scenario": "xy_reset",
+      "result": "PASS",
+      "error": null,
+      "events": [
+        {
+          "event": "native_phase",
+          "received_at": 99336.894813743,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "IDLE",
+          "reason": "IDLE_NO_AUTOMATIC_ARM",
+          "local_fresh": false
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99339.051329481,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_PRESTREAM",
+          "reason": "RC_PRESTREAM_WAIT_NEW_GROUND_REFERENCE",
+          "local_fresh": true
+        },
+        {
+          "event": "target_detected_on_ground_before_arm",
+          "received_at": 99341.005529717,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "current_ready_wait_arm",
+          "received_at": 99341.005619453,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "anchor_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99341.053344999,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_READY_WAIT_ARM",
+          "reason": "RC_READY_WAIT_CH5_MANUAL_ARM",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99341.354412043,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "RC_ARMED_WAIT_NAVIGATION",
+          "reason": "RC_WAIT_MATCHED_SWITCH_AND_NEW_ARMED_STATUS",
+          "local_fresh": true
+        },
+        {
+          "event": "synthetic_manual_rc_arm_edge",
+          "received_at": 99341.35456707,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "synthetic_rc_selects_navigation_slot",
+          "received_at": 99341.554640628,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "slot": 1
+        },
+        {
+          "event": "synthetic_px4_new_offboard",
+          "received_at": 99341.754821834,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99341.905478681,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "ARMED_GROUND",
+          "reason": "RC_MANUAL_ARM_AND_NEW_OFFBOARD_CONFIRMED",
+          "local_fresh": true
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99342.907155983,
+          "height_m": 0.0,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            2.0
+          ],
+          "velocity_ned_mps": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "phase": "THRUST_RAMP",
+          "reason": "THRUST_RAMP",
+          "local_fresh": true
+        },
+        {
+          "event": "early_horizontal_disturbance",
+          "received_at": 99345.519983691,
+          "height_m": 0.030189985759552673,
+          "position_ned_m": [
+            2.25,
+            -1.75,
+            1.9698100142404473
+          ],
+          "velocity_ned_mps": [
+            0.22,
+            -0.14,
+            -0.15684049176892678
+          ]
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99346.263134042,
+          "height_m": 0.24898094774999402,
+          "position_ned_m": [
+            2.4001904229300193,
+            -1.8455757236555468,
+            1.751019052250006
+          ],
+          "velocity_ned_mps": [
+            0.1452520884640373,
+            -0.09243314744341302,
+            -0.3965451588922686
+          ],
+          "phase": "ASCEND",
+          "reason": "ASCEND",
+          "local_fresh": true
+        },
+        {
+          "event": "native_stable_1_5m_authorization",
+          "received_at": 99351.724768145,
+          "height_m": 1.4496820668471602,
+          "position_ned_m": [
+            2.237265967761822,
+            -1.741896539308787,
+            0.5503179331528398
+          ],
+          "velocity_ned_mps": [
+            0.010091963655681,
+            -0.00642214315871117,
+            -0.02343394476380816
+          ],
+          "stamp_ns": 1795001609933920562
+        },
+        {
+          "event": "px4_model_counteracts_preheight_drift",
+          "received_at": 99351.725705196,
+          "height_m": 1.4496820668471602,
+          "position_ned_m": [
+            2.237265967761822,
+            -1.741896539308787,
+            0.5503179331528398
+          ],
+          "velocity_ned_mps": [
+            0.010091963655681,
+            -0.00642214315871117,
+            -0.02343394476380816
+          ],
+          "sample": {
+            "received_at": 99346.179063313,
+            "stamp_us": 1795001604388322,
+            "position_ned_m": [
+              2.386433652832041,
+              -1.8368214154355718,
+              1.7834954358004742
+            ],
+            "velocity_ned_mps": [
+              0.18648521541328125,
+              -0.11867240931672003,
+              -0.3809710817551494
+            ],
+            "altitude_m": 0.2165045641995258,
+            "thrust_ned": [
+              -0.023232655599713326,
+              0.01478442270308733,
+              -0.48609018325805664
+            ],
+            "landed": false,
+            "offboard": true,
+            "armed": true,
+            "local_position_published": true
+          }
+        },
+        {
+          "event": "preheight_motion_limited_to_ground_anchor",
+          "received_at": 99351.725807249,
+          "height_m": 1.4496820668471602,
+          "position_ned_m": [
+            2.237265967761822,
+            -1.741896539308787,
+            0.5503179331528398
+          ],
+          "velocity_ned_mps": [
+            0.010091963655681,
+            -0.00642214315871117,
+            -0.02343394476380816
+          ],
+          "native_targets": 199
+        },
+        {
+          "event": "exclusive_px4_trajectory_and_heartbeat",
+          "received_at": 99351.726030132,
+          "height_m": 1.4496820668471602,
+          "position_ned_m": [
+            2.237265967761822,
+            -1.741896539308787,
+            0.5503179331528398
+          ],
+          "velocity_ned_mps": [
+            0.010091963655681,
+            -0.00642214315871117,
+            -0.02343394476380816
+          ],
+          "publishers": {
+            "trajectory_setpoint": 1,
+            "offboard_control_mode": 1,
+            "vehicle_attitude_setpoint": 0
+          }
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99351.773952983,
+          "height_m": 1.4507648039473897,
+          "position_ned_m": [
+            2.237728499736089,
+            -1.742190877086497,
+            0.5492351960526103
+          ],
+          "velocity_ned_mps": [
+            0.009720454410013499,
+            -0.006185727356874612,
+            -0.022931675863983734
+          ],
+          "phase": "HEIGHT_HOLD",
+          "reason": "VISUAL_HORIZONTAL_WAIT_INPUT_POINT_HOLD",
+          "local_fresh": true
+        },
+        {
+          "event": "track_withdraws_waypoint_and_moves",
+          "received_at": 99352.545618812,
+          "height_m": 1.4656484863890755,
+          "position_ned_m": [
+            2.297587346118411,
+            -1.7345882814180846,
+            0.5343515136109246
+          ],
+          "velocity_ned_mps": [
+            0.19769846033141944,
+            0.0324659012538342,
+            -0.016071438272337594
+          ],
+          "intent": {
+            "received_at": 99352.520639382,
+            "stamp_ns": 1795001610730369939,
+            "valid": true,
+            "v": [
+              0.4937444071107249,
+              0.07884453339882773,
+              -0.0
+            ],
+            "attitude_sample_stamp_ns": 1795001610628991000,
+            "origin": "px4_local:1000:0:0:0:0:0"
+          },
+          "wire": {
+            "received_at": 99352.525529011,
+            "timestamp_us": 1795001610735191,
+            "position": [
+              null,
+              null,
+              0.5
+            ],
+            "velocity": [
+              0.474913626909256,
+              0.07569549977779388,
+              null
+            ],
+            "acceleration": [
+              null,
+              null,
+              null
+            ],
+            "yaw": 0.12865528464317322,
+            "yaw_rate": null,
+            "height_m": 1.4653361100199935
+          }
+        },
+        {
+          "event": "inject_xy_reset",
+          "received_at": 99352.545764938,
+          "height_m": 1.4656484863890755,
+          "position_ned_m": [
+            2.297587346118411,
+            -1.7345882814180846,
+            0.5343515136109246
+          ],
+          "velocity_ned_mps": [
+            0.19769846033141944,
+            0.0324659012538342,
+            -0.016071438272337594
+          ],
+          "last_image_stamp_ns": 1795001610739735009
+        },
+        {
+          "event": "native_phase",
+          "received_at": 99352.677036681,
+          "height_m": 1.461435437296264,
+          "position_ned_m": [
+            2.3237714945960364,
+            -1.7302392855893467,
+            0.5385645627037361
+          ],
+          "velocity_ned_mps": [
+            0.18068493810122913,
+            0.030434487373580406,
+            0.09836983261747229
+          ],
+          "phase": "SAFETY",
+          "reason": "PX4_TAKEOFF_POSITION_FEEDBACK_OR_FRAME_INVALID",
+          "local_fresh": true
+        },
+        {
+          "event": "restore_inputs_while_armed",
+          "received_at": 99352.879440565,
+          "height_m": 1.4274592176428014,
+          "position_ned_m": [
+            2.354781690265078,
+            -1.7248926929791206,
+            0.5725407823571985
+          ],
+          "velocity_ned_mps": [
+            0.13912329102801288,
+            0.0243743170834087,
+            0.20315504843830173
+          ],
+          "fault": "xy_reset"
+        },
+        {
+          "event": "fault_revokes_active_motion",
+          "received_at": 99353.431674048,
+          "height_m": 1.3153656872317145,
+          "position_ned_m": [
+            2.4315448372979445,
+            -1.711443835693801,
+            0.6846343127682856
+          ],
+          "velocity_ned_mps": [
+            0.13912329102801288,
+            0.0243743170834087,
+            0.20315504843830173
+          ],
+          "phase": "SAFETY",
+          "reason": "PX4_TAKEOFF_POSITION_FEEDBACK_OR_FRAME_INVALID",
+          "phase_transition_s": 0.1312717429973418,
+          "safety_latched_s": 0.13137658100458793,
+          "first_descent_wire_s": 0.029964209999889135,
+          "first_invalid_intent_s": 0.025559226007317193,
+          "last_active_motion_wire_s": -0.020235926989698783,
+          "synthetic_frames_after_fault": 38,
+          "replayed_capture_stamp_ns": null
+        }
+      ],
+      "camera": "synthetic ROS Image into real vision_image_node",
+      "frames_injected": 735,
+      "metrics": {
+        "seconds_from_published_offboard_feedback_to_grant": 9.969946311000967,
+        "simulated_height_at_grant_m": 1.4496820668471602,
+        "simulated_ned_vz_at_grant_mps": -0.02343394476380816,
+        "peak_xy_error_during_climb_m": 0.20801030582007993,
+        "height_overshoot_m": 0.0,
+        "first_correction_height_m": 0.2165045641995258
+      }
+    }
+  }
+}

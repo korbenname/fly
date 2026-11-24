@@ -1,0 +1,87 @@
+{
+  "candidate_code_commit": "5c4dc14ddd84371d60387e7ff5227c94b7b6ee47",
+  "environment": "Ubuntu 22.04 x86_64 / ROS2 Humble / FastDDS localhost",
+  "production_fixes": [
+    "pending target starvation under faster image stream",
+    "bridge/native asynchronous and decimated attitude race via additive atomic snapshot"
+  ],
+  "passed": {
+    "python_unique_methods": 216,
+    "python_failures": 0,
+    "python_errors": 0,
+    "cpp_ctest": 88,
+    "humble_packages": 4,
+    "generated_message_contracts": 11,
+    "horizontal_matrix_scenarios": 11,
+    "horizontal_fault_continuous_descents": 10,
+    "preheight_flood_normal_land": 1,
+    "native_safety_scenarios": 9,
+    "light_ros_horizontal_checks": 8,
+    "light_ros_decimated_attitude_checks": 9,
+    "light_ros_native_gate_checks": 12,
+    "camera_cpp_to_mission_ros_checks": 12,
+    "odometry_adapter_ros_checks": 7,
+    "actual_node_snapshot_unittest": 1,
+    "asan_ubsan_instrumented_programs": 2,
+    "step5_baseline_control_sink_records_exact": 1178,
+    "step5_baseline_control_state_samples_exact": 707,
+    "full_supervisor_native_dds_scenarios": 4,
+    "full_scenarios_with_actual_cpp_image_node": 3
+  },
+  "counting": "Suite/method/scenario/contract/marker counts are separate and overlap; do not sum as one test total. 37 related and 36 reviewer unit runs are repetitions/subsets of 216 plus native adapter method.",
+  "final_failures": [
+    {
+      "check": "historical Stage2 powered full JSON byte comparison",
+      "result": "FAIL",
+      "cause": "27 additive diagnostic fields; common state and all control sinks exact"
+    },
+    {
+      "check": "historical Stage2 fault/recovery full JSON byte comparison",
+      "result": "FAIL",
+      "cause": "27 additive diagnostic fields; common state and all control sinks exact"
+    }
+  ],
+  "repairs_of_test_infrastructure": [
+    "array B Image payload avoids slow per-element conversion",
+    "bounded test-only 16MiB image SHM profile",
+    "reuse supervisor single IPC connection",
+    "optional capture_messages fixture preserves old sink instrumentation"
+  ],
+  "evidence": {
+    "ros": "ROS_FINAL.tar.gz",
+    "native": "NATIVE_FINAL.tar.gz",
+    "python": "python-final.json",
+    "interfaces": "generated-interfaces.json",
+    "causal": "CAUSAL_TRACE.jsonl"
+  },
+  "limits": [
+    "no ARM64 build of this candidate",
+    "no physical OrangePi/camera/systemd/Agent/UART",
+    "no PX4 firmware receive or adoption",
+    "no physical flight or horizontal dynamics/drift",
+    "model descent enters existing recovery timeout",
+    "DDS-loss external ground is cleanup only",
+    "second task ends at fresh READY",
+    "publisher graph check only end snapshot, not continuous"
+  ],
+  "unchanged": [
+    "native flight config",
+    "altitude/RC/runtime/control publication algorithm",
+    "PX4 params",
+    "installer maintenance policy",
+    "visual disabled defaults"
+  ],
+  "push": false,
+  "deploy": false,
+  "source_boundary": "Compared with Step5 baseline, no diff in native include/config, Runtime/Core/RC/publication algorithm or existing installer/service modules. Node change is additive observer only.",
+  "reviews": [
+    "independent-final-code-review.md",
+    "independent-final-evidence-review.md",
+    "independent-final-report-review.md"
+  ],
+  "document_commands_recompiled_sanitizers": {
+    "programs": 2,
+    "result": "PASS",
+    "note": "Archived actual-node and final-boundary drivers recompiled at new location and run with leak/UB checks; repetitions, not extra unique tests."
+  }
+}

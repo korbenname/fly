@@ -32,13 +32,13 @@ class Core {
 public:
   // 配置校验后才构造垂向控制器；只有动力门开启才存在vertical_，构造本身不授予动力。
   explicit Core(Config config = {})
-      : c_(config), visual_(config.visual), feedback_guard_(config.feedback_guard),
+      : c_(config), visual_(config.visual), horizontal_(config.visual), feedback_guard_(config.feedback_guard),
         recovery_feedback_guard_(config.feedback_guard) {
     c_.validate();
     // vertical 是局部配置副本，只调整此控制器使用的地面下界；不改调用者传入的 YAML。
     // unique_ptr 表示垂向控制器由 Core 独占；对象随 Core 销毁，不需要在每条早退手工 delete。
     // 动作门关闭时指针为空；后面的动力阶段必须由原准入门保证，不能凭有一个 step 调用绕过。
-    if (c_.flight_actions_enabled) {
+    if (c_.flight_actions_enabled && !c_.px4_takeoff_position_hold) {
       auto vertical = c_.vertical;
       vertical.ground_lower_margin = c_.height_lower_margin_m;
       vertical_ = std::make_unique<VerticalController>(vertical);
@@ -79,11 +79,18 @@ public:
   const vision::Result& visual_result() const {
     return visual_result_;
   }
+  const std::optional<horizontal::PositionIntent>& position_intent() const {
+    return horizontal_.position_intent();
+  }
+  const std::optional<std::array<double, 2>>& position_descent_hold() const {
+    return position_descent_hold_;
+  }
   // 视觉计划必须仍在导航授权阶段、未过控制时限，且实际状态/目标合同此刻仍有效。
   bool visual_current(const Feedback& s, double now) const {
-    return c_.visual.enabled && navigation_allowed() && visual_result_.active &&
+    return c_.visual.enabled && navigation_current(s, now) && visual_result_.active &&
            now >= visual_plan_at_ && now - visual_plan_at_ <= c_.stall_seconds &&
-           visual_.current(s.visual_input, now);
+           (c_.px4_horizontal_enabled ? horizontal_.current(s.horizontal_input, now)
+                                      : visual_.current(s.visual_input, now));
   }
   // 视觉撤销立即停止运动并请求既有下降路径；失败仍锁存故障，不另造绕过健康门的降落输出。
   void visual_land(const Feedback& s, double now, const std::string& reason) {
@@ -91,6 +98,7 @@ public:
     visual_result_.request_land = true;
     visual_result_.reason = reason;
     visual_.stop();
+    horizontal_.stop();
     const auto failure = descend(s, now);
     if (!failure.empty())
       fault(failure);
@@ -209,7 +217,25 @@ public:
     return liftoff_evidenced_;
   }
   bool target_height_settled() const {
-    return liftoff_evidenced_ && phase_ == Phase::HeightHold;
+    return liftoff_evidenced_ && phase_ == Phase::HeightHold &&
+           target_height_settling_.evidence().confirmed;
+  }
+  const TargetHeightEvidence& target_height_evidence() const {
+    return target_height_settling_.evidence();
+  }
+  // 最终任务高度，单位m、相对本次地面向上为正；不是正在移动的command_height_轨迹点。
+  double target_height() const {
+    return target_;
+  }
+  // 最终发布与对外授权必须使用当前快照；无参navigation_allowed只描述最近控制观察。
+  // 离开目标容差只撤销水平权限，垂向HeightHold闭环继续收敛，不因高度偏差切断推力。
+  bool navigation_current(const Feedback& s, double now) const {
+    return navigation_allowed() && health(s).empty() && s.armed && s.offboard && !s.landed &&
+           !s.kill && !s.operator_takeover && s.z_reset == z_reset_ && s.vz_reset == vz_reset_ &&
+           s.quat_reset == reference_.reset_counter() &&
+           std::abs(z0_ - s.z - target_) <= c_.height_tolerance &&
+           std::abs(s.vz) <= c_.speed_tolerance &&
+           target_height_settling_.current(c_, s.vertical_sample_stamp, now);
   }
   // 必须已证实离地且目标高度稳定、仍处任务托管、非bench、无交接请求，才可启用水平导航。
   bool navigation_allowed() const {
@@ -236,7 +262,7 @@ public:
     case Phase::Ascend:
       return liftoff_evidenced_ ? "CLIMBING" : "LIFTOFF_UNCONFIRMED";
     case Phase::HeightHold:
-      return navigation_allowed() ? "TARGET_SETTLED" : "LIFTOFF_UNCONFIRMED";
+      return navigation_allowed() ? "TARGET_SETTLED" : "TARGET_HEIGHT_SETTLING";
     default:
       return "LANDING";
     }
@@ -301,6 +327,9 @@ public:
   }
   double reference_z() const {
     return z0_;
+  }
+  const TakeoffPositionAnchor& takeoff_position_anchor() const {
+    return rc_start_.position_anchor();
   }
   std::uint8_t reference_z_reset() const {
     return z_reset_;
@@ -392,7 +421,10 @@ public:
          phase_ == Phase::Px4LandPending) &&
         land_dwell_first_time_ >= 0 && !normal_ground(c_.speed_tolerance))
       return true;
-    if (phase_ == Phase::Ascend && dwell_since_ >= 0 &&
+    // 到高之后也保留这道回调边界：越界帧必须立即让step撤销水平授权，
+    // 不能被同一轮读取中随后恢复正常的尾帧覆盖。
+    if ((phase_ == Phase::Ascend || phase_ == Phase::HeightHold) &&
+        target_height_settling_.evidence().samples &&
         (std::abs(height - target_) > c_.height_tolerance || std::abs(vz) > c_.speed_tolerance))
       return true;
     if (phase_ == Phase::ThrustRamp) {
@@ -897,7 +929,9 @@ public:
   }
   // 降落/取消入口先撤销视觉；按尚未加入RC、尚未起飞、未决Arm、bench和普通飞行分别处理。
   std::string descend(const Feedback& s, double now) {
+    capture_position_descent_hold(s);
     visual_.stop();
+    horizontal_.stop();
     visual_result_.active = false;
     if (c_.rc_navigation_enabled && !rc_joined_) {
       release_to_operator("RC_PREPARATION_CANCELLED_NO_AUTOMATIC_ARM_OR_DISARM");
@@ -1088,6 +1122,16 @@ public:
         return reject("ACTIVE_QUATERNION_RESET");
       // 垂向事件检查有效位、有限值、重置、累计跳变及物理包络；同一估计器导数检查保留。
     } else if (source == SafetyEvent::Vertical) {
+      if (c_.px4_takeoff_position_hold &&
+          (!s.takeoff_position.usable() ||
+           (estimator_active && !takeoff_position_anchor().matches(s.takeoff_position))))
+        return reject("PX4_TAKEOFF_POSITION_FEEDBACK_OR_FRAME_INVALID");
+      if (c_.px4_takeoff_position_hold && s.landed &&
+          (!rc_joined_ || phase_ == Phase::ArmedGround) &&
+          (std::hypot(s.takeoff_position.vx, s.takeoff_position.vy) > c_.ground_vz_tolerance ||
+           (estimator_active &&
+            takeoff_position_anchor().error(s.takeoff_position) > c_.height_tolerance)))
+        return reject("RC_TAKEOFF_POSITION_GROUND_CHANGED");
       if (!s.z_valid || !s.vz_valid)
         return reject("Z_VZ_STALE_OR_INVALID");
       if (!std::isfinite(s.z) || !std::isfinite(s.vz) ||
@@ -1134,6 +1178,9 @@ public:
         return reject("RC_PRESTREAM_GROUND_CHANGED");
     } else if (source == SafetyEvent::Status || source == SafetyEvent::Failsafe ||
                source == SafetyEvent::Authority) {
+      if (c_.px4_takeoff_position_hold && source == SafetyEvent::Failsafe &&
+          !s.takeoff_position.usable())
+        return reject("PX4_TAKEOFF_POSITION_FEEDBACK_OR_FRAME_INVALID");
       if (c_.rc_navigation_enabled && !rc_joined_) {
         const auto mask = queued_safety_mask(s);
         if (mask) {
@@ -1266,6 +1313,11 @@ public:
     if (!why.empty()) {
       fault_class_ = s.armed ? FaultClass::UnknownAirborne : FaultClass::GroundAbort;
       fault(why);
+      return out;
+    }
+    if (c_.px4_takeoff_position_hold &&
+        !takeoff_position_anchor().matches(s.takeoff_position)) {
+      fault("PX4_TAKEOFF_POSITION_FRAME_CHANGED");
       return out;
     }
     if (external_bench_disarm_pending_ && s.armed) {
@@ -1486,6 +1538,11 @@ public:
         fault("HEIGHT_OR_SPEED_ENVELOPE_EXCEEDED");
         return {};
       }
+      if (c_.px4_takeoff_position_hold &&
+          takeoff_position_anchor().error(s.takeoff_position) > c_.takeoff_position_safety_radius()) {
+        fault("PX4_TAKEOFF_POSITION_RADIUS_EXCEEDED");
+        return {};
+      }
       // 实测姿态有效但较陡，仍然是应继续接收的反馈，不能在本路线自动变成姿态数值无效。
       // 无效/NaN四元数由health和最终边界拒绝，reset仍由上方保护；
       // 把有效大姿态错误变成Safety曾会中断接收，不能重新引入这种规则。
@@ -1545,6 +1602,12 @@ public:
       if (!advance_requested_arm(s, now, arm, elapsed, out))
         return {};
     } else if (phase_ == Phase::ArmedGround) {
+      if (c_.px4_takeoff_position_hold &&
+          (takeoff_position_anchor().error(s.takeoff_position) > c_.height_tolerance ||
+           std::hypot(s.takeoff_position.vx, s.takeoff_position.vy) > c_.ground_vz_tolerance)) {
+        fault("RC_TAKEOFF_POSITION_GROUND_CHANGED");
+        return {};
+      }
       // 人工RC或程序路线汇合后，按同帧 armed/Offboard/着地/高度/速度证据决定动力前观察。
       // 位掩码保留“同一触发帧哪些条件同时失败”：1未解锁、2非Offboard、4未着地、
       // 8高度超差、16垂速超差。| 是按位或，便于报告一次故障中的多个事实，不是互斥原因。
@@ -1615,9 +1678,11 @@ public:
                         phase_ == Phase::Px4LandPending;
       // 已飞行却报着地先撤销导航，继续受监督下降并重新采触地证据；不能据一帧立即断动力。
       if (!descending && s.landed) {
+        capture_position_descent_hold(s);
         // 检测器在飞行阶段报着地只会撤销导航，不足以立即去掉动力。
         // 继续受保护的垂向控制，重新累计正常的严格新触地窗口。
         visual_.stop();
+        horizontal_.stop();
         visual_result_.active = false;
         ground_abort_ = false;
         // 此处捕获“当前实际高度”作为下降轨迹起点；target_ 是任务目标，不是当前高度。
@@ -1641,7 +1706,7 @@ public:
         }
         reason_ = "ASCENT_TIMEOUT_SUPERVISED_RECOVERY";
         if (phase_ == Phase::PoweredGround) {
-          if (!apply(vertical_->ramp(0, elapsed), out, now))
+          if (!apply_ramp(0, elapsed, out, now))
             return {};
           out.target_height = command_height_;
           return out;
@@ -1686,11 +1751,33 @@ public:
           reason_ = "PX4_LAND_ACK_OR_MODE_UNRESOLVED_NO_RETRY_GUARDED_RECOVERY";
         }
       }
+      // 每个严格新原始高度/垂速样本独立累计稳定窗。源跨度与主机跨度均须达标；
+      // 已HeightHold后离开容差也立即撤销水平导航，保留原垂向闭环纠偏。
+      const bool at_target = liftoff_evidenced_ && !descending && !s.landed &&
+                             command_height_ >= target_ &&
+                             std::abs(out.height - target_) <= c_.height_tolerance &&
+                             std::abs(out.speed) <= c_.speed_tolerance;
+      const bool settled = target_height_settling_.observe(
+          c_, at_target, s.vertical_sample_stamp, out.height, out.speed, now);
       // 视觉开关与离地/定高/权限全部成立才调用已有外环；新速度诊断并未自动连接到这里。
       // && 短路保证视觉关闭时完全跳过本外环；当前无视觉1.5m路线不依赖视觉消息。
       // visual_.step 同时验证输入和推进外环目标；其结果仍只是给原高度/姿态链的计划。
-      if (navigation_allowed() && c_.visual.enabled) {
-        visual_result_ = visual_.step(s.visual_input, now, out.height, yaw_reference(), elapsed);
+      const bool horizontal_motion_authorized = c_.px4_position_mission_enabled
+          ? at_target && settled && navigation_current(s, now) : navigation_allowed();
+      // 新PX4水平路线已经工作后，即使高度暂离稳定窗，也要继续消费故障/失锁，不能等
+      // 再次到高才处理。motion_authorized=false只监测，不给水平/偏航计划发布权限。
+      const bool monitor_horizontal = c_.px4_horizontal_enabled && horizontal_.started() && !descending;
+      if (c_.visual.enabled && (!c_.px4_position_mission_enabled || !descending) &&
+          (horizontal_motion_authorized || monitor_horizontal)) {
+        const auto& anchor = takeoff_position_anchor();
+        const horizontal::PositionMissionPolicy position_policy{{anchor.x, anchor.y, z0_},
+            c_.px4_position_waypoint_enabled, c_.px4_position_waypoint_origin_id,
+            c_.px4_position_waypoint_north_m, c_.px4_position_waypoint_east_m};
+        visual_result_ = c_.px4_horizontal_enabled
+            ? horizontal_.step(s.horizontal_input, now, target_, yaw_reference(), elapsed,
+                               horizontal_motion_authorized,
+                               c_.px4_position_mission_enabled ? &position_policy : nullptr)
+            : visual_.step(s.visual_input, now, out.height, yaw_reference(), elapsed);
         if (visual_result_.request_land) {
           visual_land(s, now, visual_result_.reason);
           descending = true;
@@ -1698,9 +1785,15 @@ public:
           if (phase_ == Phase::Safety)
             return {};
         } else if (visual_result_.active) {
-          target_ = visual_result_.target_height;
-          out.q = visual_result_.q;
-          out.visual_motion = true;
+          // PX4水平路线从不接受航点z或视觉速度的高度权限；原生本轮目标1.5m保持不变。
+          if (!c_.px4_horizontal_enabled)
+            target_ = visual_result_.target_height;
+          if (c_.px4_position_mission_enabled)
+            out.position_intent = position_intent();
+          else {
+            out.q = visual_result_.q;
+            out.visual_motion = true;
+          }
           visual_plan_at_ = now;
           reason_ = "VISUAL_" + visual_result_.reason;
         }
@@ -1708,14 +1801,9 @@ public:
       // 同一闭环处理轨迹前馈、速度反馈和推力限幅；失败直接保留原fault，不补发默认零推力。
       if (!height_feedback(s, out, now, elapsed, descending))
         return {};
-      // 只有轨迹到目标且实测高度/向上速度连续稳定，才HeightHold，随后才允许导航。
-      // dwell 要求连续满足：轨迹已到目标、当前不报着地、实测高度误差和速度均足够小。
-      // 目标值到了1.5m不能直接当成实测飞机已到1.5m；settle计时中断就重新累计。
-      if (phase_ == Phase::Ascend && liftoff_evidenced_ &&
-          dwell(command_height_ >= target_ && !s.landed &&
-                    std::abs(out.height - target_) <= c_.height_tolerance &&
-                    std::abs(out.speed) <= c_.speed_tolerance,
-                now, c_.settle_seconds))
+      // 目标轨迹到达和真实多样本稳定证据均满足才进入HeightHold。
+      // settled由本周期视觉前的当前反馈计算，避免用目标值/重复缓存完成到高。
+      if (phase_ == Phase::Ascend && settled)
         enter(Phase::HeightHold, now);
       // 触地需新的land样本及小高度/小速度连续成立；at_rest留到减推力后再要求，避免电机振动造成循环依赖。
       if (descending && dwell_land(s.landed && s.land_stamp > land_baseline_ &&
@@ -1776,15 +1864,13 @@ public:
           land_baseline_ = s.land_stamp;
           enter(Phase::Descent, now);
           command_height_ = std::max(0., out.height);
-          const auto hold = vertical_->step(vertical_sample(s), command_height_, elapsed);
-          if (!apply(hold, out, now))
+          if (!apply_height_control(s, elapsed, out, now))
             return {};
         } else {
           // ramp(0) 的目标是零，不表示本帧瞬间置零；它沿原 slew 每秒变化限制逐渐减推力。
-          auto control = vertical_->ramp(0, elapsed);
-          if (!apply(control, out, now))
+          if (!apply_ramp(0, elapsed, out, now))
             return {};
-          if (dwell_land(s.at_rest && control.thrust <= 1e-9, now, c_.touchdown_dwell_seconds,
+          if (dwell_land(s.at_rest && -out.thrust[2] <= 1e-9, now, c_.touchdown_dwell_seconds,
                          s.land_stamp)) {
             // 后续Landed继续新样本停留和最终发布检查，这里还不能宣称Disarm完成。
             const auto first = land_dwell_first_stamp_;
@@ -1807,8 +1893,7 @@ public:
           land_baseline_ = s.land_stamp;
           enter(Phase::Descent, now);
           command_height_ = std::max(0., out.height);
-          const auto hold = vertical_->step(vertical_sample(s), command_height_, elapsed);
-          if (!apply(hold, out, now))
+          if (!apply_height_control(s, elapsed, out, now))
             return {};
           // 反弹转场帧就计算受限闭环，仍走同一最终发布门，不故意留一个控制空帧。
         } else {
@@ -1817,14 +1902,13 @@ public:
           return {};
         }
       } else {
-        auto control = vertical_->ramp(0, elapsed);
-        if (!apply(control, out, now))
+        if (!apply_ramp(0, elapsed, out, now))
           return {};
         const bool confirmed = dwell_land(s.at_rest && s.land_stamp > land_baseline_ &&
                                               std::abs(out.height) <= c_.height_tolerance &&
                                               std::abs(out.speed) <= c_.speed_tolerance,
                                           now, c_.landing_seconds, s.land_stamp);
-        if (confirmed && control.thrust <= 1e-9) {
+        if (confirmed && -out.thrust[2] <= 1e-9) {
           if (disarm_in_flight_) {
             // 这个标志表示已有上锁意图/事务仍待结果；已过 sink 的400不能被反弹撤回。
             // 不允许重新落地后盲发第二条400，因为迟到ACK仍可能属于前一条。
@@ -1927,14 +2011,14 @@ public:
           land_baseline_ = s.land_stamp;
           enter(Phase::Descent, now);
           command_height_ = std::max(0., out.height);
-          if (!apply(vertical_->step(vertical_sample(s), command_height_, elapsed), out, now))
+          if (!apply_height_control(s, elapsed, out, now))
             return {};
           reason_ = "DISARM_SUBMITTED_GROUND_BOUNCE_SUPERVISED_DESCENT";
         } else if (arm.rejected && !disarm_command_committed_) {
           disarm_in_flight_ = false;
           land_baseline_ = s.land_stamp;
           enter(Phase::PoweredGround, now);
-          if (!apply(vertical_->ramp(0, elapsed), out, now))
+          if (!apply_ramp(0, elapsed, out, now))
             return {};
           reason_ = "DISARM_REJECTED_NEW_GROUND_PROOF_REQUIRED";
         } else if (arm.ambiguous || arm.rejected || arm.timed_out ||
@@ -2030,6 +2114,12 @@ public:
   }
 
 private:
+  // 任务移动后退出时保留当前地面投影位置，撤掉旧航点和速度，下降时留在该处。
+  void capture_position_descent_hold(const Feedback& s) {
+    if (c_.px4_position_mission_enabled && horizontal_.moved() && !position_descent_hold_ &&
+        takeoff_position_anchor().matches(s.takeoff_position))
+      position_descent_hold_ = {s.takeoff_position.x, s.takeoff_position.y};
+  }
   // 推进程序 Arm 事务阶段；s 为同帧 NED/wxyz 反馈，now/elapsed 为单调秒，arm 为 Runtime 事务摘要。
   // 返回 false 对应原 step 的空计划早退，true 则继续原公共尾部；通过 out 引用保留同帧受限下降/零输出。
   // 仅写 Core 的 Arm/恢复阶段、证据及垂向状态，不发送命令；必须在公共健康/权限/参考检查之后调用。
@@ -2125,17 +2215,24 @@ private:
       reason_ = "LIFTOFF_TIMEOUT_ACTIVE_POWER_RECOVERY";
       // 超时后不再加速，连转场当帧也必须通过原slew减推力；默认零Output不是渐变减推力。
       if (phase_ == Phase::PoweredGround) {
-        const auto reduce = vertical_->ramp(0, elapsed);
-        if (!apply(reduce, out, now))
+        if (!apply_ramp(0, elapsed, out, now))
           return false;
       } else {
         command_height_ = std::max(0., out.height);
-        const auto hold = vertical_->step(vertical_sample(s), command_height_, elapsed);
-        if (!apply(hold, out, now))
+        if (!apply_height_control(s, elapsed, out, now))
           return false;
       }
     }
     if (phase_ == Phase::ThrustRamp) {
+      if (c_.px4_takeoff_position_hold) {
+        // PX4 依据上升目标启动自己的推力斜坡。FC01 只推进相对高度轨迹并查离地证据。
+        if (!height_feedback(s, out, now, elapsed, false))
+          return false;
+        if (out.height >= c_.liftoff_height_m)
+          ramp_feedback_active_ = true;
+        observe_liftoff(s, out, now);
+        return true;
+      }
       // 开环和提前反馈共用原起飞时间斜坡上限；高度估计漂移可以触发制动，
       // 却不能使推力增加速度超过已配置斜坡。
       // 第一段按时间到hover候选，第二段增加有界reserve；时间/推力只能改变计划，不能证明离地。
@@ -2172,15 +2269,18 @@ private:
           return false;
       }
       // 离地认证要求新的着陆检测和独立高度/向上速度样本；成立后保留轨迹、积分和slew进入Ascend。
-      if (takeoff_evidence_.observe(c_, now, land_baseline_, s.land_stamp, s.landed,
-                                    s.vertical_sample_stamp, out.height, out.speed)) {
-        // 检测器待证期间可能已接入高度反馈；认证离地后保留轨迹、积分和slew连续性，不从零重启。
-        out.target_height = command_height_;
-        liftoff_evidenced_ = true;
-        enter(Phase::Ascend, now);
-      }
+      observe_liftoff(s, out, now);
     }
     // 到时或到悬停推力都不是离地证明；只由上方独立证据更新liftoff_evidenced_。
+    return true;
+  }
+  bool observe_liftoff(const Feedback& s, Output& out, double now) {
+    if (!takeoff_evidence_.observe(c_, now, land_baseline_, s.land_stamp, s.landed,
+                                  s.vertical_sample_stamp, out.height, out.speed))
+      return false;
+    out.target_height = command_height_;
+    liftoff_evidenced_ = true;
+    enter(Phase::Ascend, now);
     return true;
   }
   // 接受已通过恢复窗口与导数检查的样本，分别累计 status/local/land 的严格新源戳，now 为单调秒。
@@ -2281,6 +2381,9 @@ private:
     if (s.stationary_seconds < c_.ground_seconds)
       return "RC_RECOVERY_STATIONARY_DWELL";
     if (std::abs(s.vz) > c_.ground_vz_tolerance)
+      return "RC_RECOVERY_GROUND_SPEED_EXCEEDED";
+    if (c_.px4_takeoff_position_hold &&
+        std::hypot(s.takeoff_position.vx, s.takeoff_position.vy) > c_.ground_vz_tolerance)
       return "RC_RECOVERY_GROUND_SPEED_EXCEEDED";
     if (!RcNavigationStart::rc_live(s))
       return "RC_RECOVERY_FRESH_SAFE_RC_REQUIRED";
@@ -2467,11 +2570,20 @@ private:
       return "Z_VZ_STALE_OR_INVALID";
     if (!std::isfinite(s.z) || !std::isfinite(s.vz) || !std::isfinite(s.stationary_seconds))
       return "NONFINITE_VERTICAL_TELEMETRY";
+    if (c_.px4_takeoff_position_hold && !s.takeoff_position.usable())
+      return "PX4_TAKEOFF_POSITION_FEEDBACK_OR_FRAME_INVALID";
     return {};
   }
   // 此打包函数在step已过健康及估计器门后使用，true占位不是自行生成新的硬件有效证据。
   VerticalSample vertical_sample(const Feedback& s) const {
     return {z0_, s.z, s.vz, true, true, true, s.z_reset, s.vz_reset};
+  }
+  bool apply_ramp(double demand, double elapsed, Output& out, double now) {
+    return c_.px4_takeoff_position_hold || apply(vertical_->ramp(demand, elapsed), out, now);
+  }
+  bool apply_height_control(const Feedback& s, double elapsed, Output& out, double now) {
+    return c_.px4_takeoff_position_hold ||
+           apply(vertical_->step(vertical_sample(s), command_height_, elapsed), out, now);
   }
   // 把健康垂向结果写为FRD负z推力，并更新持续物理饱和计时；计划值不等于实际PX4采用。
   bool apply(const VerticalOutput& value, Output& output, double now) {
@@ -2525,6 +2637,10 @@ private:
                                                          -c_.vertical.max_descent * elapsed,
                                                          c_.vertical.max_climb * elapsed)
                           : std::min(target_, command_height_ + c_.vertical.max_climb * elapsed));
+    if (c_.px4_takeoff_position_hold) {
+      out.target_height = command_height_;
+      return true;
+    }
     // 轨迹前馈为本轮目标高度变化/elapsed，单位向上m/s；接近终点时另按剩余距离限制前馈。
     // 除elapsed得到本帧轨迹速度；elapsed是否有效仍由原控制门和垂向控制器判断，
     // 此处不补一个任意最小dt来悄悄改变积分/拒绝行为。
@@ -2551,6 +2667,7 @@ private:
   void clear_ramp_feedback() {
     ramp_feedback_active_ = false;
     takeoff_evidence_.reset();
+    target_height_settling_.reset();
   }
   // 地面证明同时要求新鲜状态、着地、静止及同一z0附近高度/速度；bench仅在其专用分支采用漂移宽容。
   bool verified_ground(const Feedback& s) const {
@@ -2581,16 +2698,6 @@ private:
                                     s.land_stamp,
                                     s.local_stamp,
                                     c_.bench_ground_down_tolerance_m};
-  }
-  // 普通连续条件计时：一旦条件失败就从头；不能把间断的稳定时间加总。
-  bool dwell(bool condition, double now, double duration) {
-    if (!condition) {
-      dwell_since_ = -1;
-      return false;
-    }
-    if (dwell_since_ < 0)
-      dwell_since_ = now;
-    return now - dwell_since_ >= duration;
   }
   // 每个新land观察还需status/local各自推进；重复读取1Hz land不增加计数也不破坏正常窗口。
   bool dwell_bench_ground(bool condition, const Feedback& s, double now) {
@@ -2705,7 +2812,6 @@ private:
     // enter不是“新任务重置”：只清本阶段计时/命令计划，授权、ACK提交、离地/故障历史仍保留。
     phase_ = phase;
     entered_ = now;
-    dwell_since_ = -1;
     clear_land_dwell();
     land_dwell_blocked_stamp_ = 0;
     command_sent_ = false;
@@ -2804,7 +2910,8 @@ private:
       last_sample_z_ = s.z;
       last_sample_vz_ = s.vz;
       clear_ramp_feedback();
-      vertical_->reset(0);
+      if (vertical_)
+        vertical_->reset(0);
       feedback_guard_.reset();
       enter(Phase::ArmedGround, now);
       reason_ = "RC_MANUAL_ARM_AND_NEW_OFFBOARD_CONFIRMED";
@@ -2845,6 +2952,8 @@ private:
   Phase phase_{Phase::Idle};
   AttitudeReference reference_;
   vision::Controller visual_;
+  horizontal::Controller horizontal_;
+  std::optional<std::array<double, 2>> position_descent_hold_;
   vision::Result visual_result_;
   // -1是“尚无计划时刻”的哨兵；committed_yaw只有真实本地pair提交回报后才更新。
   double visual_plan_at_{-1}, committed_yaw_{};
@@ -2897,6 +3006,7 @@ private:
   bool ramp_feedback_active_{};
   // 离地独立证据与推力爬坡计时分离；不能从hover值、耗时或计划高度推断真实离地。
   TakeoffEvidence takeoff_evidence_;
+  TargetHeightSettling target_height_settling_;
   std::uint64_t touchdown_baseline_{}, disarm_land_commit_stamp_{};
   std::uint8_t z_reset_{}, vz_reset_{};
   // baseline是进入动作/阶段时捕获的源戳下界；之后必须严格大于它，旧健康缓存不能证明新结果。
@@ -2906,7 +3016,7 @@ private:
   // entered_每次enter更新；flight_since_只在本次任务开始捕获，所以切阶段不会续长任务总期限。
   // target_是最终高度，command_height_是按速度限制逐帧推进的轨迹点，z0_是NED绝对地面原点。
   double entered_{}, last_{}, ping_{-1}, z0_{}, target_{}, command_height_{}, flight_since_{};
-  double dwell_since_{-1}, saturated_since_{-1};
+  double saturated_since_{-1};
   double prep_since_{-1}, prep_z_{}, prep_land_last_time_{-1};
   std::uint64_t prep_land_start_{}, prep_land_last_{}, prep_local_start_{};
   std::uint8_t prep_z_reset_{}, prep_vz_reset_{};

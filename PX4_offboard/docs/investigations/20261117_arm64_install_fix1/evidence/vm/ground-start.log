@@ -1,0 +1,10 @@
+MainPID=397
+ActiveState=active
+
+MainPID=392
+ActiveState=active
+
+MainPID=0
+ActiveState=failed
+lrwxrwxrwx 1 root root 10 Oct 12 07:46 /dev/ttyS2 -> /dev/pts/0
+Mon Oct 12 07:46:11 UTC 2026

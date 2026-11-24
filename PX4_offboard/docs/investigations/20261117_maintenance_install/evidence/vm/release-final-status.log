@@ -1,0 +1,59 @@
+{
+  "service": {
+    "MainPID": "5586",
+    "ExecStart": "{ path=/bin/bash ; argv[]=/bin/bash /home/orangepi/FC01_versions/20261117_stage3_fix1/prebuilt_boot.sh ; ignore_errors=no ; start_time=[Tue 2026-11-17 14:03:47 UTC] ; stop_time=[n/a] ; pid=5586 ; code=(null) ; status=0/0 }",
+    "Environment": "HOME=/home/orangepi FC01_PROJECT_ROOT=/home/orangepi/sdk ROS_DOMAIN_ID=0 ROS_LOCALHOST_ONLY=0 PYTHONUNBUFFERED=1",
+    "WorkingDirectory": "/home/orangepi/FC01_versions/20261117_stage3_fix1",
+    "User": "orangepi",
+    "LoadState": "loaded",
+    "ActiveState": "active",
+    "SubState": "running",
+    "FragmentPath": "/etc/systemd/system/fc01-navigation.service",
+    "DropInPaths": "/etc/systemd/system/fc01-navigation.service.d/zzzz-fc01-prebuilt.conf",
+    "UnitFileState": "enabled"
+  },
+  "controllers": [
+    {
+      "pid": 6224,
+      "uid": 1000,
+      "argv": [
+        "/home/orangepi/FC01_versions/20261117_stage3_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+        "--ros-args",
+        "--disable-external-lib-logs",
+        "--params-file",
+        "/home/orangepi/FC01_navigation/runtime.yaml",
+        "-p",
+        "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_xzl53hgr/control.sock"
+      ],
+      "exe": "/home/orangepi/FC01_versions/20261117_stage3_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+      "cwd": "/home/orangepi/FC01_versions/20261117_stage3_fix1",
+      "sha256": "c446afae3d2a262bff132232cac77a40d2c9499ce8ea6a765d6d52c97f02cdc7"
+    }
+  ],
+  "flight_readiness": {
+    "ready_for_manual_rc": false,
+    "missing": [
+      "DDS",
+      "RC",
+      "姿态",
+      "位置",
+      "电池",
+      "PX4"
+    ],
+    "phase": "IDLE",
+    "reason": "DDS_SOURCE_CLOCK_UNSYNCHRONIZED_OR_STALE",
+    "status_current": true,
+    "note": "仅显示；人工RC准入/接管/Kill/失效保护由原生控制器判定"
+  }
+}
+FC01 导航控制  [WAITING]
+原因：等待飞控新鲜状态和本地位置
+最近反馈（历史，1.1 秒前；当前飞机状态未知）：模式 0  armed=False  相对高度：未知（REFERENCE_NOT_READY）
+最近动作门（历史）：flight_actions_enabled=true  takeoff_enabled=true  arm_enabled=false（程序解锁）  flight_enabled=false（通用控制入口）
+起飞平台：1.23 m  心跳预发送提交：0  日志丢弃：0
+导航档位：期望 1 / 观测 0
+准备等待：飞控状态反馈过期；接地反馈过期；位置/垂直速度反馈过期；姿态反馈过期；源消息时间戳过期或无效；遥控源/链路未就绪；遥控开关反馈未就绪；飞控预检未通过；电池反馈未就绪；油门/摇杆未归位
+阶段：NOT_STARTED；离地未确认；导航未允许
+离地等待：WAIT_NEW_AIRBORNE_DETECTOR_SAMPLES
+请以飞控和遥控器的实际反馈确认飞机状态。
+窗口只显示状态。关闭窗口/Ctrl+C 不会停止控制服务。

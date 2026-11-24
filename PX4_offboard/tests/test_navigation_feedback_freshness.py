@@ -39,6 +39,26 @@ def ready_state():
         rc_navigation_enabled=True,
         arm_enabled=False,
         flight_enabled=False,
+        controller_pid=22,
+        rc_source_selected=True,
+        rc_link_ready=True,
+        rc_switches_ready=True,
+        rc_source_clock_valid=True,
+        rc_switch_clock_valid=True,
+        rc_axes_safe=True,
+        source_clock_validated=True,
+        rc_sticks_moving=False,
+        rc_kill_switch=3,
+        rc_kill_latched=False,
+        operator_takeover_latched=False,
+        height_reference_ready=True,
+        rc_ground_reference_qualified=True,
+        rc_prestream_commits=25,
+        last_target_local_thrust_z=0.0,
+        rc_mode_slot=4,
+        rc_navigation_mode_slot=1,
+        rc_arm_switch=3,
+        ready_wait_arm=True,
         source_timing={
             topic: dict(
                 timeout_s=timeout,
@@ -69,6 +89,9 @@ class FeedbackFreshnessTests(unittest.TestCase):
             status='READY_WAIT_ARM',
             reason='ready',
             supervisor_pid=10,
+            controller_pid=22,
+            state_controller_pid=22,
+            boot_id='freshness-test-boot',
             updated_unix=1000.0,
             state=state,
             state_age_seconds=0.0,
@@ -76,7 +99,8 @@ class FeedbackFreshnessTests(unittest.TestCase):
         )
         row.update(changes)
         return navigation.render_status(
-            row, dict(ActiveState='active', MainPID='10'), now=1000.0 + elapsed
+            row, dict(ActiveState='active', MainPID='10', boot_id='freshness-test-boot'),
+            now=1000.0 + elapsed
         )
 
     # 正例须显示当前反馈与人工 RC 提示，且不能带过期标签。
@@ -227,6 +251,7 @@ class FeedbackFreshnessTests(unittest.TestCase):
 PEER = '''import json,signal,socket,sys,time,select
 sock=socket.socket(fileno=int(sys.argv[1]));scenario=sys.argv[2]
 state=json.loads(sys.argv[3]);stopping=False
+state['controller_pid']=__import__('os').getpid()
 def stop(*_):
  global stopping
  stopping=True
@@ -284,10 +309,12 @@ class LiveMonitorFreshnessTests(unittest.TestCase):
 
                 def observe(raw):
                     row = navigation_service.describe_row(raw)
-                    row.update(updated_unix=time.time(), supervisor_pid=os.getpid())
+                    row.update(updated_unix=time.time(), supervisor_pid=os.getpid(),
+                               boot_id='live-monitor-test-boot')
                     view = navigation.render_status(
                         row,
-                        dict(ActiveState='active', MainPID=str(os.getpid())),
+                        dict(ActiveState='active', MainPID=str(os.getpid()),
+                             boot_id='live-monitor-test-boot'),
                         now=row['updated_unix'],
                     )
                     rows.append((copy.deepcopy(row), view))

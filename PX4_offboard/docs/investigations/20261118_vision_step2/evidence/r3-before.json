@@ -1,0 +1,1 @@
+{"scenario": "ready=true NaN position followed by valid same raw sample", "first_good": true, "bad_rejected": true, "reason": "NONFINITE_OR_BAD_SHAPE", "same_sample_revalidated": true, "raw_stamp_ns": 100010000000, "path": "PlatformHistory.accept"}

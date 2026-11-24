@@ -1,0 +1,13 @@
+FC01 导航控制  [STALE]
+原因：飞机反馈已过期或无效；最近状态 READY_WAIT_ARM；RC_READY_WAIT_CH5_MANUAL_ARM
+最近反馈（历史，1.2 秒前；当前飞机状态未知）：模式 Stabilized  armed=False  相对高度：0.00 m
+最近动作门（历史）：flight_actions_enabled=true  takeoff_enabled=true  arm_enabled=false（程序解锁）  flight_enabled=false（通用控制入口）
+起飞平台：1.23 m  心跳预发送提交：836  日志丢弃：0
+导航档位：期望 1 / 观测 6
+阶段：NOT_STARTED；离地未确认；导航未允许
+离地等待：WAIT_NEW_AIRBORNE_DETECTOR_SAMPLES
+本地推力 FRD z：0.000；PX4 采用尚未取证（需对应飞控记录）
+请以飞控和遥控器的实际反馈确认飞机状态。
+窗口只显示状态。关闭窗口/Ctrl+C 不会停止控制服务。
+DIRECT_STATUS_EXIT=0
+STRICT_VERIFY_AFTER_DIRECT_STATUS_PASS

@@ -3,6 +3,7 @@
 // 此对象只能给准入/零推力许可，不构造Arm命令、不计算非零推力；Joined后才由原Core按rc_target_height起飞（当前候选1.5m）。
 #include "jikl_fc01_system/attitude_reference.hpp"
 #include "jikl_fc01_system/vertical_feedback_guard.hpp"
+#include "jikl_fc01_system/takeoff_position.hpp"
 #include <algorithm>
 #include <cmath>
 #include <string>
@@ -41,6 +42,9 @@ public:
   }
   double z0() const {
     return z0_;
+  }
+  const TakeoffPositionAnchor& position_anchor() const {
+    return position_anchor_;
   }
   const Quaternion& q0() const {
     return q0_;
@@ -223,6 +227,9 @@ public:
     // intent表示“已进入固定配对时间窗”，不同于arm_intent_observed_（任何历史解锁意图）。
     // 按原优先级补充来源、轴、安全辅助开关与预检失败；已有health原因不能被后面的正常数据覆盖。
     std::string why = health;
+    if (why.empty() && c.px4_takeoff_position_hold && s.landed &&
+        std::hypot(s.takeoff_position.vx, s.takeoff_position.vy) > c.ground_vz_tolerance)
+      why = "RC_TAKEOFF_POSITION_GROUND_CHANGED";
     // std::string是本次调用的副本，why.empty()守住首错优先级；后续检查只在尚无原因时补充。
     if (why.empty() && (!s.source_clock_validated || !s.source_host_stamp || !rc_live(s)))
       why = "RC_FRESH_SELECTED_SOURCE_REQUIRED";
@@ -356,6 +363,10 @@ private:
     // 人工解锁到导航之间仍绑定原地面参考；估计器重置或高度/速度变化不能在armed状态重建锚点。
     if (s.z_reset != z_reset_ || s.vz_reset != vz_reset_ || s.quat_reset != quat_reset_)
       return block("RC_ARMED_ESTIMATOR_RESET");
+    if (c.px4_takeoff_position_hold &&
+        (!position_anchor_.matches(s.takeoff_position) ||
+         position_anchor_.error(s.takeoff_position) > c.height_tolerance))
+      return block("RC_TAKEOFF_POSITION_GROUND_CHANGED");
     if (!ground_qualified_ || !s.landed || std::abs(z0_ - s.z) > c.height_tolerance ||
         std::abs(s.vz) > c.ground_vz_tolerance)
       return block("RC_ARMED_GROUND_REFERENCE_NOT_STABLE");
@@ -448,6 +459,9 @@ private:
         ground_since_ >= 0 &&
         (s.z_reset != ground_z_reset_ || s.vz_reset != ground_vz_reset_ ||
          s.quat_reset != ground_quat_reset_ || s.local_stamp < ground_local_ ||
+         (c.px4_takeoff_position_hold &&
+          (!ground_position_.matches(s.takeoff_position) ||
+           ground_position_.error(s.takeoff_position) > c.height_tolerance)) ||
          s.status_stamp < ground_status_ || s.land_stamp < ground_land_ ||
          s.rc_switch_sample_stamp < ground_switch_ || s.vertical_sample_stamp < ground_vertical_ ||
          (s.local_stamp == ground_local_ && (s.z != ground_last_z_ || s.vz != ground_last_vz_)) ||
@@ -468,6 +482,8 @@ private:
     if (ground_since_ < 0) {
       ground_since_ = ground_window_since_ = now;
       ground_window_z_ = s.z;
+      ground_position_ = {s.takeoff_position.x, s.takeoff_position.y, s.takeoff_position.frame,
+                          s.takeoff_position.usable()};
       ground_z_reset_ = s.z_reset;
       ground_vz_reset_ = s.vz_reset;
       ground_quat_reset_ = s.quat_reset;
@@ -513,6 +529,8 @@ private:
     if (ground_qualified_ && now - ground_window_since_ >= c.ground_seconds) {
       ground_window_since_ = now;
       ground_window_z_ = s.z;
+      ground_position_ = {s.takeoff_position.x, s.takeoff_position.y, s.takeoff_position.frame,
+                          s.takeoff_position.usable()};
     }
     return ground_qualified_;
   }
@@ -521,6 +539,7 @@ private:
     // 只清下列准备字段；manual_arm_proven_/arm_edge_/arm_intent_observed_等历史不是“忘掉即可恢复”。
     phase_ = RcStartPhase::WaitGround;
     anchor_ = false;
+    position_anchor_ = {};
     stream_first_ = stream_last_ = -1;
     commits_ = 0;
     ready_source_floor_ = 0;
@@ -532,6 +551,8 @@ private:
     // 复制参考值而非保存s的引用；回调快照结束后锚点仍存在。只由准入中的未解锁地面调用更新。
     anchor_ = true;
     z0_ = s.z;
+    position_anchor_ = {s.takeoff_position.x, s.takeoff_position.y, s.takeoff_position.frame,
+                        s.takeoff_position.usable()};
     q0_ = s.q;
     z_reset_ = s.z_reset;
     vz_reset_ = s.vz_reset;
@@ -548,6 +569,7 @@ private:
   bool anchor_{}, manual_arm_proven_{}, navigation_offboard_observed_{}, arm_intent_observed_{};
   Quaternion q0_{1, 0, 0, 0};
   double z0_{};
+  TakeoffPositionAnchor position_anchor_, ground_position_;
   std::uint8_t z_reset_{}, vz_reset_{}, quat_reset_{}, last_arm_switch_{}, last_mode_slot_{};
   double arm_since_{-1}, navigation_since_{-1}, stream_first_{-1}, stream_last_{-1},
       observed_at_{-1};

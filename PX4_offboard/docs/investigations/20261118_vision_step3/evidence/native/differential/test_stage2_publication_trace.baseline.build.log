@@ -1,0 +1,1 @@
+COMMAND: g++ -std=c++17 -Wno-return-type -I /tmp/fc01-step3-differential-gy7lor8c/native/src/jikl_fc01_system/include /home/jikl62/FC01_OrangePi_Navigation_20261028/native/tests/test_stage2_publication_trace.cpp -o /tmp/fc01-step3-differential-gy7lor8c/test_stage2_publication_trace-baseline

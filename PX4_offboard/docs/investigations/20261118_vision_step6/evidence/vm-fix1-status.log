@@ -1,0 +1,78 @@
+{
+  "service": {
+    "TimeoutStartUSec": "10min",
+    "MainPID": "25096",
+    "Result": "success",
+    "ExecMainStatus": "0",
+    "ExecStart": "{ path=/bin/bash ; argv[]=/bin/bash /home/orangepi/FC01_versions/20261118_vision_step6_fix1/prebuilt_boot.sh ; ignore_errors=no ; start_time=[Wed 2026-11-18 03:57:50 UTC] ; stop_time=[n/a] ; pid=25096 ; code=(null) ; status=0/0 }",
+    "ControlGroup": "/system.slice/fc01-navigation.service",
+    "Environment": "HOME=/home/orangepi FC01_PROJECT_ROOT=/home/orangepi/sdk ROS_DOMAIN_ID=0 ROS_LOCALHOST_ONLY=0 PYTHONUNBUFFERED=1",
+    "WorkingDirectory": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1",
+    "User": "orangepi",
+    "LoadState": "loaded",
+    "ActiveState": "active",
+    "SubState": "running",
+    "FragmentPath": "/etc/systemd/system/fc01-navigation.service",
+    "DropInPaths": "/etc/systemd/system/fc01-navigation.service.d/zzzz-fc01-prebuilt.conf",
+    "UnitFileState": "enabled"
+  },
+  "controllers": [
+    {
+      "pid": 28390,
+      "uid": 1000,
+      "argv": [
+        "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+        "--ros-args",
+        "--disable-external-lib-logs",
+        "--params-file",
+        "/home/orangepi/FC01_navigation/runtime.yaml",
+        "-p",
+        "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_2a28ipd2/control.sock"
+      ],
+      "exe": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+      "cwd": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1",
+      "sha256": "26ca623c7e421dad68fa771d6356c77b7e464d90853d03a965e105343ecd36fb",
+      "start_ticks": 5269306
+    }
+  ],
+  "flight_readiness": {
+    "ready_for_manual_rc": false,
+    "missing": [
+      "DDS",
+      "RC",
+      "姿态",
+      "位置",
+      "电池",
+      "PX4"
+    ],
+    "phase": "IDLE",
+    "reason": "DDS_SOURCE_CLOCK_UNSYNCHRONIZED_OR_STALE",
+    "status_current": true,
+    "target_height_m": 1.23,
+    "native_navigation_allowed": null,
+    "current_command_source": null,
+    "vision": {
+      "mode": "altitude",
+      "current": true,
+      "camera_current": false,
+      "mission_current": false,
+      "camera": null,
+      "mission": null,
+      "calibration_state": "not_required",
+      "mission_control_enabled": false,
+      "error": ""
+    },
+    "note": "仅显示；人工RC准入/接管/Kill/失效保护由原生控制器判定"
+  },
+  "vision": {
+    "mode": "altitude",
+    "current": true,
+    "camera_current": false,
+    "mission_current": false,
+    "camera": null,
+    "mission": null,
+    "calibration_state": "not_required",
+    "mission_control_enabled": false,
+    "error": ""
+  }
+}

@@ -1,0 +1,37 @@
+Starting >>> jikl_fc01_system
+--- stderr: jikl_fc01_system
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/src/fc01_target_interface_node.cpp: In lambda function:
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/src/fc01_target_interface_node.cpp:105:79: error: no match for ‘operator==’ (operand types are ‘rclcpp::HistoryPolicy’ and ‘rmw_qos_history_policy_e’)
+  105 |           + ",\"keep_last\":" + boolean(velocity_->get_actual_qos().history() == RMW_QOS_POLICY_HISTORY_KEEP_LAST)
+      |                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                                            |     |
+      |                                                                            |     rmw_qos_history_policy_e
+      |                                                                            rclcpp::HistoryPolicy
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/src/fc01_target_interface_node.cpp:105:79: note: candidate: ‘operator==(rmw_qos_history_policy_e, rmw_qos_history_policy_e)’ (built-in)
+  105 |           + ",\"keep_last\":" + boolean(velocity_->get_actual_qos().history() == RMW_QOS_POLICY_HISTORY_KEEP_LAST)
+      |                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/src/fc01_target_interface_node.cpp:105:79: note:   no known conversion for argument 1 from ‘rclcpp::HistoryPolicy’ to ‘rmw_qos_history_policy_e’
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/src/fc01_target_interface_node.cpp:105:79: note: candidate: ‘operator==(rclcpp::HistoryPolicy, rclcpp::HistoryPolicy)’ (built-in)
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/src/fc01_target_interface_node.cpp:105:79: note:   no known conversion for argument 2 from ‘rmw_qos_history_policy_e’ to ‘rclcpp::HistoryPolicy’
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/src/fc01_target_interface_node.cpp:106:81: error: no match for ‘operator==’ (operand types are ‘rclcpp::DurabilityPolicy’ and ‘rmw_qos_durability_policy_e’)
+  106 |           + ",\"volatile\":" + boolean(velocity_->get_actual_qos().durability() == RMW_QOS_POLICY_DURABILITY_VOLATILE)
+      |                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                                              |     |
+      |                                                                              |     rmw_qos_durability_policy_e
+      |                                                                              rclcpp::DurabilityPolicy
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/src/fc01_target_interface_node.cpp:106:81: note: candidate: ‘operator==(rmw_qos_durability_policy_e, rmw_qos_durability_policy_e)’ (built-in)
+  106 |           + ",\"volatile\":" + boolean(velocity_->get_actual_qos().durability() == RMW_QOS_POLICY_DURABILITY_VOLATILE)
+      |                                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/src/fc01_target_interface_node.cpp:106:81: note:   no known conversion for argument 1 from ‘rclcpp::DurabilityPolicy’ to ‘rmw_qos_durability_policy_e’
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/src/fc01_target_interface_node.cpp:106:81: note: candidate: ‘operator==(rclcpp::DurabilityPolicy, rclcpp::DurabilityPolicy)’ (built-in)
+/home/jikl62/FC01_OrangePi_Navigation_20261028/native/src/jikl_fc01_system/src/fc01_target_interface_node.cpp:106:81: note:   no known conversion for argument 2 from ‘rmw_qos_durability_policy_e’ to ‘rclcpp::DurabilityPolicy’
+gmake[2]: *** [CMakeFiles/fc01_target_interface_node.dir/build.make:76：CMakeFiles/fc01_target_interface_node.dir/src/fc01_target_interface_node.cpp.o] 错误 1
+gmake[1]: *** [CMakeFiles/Makefile2:669：CMakeFiles/fc01_target_interface_node.dir/all] 错误 2
+gmake: *** [Makefile:146：all] 错误 2
+---
+Failed   <<< jikl_fc01_system [3.41s, exited with code 2]
+
+Summary: 0 packages finished [3.55s]
+  1 package failed: jikl_fc01_system
+  1 package had stderr output: jikl_fc01_system
+  3 packages not processed

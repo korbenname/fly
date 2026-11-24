@@ -1,0 +1,10 @@
+{
+  "archive": "dist/arm64/20261118_vision_step6/FC01_OrangePi_20261118_vision_step6_arm64.tar.gz",
+  "bytes": 196376082,
+  "sha256": "9c2a076b3816577bdb29b0f3cc42ffea3179b2e13e41410855b54f8198abf3d4",
+  "installer": "dist/arm64/20261118_vision_step6/install_fc01.sh",
+  "installer_sha256": "628f7599c4fdafd7610ac312525f59defb9c1ab4245017643b0f13c784b2196c",
+  "source_commit": "6a9d0b3ad466c0787cd5033eeab35c62b1b8def1",
+  "control_candidate_commit": "5c4dc14ddd84371d60387e7ff5227c94b7b6ee47",
+  "files": 7749
+}

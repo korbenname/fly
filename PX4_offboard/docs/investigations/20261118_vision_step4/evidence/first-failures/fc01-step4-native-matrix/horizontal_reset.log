@@ -1,0 +1,6 @@
+usage: ros_stage3_lifecycle.py [-h] --node NODE --output OUTPUT
+                               [--scenario {normal,range_unavailable,feedback_stale,quat_reset,vertical_reset,offboard_loss,offboard_flag,rc_takeover,kill,velocity_warning,track_lost,track_timeout,track_source,track_reset,track_origin,horizontal_feedback_invalid,horizontal_reset}]
+                               [--build-evidence BUILD_EVIDENCE]
+                               [--domain DOMAIN] [--horizontal]
+                               [--motion {plant,replay}]
+ros_stage3_lifecycle.py: error: Stage 2 build identity mismatch: ['native/src/jikl_fc01_system/include/jikl_fc01_system/attitude_altitude_core.hpp', 'native/src/jikl_fc01_system/include/jikl_fc01_system/horizontal_navigation.hpp']

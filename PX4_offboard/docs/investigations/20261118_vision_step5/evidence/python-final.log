@@ -1,0 +1,249 @@
+test_initial_missing_data_does_not_latch_unused_mission (tests.test_mission_cached_demand.CachedDemandTests) ... ok
+test_invalid_target_clears_terminal_and_frozen_phase_demands (tests.test_mission_cached_demand.CachedDemandTests) ... ok
+test_actual_production_launch_and_config_choose_track (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_atomic_binding_origin_receipt_and_invalid_q_retract_finite_zero (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_before_native_height_gate_no_horizontal_or_yaw (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_bridge_latest_ahead_of_native_encodes_only_common_raw_attitude (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_decimated_platform_does_not_need_native_raw_sample_in_history (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_hold_waypoint_and_tracking_are_single_intent (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_invalid_with_missing_or_nan_rotation_publishes_finite_zero (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_missing_calibration_or_old_image_blocks_direct_publish (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_native_confirmed_attitude_missing_or_stale_retracts (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_native_revoke_after_tracking_clears_pending_velocity (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_only_new_native_task_epoch_clears_tracking_failure (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_standoff_too_close_retreat_and_world_vertical_ignored (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_tilt_projection_retains_body_z_and_exact_attitude_stamp (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_tracking_loss_latches_and_never_restarts_waypoint (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_unconfirmed_or_outside_waypoint_falls_back_current_hold (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_world_norm_clamp_does_not_distort_rotation (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_yaw_rate_sign_bound_wrap_and_zero (tests.test_mission_horizontal.HorizontalMissionTests) ... ok
+test_atomic_bad_schema_q_origin_source_or_receive_never_grants_motion (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_atomic_duplicate_payload_changes_and_old_raw_cannot_extend_receipt (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_atomic_snapshot_accepts_native_raw_missing_from_bridge_and_copies_raw_q (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_atomic_source_expiry_and_platform_origin_change_revoke_current (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_current_native_measured_hold_is_required (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_current_rechecks_original_sample_and_monotonic_age (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_duplicate_with_conflicting_safety_content_revokes (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_independent_monotonic_source_and_graph_validity (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_missing_target_and_unconfirmed_waypoint_keeps_native_hold (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_native_and_platform_reset_counters_must_match (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_no_native_gate_even_target_and_time_cannot_start_takeoff (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_old_ready_future_duplicate_and_local_progress_cannot_renew (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_production_horizontal_only_ignores_simulated_absolute_altitudes (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_restart_task_and_source_regression_revoke (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_stale_unknown_session_revokes_without_retiring_live_session (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_duplicate_snapshot_cannot_refresh_same_measurement (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_identity_duplicate_never_renews_and_regression_needs_epoch (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_identity_restart_quarantines_retired_source (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_independent_receive_and_source_deadlines (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_interpolation_at_measurement_time_no_first_sample_zeroing (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_invalid_replay_cannot_revalidate_same_raw_sample (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_local_reset_discards_old_image_history (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_malformed_ready_snapshot_consumes_all_samples_before_rejection (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_multiple_publishers_and_clock_regression_fail (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_nan_frame_nonunit_attitude_and_alignment_reject (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_optional_omega_is_none_not_fake_zero (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_quaternion_sign_equivalence_and_pitch_right_vector (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_attitude_reset_and_writer_restart_change_epoch (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_coordinates_and_absolute_local_origin (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_dead_reckoning_and_invalid_last_payload_revoke (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_duplicate_raw_sample_does_not_extend_receive_ttl (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_invalid_new_sample_cannot_be_repaired_with_same_stamp (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_local_reset_explicit_invalid_then_new_epoch (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_multiple_publishers_and_host_clock_regression_revoke (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_nan_and_invalid_quaternion_revoke (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_old_future_zero_and_sample_after_envelope_rejected (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_omega_independently_stales_without_zero_fallback (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_omega_optional_policy_explicit (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_position_and_velocity_valid_are_independent (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_regressed_sample_latches_until_new_writer_epoch (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_source_age_and_monotonic_age_both_required (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_time_alignment_not_just_independent_freshness (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_yaw_90_degree_and_tilt (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_each_topic_envelope_receipt_and_raw_sample_ages_expire_at_its_ttl (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_future_sample_clock_skew_cannot_extend_raw_progress_lifetime (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_missing_invalid_or_native_rejected_timing_cannot_prompt_manual_arming (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_native_false_flags_and_transport_history_cannot_be_revived_by_valid_timing (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_native_valid_future_source_timestamp_does_not_extend_display_lifetime (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_sample_expiry_preserves_current_fault_and_recovery_diagnostics (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_supervisor_state_age_and_saved_snapshot_elapsed_both_consume_ttl (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_normal_paused_silent_stale_and_disconnected_real_ipc_controls (tests.test_navigation_feedback_freshness.LiveMonitorFreshnessTests) ... ok
+test_current_supervisor_boot_controller_and_ipc_state_identity_required (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_feedback_cutoff_remains_separate_from_current_process_and_readiness_facts (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_navigation_window_display_does_not_recreate_arm_deadline (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_ready_requires_current_native_phase_and_ground_zero_committed_zero_stream (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_dds_loss_and_expired_raw_samples_revoke_ready_display (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_historical_ready_is_stale_after_process_boot_or_identity_change (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_native_arm_window_and_wrong_slot_evidence_are_not_invented (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_ready_label_cannot_outlive_native_phase_or_ground_zero_stream (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_actual_node_callback_and_history_edges (tests.test_vision_step4_node_inputs.VisionStep4NodeInputs) ... ok
+test_manual_rc_lifecycle_preserves_exact_control_sink_sequence (tests.test_vision_step4_node_sinks.VisionStep4NodeSinkTests) ... ok
+test_actual_node_reordered_and_duplicate_commands_do_not_renew_or_clear_revocation (tests.test_vision_step5_safety_edges.VisionStep5SafetyEdges) ... ok
+test_final_boundary_catches_writer_conflict_age_and_healed_payload (tests.test_vision_step5_safety_edges.VisionStep5SafetyEdges) ... ok
+test_manual_rc_lifecycle_preserves_exact_control_sink_sequence (tests.test_vision_step3_node_sinks.VisionStep3NodeSinkTests) ... ok
+test_installed_tools_keep_sibling_modules_and_runtime_dependencies (tests.test_overnight_stage5_ros_contract.RosEngineeringContractTests) ... ok
+test_message_generation_links_the_current_package_typesupport (tests.test_overnight_stage5_ros_contract.RosEngineeringContractTests) ... ok
+test_target_interface_receiver_is_built_linked_and_installed_independently (tests.test_overnight_stage5_ros_contract.RosEngineeringContractTests) ... ok
+test_actual_runtime_import_dependencies_vision_and_messages_are_complete (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+运行树必须自带本项目导入依赖，不能为了容量仅保留控制器而遗漏视觉消息/工具。 ... ok
+test_builder_keeps_file_count_total_and_member_size_limits (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+分别构造超过真实安全上限的运行内容；不修改 MAX_*、不把拒绝改为通过。 ... ok
+test_development_history_archives_caches_and_experiments_stay_outside_runtime (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+大历史 ZIP 不应挤占运行预算，排除只影响载荷，不删除源树任何文件。 ... ok
+test_extractor_independently_keeps_all_three_capacity_limits (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+直接造归档绕开 builder，仍须在创建安装目标前因原容量限制失败。 ... ok
+test_manifest_cannot_omit_current_native_source_hash (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+payload 摘要正确也不能省掉原生源码身份，过期清单不会自动刷新为成功。 ... ok
+test_old_release_manifest_is_preserved_and_not_silently_refreshed (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+旧身份即使所有内容 SHA 都匹配，也不能被静默解释成本次正式发行清单。 ... ok
+test_release_manifest_itself_still_obeys_per_member_budget (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+运行源码再小，附加的发布元数据也必须计入每项预算，不能绕过解包器上限。 ... ok
+test_selected_source_symlink_is_rejected_without_reading_as_regular_source (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+运行白名单中的链接不能伪装源码；外部文件仍由原所有者保留。 ... ok
+test_bad_frame_and_missing_valid_velocity_latch_native_descent (tests.test_vision_replay.VisionReplay) ... ok
+test_command_timeout_is_independent_of_new_state_samples (tests.test_vision_replay.VisionReplay) ... ok
+test_duplicate_state_sequence_does_not_renew_receiver_freshness (tests.test_vision_replay.VisionReplay) ... ok
+test_expired_state_enters_native_descent_and_cannot_reactivate (tests.test_vision_replay.VisionReplay) ... ok
+test_follow_axes_and_modes_are_real_motion_requests (tests.test_vision_replay.VisionReplay) ... ok
+test_ideal_closed_loop_changes_real_attitude_and_reduces_point_error (tests.test_vision_replay.VisionReplay) ... ok
+test_invalid_mode_type_is_reported_as_an_input_error (tests.test_vision_replay.VisionReplay) ... ok
+test_invalid_record_is_rejected_before_host_driver (tests.test_vision_replay.VisionReplay) ... ok
+test_missing_state_waits_without_fabricating_valid_zero (tests.test_vision_replay.VisionReplay) ... ok
+test_target_height_changes_original_vertical_controller_thrust (tests.test_vision_replay.VisionReplay) ... ok
+test_velocity_feedback_changes_attitude_at_same_position (tests.test_vision_replay.VisionReplay) ... ok
+test_absent_position_velocity_attitude_and_angular_source_are_not_invented (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_bad_stamp_is_invalid_and_config_needs_explicit_conventions (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_callback_expiry_precedes_fresh_pair_without_hiding_revocation (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_each_quality_time_reset_and_calibration_contract_is_required (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_enu_flu_rotates_pose_child_twist_and_angular_velocity (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_half_turn_orientation_conversion_is_stable_on_each_axis (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_late_health_cannot_rescue_odometry_at_or_after_pair_timeout (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_late_odometry_cannot_borrow_health_at_or_after_pair_timeout (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_lever_arm_changes_position_and_removes_rotational_sensor_velocity (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_missing_metadata_emits_explicit_revocation_without_borrowing_health (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_missing_or_mismatched_health_never_makes_zero_values_valid (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_ned_frd_preserves_explicit_valid_fields_and_wxyz (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_nonfinite_or_zero_norm_raw_measurements_are_rejected (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_nonzero_lever_arm_without_angular_measurement_invalidates_velocity (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_raw_conflict_discards_cached_health_before_another_odometry_can_pair (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_raw_topics_each_require_exactly_one_publisher_before_conversion (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_rotated_mount_and_world_alignment_are_applied (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_stamp_pair_buffer_matches_exact_sample_and_never_republishes_duplicates (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_timely_pair_remains_accepted_in_either_callback_order (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_timer_revokes_healthy_state_on_raw_graph_conflict_and_waits_for_new_pair (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_transform_overflow_never_marks_nonfinite_derived_measurements_valid (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_zero_quality_remains_explicit_measured_quality_for_core_threshold (tests.test_vision_adapter.OdometryAdapterTests) ... ok
+test_cpp_mapping_preserves_wxyz_masks_mode_and_rejects_invalid_stamp_version (tests.test_vision_adapter.RosMappingTests) ... ok
+test_below_quality_threshold_rejects_and_unknown_threshold_stays_explicit (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_config_copies_transform_lists_before_caller_can_change_them (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_covariance_nonfinite_negative_asymmetric_and_indefinite_are_rejected (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_covariance_psd_checks_do_not_hide_small_indefinite_block_in_large_axis (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_covariance_psd_rank_deficiency_and_large_finite_matrix (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_covariance_unknown_and_declared_zero_never_become_transformed_valid (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_current_expiry_revokes_cache_and_new_data_recovers (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_duplicate_and_regression_revoke_without_renewing_age (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_enu_flu_conversion_uses_actual_converter (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_event_queue_is_bounded_and_healthy_tail_keeps_anomaly_counts (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_expired_cache_is_recorded_before_retired_epoch_rejection_and_recovery (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_expiry_does_not_erase_last_trusted_continuity_baseline (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_explicit_clock_offset_applies_to_copies_only (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_explicit_covariance_caps_require_declaration_and_compare_raw_variance (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_explicit_relocalization_and_reset_rebaseline_position_velocity_attitude (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_identical_attitude_and_its_opposite_sign_pass_tiny_step_limit (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_input_object_and_returned_result_cannot_mutate_current_cache (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_invalid_configuration_is_rejected_without_ros (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_invalid_epoch_cannot_erase_source_age_expiry_with_recent_receipt (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_invalid_identity_cannot_erase_expiry_or_poison_trusted_state (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_lever_arm_uses_actual_angular_velocity_correction (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_many_explicit_new_epochs_work_until_capacity_without_silent_eviction (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_measurement_clock_regression_and_new_epoch_reset (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_missing_fields_bad_version_and_bool_coercion_never_fabricate_measurements (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_new_epoch_must_advance_same_confirmed_measurement_clock (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_new_receive_records_prior_expiry_without_relying_on_timer (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_new_relocalization_epoch_cannot_repeat_confirmed_clock_stamp (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_no_step_limits_does_not_invent_jump_faults_and_q_sign_is_equivalent (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_normal_stationary_and_moving_samples_keep_state_and_target_separate (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_receive_and_ros_clock_regressions_are_visible_and_recoverable (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_regressed_clock_does_not_create_an_expiry_before_epoch_rejection (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_rejected_unknown_epoch_cannot_reauthorize_duplicate_old_pair (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_retired_relocalization_epoch_with_new_sequence_is_still_rejected (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_retired_reset_epoch_replay_cannot_rebase_to_old_pose_within_ttl (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_returned_covariance_diagnostic_cannot_mutate_cached_diagnostic (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_snapshot_clock_watermark_covers_receive_and_empty_cache (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_source_age_expires_even_with_recent_receive_and_current_unknown_clock (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_source_and_frame_epoch_events_never_authorize_unconfigured_transforms (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_stale_and_future_source_times_do_not_poison_next_good_sample (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_tiny_real_attitude_steps_obey_explicit_limit (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_tracking_degraded_lost_and_repeated_recovery_keep_anomaly (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_unconfirmed_clock_and_missing_policy_remain_unknown (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_unexplained_jump_cannot_rebaseline_itself_and_return_to_trust_recovers (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_untrusted_epoch_neither_consumes_capacity_nor_retires_good_epoch (tests.test_vision_state_validation.StateValidationTests) ... ok
+test_check_session_is_accepted_by_actual_native_config (test_native_profile.NativeProfileContract) ... ok
+test_flight_session_is_accepted_by_actual_native_config (test_native_profile.NativeProfileContract) ... ok
+test_native_validator_rejects_legacy_flight_flag_in_attitude_mode (test_native_profile.NativeProfileContract) ... ok
+test_exporter_writes_default_off_or_explicit_candidate_without_changing_settings (tests.test_vision_settings.VisionConfigExportTests) ... ok
+test_check_session_is_accepted_by_actual_native_config (tests.test_vision_settings.VisionNativeConfigTests) ... ok
+test_disabled_visual_preserves_more_conservative_native_configuration (tests.test_vision_settings.VisionNativeConfigTests) ... ok
+test_flight_session_is_accepted_by_actual_native_config (tests.test_vision_settings.VisionNativeConfigTests) ... ok
+test_native_validator_rejects_legacy_flight_flag_in_attitude_mode (tests.test_vision_settings.VisionNativeConfigTests) ... ok
+test_visual_configuration_cannot_expand_original_tilt_envelope (tests.test_vision_settings.VisionNativeConfigTests) ... ok
+test_visual_configuration_requires_existing_manual_rc_route (tests.test_vision_settings.VisionNativeConfigTests) ... ok
+test_default_off_preserves_existing_flight_parameters (tests.test_vision_settings.VisionSettingsTests) ... ok
+test_disabled_visual_accepts_stricter_existing_flight_envelope (tests.test_vision_settings.VisionSettingsTests) ... ok
+test_explicit_topics_and_candidate_limits_reach_generated_parameters (tests.test_vision_settings.VisionSettingsTests) ... ok
+test_invalid_or_misspelled_config_is_not_silently_ignored (tests.test_vision_settings.VisionSettingsTests) ... ok
+test_missing_file_is_disabled_and_existing_file_is_consumed (tests.test_vision_settings.VisionSettingsTests) ... ok
+test_base_constructor_failure_has_no_application_owned_node (tests.test_stage3_vision_lifecycle.VisionLifecycleTests)
+ROS 基类尚未成功返回时不调用不完整对象的 destroy；仍释放本入口 context。 ... ok
+test_cleanup_error_does_not_stop_restoring_other_signal_handler (tests.test_stage3_vision_lifecycle.VisionLifecycleTests)
+一个信号恢复 API 报错也继续恢复另一个；主错误及恢复错误均保持可见。 ... ok
+test_cleanup_explicit_cause_back_to_primary_or_inner_is_cut (tests.test_stage3_vision_lifecycle.VisionLifecycleTests)
+清理错误显式指回主错误或原有 cause 时，仅剪回边，保留所有不同错误可见。 ... ok
+test_executor_acquisition_and_add_failures_release_owned_node (tests.test_stage3_vision_lifecycle.VisionLifecycleTests)
+获取 executor 或 add_node 失败均释放节点，已取得 executor 时还尝试 remove。 ... ok
+test_failed_init_does_not_close_callers_active_context (tests.test_stage3_vision_lifecycle.VisionLifecycleTests)
+入口已有活动默认 context 时按 rclpy 原合同拒绝，不能关闭调用者的资源。 ... ok
+test_init_failure_before_and_after_context_activation (tests.test_stage3_vision_lifecycle.VisionLifecycleTests)
+init 失败前无资源可清理；若已激活本入口 context，仍尝试关闭并保留初始错误。 ... ok
+test_normal_exit_propagates_first_cleanup_error_and_retains_secondary (tests.test_stage3_vision_lifecycle.VisionLifecycleTests)
+正常停止后若两项清理均失败，首项错误不被末项遮蔽，次项通过 cause 可见。 ... ok
+test_original_implicit_context_stays_visible_with_cleanup_failures (tests.test_stage3_vision_lifecycle.VisionLifecycleTests)
+业务错误来自 except 内的隐式 context 时，追加清理失败不能隐藏原业务首错。 ... ok
+test_repeated_success_and_invalid_configuration_release_exactly_once (tests.test_stage3_vision_lifecycle.VisionLifecycleTests)
+同进程连续二十轮交替正常/失败启动，节点和本轮 context 每轮各释放一次。 ... ok
+test_resource_acquisition_failure_keeps_primary_and_releases_node (tests.test_stage3_vision_lifecycle.VisionLifecycleTests)
+发布器、两个订阅、定时器或启动日志失败均在交给 executor 前释放节点。 ... ok
+test_reused_cleanup_exception_object_does_not_create_cause_cycle (tests.test_stage3_vision_lifecycle.VisionLifecycleTests)
+多个释放点复用同一个错误对象时，原因链只有一次该对象，不形成循环。 ... ok
+test_runtime_failure_is_not_masked_by_three_cleanup_failures (tests.test_stage3_vision_lifecycle.VisionLifecycleTests)
+主回调错误及 remove/destroy/shutdown 三项次生错误都可见，且全部动作被尝试。 ... ok
+test_startup_configuration_failure_destroys_owned_node (tests.test_stage3_vision_lifecycle.VisionLifecycleTests)
+未配置身份时保留原拒绝，同时在 context 关闭前销毁已经成功构造的 Node。 ... ok
+test_stop_signals_during_startup_finish_before_cleanup (tests.test_stage3_vision_lifecycle.VisionLifecycleTests)
+构造和接线各阶段的双信号仅置停止标志；资源释放前不运行第一项回调。 ... ok
+test_cpp_and_python_share_utf8_byte_budget (tests.test_stage3_vision_resource_budget.VisionResourceBudgetTests) ... ok
+test_every_raw_identity_is_rejected_before_cache_or_diagnostics (tests.test_stage3_vision_resource_budget.VisionResourceBudgetTests) ... ok
+test_log_truncation_uses_bytes_and_does_not_validate_truncated_identity (tests.test_stage3_vision_resource_budget.VisionResourceBudgetTests) ... ok
+test_state_config_and_metadata_budget_are_bytes (tests.test_stage3_vision_resource_budget.VisionResourceBudgetTests) ... ok
+test_velocity_exact_unicode_limit_and_oversize_revoke_without_history_growth (tests.test_stage3_vision_resource_budget.VisionResourceBudgetTests) ... ok
+test_configuration_checks_bytes_before_identity_content (tests.test_stage3_adapter_budget.AdapterResourceBudgetTests)
+必填身份仍非空；超预算/NUL/非法 Unicode 作为明确新合同错误。 ... ok
+test_every_raw_identity_is_rejected_without_converted_copy (tests.test_stage3_adapter_budget.AdapterResourceBudgetTests)
+逐个检查世界/机体/来源/标定/角速度身份，输出不携带异常原文。 ... ok
+test_expiry_precedes_new_resource_rejection (tests.test_stage3_adapter_budget.AdapterResourceBudgetTests)
+超时和本次资源拒绝均保留为独立事件，后者不能覆盖先前超时。 ... ok
+test_invalid_half_packet_revokes_and_clears_both_pending_sides (tests.test_stage3_adapter_budget.AdapterResourceBudgetTests)
+即使坏包时间很旧，也撤销当前资格并清半包；不借用旧健康数据重新配对。 ... ok
+test_standalone_pair_buffer_never_retains_oversize_half_packet (tests.test_stage3_adapter_budget.AdapterResourceBudgetTests)
+低层配对器不负责发布，但独立使用时仍显式拒绝大身份，不创建缓存项。 ... ok
+test_valid_boundary_then_invalid_packet_then_fresh_pair (tests.test_stage3_adapter_budget.AdapterResourceBudgetTests)
+256 UTF-8 字节身份能正常转换；拒绝后新配对可恢复，不截断身份冒充正常。 ... ok
+test_camera_120hz_cannot_starve_platform_50hz_bracketing (tests.test_mission_pending_alignment.PendingAlignmentTests) ... ok
+test_new_frames_cannot_refresh_expired_pending_or_clear_active_fault (tests.test_mission_pending_alignment.PendingAlignmentTests) ... ok
+test_new_invalid_frame_clears_pending_before_future_platform_can_revive (tests.test_mission_pending_alignment.PendingAlignmentTests) ... ok
+test_source_reset_retracts_pending_before_alignment (tests.test_mission_pending_alignment.PendingAlignmentTests) ... ok
+
+----------------------------------------------------------------------
+Ran 216 tests in 30.730s
+
+OK

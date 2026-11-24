@@ -1,0 +1,52 @@
+test_duplicate_snapshot_cannot_refresh_same_measurement (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_identity_duplicate_never_renews_and_regression_needs_epoch (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_identity_restart_quarantines_retired_source (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_independent_receive_and_source_deadlines (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_interpolation_at_measurement_time_no_first_sample_zeroing (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_invalid_replay_cannot_revalidate_same_raw_sample (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_local_reset_discards_old_image_history (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_malformed_ready_snapshot_consumes_all_samples_before_rejection (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_multiple_publishers_and_clock_regression_fail (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_nan_frame_nonunit_attitude_and_alignment_reject (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_optional_omega_is_none_not_fake_zero (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_quaternion_sign_equivalence_and_pitch_right_vector (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_attitude_reset_and_writer_restart_change_epoch (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_coordinates_and_absolute_local_origin (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_dead_reckoning_and_invalid_last_payload_revoke (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_duplicate_raw_sample_does_not_extend_receive_ttl (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_invalid_new_sample_cannot_be_repaired_with_same_stamp (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_local_reset_explicit_invalid_then_new_epoch (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_multiple_publishers_and_host_clock_regression_revoke (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_nan_and_invalid_quaternion_revoke (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_old_future_zero_and_sample_after_envelope_rejected (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_omega_independently_stales_without_zero_fallback (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_omega_optional_policy_explicit (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_position_and_velocity_valid_are_independent (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_regressed_sample_latches_until_new_writer_epoch (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_source_age_and_monotonic_age_both_required (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_time_alignment_not_just_independent_freshness (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_yaw_90_degree_and_tilt (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_each_topic_envelope_receipt_and_raw_sample_ages_expire_at_its_ttl (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_future_sample_clock_skew_cannot_extend_raw_progress_lifetime (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_missing_invalid_or_native_rejected_timing_cannot_prompt_manual_arming (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_native_false_flags_and_transport_history_cannot_be_revived_by_valid_timing (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_native_valid_future_source_timestamp_does_not_extend_display_lifetime (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_sample_expiry_preserves_current_fault_and_recovery_diagnostics (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_supervisor_state_age_and_saved_snapshot_elapsed_both_consume_ttl (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_normal_paused_silent_stale_and_disconnected_real_ipc_controls (tests.test_navigation_feedback_freshness.LiveMonitorFreshnessTests) ... ok
+test_current_supervisor_boot_controller_and_ipc_state_identity_required (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_feedback_cutoff_remains_separate_from_current_process_and_readiness_facts (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_navigation_window_display_does_not_recreate_arm_deadline (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_ready_requires_current_native_phase_and_ground_zero_committed_zero_stream (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_dds_loss_and_expired_raw_samples_revoke_ready_display (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_historical_ready_is_stale_after_process_boot_or_identity_change (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_native_arm_window_and_wrong_slot_evidence_are_not_invented (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_ready_label_cannot_outlive_native_phase_or_ground_zero_stream (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_installed_tools_keep_sibling_modules_and_runtime_dependencies (tests.test_overnight_stage5_ros_contract.RosEngineeringContractTests) ... ok
+test_message_generation_links_the_current_package_typesupport (tests.test_overnight_stage5_ros_contract.RosEngineeringContractTests) ... ok
+test_target_interface_receiver_is_built_linked_and_installed_independently (tests.test_overnight_stage5_ros_contract.RosEngineeringContractTests) ... ok
+
+----------------------------------------------------------------------
+Ran 47 tests in 10.091s
+
+OK

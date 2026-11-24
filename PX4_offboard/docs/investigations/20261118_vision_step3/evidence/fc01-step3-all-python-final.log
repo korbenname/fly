@@ -1,0 +1,150 @@
+Agent transport CONNECTED: UART /dev/ttyS2 115200; PID=73566
+WAITING: 控制器已启动，等待飞控反馈
+HEIGHT_HOLD: native recovery
+STOPPING: 等待原生退出
+STOPPING: 原生控制器退出，code=0
+STOPPED: 后台待命已停止
+��
+WAITING: clean_eof: 控制台连接已关闭；没有残缺消息；原生控制器退出，code=7
+WAITING: UART disappeared during reconnect；原生控制器退出，code=7
+STOPPED: 后台待命已停止
+rget_and_unconfirmed_waypoint_keeps_native_hold (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_native_and_platform_reset_counters_must_match (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_no_native_gate_even_target_and_time_cannot_start_takeoff (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_old_ready_future_duplicate_and_local_progress_cannot_renew (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_production_horizontal_only_ignores_simulated_absolute_altitudes (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_restart_task_and_source_regression_revoke (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_stale_unknown_session_revokes_without_retiring_live_session (tests.test_mission_native_gate.NativeGateTests) ... ok
+test_initial_missing_data_does_not_latch_unused_mission (tests.test_mission_cached_demand.CachedDemandTests) ... ok
+test_invalid_target_clears_terminal_and_frozen_phase_demands (tests.test_mission_cached_demand.CachedDemandTests) ... ok
+test_duplicate_snapshot_cannot_refresh_same_measurement (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_identity_duplicate_never_renews_and_regression_needs_epoch (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_identity_restart_quarantines_retired_source (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_independent_receive_and_source_deadlines (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_interpolation_at_measurement_time_no_first_sample_zeroing (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_invalid_replay_cannot_revalidate_same_raw_sample (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_local_reset_discards_old_image_history (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_malformed_ready_snapshot_consumes_all_samples_before_rejection (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_multiple_publishers_and_clock_regression_fail (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_nan_frame_nonunit_attitude_and_alignment_reject (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_optional_omega_is_none_not_fake_zero (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_quaternion_sign_equivalence_and_pitch_right_vector (tests.test_mission_sensor_contract.MissionSensorContractTests) ... ok
+test_attitude_reset_and_writer_restart_change_epoch (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_coordinates_and_absolute_local_origin (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_dead_reckoning_and_invalid_last_payload_revoke (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_duplicate_raw_sample_does_not_extend_receive_ttl (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_invalid_new_sample_cannot_be_repaired_with_same_stamp (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_local_reset_explicit_invalid_then_new_epoch (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_multiple_publishers_and_host_clock_regression_revoke (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_nan_and_invalid_quaternion_revoke (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_old_future_zero_and_sample_after_envelope_rejected (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_omega_independently_stales_without_zero_fallback (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_omega_optional_policy_explicit (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_position_and_velocity_valid_are_independent (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_regressed_sample_latches_until_new_writer_epoch (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_source_age_and_monotonic_age_both_required (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_time_alignment_not_just_independent_freshness (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_yaw_90_degree_and_tilt (tests.test_px4_platform_feedback.PX4PlatformFeedbackTests) ... ok
+test_installed_tools_keep_sibling_modules_and_runtime_dependencies (tests.test_overnight_stage5_ros_contract.RosEngineeringContractTests) ... ok
+test_message_generation_links_the_current_package_typesupport (tests.test_overnight_stage5_ros_contract.RosEngineeringContractTests) ... ok
+test_target_interface_receiver_is_built_linked_and_installed_independently (tests.test_overnight_stage5_ros_contract.RosEngineeringContractTests) ... ok
+test_actual_runtime_import_dependencies_vision_and_messages_are_complete (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+运行树必须自带本项目导入依赖，不能为了容量仅保留控制器而遗漏视觉消息/工具。 ... ok
+test_builder_keeps_file_count_total_and_member_size_limits (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+分别构造超过真实安全上限的运行内容；不修改 MAX_*、不把拒绝改为通过。 ... ok
+test_development_history_archives_caches_and_experiments_stay_outside_runtime (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+大历史 ZIP 不应挤占运行预算，排除只影响载荷，不删除源树任何文件。 ... ok
+test_extractor_independently_keeps_all_three_capacity_limits (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+直接造归档绕开 builder，仍须在创建安装目标前因原容量限制失败。 ... ok
+test_manifest_cannot_omit_current_native_source_hash (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+payload 摘要正确也不能省掉原生源码身份，过期清单不会自动刷新为成功。 ... ok
+test_old_release_manifest_is_preserved_and_not_silently_refreshed (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+旧身份即使所有内容 SHA 都匹配，也不能被静默解释成本次正式发行清单。 ... ok
+test_release_manifest_itself_still_obeys_per_member_budget (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+运行源码再小，附加的发布元数据也必须计入每项预算，不能绕过解包器上限。 ... ok
+test_selected_source_symlink_is_rejected_without_reading_as_regular_source (tests.test_release_payload_policy.ReleasePayloadPolicyTests)
+运行白名单中的链接不能伪装源码；外部文件仍由原所有者保留。 ... ok
+test_each_topic_envelope_receipt_and_raw_sample_ages_expire_at_its_ttl (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_future_sample_clock_skew_cannot_extend_raw_progress_lifetime (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_missing_invalid_or_native_rejected_timing_cannot_prompt_manual_arming (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_native_false_flags_and_transport_history_cannot_be_revived_by_valid_timing (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_native_valid_future_source_timestamp_does_not_extend_display_lifetime (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_sample_expiry_preserves_current_fault_and_recovery_diagnostics (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_supervisor_state_age_and_saved_snapshot_elapsed_both_consume_ttl (tests.test_navigation_feedback_freshness.FeedbackFreshnessTests) ... ok
+test_normal_paused_silent_stale_and_disconnected_real_ipc_controls (tests.test_navigation_feedback_freshness.LiveMonitorFreshnessTests) ... ok
+test_clean_eof_is_recorded_separately_from_normal_native_exit (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_closed_native_action_gate_labels_preparation_as_diagnostic (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_complete_feedback_and_ipc_failure_survive_nonzero_native_exit (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_current_safety_remains_fault_when_aircraft_feedback_is_stale (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_diagnostic_gates_do_not_hide_fault_or_revive_historical_feedback (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_expired_ready_feedback_never_prompts_manual_arming (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_explicit_unconfirmed_liftoff_never_displays_height_hold_as_ready (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_invalid_tail_stops_live_peer_without_waiting_for_another_read_event (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_native_signal_exit_keeps_signal_identity (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_old_safety_is_history_after_disconnect_snapshot_expiry_or_process_change (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_preparation_diagnostics_explain_stale_sources_and_preflight_without_admission (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_preparation_wait_names_ground_blocker_with_healthy_rc_and_data (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_program_arm_disabled_does_not_disable_valid_manual_rc_guidance (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_recovery_details_tolerate_missing_and_nonfinite_timing (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_recovery_explains_expired_sample_and_independent_fresh_rest_blocker (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_recovery_never_revives_historical_detector_or_takeover_observations (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_recovery_observations_explicitly_retain_their_snapshot_age (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_recovery_reports_actual_takeover_with_fresh_status (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_recovery_view_preserves_first_fault_and_prioritizes_actual_runtime_block (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_recovery_view_shows_specific_core_wait_and_omits_normal_ready_without_fault (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_recovery_view_uses_core_block_when_runtime_has_none_and_labels_stale_history (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_retry_retains_history_age_ipc_error_and_native_exit (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_silent_live_controller_cannot_refresh_aircraft_feedback (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_unknown_native_gates_cannot_prompt_manual_arming (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_view_adds_snapshot_elapsed_time_to_feedback_age (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_view_distinguishes_local_thrust_commit_from_px4_adoption (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_view_labels_history_even_when_supervisor_snapshot_is_fresh (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_view_requires_native_fresh_flags_and_explains_missing_height (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_view_shows_current_feedback_only_with_valid_age_and_native_flags (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_view_shows_native_height_reason_and_expected_observed_slots (tests.test_navigation_diagnostics.NavigationDiagnosticsTests) ... ok
+test_actual_generated_rc_configuration_is_valid (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_actual_native_rejects_automatic_arm_in_manual_route (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_all_valid_mode_slots_are_accepted_by_actual_native_config (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_check_session_is_accepted_by_actual_native_config (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_flight_session_is_accepted_by_actual_native_config (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_native_validator_rejects_legacy_flight_flag_in_attitude_mode (tests.test_navigation_service.NavigationNativeConfigContract) ... ok
+test_closed_read_only_view_does_not_stop_or_manage_service (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_current_native_fault_survives_expired_aircraft_feedback (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_current_service_instance_controls_snapshot_validity (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_diagnostic_mode_closes_every_action_authority_and_visual_gate (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_flight_test_requires_explicit_confirmation (tests.test_navigation_service.NavigationServiceTests) ... usage: python3 -m unittest [-h] [--mode {diagnostic,flight-test}]
+                           [--flight-test] [--confirm-flight-test]
+                           [--file FILE] [--prefix PREFIX]
+                           [--build-dir BUILD_DIR] [--require-existing-agent]
+                           [--require-rc-safe]
+                           [{run,prepare-config,validate-env,check-config,probe,build}]
+python3 -m unittest: error: Flight Test 必须同时提供 --confirm-flight-test；不会隐式开启动作门
+ok
+test_historical_phase_cannot_override_retry_or_channel_failure (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_load_profile_uses_bundle_candidate_and_writes_mode_metadata (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_load_profile_uses_settings_slot_and_preserves_base_when_omitted (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_mode_slot_is_configurable_and_rejects_invalid_values (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_native_fault_overrides_connected_and_ready_is_distinct (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_navigation_profile_keeps_program_arm_disabled_and_numeric_limits (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_old_binary_without_lifecycle_marker_is_not_accepted (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_old_or_disconnected_safety_cannot_override_transport_status (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_private_controller_does_not_require_the_sdk_controller_binary (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_release_entry_and_native_controller_share_the_current_identity (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_role_metadata_does_not_override_actual_native_gate_values (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_service_runs_private_native_with_status_only_and_graceful_recovery (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_shipped_mode_candidates_start_with_closed_gates (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_unknown_aircraft_feedback_cannot_become_ready (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_view_rejects_previous_boot_and_malformed_time (tests.test_navigation_service.NavigationServiceTests) ... ok
+test_current_supervisor_boot_controller_and_ipc_state_identity_required (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_feedback_cutoff_remains_separate_from_current_process_and_readiness_facts (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_navigation_window_display_does_not_recreate_arm_deadline (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_ready_requires_current_native_phase_and_ground_zero_committed_zero_stream (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_dds_loss_and_expired_raw_samples_revoke_ready_display (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_historical_ready_is_stale_after_process_boot_or_identity_change (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_native_arm_window_and_wrong_slot_evidence_are_not_invented (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+test_render_ready_label_cannot_outlive_native_phase_or_ground_zero_stream (tests.test_stage3_status_readiness.Stage3StatusReadinessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 124 tests in 16.046s
+
+OK

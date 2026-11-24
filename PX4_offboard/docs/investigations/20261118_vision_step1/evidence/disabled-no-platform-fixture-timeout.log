@@ -1,0 +1,10 @@
+[INFO] [1794932429.336739048] [fc01_mission]: consuming /fc01/vision/target_relative (use_vision_state=false)
+[INFO] [1794932429.338170346] [fc01_mission]: mission: mode=push, vision=/fc01/vision/target_relative, plant pose=/sim/platform_pose, out=/visioncontrol at 50 Hz
+Traceback (most recent call last):
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/ros_target_interface_smoke.py", line 226, in <module>
+    if __name__=='__main__':main()
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/ros_target_interface_smoke.py", line 191, in main
+    wait(lambda:production_velocity and production_navigation)
+  File "/home/jikl62/FC01_OrangePi_Navigation_20261028/tests/ros_target_interface_smoke.py", line 38, in wait
+    raise AssertionError('ROS condition timeout')
+AssertionError: ROS condition timeout

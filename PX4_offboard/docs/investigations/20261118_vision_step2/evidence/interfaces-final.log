@@ -1,0 +1,3 @@
+[INFO] [1794936220.567170317] [fc01_mission]: consuming /fc01/vision/target_observation (takes precedence over /fc01/vision/target_relative)
+[INFO] [1794936220.567988612] [fc01_mission]: mission: mode=push, vision=/fc01/vision/target_observation, plant pose=/fc01/platform/state, out=/visioncontrol at 50 Hz
+FC01_STEP1_ROS_INTERFACE_PASS

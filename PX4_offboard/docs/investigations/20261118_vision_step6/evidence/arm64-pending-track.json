@@ -1,0 +1,170 @@
+{
+  "label": "arm64-pending-track",
+  "service_pid": "46163",
+  "controller": {
+    "pid": 49638,
+    "uid": 1000,
+    "argv": [
+      "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+      "--ros-args",
+      "--disable-external-lib-logs",
+      "--params-file",
+      "/home/orangepi/FC01_navigation/runtime.yaml",
+      "-p",
+      "socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_rf7bvmvu/control.sock"
+    ],
+    "exe": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node",
+    "cwd": "/home/orangepi/FC01_versions/20261118_vision_step6_fix1",
+    "sha256": "26ca623c7e421dad68fa771d6356c77b7e464d90853d03a965e105343ecd36fb",
+    "start_ticks": 5589393
+  },
+  "readiness": {
+    "ready_for_manual_rc": false,
+    "missing": [
+      "DDS",
+      "RC",
+      "姿态",
+      "位置",
+      "电池",
+      "PX4"
+    ],
+    "phase": "IDLE",
+    "reason": "DDS_SOURCE_CLOCK_UNSYNCHRONIZED_OR_STALE",
+    "status_current": true,
+    "target_height_m": 1.5,
+    "native_navigation_allowed": null,
+    "current_command_source": null,
+    "vision": {
+      "mode": "track",
+      "current": true,
+      "camera_current": true,
+      "mission_current": true,
+      "camera": {
+        "ready": false,
+        "reason": "CAMERA_FRAME_STALE_OR_DISCONNECTED",
+        "configuration": "CAMERA_CALIBRATION_UNCONFIRMED",
+        "source_id": "fc01_vision@49224-55756208847008",
+        "reset_counter": 0,
+        "calibration_id": "",
+        "extrinsics_id": "",
+        "target_model_id": "",
+        "stamp_kind": "v4l2_read_completion_system",
+        "read_seconds": 0,
+        "missing": [
+          "CAMERA_CALIBRATION",
+          "CAMERA_RECTIFICATION",
+          "CAMERA_EXTRINSICS",
+          "TARGET_MODEL",
+          "CAPTURE_LATENCY"
+        ],
+        "exposure_timestamp_measured": false
+      },
+      "mission": {
+        "kind": "mission_sensors",
+        "control_authority": false,
+        "platform_input_mode": "px4",
+        "missing": [
+          "POSITION_SOURCE_STALE",
+          "CAMERA_LEVER_ARM_UNCONFIRMED",
+          "POSITION_SOURCE_STALE",
+          "STANDOFF_CALIBRATION_UNCONFIRMED",
+          "quaternion norm invalid",
+          "WAYPOINT_ORIGIN_UNCONFIRMED"
+        ],
+        "target_locked": false,
+        "continuous_new_frames": 0,
+        "target_reason": "POSITION_SOURCE_STALE",
+        "platform_reason": "POSITION_SOURCE_STALE",
+        "guidance_invalidated": false,
+        "native_navigation_current": false,
+        "native_phase": "",
+        "native_reason": "quaternion norm invalid",
+        "origin_id": "px4_local:0:0:0:0:0:0",
+        "last_target_stamp_ns": 0,
+        "target_source": null,
+        "engage_mode": "track",
+        "horizontal_policy_reason": "WAIT_NATIVE",
+        "horizontal_fault": "",
+        "standoff_calibration_id": "",
+        "note": "原生独占人工RC起飞和1.5m垂直闭环；本节点只在原生到高授权后产生水平意图"
+      },
+      "calibration_state": "pending",
+      "mission_control_enabled": false,
+      "error": ""
+    },
+    "note": "仅显示；人工RC准入/接管/Kill/失效保护由原生控制器判定"
+  },
+  "vision": {
+    "schema_version": 1,
+    "mode": "track",
+    "enabled": true,
+    "calibration_state": "pending",
+    "mission_control_enabled": false,
+    "supervisor_pid": 46163,
+    "boot_id": "6c94b06a-16ad-4609-8749-fcfe6ff85974",
+    "receive_monotonic_ns": 55901525739424,
+    "auxiliary_pid": 49164,
+    "auxiliary_returncode": null,
+    "error": "",
+    "observations": {
+      "camera": {
+        "receive_monotonic_ns": 55901523171456,
+        "publisher_count": 1,
+        "value": {
+          "ready": false,
+          "reason": "CAMERA_FRAME_STALE_OR_DISCONNECTED",
+          "configuration": "CAMERA_CALIBRATION_UNCONFIRMED",
+          "source_id": "fc01_vision@49224-55756208847008",
+          "reset_counter": 0,
+          "calibration_id": "",
+          "extrinsics_id": "",
+          "target_model_id": "",
+          "stamp_kind": "v4l2_read_completion_system",
+          "read_seconds": 0,
+          "missing": [
+            "CAMERA_CALIBRATION",
+            "CAMERA_RECTIFICATION",
+            "CAMERA_EXTRINSICS",
+            "TARGET_MODEL",
+            "CAPTURE_LATENCY"
+          ],
+          "exposure_timestamp_measured": false
+        }
+      },
+      "mission": {
+        "receive_monotonic_ns": 55901458592672,
+        "publisher_count": 1,
+        "value": {
+          "kind": "mission_sensors",
+          "control_authority": false,
+          "platform_input_mode": "px4",
+          "missing": [
+            "POSITION_SOURCE_STALE",
+            "CAMERA_LEVER_ARM_UNCONFIRMED",
+            "POSITION_SOURCE_STALE",
+            "STANDOFF_CALIBRATION_UNCONFIRMED",
+            "quaternion norm invalid",
+            "WAYPOINT_ORIGIN_UNCONFIRMED"
+          ],
+          "target_locked": false,
+          "continuous_new_frames": 0,
+          "target_reason": "POSITION_SOURCE_STALE",
+          "platform_reason": "POSITION_SOURCE_STALE",
+          "guidance_invalidated": false,
+          "native_navigation_current": false,
+          "native_phase": "",
+          "native_reason": "quaternion norm invalid",
+          "origin_id": "px4_local:0:0:0:0:0:0",
+          "last_target_stamp_ns": 0,
+          "target_source": null,
+          "engage_mode": "track",
+          "horizontal_policy_reason": "WAIT_NATIVE",
+          "horizontal_fault": "",
+          "standoff_calibration_id": "",
+          "note": "原生独占人工RC起飞和1.5m垂直闭环；本节点只在原生到高授权后产生水平意图"
+        }
+      }
+    }
+  },
+  "processes": "    PID    PPID COMMAND\n      1       0 /sbin/init\n      2       0 [kthreadd]\n      3       2 [rcu_gp]\n      4       2 [rcu_par_gp]\n      5       2 [slub_flushwq]\n      6       2 [netns]\n      8       2 [kworker/0:0H-events_highpri]\n     10       2 [mm_percpu_wq]\n     11       2 [rcu_tasks_rude_]\n     12       2 [rcu_tasks_trace]\n     13       2 [ksoftirqd/0]\n     14       2 [rcu_sched]\n     15       2 [migration/0]\n     16       2 [idle_inject/0]\n     18       2 [cpuhp/0]\n     19       2 [cpuhp/1]\n     20       2 [idle_inject/1]\n     21       2 [migration/1]\n     22       2 [ksoftirqd/1]\n     24       2 [kworker/1:0H-events_highpri]\n     25       2 [kdevtmpfs]\n     26       2 [inet_frag_wq]\n     28       2 [khungtaskd]\n     29       2 [oom_reaper]\n     30       2 [writeback]\n     31       2 [kcompactd0]\n     32       2 [ksmd]\n     33       2 [khugepaged]\n     79       2 [kintegrityd]\n     80       2 [kblockd]\n     81       2 [blkcg_punt_bio]\n     82       2 [tpm_dev_wq]\n     83       2 [ata_sff]\n     84       2 [md]\n     85       2 [edac-poller]\n     86       2 [devfreq_wq]\n     87       2 [watchdogd]\n     89       2 [kworker/0:1H-kblockd]\n     90       2 [kswapd0]\n     91       2 [ecryptfs-kthrea]\n     93       2 [kthrotld]\n     95       2 [mld]\n     96       2 [ipv6_addrconf]\n    106       2 [kstrp]\n    109       2 [zswap-shrink]\n    110       2 [kworker/u5:0]\n    115       2 [charger_manager]\n    148       2 [kworker/1:1H-kblockd]\n    164       2 [jbd2/vda-8]\n    165       2 [ext4-rsv-conver]\n    196       1 /lib/systemd/systemd-journald\n    221       1 /lib/systemd/systemd-udevd\n    231       1 /lib/systemd/systemd-networkd\n    234       1 /lib/systemd/systemd-resolved\n    236       1 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only\n    240       1 /lib/systemd/systemd-logind\n    254       1 /sbin/agetty -o -p -- \\u --noclear tty1 linux\n    255       1 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups\n    266       1 /bin/login -f\n    286     266 -bash\n    300       2 [cryptd]\n    403       1 python3 /root/fc01-arm64-vm-pty.py\n    426       1 /home/orangepi/fc01_agent_build_offline/MicroXRCEAgent serial -D /dev/ttyS2 -b 115200 -v 0\n  22019       1 /usr/bin/python3 /root/step6-evidence/fc01-step6-vm-probe.py monitor --seconds 7200 --output /root/step6-evidence/process-transitions-final.jsonl\n  27604       2 [kworker/1:2-events]\n  28522       2 [kworker/u4:0-events_power_efficient]\n  31678       2 [kworker/0:2-events]\n  36251       2 [kworker/1:1-events]\n  37164       2 [kworker/0:1]\n  37959     255 sshd: root@notty\n  37974   37959 bash -c set -e systemctl stop fc01-navigation.service python3 /root/step6-evidence/fc01-step6-vm-probe.py snapshot --output /root/step6-evidence/fix1-inactive-original-1_23.json python3 - <<'PY' import hashlib,json,yaml from pathlib import Path entry=Path(\"/home/orangepi/FC01_versions/20261117_stage3_fix1\") p=entry/\"deployment/runtime.yaml\"; profile=yaml.safe_load(p.read_text()) profile[\"fc01_system\"][\"ros__parameters\"][\"rc_target_height\"]=1.5 p.write_text(yaml.safe_dump(profile,sort_keys=False,allow_unicode=True)) s=entry/\"deployment/INSTALL_STATE.json\";j=json.loads(s.read_text());j[\"runtime_sha256\"]=hashlib.sha256(p.read_bytes()).hexdigest();s.write_text(json.dumps(j,indent=2)+\"\\n\") live=Path(\"/home/orangepi/FC01_navigation/runtime.yaml\");live.write_text(p.read_text()) Path(\"/root/step6-evidence/VM_ONLY_1_5_BASELINE.json\").write_text(json.dumps(dict(note=\"Explicit VM-only software test fixture; not field configuration or calibration\",target_height_m=1.5,prior_height_m=1.23),indent=2)) PY python3 /root/step6-evidence/fc01-step6-vm-probe.py snapshot --output /root/step6-evidence/fix1-before-inactive-install.json runuser -u orangepi -- bash /home/orangepi/Desktop/install_fc01.sh /home/orangepi/Desktop/FC01_OrangePi_20261118_vision_step6_fix1_arm64.tar.gz python3 /root/step6-evidence/fc01-step6-vm-probe.py snapshot --output /root/step6-evidence/fix1-after-inactive-install.json python3 /root/step6-evidence/fc01-step6-vm-probe.py assert-no-feedback --output /root/step6-evidence/fix1-inactive-install-no-feedback.json python3 - <<'PY' import json from pathlib import Path p=Path(\"/root/step6-evidence\");a=json.loads((p/\"fix1-before-inactive-install.json\").read_text());b=json.loads((p/\"fix1-after-inactive-install.json\").read_text()) assert a[\"service\"][\"ActiveState\"]==\"inactive\" and not a[\"controllers\"] assert b[\"service\"][\"ActiveState\"]==\"active\" and len(b[\"controllers\"])==1 assert b[\"controllers\"][0][\"exe\"].startswith(\"/home/orangepi/FC01_versions/20261118_vision_step6_fix1/\") print(\"FINAL_FIX1_INACTIVE_BASELINE_INSTALL_PASS\") PY systemctl stop fc01-navigation.service runuser -u orangepi -- python3 -B /home/orangepi/FC01_versions/20261118_vision_step6_fix1/navigation_vision_mode.py track --pending-calibration --entry /home/orangepi/FC01_versions/20261118_vision_step6_fix1 --maintenance systemctl start fc01-navigation.service runuser -u orangepi -- python3 -B /home/orangepi/step6-evidence/vm-mode-accept.py --label arm64-pending-track --mode track --calibration pending runuser -u orangepi -- bash /home/orangepi/Desktop/install_fc01.sh --status python3 /root/step6-evidence/fc01-step6-vm-probe.py assert-no-feedback --output /root/step6-evidence/fix1-pending-no-feedback.json python3 /root/step6-evidence/fc01-step6-vm-probe.py make-site --output /home/orangepi/vm-synthetic-site.json chown orangepi:orangepi /home/orangepi/vm-synthetic-site.json systemctl stop fc01-navigation.service runuser -u orangepi -- python3 -B /home/orangepi/FC01_versions/20261118_vision_step6_fix1/navigation_vision_mode.py track --site /home/orangepi/vm-synthetic-site.json --entry /home/orangepi/FC01_versions/20261118_vision_step6_fix1 --maintenance systemctl start fc01-navigation.service runuser -u orangepi -- python3 -B /home/orangepi/step6-evidence/vm-mode-accept.py --label arm64-confirmed-fixture-track --mode track --calibration confirmed runuser -u orangepi -- bash /home/orangepi/Desktop/install_fc01.sh --status python3 /root/step6-evidence/fc01-step6-vm-probe.py snapshot --output /root/step6-evidence/fix1-track-before-repeat.json runuser -u orangepi -- bash /home/orangepi/Desktop/install_fc01.sh /home/orangepi/Desktop/FC01_OrangePi_20261118_vision_step6_fix1_arm64.tar.gz python3 /root/step6-evidence/fc01-step6-vm-probe.py snapshot --output /root/step6-evidence/fix1-track-after-repeat.json python3 /root/step6-evidence/fc01-step6-vm-probe.py assert-repeat --before /root/step6-evidence/fix1-track-before-repeat.json --after /root/step6-evidence/fix1-track-after-repeat.json runuser -u orangepi -- python3 -B /home/orangepi/step6-evidence/vm-mode-accept.py --label arm64-track-repeat --mode track --calibration confirmed export PYTHONDONTWRITEBYTECODE=1 source /opt/ros/humble/setup.bash source /home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/local_setup.bash python3 /root/step6-evidence/fc01-step6-vm-observe.py --seconds 30 --output /root/step6-evidence/track-no-feedback-ros-final.json systemctl stop fc01-navigation.service runuser -u orangepi -- python3 -B /home/orangepi/FC01_versions/20261118_vision_step6_fix1/navigation_vision_mode.py altitude --entry /home/orangepi/FC01_versions/20261118_vision_step6_fix1 --maintenance systemctl start fc01-navigation.service runuser -u orangepi -- python3 -B /home/orangepi/step6-evidence/vm-mode-accept.py --label arm64-return-altitude --mode altitude python3 /root/step6-evidence/fc01-step6-vm-probe.py assert-no-feedback --output /root/step6-evidence/fix1-altitude-return-no-feedback.json python3 - <<'PY' import json from pathlib import Path rows=[] for p in Path(\"/proc\").glob(\"[0-9]*\"):  try:   args=[x.decode(errors=\"replace\") for x in (p/\"cmdline\").read_bytes().split(b\"\\0\") if x]   if any(Path(x).name in (\"fc01_vision_node\",\"mission\",\"px4_state_bridge\",\"fc01_target_interface_node\") for x in args[:2]):rows.append((p.name,args))  except (FileNotFoundError,ProcessLookupError):continue assert not rows,rows print(\"FINAL_FIX1_TRACK_AUXILIARIES_EXITED_ALTITUDE_PASS\") PY backup=$(python3 -c 'import json;print(json.load(open(\"/home/orangepi/FC01_versions/20261118_vision_step6_fix1/deployment/INSTALL_STATE.json\"))[\"backup\"])') runuser -u orangepi -- bash /home/orangepi/Desktop/install_fc01.sh --rollback \"$backup\" python3 /root/step6-evidence/fc01-step6-vm-probe.py snapshot --output /root/step6-evidence/fix1-after-inactive-rollback.json python3 - <<'PY' import json from pathlib import Path p=Path(\"/root/step6-evidence\");a=json.loads((p/\"fix1-before-inactive-install.json\").read_text());b=json.loads((p/\"fix1-after-inactive-rollback.json\").read_text()) assert b[\"service\"][\"ActiveState\"]==\"inactive\" and b[\"service\"][\"MainPID\"]==\"0\" and not b[\"controllers\"],b[\"service\"] assert b[\"runtime\"]==a[\"runtime\"] assert b[\"service\"][\"WorkingDirectory\"]==a[\"service\"][\"WorkingDirectory\"] print(\"FINAL_FIX1_INACTIVE_ROLLBACK_RUNTIME_BYTE_IDENTICAL_PASS\") PY systemctl stop fc01-step6-process-monitor.service python3 /root/step6-evidence/fc01-step6-vm-probe.py assert-transitions --input /root/step6-evidence/process-transitions-final.jsonl --output /root/step6-evidence/fix1-transition-assertions.json printf \"FINAL_FIX1_ARM64_MODE_LIFECYCLE_SUITE_PASS\\n\"\n  40478       2 [kworker/u4:3-ext4-rsv-conversion]\n  45265       2 [kworker/u4:1-flush-252:0]\n  46163       1 /usr/bin/python3 /home/orangepi/FC01_versions/20261118_vision_step6_fix1/navigation_prebuilt_service.py\n  46164   37974 runuser -u orangepi -- python3 -B /home/orangepi/step6-evidence/vm-mode-accept.py --label arm64-pending-track --mode track --calibration pending\n  46171   46164 python3 -B /home/orangepi/step6-evidence/vm-mode-accept.py --label arm64-pending-track --mode track --calibration pending\n  49164   46163 /usr/bin/python3 /home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/bin/ros2 launch fc01_bringup horizontal_first_test.launch.py site_mission_config:=/home/orangepi/FC01_versions/20261118_vision_step6_fix1/deployment/vision_mission.yaml vision_config:=/home/orangepi/FC01_versions/20261118_vision_step6_fix1/deployment/vision_camera.yaml control_enabled:=false\n  49222   49164 /usr/bin/python3 /home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/fc01_mission/px4_state_bridge --ros-args -r __node:=fc01_px4_state_bridge --params-file /home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/share/fc01_mission/config/platform.yaml -r /fc01/platform/state:=/fc01/platform/state\n  49224   49164 /home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/fc01_vision/fc01_vision_node --ros-args -r __node:=fc01_vision --params-file /home/orangepi/FC01_versions/20261118_vision_step6_fix1/deployment/vision_camera.yaml --params-file /tmp/launch_params_ala2y3gu -r /fc01/vision/target_observation:=/fc01/vision/target_observation\n  49226   49164 /usr/bin/python3 /home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/fc01_mission/mission --ros-args -r __node:=fc01_mission --params-file /home/orangepi/FC01_versions/20261118_vision_step6_fix1/deployment/vision_mission.yaml --params-file /tmp/launch_params_u99whuqq -r /fc01/vision/target_observation:=/fc01/vision/target_observation -r /fc01/platform/state:=/fc01/platform/state -r /fc01/native/flight_state:=/fc01/native/flight_snapshot -r /navigation_command:=/fc01/navigation/command -r /visioncontrol:=/fc01/vision/velocity_command_v2 -r /fc01/vision/horizontal_command:=/fc01/vision/horizontal_command\n  49228   49164 /home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_target_interface_node --ros-args -r __node:=fc01_target_interface --params-file /tmp/launch_params_2dkv9ttd -r /fc01/vision/velocity_command_v2:=/fc01/vision/velocity_command_v2 -r /fc01/navigation/command:=/fc01/navigation/command -r /fc01/vision/target_observation:=/fc01/vision/target_observation\n  49455       2 [kworker/u4:2-events_power_efficient]\n  49638   46163 /home/orangepi/FC01_versions/20261118_vision_step6_fix1/install/lib/jikl_fc01_system/fc01_system_node --ros-args --disable-external-lib-logs --params-file /home/orangepi/FC01_navigation/runtime.yaml -p socket_path:=/home/orangepi/.cache/fc01_operator/ipc/s_rf7bvmvu/control.sock\n  49657   46171 /bin/sh -c ps -eo pid,ppid,args\n  49658   49657 ps -eo pid,ppid,args\n"
+}

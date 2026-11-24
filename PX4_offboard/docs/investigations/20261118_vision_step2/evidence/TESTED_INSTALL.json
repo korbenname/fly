@@ -1,0 +1,34 @@
+{
+  "/home/jikl62/.cache/fc01-vision-step2-20261118/install/fc01_mission/lib/python3.10/site-packages/fc01_mission/__init__.py": {
+    "sha256": "4ccba050cfd138121e793f608b0f21123b796192dcc2aa55d1927b837706d6d8",
+    "matches_source": "target/src/fc01_mission/fc01_mission/__init__.py"
+  },
+  "/home/jikl62/.cache/fc01-vision-step2-20261118/install/fc01_mission/lib/python3.10/site-packages/fc01_mission/sensor_contract.py": {
+    "sha256": "6a08ad3c5b85c655adbc01bd8c83bc4e23fd53209dcf8cd7d6ae9fb15bb1a639",
+    "matches_source": "target/src/fc01_mission/fc01_mission/sensor_contract.py"
+  },
+  "/home/jikl62/.cache/fc01-vision-step2-20261118/install/fc01_mission/lib/python3.10/site-packages/fc01_mission/px4_state_bridge.py": {
+    "sha256": "724f358efeec06ad13fc971b30a7b9dcc9fad23d382ca2b8507e40aa58e84713",
+    "matches_source": "target/src/fc01_mission/fc01_mission/px4_state_bridge.py"
+  },
+  "/home/jikl62/.cache/fc01-vision-step2-20261118/install/fc01_mission/lib/python3.10/site-packages/fc01_mission/platform_feedback.py": {
+    "sha256": "1092206385c760186cef0e475f0bed74ad382ca714235d15f80077de2d92768d",
+    "matches_source": "target/src/fc01_mission/fc01_mission/platform_feedback.py"
+  },
+  "/home/jikl62/.cache/fc01-vision-step2-20261118/install/fc01_mission/lib/python3.10/site-packages/fc01_mission/mission_node.py": {
+    "sha256": "e14ada291933fdc17c5e125dd056fa84de0629f076934625bce28e2071f0e1f1",
+    "matches_source": "target/src/fc01_mission/fc01_mission/mission_node.py"
+  },
+  "/home/jikl62/.cache/fc01-vision-step2-20261118/install/fc01_vision/lib/fc01_vision/vision_image_node": {
+    "sha256": "7abacb1674909f76e6d04c81c838373011cb13b541203dfec956789aefe11458"
+  },
+  "/home/jikl62/.cache/fc01-vision-step2-20261118/install/fc01_vision/lib/fc01_vision/fc01_vision_node": {
+    "sha256": "68958354445cdedc9cc951e371ff09446402f0ba1061a9aad1611dbb6e5b3da5"
+  },
+  "/home/jikl62/.cache/fc01-vision-step2-20261118/install/jikl_fc01_system/lib/jikl_fc01_system/fc01_target_interface_node": {
+    "sha256": "0f7c413eb0294b24a3012438a58ebc466741d1d53d4ba7d029cea86bd57afcf5"
+  },
+  "/home/jikl62/.cache/fc01-vision-step2-20261118/install/jikl_fc01_system/lib/jikl_fc01_system/fc01_system_node": {
+    "sha256": "919f78e85fdbb148a7186533ee836f4b5bb1405e90a85331f89ba76511e429aa"
+  }
+}
